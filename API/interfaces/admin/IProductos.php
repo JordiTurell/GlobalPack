@@ -67,6 +67,10 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->Buscador());
         break;
+    case 'HomeProduct':
+        $wcf = new Productos();
+        echo json_encode($wcf->HomeProduct());
+        break;
 }
 
 ?>

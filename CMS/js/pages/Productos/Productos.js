@@ -169,7 +169,23 @@ function CreateTableProductos(data) {
         var code = '';
         code = '<div class="row" style="padding-top:5px;">' +
             '<div class="col-lg-1"><img src="' + data.list[a].imagen + '" style="width:100%; height:auto;" /></div>' +
-            '<div class="col-lg-2">' + data.list[a].Titulo + ' '+ data.list[a].indice +'</div>';
+            '<div class="col-lg-2">' + data.list[a].Titulo + '</div>' +
+            '<div class="col-lg-1">0</div>';
+        if (data.list[a].home == 1) {
+            code += '<div class="col-lg-1"> &nbsp;&nbsp; ' +
+                '<label class="switch float-right" style="margin-top:10px;">' +
+                '<input type="checkbox" checked>' +
+                '<span class="slider round"></span>' +
+                '</label>' +
+                '&nbsp;&nbsp;</div>';
+        } else {
+            code += '<div class="col-lg-1"> &nbsp;&nbsp; ' +
+                '<label class="switch float-right" style="margin-top:10px;">' +
+                '<input type="checkbox">' +
+                '<span class="slider round"></span>' +
+                '</label>' +
+                '&nbsp;&nbsp;</div>';
+        }
         if (data.list[a].Ocasion == 1) {
             code += '<div class="col-lg-1"> &nbsp;&nbsp; ' +
                 '<label class="switch float-right" style="margin-top:10px;">' +
@@ -202,8 +218,40 @@ function CreateTableProductos(data) {
         }
         code += '</div>';
         var fila = $(body).append(code);
-        var ocasion = $($(fila).children()[a]).find('.col-lg-1')[1];
-        var habilitado = $($(fila).children()[a]).find('.col-lg-1')[2];
+
+        var home = $($(fila).children()[a]).find('.col-lg-1')[2];
+        var ocasion = $($(fila).children()[a]).find('.col-lg-1')[3];
+        var habilitado = $($(fila).children()[a]).find('.col-lg-1')[4];
+
+        $(home).data('item', data.list[a]);
+        $(home).click('on', function (ev) {
+            ev.preventDefault();
+            var cat = $(this).data('item');
+            var s = $(this);
+            if ($($(this).find('input')[0]).is(':checked')) {
+                cat.Home = 0;
+            } else {
+                cat.Home = 1;
+            }
+
+            var request = { token: '', item: null };
+            request.token = token;
+            request.item = cat;
+
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=HomeProduct",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.status) {
+                        location.reload();
+                    }
+                }
+            });
+        });
 
         $(ocasion).data('item', data.list[a]);
         $(ocasion).click('on', function (ev) {
@@ -330,7 +378,35 @@ function ChangeOcasion(s, cat) {
             }
         });
     } else {
-        alert('Hay que introducir los dos precios para configurar el producto en Ocasión.');
+        if ($($(s).find('input')[0]).is(':checked')) {
+            cat.Ocasion = 0;
+        } else {
+            cat.Ocasion = 1;
+        }
+        var request2 = { token: '', item: null };
+        request2.token = token;
+        request2.item = cat;
+
+        $.ajax({
+            type: "POST",
+            url: "/api/interfaces/admin/IProductos.php?fun=ActiveOcasion",
+            data: JSON.stringify(request2),
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.status) {
+                    $('#pvp').val('');
+                    $('#pvpocasion').val('')
+                    if (cat.Ocasion === 1) {
+                        $($(s).find('input')[0]).prop('checked', true);
+                    } else {
+                        $($(s).find('input')[0]).prop('checked', false);
+                    }
+                    $('#ModalOcasion').modal('hide');
+                }
+            }
+        });
     }
 }
 

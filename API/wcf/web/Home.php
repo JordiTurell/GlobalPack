@@ -55,7 +55,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM productos WHERE Ocasion = 1 ORDER BY FechaM DESC LIMIT 1";
+            $query = "SELECT * FROM productos WHERE Ocasion = 1 AND Home = 1 And Habilitado = 1";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaM"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);

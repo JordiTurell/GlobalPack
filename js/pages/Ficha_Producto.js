@@ -24,3 +24,35 @@ function ShowcontactComprar() {
         show = true;
     }
 }
+
+function Ficha_Producto(id) {
+    var request = { uuid: id };
+    $.ajax({
+        type: "POST",
+        url: "/api/interfaces/web/IProductos.php?fun=LoadProducto",
+        cache: false,
+        data: JSON.stringify(request),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+
+        },
+        success: function (data) {
+            console.log(data);
+
+            if (data.item.imagen.length > 1) {
+                alert('Crear Slider');
+            } else {
+                $('.imgproducto').append('<img src="'+ data.item.imagen[0] +'" style = "width:100%;" />');
+            }
+            $('#titleproducto').text(data.item.Titulo);
+            $('#descripcion').append(data.item.Descripcion);
+            $('#garantia').text(data.item.anogarantia);
+            $('#ficha').append(data.item.FichaTecnica);
+            $('#video').append('<iframe width="100%" height="415" src="' + data.item.videourl + '"> </iframe>');
+            $('#titulovideo').text(data.item.videotitle);
+            $('#descripcion-video').text(data.item.videodesc);
+            $('#comparativa').append(data.item.comparativa);
+        }
+    });
+}

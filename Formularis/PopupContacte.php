@@ -1,5 +1,5 @@
 <div class="popup-contacte" onclick="Showcontact();">
-    <span>Pedir informaci&#243n</span>
+    <span>Asesoramiento</span>
     <span>i</span>
 </div>
 <div class="form-popup-contacto">
@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="content-form">
                         <div class="title-form">
-                            <h1>¿Necesitas ayuda?</h1>
+                            <h1>&#191;Necesitas ayuda?</h1>
                         </div>
                         <div class="row formulario-allpages">
                             <div class="col-lg-6">

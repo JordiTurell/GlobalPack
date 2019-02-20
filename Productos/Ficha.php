@@ -26,8 +26,8 @@ $producto = $_POST;
     <link href="/css/style.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body id="page-top" class="container-fuild">
-
+<body id="page-top" class="container-fuild" onload="Ficha_Producto('<?php echo $producto["Id_Producto"]; ?>');">
+    
     <!-- Navigation -->
     <?php include_once('../Menus/menutop.php'); ?>
 
@@ -44,61 +44,84 @@ $producto = $_POST;
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-5">
-                    <?php 
-                        if(count($producto["imagen"]) > 1){
-                            
-                        }else{
-                            echo '<img src="'.$producto["imagen"][0].'" style="width:100%;" />';
-                        }
-                    ?>
+                <div class="col-lg-5 imgproducto">
+                    
                 </div>
                 <div class="col-lg-7">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1><?php echo $producto["Titulo"]; ?></h1>
+                            <h1 id="titleproducto"></h1>
                         </div>
                         <div class="col-lg-12">
                             SERVEIS
                         </div>
                         <div class="col-lg-12">
-                            <?php echo $producto["Descripcion"]; ?>
+                            <div id="descripcion"></div>
+                            <div id="garantia"></div>
                             <div class="row">
                                 <div class="col-md-6 btn btn-web" style="padding-top:15px;" onclick="ShowcontactComprar();">
                                     Comprar
                                 </div>
                                 <div class="col-md-6 btn btn-web" onclick="ShowcontactComprar();">
-                                    Perdi Informaci&#243;n personalizada
+                                    Pedir Informaci&#243;n personalizada
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                     <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#ficha">Ficha Tecnica</a></li>
+                        <li><a data-toggle="tab" href="#content-video">Videos</a></li>
+                        <li><a data-toggle="tab" href="#comparativa">Comparativa</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color:#F7F7F7; padding-top:40px;">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="col-lg-12">
-                            <ul class="nav nav-tabs">
-                              <li class="active"><a data-toggle="tab" href="#home">Ficha Tecnica</a></li>
-                              <li><a data-toggle="tab" href="#menu1">Videos</a></li>
-                              <li><a data-toggle="tab" href="#menu2">Comparativa</a></li>
-                            </ul>
-
                             <div class="tab-content">
-                              <div id="home" class="tab-pane fade in active">
-                                <?php echo $producto["FichaTecnica"]; ?>
+                              <div id="ficha" class="tab-pane fade in active show">
+                                
                               </div>
-                              <div id="menu1" class="tab-pane fade">
-                                <h3>Menu 1</h3>
-                                <p>Some content in menu 1.</p>
+                              <div id="content-video" class="tab-pane fade">
+                                  <div class="row">
+                                    <div class="col-lg-6" id="video">
+                                        
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3 id="titulovideo"></h3>
+                                        <p id="descripcion-video"></p>
+                                    </div>
+                                </div>
                               </div>
-                              <div id="menu2" class="tab-pane fade">
-                                <h3>Menu 2</h3>
-                                <p>Some content in menu 2.</p>
+                              <div id="comparativa" class="tab-pane fade">
+                                
                               </div>
                             </div>
                         </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color:#F7F7F7;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>Productos relacionados</h3>
+                </div>
                 <div class="col-lg-12">
-                    <?php echo var_dump($producto); ?>
+                    Carrousel
                 </div>
             </div>
         </div>

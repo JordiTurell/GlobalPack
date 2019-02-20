@@ -21,7 +21,6 @@
     <Compile Include="contacto.php" />
     <Compile Include="Footer\footer.php" />
     <Compile Include="Footer\footer_contact.php" />
-    <Compile Include="Formularis\Contacte.php" />
     <Compile Include="Formularis\ContacteAllPages.php" />
     <Compile Include="Formularis\PopupContacte.php" />
     <Compile Include="index.php" />

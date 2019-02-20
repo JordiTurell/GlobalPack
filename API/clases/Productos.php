@@ -25,6 +25,12 @@ namespace Api\Models
         public $Descripcion;
         public $Id_SubCategoria;
         public $FichaTecnica;
+        public $videourl;
+        public $videotitle;
+        public $videodesc;
+        public $comparativa;
+        public $anogarantia;
+        public $home;
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -37,12 +43,30 @@ namespace Api\Models
             $this->imagen = '';
         }
 
+        public function SetHome($home){
+            $this->home = $home;    
+        }
+
+        public function SetAnoGarantia($ano){
+            $this->anogarantia = $ano;
+        }
+
+        public function SetComparativa($comp){
+            $this->comparativa = $comp;
+        }
+
         public function SetFichaTecnica($ficha){
             $this->FichaTecnica = $ficha;
         }
 
         public function SetImage($img){
             $this->imagen = $img;
+        }
+
+        public function Setvideo($url, $titulo, $desc){
+            $this->videourl = $url;
+            $this->videotitle = $titulo;
+            $this->videodesc = $desc;
         }
 
         public function SetImages($img){

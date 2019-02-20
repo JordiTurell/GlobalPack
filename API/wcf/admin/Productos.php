@@ -521,6 +521,7 @@ namespace Api\WCF
 
                         while($row = mysqli_fetch_assoc($res)){
                             $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $cat->SetHome($row["Home"]);
                             $cat->SetId($row["Indice"]);
                             $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
                             if($r = mysqli_query($conn, $imagen)){
@@ -640,6 +641,40 @@ namespace Api\WCF
                             array_push($result->list, $cat);
                         }
                     }
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function HomeProduct(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Servicios.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $result = new Result(false, "", "");
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $update = "UPDATE productos SET Home = 0";
+                    mysqli_query($conn, $update);
+                    $query = "UPDATE productos SET Home = ".$input["item"]["Home"]." WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $query);
                     mysqli_close($conn);
                     $result->SetStatus(true);
                     $result->SetMsg('SUCCESS');

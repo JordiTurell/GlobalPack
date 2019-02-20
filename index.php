@@ -47,7 +47,13 @@ ipsum dolor sit amet consectetur adipisicing elit
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="row contnet-items-slider">
+                    <div class="row">
+                        <div class="col-lg-5 item-slider">
+                            Maquinas
+                        </div>
+                        <div class="col-lg-5 item-slider">
+                            Maquinas
+                        </div>
                         <div class="col-lg-5 item-slider">
                             Maquinas
                         </div>
@@ -69,7 +75,7 @@ ipsum dolor sit amet consectetur adipisicing elit
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 old-blog">
-                    <h1>Últimas Notícias</h1>
+                    <h1>¿Qué hay de nuevo?</h1>
                 </div>
                 <div class="col-lg-4 item-ocasion">
                     

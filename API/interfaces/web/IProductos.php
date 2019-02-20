@@ -5,15 +5,19 @@ require_once("../../wcf/web/Productos.php");
 switch($_GET['fun']){
     case 'LoadCategoriasProductos':
         $wcf = new Productos();
-        echo json_encode($wcf->LoadCategoriasProductos());;
+        echo json_encode($wcf->LoadCategoriasProductos());
         break;
     case 'LoadFiltrosProductos':
         $wcf = new Productos();
-        echo json_encode($wcf->LoadFiltrosProductos());;
+        echo json_encode($wcf->LoadFiltrosProductos());
         break;
     case 'LoadProductosCat':
         $wcf = new Productos();
-        echo json_encode($wcf->LoadProductosCat());;
+        echo json_encode($wcf->LoadProductosCat());
+        break;
+    case 'LoadProducto':
+        $wcf = new Productos();
+        echo json_encode($wcf->LoadProducto());
         break;
 }
 

@@ -83,6 +83,12 @@ if(isset($_SESSION['SES'])){
                                         <strong>Titulo</strong>
                                     </div>
                                     <div class="col-lg-1 text-center">
+                                        <strong>Relacionados</strong>
+                                    </div>
+                                    <div class="col-lg-1 text-center">
+                                        <strong>Home Web</strong>
+                                    </div>
+                                    <div class="col-lg-1 text-center">
                                         <strong>Ocasion</strong>
                                     </div>
                                     <div class="col-lg-1 text-center">

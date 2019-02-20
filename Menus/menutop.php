@@ -30,25 +30,25 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="/">Inicio</a>
+                <a class="nav-link" href="/">INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/nosotros.php">Nosotros</a>
+                <a class="nav-link" href="/nosotros.php">NOSOTROS</a>
               </li>  
               <li class="nav-item">
-                <a class="nav-link" href="/productos.php">Productos</a>
+                <a class="nav-link" href="/productos.php">PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Soporte</a>
+                <a class="nav-link" href="#">POSTVENTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Oportunidades</a>
+                <a class="nav-link" href="#">OCASIÓN</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
+                <a class="nav-link" href="#">BLOG</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/contacto.php">Contacto   </a>
+                <a class="nav-link" href="/contacto.php">CONTACTO</a>
               </li>
             </ul>
           </div>

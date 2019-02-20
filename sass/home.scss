@@ -13,7 +13,7 @@
     margin-right: 0px;
 
     #title_home {
-        background-color: $red_opacity;
+        background-color: $title_home;
         padding-left: 29px;
         padding-right: 29px;
         padding-top: 19px;
@@ -44,7 +44,7 @@
     }
 
     .item-slider {
-        background-color: $item-slider;
+        background-color: $item-slider2;
         margin: 10px;
         height: 100px;
         color: white;
@@ -92,7 +92,7 @@
     h1 {
         font-family: 'Ubuntu', sans-serif;
         color: $gris-title;
-        width: 228px;
+        width: 270px;
         font-size: 30px;
         font-weight: bold;
         line-height: 35px;
@@ -168,6 +168,10 @@
     }
 }
 
+.title-form-home{
+    width:789px !important;
+}
+
 .content-form {
     background-color: white;
     box-shadow: 0 0 10px 0 #D5D4D5;
@@ -175,21 +179,25 @@
     position: relative;
     margin-top: 87px;
     margin-bottom: 37px;
+    margin-left: 10%;
     padding: 10px;
 
     .title-form {
         position: absolute;
         top: 15px;
-        background-color: $globalpack;
-        color: white;
+        color: $globalpack;
         text-align: center;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        line-height: 29px;
         z-index: 999;
         width: 100%;
+
+        h1 {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 29px;
+            margin-top:24px;
+        }
     }
 
     .formulario-home {
@@ -213,7 +221,7 @@
 
     .formulario-allpages {
         margin-top: 80px;
-        z-index:999;
+        z-index: 999;
 
         input {
             margin-bottom: 10px;

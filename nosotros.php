@@ -39,25 +39,6 @@ require_once('Constantes.php');
         </div>
     </div>
 
-    <!-- Informació Corporativa de GlobalPack -->
-    <div class="nosotros-info row">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <center>
-                        <h1>SOBRE NOSOTROS</h1>
-                    </center>
-                </div>
-            </div>
-            <div class="row" style="margin-top:45px;">
-                <div class="col-lg-6" style="text-align:center;">
-                    <img src="" id="img-info-nosotros"/>
-                </div>
-                <div class="col-lg-6" id="textonosotros"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Benificios -->
     <div class="beneficios row">
         <div class="container">
@@ -70,11 +51,30 @@ require_once('Constantes.php');
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <ul id="listbenificios"></ul>
+                    <ul id="listbenificios" class="text-center"></ul>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Informació Corporativa de GlobalPack -->
+    <div class="nosotros-info row" style="padding-bottom:40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <center>
+                        <h1>SOBRE NOSOTROS</h1>
+                    </center>
+                </div>
+            </div>
+            <div class="row" style="margin-top:45px;">
+                <div class="col-lg-6" style="text-align:center;">
+                    <img src="" id="img-info-nosotros" />
+                </div>
+                <div class="col-lg-6" id="textonosotros"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contacte -->
     <?php include_once(dirname(__FILE__).'/Formularis/PopupContacte.php'); ?>
     <!-- Google Maps-->

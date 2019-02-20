@@ -56,7 +56,6 @@
 
 .los-beneficios-con-g {
     height: 31px;
-    width: 1194px;
     color: $item-slider;
     font-family: 'Ubuntu', sans-serif;
     font-size: 28px;
@@ -68,7 +67,7 @@
 
 #listbenificios {
     list-style: none;
-
+    padding:0px;
     li {
         display: inline-block;
         width: 222px;

@@ -6,8 +6,9 @@
     border-radius: 11px 11px 0 0;
     padding: 20px;
     text-align: center;
-    margin: 30px 92px 25px 0px;
-    box-shadow: 0px 0px 5px 0px $line-title;
+    margin: 30px 30px 25px 60px;
+    box-shadow: 1px 1px 10px 1px $line-title;
+    border: solid 1px $line-categorias;
     border-bottom: solid 3px $line-categorias;
     cursor: pointer;
     position: relative;
@@ -26,8 +27,10 @@
         font-weight: bold;
         line-height: 20px;
         margin-top: 17px;
+        text-transform: uppercase;
     }
 
+    
     .cat-vermas {
         width: 100%;
         text-align: right;
@@ -64,8 +67,8 @@
             font-family: 'Ubuntu', sans-serif;
         }
 
-        .cat-vermas{
-            margin-top:75%;
+        .cat-vermas {
+            margin-top: 75%;
         }
     }
 }
@@ -181,4 +184,38 @@
 .onback {
     font-size: 40px;
     font-family: 'Ubuntu', sans-serif;
+}
+
+.nav-tabs {
+    margin-top: 91px;
+    border: none;
+
+    li {
+        text-align: center;
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.08);
+        margin-right: 5px;
+        border-bottom: solid 4px $line-title;
+        a {
+            color: $item-slider;
+            text-decoration: none;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 28px;
+            margin-left: 7px;
+            margin-right: 7px;
+            margin-top: 7px;
+            padding-bottom: 2px;
+        }
+
+        a.active {
+            border-bottom: solid 4px $globalpack;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 7px;
+            padding-bottom: 2px;
+            width: 100%;
+        }
+    }
 }

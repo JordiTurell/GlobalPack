@@ -104,7 +104,7 @@
                 &nbsp;
             </div>
             <div class="col-lg-6 text-right">
-                Desing & Programation by © <a href="https://flutter.es" style="text-decoration:none; color:white;">Flutter</a>.
+                Design & Programmation by © <a href="https://flutter.es" style="text-decoration:none; color:white;">Flutter</a>.
             </div>
         </div>
     </div>
