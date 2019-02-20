@@ -1,0 +1,19 @@
+﻿@keyframes ShowContact {
+    0% {
+        right:-100vw;
+    }
+
+    100% {
+        right:5%;
+    }
+}
+
+@keyframes ShowContactdisabled{
+    0% {
+        right: 5%;
+    }
+
+    100% {
+        right: -100vw;
+    }
+}

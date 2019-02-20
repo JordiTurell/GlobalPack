@@ -1,0 +1,258 @@
+﻿@import 'variables';
+@import 'animation.scss';
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+.info {
+    background-color: $gris_negre;
+    color: white;
+    padding-top:8px;
+    padding-bottom:8px;
+
+    & a {
+        color: white;
+    }
+
+    & a:hover {
+        text-decoration:none;
+    }
+}
+
+.right{
+    text-align:right;
+}
+
+.arrow-down {
+    position:absolute;
+    bottom:0;
+    left:50%;
+ }
+
+#logo_top{
+    width:130px;
+    height:80px;
+}
+
+#logo_footer {
+    width: 130px;
+    height: 80px;
+    margin-top:33px;
+}
+
+.navbar {
+    background-color: $red !important;
+
+    .navbar-nav {
+        margin-top: 45px;
+    }
+
+    .nav-item {
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        width: 120px;
+    }
+}
+
+.nav-link{
+    color:white !important;
+}
+
+@import 'home.scss';
+@import 'nosotros.scss';
+@import 'productos.scss';
+
+.lis-option{
+    list-style:none;
+}
+
+//Cuadricula contacto
+.option {
+    background-color: $gris;
+    padding: 20px;
+    color: black;
+    margin: 2px;
+    width: 241px;
+    height:170px;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+
+    & .icon-imatge {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 50px;
+        color: $red;
+    }
+
+    h3 {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 22px;
+        letter-spacing: 2px;
+        line-height: 26px;
+    }
+
+    span {
+        font-size: 14px;
+        line-height: 16px;
+        font-family: 'Ubuntu', sans-serif;
+        color: black;
+    }
+
+    & a {
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 16px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    &:hover {
+        background-color: $red;
+
+        & .icon-imatge {
+            color: white;
+        }
+
+        & a, i, h3, span {
+            color: white;
+        }
+    }
+}
+
+.row-error{
+    margin-left:0px;
+    margin-right:0px;
+}
+
+//Footer
+.footer, .footer2 {
+    background-color: $gris_negre;
+    color: white;
+
+    p, a {
+        font-size: 14px;
+        line-height: 16px;
+        color: white;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    h3 {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        line-height: 22px;
+        margin-top: 58.52px;
+    }
+}
+.footer2{
+    border-top: solid 1px $line;
+    padding-top:16px;
+    padding-bottom:20px;
+}
+.redsocial_footer:nth-child(1){
+    margin-left:40px;
+}
+.redsocial_footer {
+    margin-right: 16.16px;
+}
+
+#map {
+    height: 500px;
+}
+
+.row{
+    margin-left:0px;
+    margin-right:0px;
+}
+
+.popup-contacte {
+    background-color: $globalpack;
+    position: fixed;
+    right: -5%;
+    top: 50%;
+    cursor:pointer;
+    transform: rotate(270deg);
+    padding: 17px;
+    border-radius: 15px 15px 0px 0px;
+    height: 65px;
+    width: 244px;
+    z-index:9999;
+
+    span:nth-child(1) {
+        color: white;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 20px;
+        position: absolute;
+        bottom: 18px;
+    }
+
+    span:nth-child(2) {
+        font-size: 50px;
+        color: white;
+        font-family: 'Ubuntu', sans-serif;
+        position: absolute;
+        right:23px;
+        top:0;
+        transform:rotate(90deg);
+    }
+}
+
+.form-popup-contacto {
+    position: fixed;
+    right: -100vw;
+    top: 26%;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+    width:500px;
+}
+
+.form-popup-contacto-active{
+    animation: ShowContact 1s forwards;
+    z-index:9999;
+}
+.form-popup-contacto-desactive {
+    animation: ShowContactdisabled 1s forwards;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+    border-bottom: solid 4px $line-blog;
+    width: 230px;
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+}
+.title2 {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+    width: 230px;
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+    color: rgba(155,155,155,0.59)
+}
+
+.btn-web {
+    background-color: $globalpack;
+    border-radius: 14px;
+    max-width: 240px;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 3.38px;
+    line-height: 21px;
+    display: block;
+    margin-left: 40px;
+    white-space:normal;
+}

@@ -1,0 +1,74 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>API</Name>
+    <ProjectGuid>{753812c5-dd5a-444e-a9a2-5b56bcfd45ad}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <RuntimeVersion>7.1</RuntimeVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="clases\index.html" />
+    <Content Include="composer.json" />
+    <Content Include="Config\index.html" />
+    <Content Include="interfaces\admin\index.html" />
+    <Content Include="interfaces\index.html" />
+    <Content Include="interfaces\web\index.html" />
+    <Content Include="wcf\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="clases\" />
+    <Folder Include="Config\" />
+    <Folder Include="interfaces\" />
+    <Folder Include="interfaces\admin\" />
+    <Folder Include="interfaces\web\" />
+    <Folder Include="wcf\" />
+    <Folder Include="wcf\admin\" />
+    <Folder Include="wcf\web\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clases\Administrador.php" />
+    <Compile Include="clases\Beneficios.php" />
+    <Compile Include="clases\Categoria.php" />
+    <Compile Include="clases\InfoAdmin.php" />
+    <Compile Include="clases\Multimedia.php" />
+    <Compile Include="clases\Nosotros.php" />
+    <Compile Include="clases\Nosotros_Cabecera.php" />
+    <Compile Include="clases\Post.php" />
+    <Compile Include="clases\Productos.php" />
+    <Compile Include="clases\ServiceItemResult.php" />
+    <Compile Include="clases\ServiceListResult.php" />
+    <Compile Include="clases\Servicios.php" />
+    <Compile Include="clases\Subcategoria.php" />
+    <Compile Include="clases\Usuario.php" />
+    <Compile Include="Config\Config.php" />
+    <Compile Include="Config\DataContext.php" />
+    <Compile Include="Config\Token.php" />
+    <Compile Include="Config\UpdateFiles.php" />
+    <Compile Include="interfaces\admin\IAdmin.php" />
+    <Compile Include="interfaces\admin\IBlog.php" />
+    <Compile Include="interfaces\admin\Ilogin.php" />
+    <Compile Include="interfaces\admin\INosotros.php" />
+    <Compile Include="interfaces\admin\IProductos.php" />
+    <Compile Include="interfaces\web\IHome.php" />
+    <Compile Include="interfaces\web\INosotros.php" />
+    <Compile Include="interfaces\web\IProductos.php" />
+    <Compile Include="wcf\admin\Admin.php" />
+    <Compile Include="wcf\admin\Blog.php" />
+    <Compile Include="wcf\admin\Login.php" />
+    <Compile Include="wcf\admin\Nosotros.php" />
+    <Compile Include="wcf\admin\Productos.php" />
+    <Compile Include="wcf\admin\WcfAdmin.php" />
+    <Compile Include="wcf\web\Home.php" />
+    <Compile Include="wcf\web\Nosotros.php" />
+    <Compile Include="wcf\web\Productos.php" />
+  </ItemGroup>
+</Project>

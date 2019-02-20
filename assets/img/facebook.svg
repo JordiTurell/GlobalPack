@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="7px" height="16px" viewBox="0 0 7 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>12551847-CAFD-4D9A-A3B9-0F5A6CCC2083</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M4.65468182,16 L1.55113636,16 L1.55113636,7.99895652 L0,7.99895652 L0,5.24208696 L1.55113636,5.24208696 L1.55113636,3.58678261 C1.55113636,1.33808696 2.42613636,0 4.91463636,0 L6.98568182,0 L6.98568182,2.75791304 L5.69131818,2.75791304 C4.72277273,2.75791304 4.6585,3.14295652 4.6585,3.86226087 L4.65436364,5.24208696 L7,5.24208696 L6.72540909,7.99895652 L4.65436364,7.99895652 L4.65436364,16 L4.65468182,16 L4.65468182,16 Z" id="path-1"></path>
+    </defs>
+    <g id="HOME" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1339.000000, -9.000000)" id="Group-29">
+            <g>
+                <g transform="translate(-2.000000, -137.000000)" id="Group-28">
+                    <g>
+                        <g id="Group-17" transform="translate(2.000000, 137.000000)">
+                            <g id="HEDER_negre">
+                                <g id="Group-2" transform="translate(433.000000, 9.000000)">
+                                    <g id="social_icons" transform="translate(906.000000, 0.000000)">
+                                        <mask id="mask-2" fill="white">
+                                            <use xlink:href="#path-1"></use>
+                                        </mask>
+                                        <use id="Clip-4" fill="#FFFFFF" xlink:href="#path-1"></use>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

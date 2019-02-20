@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "css/admin.css",
+    "inputFile": "sass/admin.scss"
+  },
+  {
+    "outputFile": "css/login.css",
+    "inputFile": "sass/login.scss"
+  },
+  {
+    "outputFile": "css/backend.css",
+    "inputFile": "sass/backend.scss"
+  }
+]
