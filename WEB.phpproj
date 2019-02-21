@@ -47,10 +47,14 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <Content Include=".htaccess" />
+    <Content Include="assets\iconos\calendario.png" />
+    <Content Include="assets\iconos\escribenos.png" />
+    <Content Include="assets\iconos\mobile.png" />
     <Content Include="assets\iconos\Rueda.png" />
     <Content Include="assets\iconos\Caixa.png" />
     <Content Include="assets\iconos\Servicio.png" />
     <Content Include="assets\iconos\Maquinas.png" />
+    <Content Include="assets\iconos\localizacion.png" />
     <Content Include="assets\img\Fletxa_slider.png" />
     <Content Include="assets\img\instagram.svg" />
     <Content Include="assets\img\facebook.svg" />

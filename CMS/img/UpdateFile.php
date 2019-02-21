@@ -69,7 +69,7 @@ function UpdateFile(){
         if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
             echo "//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/tmp/".$filename;
         }else{
-            echo "Error";
+            echo "//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/tmp/".$filename;
         }
     }
 }

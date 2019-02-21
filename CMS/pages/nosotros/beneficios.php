@@ -89,9 +89,6 @@ if(isset($_SESSION['SES'])){
                         </div>
                         <ul class="row" id="listado"></ul>
                     </div>
-                    <div class="box-footer">
-                        <button class="btn" type="button">Guardar</button>
-                    </div>
                 </div>
             </section>
             <!-- /.content -->

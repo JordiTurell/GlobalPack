@@ -44,7 +44,7 @@
             var list = $('#listbenificios');
             for (var a = 0; a < data.list.length; a++) {
                 var code = '';
-                code = '<li><img src="'+ data.list[a].icon +'"/><p>'+ data.list[a].text +'</p></li>';
+                code = '<li><img src="//'+ data.list[a].icon +'"/><p>'+ data.list[a].text +'</p></li>';
                 $(list).append(code);
             }
         }

@@ -43,7 +43,7 @@ namespace Api\WCF
                         $filename = explode('/', $input["item"]["img"]);
 
                         $filename = $_SERVER["HTTP_HOST"]."/cms/img/Nosotros/".$filename[count($filename)-1];
-                        $query = "UPDATE nosotros Set Imagen = '".$filename."', Texto = '".$input["item"]["text"]."' Where Indice = 1";
+                        $query = "UPDATE nosotros Set Imagen = '//".$filename."', Texto = '".$input["item"]["text"]."' Where Indice = 1";
                     }else{
                         $query = "UPDATE nosotros Set Texto = '".$input["item"]["text"]."' Where Indice = 1";
                     }
@@ -88,24 +88,22 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT * FROM Nosotros Where Indice = 1";
+                    $query = "SELECT * FROM nosotros Where Indice = 1";
 
                     if($res = mysqli_query($conn, $query)){
-                        $item = null;
+                       
                         while($row = mysqli_fetch_assoc($res)){
-                            $item = new RequestNosotros($row["Imagen"], $row["Texto"], null);
+                            $result->item = new RequestNosotros($row["Imagen"], $row["Texto"], null);
                         }
                         $result->SetStatus(true);
                         $result->SetMsg('SUCCESS');
-                        $result->item = $item;
-
                         mysqli_close($conn);
 
                         return $result;
                     }else{
                         mysqli_close($conn);
                         $result->SetStatus(false);
-                        $result->SetMsg('Error al guardar los cambios');
+                        $result->SetMsg($query);
                         return $result;
                     }
                 }else{
@@ -350,7 +348,7 @@ namespace Api\WCF
                             $filename = explode('/', $input["item"]["icono"]);
 
                             $filename = $_SERVER["HTTP_HOST"]."/cms/img/Nosotros_Beneficios/".$filename[count($filename)-1];
-                            $query = "UPDATE beneficios Set Icono = '".$filename."' Where ID = ".$id;
+                            $query = "UPDATE beneficios Set Icono = '//".$filename."' Where ID = ".$id;
                             mysqli_query($conn, $query);
                         }
                     }
@@ -390,8 +388,7 @@ namespace Api\WCF
                         if($res = mysqli_query($conn, $query_insert)){
                             $count = $res->num_rows;
                         }
-                        if($count != 1){
-                            
+                        if($count == 0){
                             $query = "INSERT INTO header_nosotors (Imagen, Descripcion) VALUES ('".$filename."', '".$input["item"]["texto"]."')";
                         }else{
                             $query = "UPDATE header_nosotors Set Imagen = '".$filename."', Descripcion = '".$input["item"]["texto"]."' Where Indice = 1";
