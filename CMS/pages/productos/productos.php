@@ -82,7 +82,7 @@ if(isset($_SESSION['SES'])){
                                     <div class="col-lg-2 text-center">
                                         <strong>Titulo</strong>
                                     </div>
-                                    <div class="col-lg-1 text-center">
+                                    <div class="col-lg-2 text-center">
                                         <strong>Relacionados</strong>
                                     </div>
                                     <div class="col-lg-1 text-center">

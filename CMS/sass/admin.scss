@@ -35,6 +35,21 @@
     border-radius:0px !important;
 }
 
+.move{
+    cursor:move;
+    border:solid 1px #393939;
+}
+
+.delete_relacionados{
+    font-size:30px;
+    margin-top:6%;
+}
+#list_productos, #relacionados {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border: dashed 2px #393939;
+    margin-top: 10px;
+}
 .input-group-text {
     background-color: $Globalpack !important;
     color: white;

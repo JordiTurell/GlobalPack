@@ -170,7 +170,7 @@ function CreateTableProductos(data) {
         code = '<div class="row" style="padding-top:5px;">' +
             '<div class="col-lg-1"><img src="' + data.list[a].imagen + '" style="width:100%; height:auto;" /></div>' +
             '<div class="col-lg-2">' + data.list[a].Titulo + '</div>' +
-            '<div class="col-lg-1">0</div>';
+            '<div class="col-lg-2">' + data.list[a].relacionados + '&nbsp; <input type="button" class="btn" value="Agregar Producto" style="float:right;" /></div>';
         if (data.list[a].home == 1) {
             code += '<div class="col-lg-1"> &nbsp;&nbsp; ' +
                 '<label class="switch float-right" style="margin-top:10px;">' +
@@ -219,9 +219,16 @@ function CreateTableProductos(data) {
         code += '</div>';
         var fila = $(body).append(code);
 
+        var relacionado = $($(fila).children()[a]).find('input')[0];
         var home = $($(fila).children()[a]).find('.col-lg-1')[2];
         var ocasion = $($(fila).children()[a]).find('.col-lg-1')[3];
         var habilitado = $($(fila).children()[a]).find('.col-lg-1')[4];
+
+        $(relacionado).data('id', data.list[a].Id_Producto);
+        $(relacionado).on('click', function (ev) {
+            ev.preventDefault();
+            window.location.replace("/cms/pages/productos/Productos_Relacionados.php?id="+ $(this).data('id'));
+        });
 
         $(home).data('item', data.list[a]);
         $(home).click('on', function (ev) {

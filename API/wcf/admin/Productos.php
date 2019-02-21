@@ -529,6 +529,10 @@ namespace Api\WCF
                                     $cat->SetImage($img["Url"]);
                                 }
                             }
+                            $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$cat->Id_Producto."'";
+                            if($res_relacionados = mysqli_query($conn, $relacionados)){
+                                $cat->SetCountRelacionados($res_relacionados->num_rows);
+                            }
                             array_push($result->list, $cat);
                         }
                     }
@@ -676,6 +680,196 @@ namespace Api\WCF
                     $query = "UPDATE productos SET Home = ".$input["item"]["Home"]." WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
                     mysqli_query($conn, $query);
                     mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function LoadProducto(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $result = new Result(false, "", "");
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $query = "SELECT * FROM productos WHERE Id_Producto = '".$input["id"]."'";
+                    if($res = mysqli_query($conn, $query)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $producto = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$producto->Id_Producto."' LIMIT 1";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $producto->SetImage($img["Url"]);
+                                }
+                            }
+                            $result->item = $producto;
+                        }
+                    }
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function LoadProductoCategoria(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+                    $query = "";
+                    if($input["id"] != 0){
+                        $query = "SELECT * FROM productos INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto WHERE productos_categorias.Id_Categoria = '".$input["id"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice";
+                    }else{
+                        $query = "SELECT * FROM productos INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto group by productos.Id_Producto";
+                    }
+
+                    if($res = mysqli_query($conn, $query)){
+
+                        while($row = mysqli_fetch_assoc($res)){
+                            $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $cat->SetImage($img["Url"]);
+                                }
+                            }
+                            array_push($result->list, $cat);
+                        }
+                    }
+                    mysqli_close($conn);
+                    $result->pagina = $input["pagina"];
+                    $result->items = $input["items"];
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function SetRelacionado(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+                    $query = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$input["id"]."' AND Productos_Relacionados = '".$input["idProducto"]."'";
+                    if($res = mysqli_query($conn, $query)){
+                        if(mysqli_num_rows($res) == 0){
+                            $query = "INSERT INTO productos_relacionados (Id_Producto, Productos_Relacionados) VALUES ('".$input["id"]."', '".$input["idProducto"]."')";
+                            mysqli_query($conn, $query);
+                            mysqli_close($conn);
+                            return true;
+                        }
+                    }
+                    mysqli_close($conn);
+                    return false;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+
+        public function DeleteRelacionados(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+                    $query = "DELETE FROM productos_relacionados WHERE Productos_Relacionados = '".$input["item"]["Id_Producto"]."' AND Id_Producto = '".$input["idficha"]."'";
+                    mysqli_query($conn, $query);
+                    mysqli_close($conn);
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+
+        public function LoadProductoRelacionados(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $query = "SELECT * FROM productos INNER JOIN productos_relacionados ON productos.Id_Producto = productos_relacionados.Productos_Relacionados";
+
+                    if($res = mysqli_query($conn, $query)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $cat = new Producto($row["Productos_Relacionados"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $cat->SetImage($img["Url"]);
+                                }
+                            }
+                            array_push($result->list, $cat);
+                        }
+                    }
+                    mysqli_close($conn);
+                    $result->pagina = $input["pagina"];
+                    $result->items = $input["items"];
                     $result->SetStatus(true);
                     $result->SetMsg('SUCCESS');
                     return $result;

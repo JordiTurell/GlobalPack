@@ -9593,6 +9593,7 @@
     <Content Include="js\pages\Productos\Categorias.js" />
     <Content Include="js\pages\Productos\multimedia.js" />
     <Content Include="js\pages\Productos\Productos.js" />
+    <Content Include="js\pages\Productos\Productos_Relacionados.js" />
     <Content Include="js\pages\Productos\Servicios.js" />
     <Content Include="js\pages\Productos\Subcategorias.js" />
     <Content Include="js\Popper.js" />
@@ -9795,6 +9796,7 @@
     <Compile Include="pages\productos\categorias.php" />
     <Compile Include="pages\productos\multimedia.php" />
     <Compile Include="pages\productos\productos.php" />
+    <Compile Include="pages\productos\Productos_Relacionados.php" />
     <Compile Include="pages\productos\servicios.php" />
     <Compile Include="pages\productos\subcategorias.php" />
     <Compile Include="principal.php" />

@@ -31,6 +31,7 @@ namespace Api\Models
         public $comparativa;
         public $anogarantia;
         public $home;
+        public $relacionados;
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -43,8 +44,12 @@ namespace Api\Models
             $this->imagen = '';
         }
 
+        public function SetCountRelacionados($count){
+            $this->relacionados = $count;
+        }
+
         public function SetHome($home){
-            $this->home = $home;    
+            $this->home = $home;
         }
 
         public function SetAnoGarantia($ano){

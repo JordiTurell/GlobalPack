@@ -71,6 +71,26 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->HomeProduct());
         break;
+    case 'LoadProducto':
+        $wcf = new Productos();
+        echo json_encode($wcf->LoadProducto());
+        break;
+    case 'LoadProductoCategoria':
+        $wcf = new Productos();
+        echo json_encode($wcf->LoadProductoCategoria());
+        break;
+    case 'SetRelacionado':
+        $wcf = new Productos();
+        echo json_encode($wcf->SetRelacionado());
+        break;
+    case 'LoadProductoRelacionados':
+        $wcf = new Productos();
+        echo json_encode($wcf->LoadProductoRelacionados());
+        break;
+    case 'DeleteRelacionados':
+        $wcf = new Productos();
+        echo json_encode($wcf->DeleteRelacionados());
+        break;
 }
 
 ?>
