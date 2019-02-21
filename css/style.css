@@ -92,7 +92,81 @@ body {
     margin: 10px;
     height: 100px;
     color: white;
-    cursor: pointer; }
+    cursor: pointer;
+    position: relative; }
+  .section-head .item-slider:nth-child(1) img {
+    width: 55px;
+    height: auto;
+    float: left;
+    margin-top: 10%; }
+  .section-head .item-slider:nth-child(1) span {
+    font-size: 26.4px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 31px;
+    float: right;
+    margin-top: 35px; }
+  .section-head .item-slider:nth-child(2) img {
+    width: 40px;
+    height: auto;
+    float: left;
+    margin-top: 10%; }
+  .section-head .item-slider:nth-child(2) span {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 31px;
+    float: right;
+    margin-top: 30px; }
+  .section-head .item-slider:nth-child(3) img {
+    width: 50px;
+    height: auto;
+    float: left;
+    margin-top: 10%; }
+  .section-head .item-slider:nth-child(3) span {
+    font-size: 26.4px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 31px;
+    float: right;
+    margin-top: -40px; }
+  .section-head .item-slider:nth-child(4) img {
+    width: 55px;
+    height: auto;
+    float: left;
+    margin-top: 10%; }
+  .section-head .item-slider:nth-child(4) span {
+    font-size: 26.4px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 31px;
+    float: right;
+    margin-top: -60px;
+    margin-left: 60px; }
+  .section-head .item-slider:nth-child(5) img {
+    width: 55px;
+    height: auto;
+    float: left;
+    margin-top: 10%; }
+  .section-head .item-slider:nth-child(5) span {
+    font-size: 26.4px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 31px;
+    float: right;
+    margin-top: 35px; }
+  .section-head .item-slider:nth-child(6) img {
+    width: 55px;
+    height: auto;
+    float: left;
+    margin-top: 10%; }
+  .section-head .item-slider:nth-child(6) span {
+    font-size: 26.4px;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    line-height: 31px;
+    float: right;
+    margin-top: 35px; }
   .section-head .contnet-items-slider {
     padding-top: 130px; }
 
@@ -427,7 +501,7 @@ body {
       top: 23px;
       left: 0px;
       width: 25px;
-      border-bottom: 12px solid rgba(117, 1, 9, 0.8);
+      border-bottom: 12px solid #a8222B;
       line-height: 23px;
       z-index: -1;
       transform: rotate(45deg); }

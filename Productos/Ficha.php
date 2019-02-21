@@ -23,6 +23,7 @@ $producto = $_POST;
 
     <!-- Custom fonts for this template -->
     <link href="/vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/slick.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.min.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -121,7 +122,10 @@ $producto = $_POST;
                     <h3>Productos relacionados</h3>
                 </div>
                 <div class="col-lg-12">
-                    Carrousel
+                   <h2>Carousel Example</h2>  
+                    <div class="slider_relacionados">
+                       
+                      </div>
                 </div>
             </div>
         </div>
@@ -134,9 +138,12 @@ $producto = $_POST;
         <?php include_once('../Footer/footer.php'); ?>
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/components/jquery/jquery.min.js"></script>
-    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/slick.min.js"></script>
+   
     <script type="text/javascript" src="/js/pages/Ficha_Producto.js"></script>
+
 </body>
 
 </html>

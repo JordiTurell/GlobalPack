@@ -32,6 +32,7 @@ namespace Api\Models
         public $anogarantia;
         public $home;
         public $relacionados;
+        public $list_relacionados = array();
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -44,6 +45,9 @@ namespace Api\Models
             $this->imagen = '';
         }
 
+        public function SetRelacionados($product){
+            array_push($this->list_relacionados, $product);
+        }
         public function SetCountRelacionados($count){
             $this->relacionados = $count;
         }

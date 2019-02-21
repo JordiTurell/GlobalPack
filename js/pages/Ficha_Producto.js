@@ -53,6 +53,17 @@ function Ficha_Producto(id) {
             $('#titulovideo').text(data.item.videotitle);
             $('#descripcion-video').text(data.item.videodesc);
             $('#comparativa').append(data.item.comparativa);
+
+            for (var a = 0; a < data.item.list_relacionados.length; a++) {
+                var code = '<div style="margin-right:5px;"><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';
+                $('.slider_relacionados').append(code);
+            }
+            $('.slider_relacionados').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3
+            });
         }
     });
 }
+

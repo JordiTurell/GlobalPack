@@ -141,6 +141,22 @@ namespace Api\WCFWeb
                             $cat->SetImages($img["Url"]);
                         }
                     }
+
+                    $relacionados = "SELECT * FROM productos INNER JOIN productos_relacionados ON productos.Id_Producto = productos_relacionados.Productos_Relacionados WHERE productos_relacionados.Id_Producto ='". $cat->Id_Producto ."'";
+
+                    if($res = mysqli_query($conn, $relacionados)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $p = new Producto($row["Productos_Relacionados"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$p->Id_Producto."' LIMIT 1";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $p->SetImage($img["Url"]);
+                                }
+                            }
+                            $cat->SetRelacionados($p);
+                        }
+                    }
+
                     $result->item = $cat;
                 }
             }

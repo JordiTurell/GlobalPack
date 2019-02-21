@@ -49,22 +49,28 @@ ipsum dolor sit amet consectetur adipisicing elit
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-5 item-slider">
-                            Maquinas
+                            <img src="/assets/iconos/Maquinas.png" />
+                            <span>Maquinas</span>
                         </div>
                         <div class="col-lg-5 item-slider">
-                            Maquinas
+                            <img src="/assets/iconos/Rueda.png" />
+                            <span>Consumibles</span>
                         </div>
                         <div class="col-lg-5 item-slider">
-                            Maquinas
+                            <img src="/assets/iconos/Caixa.png" />
+                            <span>Accesorios</span>
                         </div>
                         <div class="col-lg-5 item-slider">
-                            Maquinas
+                            <img src="/assets/iconos/Servicio.png" />
+                            <span>Servicio técnico</span>
                         </div>
                         <div class="col-lg-5 item-slider">
-                            Maquinas
+                            <img src="/assets/iconos/Maquinas.png" />
+                            <span>Maquinas</span>
                         </div>
                         <div class="col-lg-5 item-slider">
-                            Maquinas
+                            <img src="/assets/iconos/Maquinas.png" />
+                            <span>Maquinas</span>
                         </div>
                     </div>
                 </div>

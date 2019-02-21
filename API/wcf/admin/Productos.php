@@ -853,7 +853,7 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT * FROM productos INNER JOIN productos_relacionados ON productos.Id_Producto = productos_relacionados.Productos_Relacionados";
+                    $query = "SELECT * FROM productos INNER JOIN productos_relacionados ON productos.Id_Producto = productos_relacionados.Productos_Relacionados WHERE productos_relacionados.Id_Producto ='". $input["id"] ."'";
 
                     if($res = mysqli_query($conn, $query)){
                         while($row = mysqli_fetch_assoc($res)){
