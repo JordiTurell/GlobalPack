@@ -33,6 +33,7 @@ namespace Api\Models
         public $home;
         public $relacionados;
         public $list_relacionados = array();
+        public $servicios = array();
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -78,8 +79,14 @@ namespace Api\Models
             $this->videodesc = $desc;
         }
 
+        public function SetServicios($service){
+            array_push($this->servicios, $service);
+        }
+
         public function SetImages($img){
-            $this->imagen = array();
+            if($this->imagen == ''){
+                $this->imagen = array();
+            }
             array_push($this->imagen, $img);
         }
 

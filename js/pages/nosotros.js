@@ -62,3 +62,9 @@ function Showcontact() {
         show = true;
     }
 }
+
+function DownSection() {
+    $('html, body').animate({
+        scrollTop: $("#nosotros-section").offset().top
+    }, 2000);
+}

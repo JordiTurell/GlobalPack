@@ -15,8 +15,8 @@
     overflow: hidden;
 
     img {
-        width: 170px;
-        height: auto;
+        width: auto;
+        height: 170px;
     }
 
     div {
@@ -114,7 +114,7 @@
     box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.08);
     border-radius: 8px 8px 0 0;
     padding: 20px;
-    padding-bottom:0px;
+    padding-bottom: 0px;
     border-bottom: solid 4px $globalpack;
 
     h3 {
@@ -128,11 +128,17 @@
 
     #list-filtros {
         list-style: none;
-        padding:0px;
+        padding: 0px;
     }
 
-    .filtro-form{
-        width:240px;
+    .filtro-form {
+        width: 240px;
+
+        label {
+            font-size: 12px;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight:bold;
+        }
     }
 }
 
@@ -140,7 +146,8 @@
     color:$globalpack;
 }
 .item-producto-list {
-    cursor:pointer;
+    cursor: pointer;
+
     h1 {
         background-color: $globalpack;
         color: white;
@@ -172,6 +179,7 @@
         font-size: 20px;
         font-weight: bold;
         line-height: 24px;
+        margin-top: 10px;
     }
 
     p {
@@ -218,4 +226,73 @@
             width: 100%;
         }
     }
+}
+
+.item-slider {
+    cursor: pointer;
+    width: 350px !important;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+        margin-top: -40px;
+    }
+
+    .item-slider-info {
+        position: absolute;
+        width: 350px;
+        height: 220px;
+        opacity: 0;
+        text-align: center;
+        cursor: pointer;
+        background-color: $negre-alpha;
+        z-index: 999;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+        padding-top:20%;
+        
+
+        h3 {
+            color: white;
+        }
+
+        p {
+            color: white;
+            text-decoration: underline;
+        }
+
+        &:hover {
+            display: block;
+        }
+    }
+
+    .item-slider-info:hover {
+        opacity: 1;
+    }
+}
+
+.slick-prev:after {
+    content: "<";
+    color: #9b9b9b;
+    font-size: 36px;
+    margin-left: -20px;
+    margin-top:5px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.slick-next:before {
+    content: ">";
+    color: #9b9b9b;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.icono-servicios{
+    height:40px;
+    width:auto;
+    margin:20px;
 }

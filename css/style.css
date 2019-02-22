@@ -307,6 +307,9 @@ body {
       margin-top: 29px;
       margin-bottom: 31px; }
 
+#arrow-down {
+  cursor: pointer; }
+
 .cabecera-nosotros {
   height: 496px;
   position: relative;
@@ -367,13 +370,17 @@ body {
     width: 222px;
     margin-right: 95px; }
     #listbenificios li img {
-      width: 100%; }
+      width: auto;
+      height: 90px; }
     #listbenificios li p {
       font-size: 14px;
       line-height: 20px;
       text-align: center;
       font-family: 'Ubuntu', sans-serif;
       margin-top: 15px; }
+
+#nosotros-arrow-down {
+  cursor: pointer; }
 
 .categoria-item {
   width: 260.33px;
@@ -389,8 +396,8 @@ body {
   position: relative;
   overflow: hidden; }
   .categoria-item img {
-    width: 170px;
-    height: auto; }
+    width: auto;
+    height: 170px; }
   .categoria-item div {
     width: 100%;
     text-align: center;
@@ -477,6 +484,10 @@ body {
     padding: 0px; }
   .filtros .filtro-form {
     width: 240px; }
+    .filtros .filtro-form label {
+      font-size: 12px;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: bold; }
 
 .cat-active span {
   color: #EF3340; }
@@ -509,7 +520,8 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     font-weight: bold;
-    line-height: 24px; }
+    line-height: 24px;
+    margin-top: 10px; }
   .item-producto-list p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 12px;
@@ -547,8 +559,69 @@ body {
       padding-bottom: 2px;
       width: 100%; }
 
+.item-slider {
+  cursor: pointer;
+  width: 350px !important;
+  height: 220px;
+  overflow: hidden;
+  position: relative; }
+  .item-slider img {
+    margin-top: -40px; }
+  .item-slider .item-slider-info {
+    position: absolute;
+    width: 350px;
+    height: 220px;
+    opacity: 0;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+    padding-top: 20%; }
+    .item-slider .item-slider-info h3 {
+      color: white; }
+    .item-slider .item-slider-info p {
+      color: white;
+      text-decoration: underline; }
+    .item-slider .item-slider-info:hover {
+      display: block; }
+  .item-slider .item-slider-info:hover {
+    opacity: 1; }
+
+.slick-prev:after {
+  content: "<";
+  color: #9b9b9b;
+  font-size: 36px;
+  margin-left: -20px;
+  margin-top: 5px;
+  font-family: 'Ubuntu', sans-serif; }
+
+.slick-next:before {
+  content: ">";
+  color: #9b9b9b;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif; }
+
+.icono-servicios {
+  height: 40px;
+  width: auto;
+  margin: 20px; }
+
 .lis-option {
   list-style: none; }
+  .lis-option .ico-phone {
+    width: 32px;
+    margin: 20px; }
+  .lis-option .ico-write {
+    width: 50px; }
+  .lis-option .ico-calendar {
+    width: 50px; }
+  .lis-option .ico-location {
+    width: 40px; }
 
 .option {
   background-color: #e8e8e8;
@@ -571,7 +644,7 @@ body {
     color: #ff0c0c; }
   .option h3 {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 2px;
     line-height: 26px; }
   .option span {
@@ -585,11 +658,11 @@ body {
     font-size: 14px;
     line-height: 16px;
     font-family: 'Ubuntu', sans-serif; }
-  .option:hover {
+  .option:nth-child(1) {
     background-color: #ff0c0c; }
-    .option:hover .icon-imatge {
+    .option:nth-child(1) .icon-imatge {
       color: white; }
-    .option:hover a, .option:hover i, .option:hover h3, .option:hover span {
+    .option:nth-child(1) a, .option:nth-child(1) i, .option:nth-child(1) h3, .option:nth-child(1) span {
       color: white; }
 
 .row-error {

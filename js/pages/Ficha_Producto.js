@@ -54,12 +54,20 @@ function Ficha_Producto(id) {
             $('#descripcion-video').text(data.item.videodesc);
             $('#comparativa').append(data.item.comparativa);
 
+
+            for (var a = 0; a < data.item.servicios.length; a++) {
+                var code = '<img class="icono-servicios" src="' + data.item.servicios[a].Icono +'" />';
+                $('#list-serveis').append(code);    
+            }
+
             for (var a = 0; a < data.item.list_relacionados.length; a++) {
-                var code = '<div style="margin-right:5px;"><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';
+                var code = '<div class="item-slider" style="margin-right:5px;"><div class="item-slider-info"><h3>' + data.item.list_relacionados[a].Titulo + '</h3><p>ver más</p></div><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';
                 $('.slider_relacionados').append(code);
             }
             $('.slider_relacionados').slick({
-                infinite: true,
+                infinite: false,
+                arrows: true,
+                dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3
             });

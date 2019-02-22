@@ -35,12 +35,12 @@ require_once('Constantes.php');
         </div>
         <div id="texto-header"></div>
         <div class="arrow-down">
-            arrow
+            <img src="/assets/img/Fletxa_slider.png" onclick="DownSection();" id="nosotros-arrow-down" style="margin-top:-40px;" />
         </div>
     </div>
 
     <!-- Benificios -->
-    <div class="beneficios row">
+    <div class="beneficios row" id="nosotros-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -81,7 +81,7 @@ require_once('Constantes.php');
     <?php include_once(dirname(__FILE__).'/assets/mapa.php'); ?>
 
     <!-- Footer -->
-    <footer>
+    <footer class="row">
         <?php include_once(dirname(__FILE__).'/Footer/footer.php'); ?>
     </footer>
     <!-- Bootstrap core JavaScript -->

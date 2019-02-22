@@ -74,7 +74,8 @@
         margin-right: 95px;
 
         img {
-            width: 100%;
+            width: auto;
+            height:90px;
         }
 
         p {
@@ -85,4 +86,8 @@
             margin-top:15px;
         }
     }
+}
+
+#nosotros-arrow-down{
+    cursor:pointer;
 }

@@ -43,7 +43,7 @@ require_once('Constantes.php');
 ipsum dolor sit amet consectetur adipisicing elit
                         </div>
                         <p>&nbsp;</p>
-                        <img src="/assets/img/Fletxa_slider.png" />
+                        <img src="/assets/img/Fletxa_slider.png" onclick="DownSection();" id="arrow-down"/>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -77,7 +77,7 @@ ipsum dolor sit amet consectetur adipisicing elit
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="home-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 old-blog">

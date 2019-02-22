@@ -3,24 +3,24 @@
         <ul class="row lis-option">
             <li class="option">
                 <h3>LLAMANOS</h3><br />
-                <div class="icon-imatge"><i class="fas fa-mobile-alt"></i></div>
+                <div class="icon-imatge"><img src="/assets/iconos/mobile.png" class="ico-phone" /></div>
                 <div class="footer-telf">
                     <span>
-                        <i class="fas fa-phone"></i>&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
+                        <a href="tel:+34934327181">T(+34) 93 4327181</a>
                     </span>
                     <br />
                     <span>
-                        <i class="fas fa-fax"></i>&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
+                        <a href="tel:+34934327181">F(+34) 93 4327181</a>
                     </span>
                 </div>
             </li>
 
             <li class="option">
                 <h3>ESCRIBENOS</h3><br />
-                <div class="icon-imatge"><i class="far fa-edit"></i></div>
+                <div class="icon-imatge"><img src="/assets/iconos/escribenos.png" class="ico-write" /></div>
                 <div class="footer-telf">
                     <span>
-                        <i class="far fa-envelope"></i>&nbsp; <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
+                        <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
                     </span>
                     <br />
                 </div>
@@ -28,7 +28,7 @@
 
             <li class="option">
                 <h3>HORARIO</h3><br />
-                <div class="icon-imatge"><i class="fas fa-calendar-alt"></i></div>
+                <div class="icon-imatge"><img src="/assets/iconos/calendario.png" class="ico-calendar" /></div>
                 <div class="footer-telf">
                     <span>
                         De lunes a viernes
@@ -42,7 +42,7 @@
 
             <li class="option">
                 <h3>VISITANOS</h3><br />
-                <div class="icon-imatge"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="icon-imatge"><img src="/assets/iconos/localizacion.png" class="ico-location" /></div>
                 <div class="footer-telf">
                     <span>
                         P.I Molí d'en Xec N.15 

@@ -17,6 +17,7 @@ namespace Api\WCFWeb
     use Api\Config\DataContext;
     use Api\Models\Categoria;
     use Api\Models\Productos as Producto;
+    use Api\Models\Servicios;
     use Api\Models\Subcategoria;
 
 	class Productos
@@ -114,6 +115,7 @@ namespace Api\WCFWeb
             require_once("../../Config/Config.php");
             require_once("../../Config/DataContext.php");
             require_once("../../clases/Productos.php");
+            require_once("../../clases/Servicios.php");
             require_once("../../clases/ServiceItemResult.php");
 
             $input = json_decode(file_get_contents('php://input'), true);
@@ -154,6 +156,15 @@ namespace Api\WCFWeb
                                 }
                             }
                             $cat->SetRelacionados($p);
+                        }
+                    }
+
+                    $servicios = "SELECT * FROM servicios INNER JOIN productos_servicio ON servicios.Id_Servicios = productos_servicio.Id_Servicio WHERE productos_servicio.Id_Producto ='".$cat->Id_Producto."' AND servicios.Activada = 1";
+
+                    if($res = mysqli_query($conn, $servicios)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $s = new Servicios($row["Id_Servicios"], $row["Nombre"], $row["Icono"], $row["Activada"]);
+                            $cat->SetServicios($s);
                         }
                     }
 

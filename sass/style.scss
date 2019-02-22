@@ -63,8 +63,23 @@ body {
 @import 'nosotros.scss';
 @import 'productos.scss';
 
-.lis-option{
-    list-style:none;
+.lis-option {
+    list-style: none;
+
+    .ico-phone {
+        width: 32px;
+        margin: 20px;
+    }
+
+    .ico-write{
+        width:50px;
+    }
+    .ico-calendar{
+        width:50px;
+    }
+    .ico-location{
+        width:40px;
+    }
 }
 
 //Cuadricula contacto
@@ -92,7 +107,7 @@ body {
 
     h3 {
         font-family: 'Ubuntu', sans-serif;
-        font-size: 22px;
+        font-size: 20px;
         letter-spacing: 2px;
         line-height: 26px;
     }
@@ -112,7 +127,7 @@ body {
         font-family: 'Ubuntu', sans-serif;
     }
 
-    &:hover {
+    &:nth-child(1) {
         background-color: $red;
 
         & .icon-imatge {

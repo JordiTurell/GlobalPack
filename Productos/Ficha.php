@@ -24,6 +24,7 @@ $producto = $_POST;
     <!-- Custom fonts for this template -->
     <link href="/vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/slick.css" rel="stylesheet" type="text/css" />
+    <link href="/css/slick-theme.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.min.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -53,8 +54,8 @@ $producto = $_POST;
                         <div class="col-lg-12">
                             <h1 id="titleproducto"></h1>
                         </div>
-                        <div class="col-lg-12">
-                            SERVEIS
+                        <div class="col-lg-12" id="list-serveis">
+                            
                         </div>
                         <div class="col-lg-12">
                             <div id="descripcion"></div>
@@ -122,7 +123,6 @@ $producto = $_POST;
                     <h3>Productos relacionados</h3>
                 </div>
                 <div class="col-lg-12">
-                   <h2>Carousel Example</h2>  
                     <div class="slider_relacionados">
                        
                       </div>
@@ -134,7 +134,7 @@ $producto = $_POST;
     <?php include_once('../Formularis/PopupContacte.php'); ?>
 
     <!-- Footer -->
-    <footer>
+    <footer class="row" style="background-color:#F7F7F7;">
         <?php include_once('../Footer/footer.php'); ?>
     </footer>
     <!-- Bootstrap core JavaScript -->

@@ -83,3 +83,9 @@ function toDate(dateStr) {
             return date.getDay() + " / " + "Diciembre / " + date.getFullYear();
     }
 }
+
+function DownSection() {
+    $('html, body').animate({
+        scrollTop: $("#home-section").offset().top
+    }, 2000);
+}
