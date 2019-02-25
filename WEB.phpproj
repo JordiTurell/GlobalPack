@@ -17,8 +17,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="assets\mapa.php" />
+    <Compile Include="blog.php" />
     <Compile Include="Constantes.php" />
     <Compile Include="contacto.php" />
+    <Compile Include="Footer\footer_origin.php" />
     <Compile Include="Footer\footer.php" />
     <Compile Include="Footer\footer_contact.php" />
     <Compile Include="Formularis\ContacteAllPages.php" />
@@ -26,10 +28,14 @@
     <Compile Include="index.php" />
     <Compile Include="Menus\menutop.php" />
     <Compile Include="nosotros.php" />
+    <Compile Include="Ocasion.php" />
     <Compile Include="page_blank.php" />
+    <Compile Include="Post.php" />
     <Compile Include="productos.php" />
     <Compile Include="Productos\Ficha.php" />
     <Compile Include="Productos\Home.php" />
+    <Compile Include="postventa.php" />
+    <Compile Include="Productos\postventa.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\img\" />
@@ -47,8 +53,17 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <Content Include=".htaccess" />
+    <Content Include="assets\img\fondomaquinas.png" />
     <Content Include="assets\iconos\calendario.png" />
+    <Content Include="assets\iconos\cart.png" />
     <Content Include="assets\iconos\escribenos.png" />
+    <Content Include="assets\iconos\facebook.png" />
+    <Content Include="assets\iconos\mail.png" />
+    <Content Include="assets\iconos\linkedin.png" />
+    <Content Include="assets\iconos\tweeter.png" />
+    <Content Include="assets\iconos\pdf.png" />
+    <Content Include="assets\iconos\impresora.png" />
+    <Content Include="assets\iconos\star.png" />
     <Content Include="assets\iconos\mobile.png" />
     <Content Include="assets\iconos\Rueda.png" />
     <Content Include="assets\iconos\Caixa.png" />
@@ -93,14 +108,18 @@
     <Content Include="js\bootstrap.min.js.map" />
     <Content Include="js\jquery-3.2.1.min.js" />
     <Content Include="js\jquery.redirect.js" />
+    <Content Include="js\pages\blog.js" />
     <Content Include="js\pages\Ficha_Producto.js" />
     <Content Include="js\pages\home.js" />
     <Content Include="js\pages\index.html" />
     <Content Include="js\pages\nosotros.js" />
+    <Content Include="js\pages\ocasion.js" />
+    <Content Include="js\pages\postventa.js" />
     <Content Include="js\pages\productos.js" />
     <Content Include="css\slick.css" />
     <Content Include="js\slick.min.js" />
     <Content Include="sass\animation.scss" />
+    <Content Include="sass\blog.scss" />
     <Content Include="sass\home.scss" />
     <Content Include="sass\nosotros.scss" />
     <Content Include="sass\productos.scss" />

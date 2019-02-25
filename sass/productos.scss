@@ -2,6 +2,7 @@
 
 .categoria-item {
     width: 260.33px;
+    height:280px;
     background-color: #FFFFFF;
     border-radius: 11px 11px 0 0;
     padding: 20px;
@@ -17,6 +18,7 @@
     img {
         width: auto;
         height: 170px;
+        
     }
 
     div {
@@ -30,13 +32,16 @@
         text-transform: uppercase;
     }
 
-    
+
     .cat-vermas {
         width: 100%;
         text-align: right;
         font-size: 14px;
         font-weight: bold;
         line-height: 19px;
+        position:absolute;
+        bottom:6px;
+        right:10px;
         font-family: 'Ubuntu', sans-serif;
     }
 
@@ -72,6 +77,33 @@
         }
     }
 }
+.postventa-list {
+    .categoria-item {
+        height: 316px;
+
+        .cat-vermas {
+            position: absolute;
+            bottom: 0px;
+            right: 10px;
+        }
+    }
+
+    .info-cat {
+        padding-top: 0px;
+    }
+
+    img {
+        margin-top:40px;
+        height: 130px;
+    }
+
+    .desc-cat {
+        font-size: 12px;
+        line-height: 20px;
+        text-align: justify;
+        font-family: 'Ubuntu', sans-serif;
+    }
+}
 
 .categoria-item:hover{
     .info-cat{
@@ -94,18 +126,24 @@
     li {
         width: 100%;
         cursor:pointer;
+        display:flex;
+        padding:10px;
         img {
             width: 35px;
             height: 37px;
             display: inline-block;
+            float:left;
         }
 
-        span {
+        div {
             font-family: 'Ubuntu', sans-serif;
             font-size: 18px;
-            line-height: 50px;
+            line-height: 22px;
             margin-left: 18px;
             display: inline-block;
+            width:140px;
+            height:100%;
+            
         }
     }
 }
@@ -156,18 +194,19 @@
         line-height: 24px;
         letter-spacing: 0.83px;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 24px;
         position: absolute;
+        padding: 10px;
         top: 5px;
-        left: 0px;
+        left: -4px;
 
         &:before {
             content: "";
             position: absolute;
-            top: 23px;
-            left: 0px;
-            width: 25px;
-            border-bottom: 12px solid $pleg;
+            top: 38px;
+            left: 1px;
+            width: 30px;
+            border-bottom: 17px solid $pleg;
             line-height: 23px;
             z-index: -1;
             transform: rotate(45deg);
@@ -204,6 +243,7 @@
         box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.08);
         margin-right: 5px;
         border-bottom: solid 4px $line-title;
+
         a {
             color: $item-slider;
             text-decoration: none;
@@ -216,15 +256,10 @@
             margin-top: 7px;
             padding-bottom: 2px;
         }
+    }
 
-        a.active {
-            border-bottom: solid 4px $globalpack;
-            padding-left: 7px;
-            padding-right: 7px;
-            padding-top: 7px;
-            padding-bottom: 2px;
-            width: 100%;
-        }
+    li:focus-within {
+        border-bottom: solid 4px $globalpack;
     }
 }
 
@@ -295,4 +330,91 @@
     height:40px;
     width:auto;
     margin:20px;
+}
+
+.item-producto-ocasion {
+    box-shadow: 0 0 30px -4px rgba(0,0,0,0.13);
+    padding: 0px;
+    cursor:pointer;
+
+    h1 {
+        background-color: $globalpack;
+        color: white;
+        font-family: 'Ubuntu', sans-serif;
+        text-align: center;
+        line-height: 24px;
+        letter-spacing: 0.83px;
+        font-weight: bold;
+        font-size: 24px;
+        position: absolute;
+        padding:10px;
+        top: 5px;
+        left: -4px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 38px;
+            left: 1px;
+            width: 30px;
+            border-bottom: 17px solid $pleg;
+            line-height: 23px;
+            z-index: -1;
+            transform: rotate(45deg);
+        }
+    }
+
+
+    img {
+        border-bottom: solid 4px $globalpack;
+    }
+
+    .pvp_ocasion {
+        font-size: 26px;
+        font-weight: bold;
+        line-height: 30px;
+        text-align: right;
+        color: $globalpack;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .pvp {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 21px;
+        position: relative;
+    }
+
+    .pvp::after {
+        background: linear-gradient(to right, $globalpack, $globalpack, $globalpack, $globalpack, $globalpack);
+        content: "";
+        height: 0.125em;
+        left: 0;
+        margin-top: calc(0.125em / 2 * -1);
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+
+    .anogarantia {
+        float: left;
+        text-align: left;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 8px;
+        letter-spacing: 1px;
+        line-height: 5px;
+        font-size: 12px;
+    }
+
+    .vermas {
+        float: right;
+        font-family: 'Ubuntu', sans-serif;
+        text-align: right;
+        color: $globalpack;
+        font-size: 11.2px;
+        font-weight: bold;
+        line-height: 14px;
+        margin-right: 8px;
+    }
 }

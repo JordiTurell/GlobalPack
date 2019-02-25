@@ -47,6 +47,87 @@ namespace Api\WCFWeb
             return $result;
         }
 
+        function LoadProductosPostVenta(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+            $input = json_decode(file_get_contents('php://input'), true);
+            $config = new Data(DataContext::Admin);
+            $conn = $config->Conect();
+
+            $query = "SELECT * FROM productos INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto WHERE productos_filtros.Id_Filtro = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice";
+            if($res = mysqli_query($conn, $query)){
+                while($row = mysqli_fetch_assoc($res)){
+                    $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                    $cat->SetId($row["Indice"]);
+                    $cat->SetDescripcionCorta($row["Descripcio_min"]);
+                    $cat->SetSubCategoria($row["Id_Filtro"]);
+                    $cat->SetDescripcion($row["Descripcion"]);
+                    $cat->SetFichaTecnica($row["Ficha_Tecnica"]);
+                    $cat->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
+                    $cat->SetComparativa($row["Comparativa"]);
+                    $cat->SetCategoria($row["Id_Categoria"]);
+
+                    $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."'";
+                    if($r = mysqli_query($conn, $imagen)){
+                        while($img = mysqli_fetch_assoc($r)){
+                            $cat->SetImages($img["Url"]);
+                        }
+                    }
+                    array_push($result->list, $cat);
+                }
+            }
+            mysqli_close($conn);
+            $result->SetStatus(true);
+            $result->SetMsg('SUCCESS');
+            return $result;
+        }
+
+        function LoadOcasion(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+            $input = json_decode(file_get_contents('php://input'), true);
+            $config = new Data(DataContext::Admin);
+            $conn = $config->Conect();
+
+            $query = "SELECT * FROM productos WHERE Ocasion =  1 AND productos.Habilitado = 1";
+            if($res = mysqli_query($conn, $query)){
+                while($row = mysqli_fetch_assoc($res)){
+                    $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                    $cat->SetId($row["Indice"]);
+                    $cat->SetDescripcionCorta($row["Descripcio_min"]);
+                    $cat->SetSubCategoria($row["Id_Filtro"]);
+                    $cat->SetDescripcion($row["Descripcion"]);
+                    $cat->SetFichaTecnica($row["Ficha_Tecnica"]);
+                    $cat->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
+                    $cat->SetComparativa($row["Comparativa"]);
+                    $cat->SetCategoria($row["Id_Categoria"]);
+                    $cat->SetAnoGarantia($row["Anogarantia"]);
+
+                    $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."'";
+                    if($r = mysqli_query($conn, $imagen)){
+                        while($img = mysqli_fetch_assoc($r)){
+                            $cat->SetImages($img["Url"]);
+                        }
+                    }
+                    array_push($result->list, $cat);
+                }
+            }
+            mysqli_close($conn);
+            $result->SetStatus(true);
+            $result->SetMsg('SUCCESS');
+            return $result;
+        }
+
         function LoadFiltrosProductos(){
             require_once("../../Config/Token.php");
             require_once("../../Config/Config.php");

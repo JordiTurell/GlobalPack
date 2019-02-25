@@ -34,6 +34,7 @@ namespace Api\Models
         public $relacionados;
         public $list_relacionados = array();
         public $servicios = array();
+        public $Categoria;
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -44,6 +45,10 @@ namespace Api\Models
             $this->Ocasion = $Ocasion;
             $this->Habilitado = $Habilitado;
             $this->imagen = '';
+        }
+
+        public function SetCategoria($cat){
+            $this->Categoria = $cat;
         }
 
         public function SetRelacionados($product){

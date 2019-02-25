@@ -39,13 +39,13 @@
                 <a class="nav-link" href="/productos.php">PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">POSTVENTA</a>
+                <a class="nav-link" href="/postventa.php">POSTVENTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">OCASIÓN</a>
+                <a class="nav-link" href="/Ocasion.php">OCASIÓN</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">BLOG</a>
+                <a class="nav-link" href="/blog.php">BLOG</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/contacto.php">CONTACTO</a>

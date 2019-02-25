@@ -55,7 +55,7 @@
 function toDate(dateStr) {
     var fecha = dateStr.split(" ");
     var parts = fecha[0].split("-");
-    var date = new Date(parts[2], parts[1] - 1, parts[0]);
+    var date = new Date(parts[0], parts[1] - 1, parts[2]);
     switch (date.getMonth()) {
         case 0:
             return date.getDay() + " / " + "Enero / " + date.getFullYear();

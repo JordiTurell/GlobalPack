@@ -1,0 +1,83 @@
+﻿@import 'variables';
+
+.blog-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+    width: 100px;
+    border-bottom: solid 4px $line-categorias;
+    margin-top: 56px;
+}
+
+#list-blog {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+
+    .items-blog {
+        background-color: white;
+        padding: 0px;
+        width: 330px;
+        display: inline-block;
+        margin:20px;
+        position: relative;
+        cursor: pointer;
+
+        h3 {
+            font-family: 'Ubuntu', sans-serif;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 22px;
+            line-height: 26px;
+            color: $gris-title;
+            margin-top: 20px;
+        }
+
+        p {
+            font-family: 'Ubuntu', sans-serif;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            line-height: 20px;
+            color: $text-blog;
+        }
+
+        .fecha {
+            font-family: 'Ubuntu', sans-serif;
+            padding-left: 20px;
+            position: absolute;
+            bottom: 5px;
+            color: $text-blog;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        &:hover {
+            border-bottom: solid 4px $line-blog;
+        }
+    }
+}
+
+.descripcion-blog {
+    text-align: justify;
+    line-height: 20px;
+    font-size: 15px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.fecha-desc {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.title-post-ficha {
+    font-size: 36px;
+    line-height: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    margin-top: 10px;
+}

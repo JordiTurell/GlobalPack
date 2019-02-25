@@ -366,7 +366,7 @@ body {
   list-style: none;
   padding: 0px; }
   #listbenificios li {
-    display: inline-block;
+    display: inline-table;
     width: 222px;
     margin-right: 95px; }
     #listbenificios li img {
@@ -384,6 +384,7 @@ body {
 
 .categoria-item {
   width: 260.33px;
+  height: 280px;
   background-color: #FFFFFF;
   border-radius: 11px 11px 0 0;
   padding: 20px;
@@ -413,6 +414,9 @@ body {
     font-size: 14px;
     font-weight: bold;
     line-height: 19px;
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
     font-family: 'Ubuntu', sans-serif; }
   .categoria-item .info-cat {
     position: absolute;
@@ -439,6 +443,26 @@ body {
     .categoria-item .info-cat .cat-vermas {
       margin-top: 75%; }
 
+.postventa-list .categoria-item {
+  height: 316px; }
+  .postventa-list .categoria-item .cat-vermas {
+    position: absolute;
+    bottom: 0px;
+    right: 10px; }
+
+.postventa-list .info-cat {
+  padding-top: 0px; }
+
+.postventa-list img {
+  margin-top: 40px;
+  height: 130px; }
+
+.postventa-list .desc-cat {
+  font-size: 12px;
+  line-height: 20px;
+  text-align: justify;
+  font-family: 'Ubuntu', sans-serif; }
+
 .categoria-item:hover .info-cat {
   display: block; }
 
@@ -454,17 +478,22 @@ body {
   padding: 5px; }
   #list-categorias li {
     width: 100%;
-    cursor: pointer; }
+    cursor: pointer;
+    display: flex;
+    padding: 10px; }
     #list-categorias li img {
       width: 35px;
       height: 37px;
-      display: inline-block; }
-    #list-categorias li span {
+      display: inline-block;
+      float: left; }
+    #list-categorias li div {
       font-family: 'Ubuntu', sans-serif;
       font-size: 18px;
-      line-height: 50px;
+      line-height: 22px;
       margin-left: 18px;
-      display: inline-block; }
+      display: inline-block;
+      width: 140px;
+      height: 100%; }
 
 .filtros {
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.08);
@@ -502,17 +531,18 @@ body {
     line-height: 24px;
     letter-spacing: 0.83px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     position: absolute;
+    padding: 10px;
     top: 5px;
-    left: 0px; }
+    left: -4px; }
     .item-producto-list h1:before {
       content: "";
       position: absolute;
-      top: 23px;
-      left: 0px;
-      width: 25px;
-      border-bottom: 12px solid #a8222B;
+      top: 38px;
+      left: 1px;
+      width: 30px;
+      border-bottom: 17px solid #a8222B;
       line-height: 23px;
       z-index: -1;
       transform: rotate(45deg); }
@@ -551,13 +581,8 @@ body {
       margin-right: 7px;
       margin-top: 7px;
       padding-bottom: 2px; }
-    .nav-tabs li a.active {
-      border-bottom: solid 4px #EF3340;
-      padding-left: 7px;
-      padding-right: 7px;
-      padding-top: 7px;
-      padding-bottom: 2px;
-      width: 100%; }
+  .nav-tabs li:focus-within {
+    border-bottom: solid 4px #EF3340; }
 
 .item-slider {
   cursor: pointer;
@@ -611,13 +636,109 @@ body {
   width: auto;
   margin: 20px; }
 
+.item-producto-ocasion {
+  box-shadow: 0 0 30px -4px rgba(0, 0, 0, 0.13);
+  padding: 0px;
+  cursor: pointer; }
+  .item-producto-ocasion h1 {
+    background-color: #EF3340;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    line-height: 24px;
+    letter-spacing: 0.83px;
+    font-weight: bold;
+    font-size: 24px;
+    position: absolute;
+    padding: 10px;
+    top: 5px;
+    left: -4px; }
+    .item-producto-ocasion h1:before {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: 1px;
+      width: 30px;
+      border-bottom: 17px solid #a8222B;
+      line-height: 23px;
+      z-index: -1;
+      transform: rotate(45deg); }
+  .item-producto-ocasion img {
+    border-bottom: solid 4px #EF3340; }
+  .item-producto-ocasion .pvp_ocasion {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: right;
+    color: #EF3340;
+    font-family: 'Ubuntu', sans-serif; }
+  .item-producto-ocasion .pvp {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 21px;
+    position: relative; }
+  .item-producto-ocasion .pvp::after {
+    background: linear-gradient(to right, #EF3340, #EF3340, #EF3340, #EF3340, #EF3340);
+    content: "";
+    height: 0.125em;
+    left: 0;
+    margin-top: calc(0.125em / 2 * -1);
+    position: absolute;
+    right: 0;
+    top: 50%; }
+  .item-producto-ocasion .anogarantia {
+    float: left;
+    text-align: left;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 8px;
+    letter-spacing: 1px;
+    line-height: 5px;
+    font-size: 12px; }
+  .item-producto-ocasion .vermas {
+    float: right;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: right;
+    color: #EF3340;
+    font-size: 11.2px;
+    font-weight: bold;
+    line-height: 14px;
+    margin-right: 8px; }
+
 .lis-option {
   list-style: none; }
+  .lis-option .option-contact {
+    width: 241px;
+    height: 170px;
+    padding: 16px;
+    position: relative;
+    background-color: #F7F7F7;
+    margin-right: 16px;
+    margin-top: 16px; }
+    .lis-option .option-contact img {
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+    .lis-option .option-contact h3 {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      line-height: 26px; }
+    .lis-option .option-contact a {
+      color: black;
+      text-decoration: none; }
+  .lis-option .option-contact:nth-child(1) {
+    width: 241px;
+    height: 170px;
+    background-color: #EF3340;
+    color: white; }
+    .lis-option .option-contact:nth-child(1) a {
+      color: white;
+      text-decoration: none; }
   .lis-option .ico-phone {
-    width: 32px;
-    margin: 20px; }
+    width: 32px; }
   .lis-option .ico-write {
-    width: 50px; }
+    width: 40px; }
   .lis-option .ico-calendar {
     width: 50px; }
   .lis-option .ico-location {
@@ -778,3 +899,80 @@ body {
   display: block;
   margin-left: 40px;
   white-space: normal; }
+
+.contacto-title {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 35px;
+  text-align: center;
+  width: 170px;
+  border-bottom: solid 4px #EF3340;
+  margin-top: 56px; }
+
+.blog-title {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 35px;
+  text-align: center;
+  width: 100px;
+  border-bottom: solid 4px #EF3340;
+  margin-top: 56px; }
+
+#list-blog {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: left; }
+  #list-blog .items-blog {
+    background-color: white;
+    padding: 0px;
+    width: 330px;
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    cursor: pointer; }
+    #list-blog .items-blog h3 {
+      font-family: 'Ubuntu', sans-serif;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 22px;
+      line-height: 26px;
+      color: #404040;
+      margin-top: 20px; }
+    #list-blog .items-blog p {
+      font-family: 'Ubuntu', sans-serif;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      color: #9A9A9A; }
+    #list-blog .items-blog .fecha {
+      font-family: 'Ubuntu', sans-serif;
+      padding-left: 20px;
+      position: absolute;
+      bottom: 5px;
+      color: #9A9A9A;
+      font-size: 12px;
+      line-height: 20px; }
+    #list-blog .items-blog:hover {
+      border-bottom: solid 4px #EC888F; }
+
+.descripcion-blog {
+  text-align: justify;
+  line-height: 20px;
+  font-size: 15px;
+  font-family: 'Ubuntu', sans-serif; }
+
+.fecha-desc {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+  line-height: 20px; }
+
+.title-post-ficha {
+  font-size: 36px;
+  line-height: 30px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  margin-top: 10px; }

@@ -66,19 +66,60 @@ body {
 .lis-option {
     list-style: none;
 
-    .ico-phone {
-        width: 32px;
-        margin: 20px;
+    .option-contact {
+        width: 241px;
+        height: 170px;
+        padding: 16px;
+        position: relative;
+        background-color: $fondo-row;
+        margin-right: 16px;
+        margin-top: 16px;
+
+        img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        h3 {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            line-height: 26px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
     }
 
-    .ico-write{
-        width:50px;
+    .option-contact:nth-child(1) {
+        width: 241px;
+        height: 170px;
+        background-color: $globalpack;
+        color: white;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
     }
-    .ico-calendar{
-        width:50px;
+
+    .ico-phone {
+        width: 32px;
     }
-    .ico-location{
+
+    .ico-write {
         width:40px;
+    }
+
+    .ico-calendar {
+        width: 50px;
+    }
+
+    .ico-location {
+        width: 40px;
     }
 }
 
@@ -271,3 +312,16 @@ body {
     margin-left: 40px;
     white-space:normal;
 }
+
+.contacto-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+    width: 170px;
+    border-bottom: solid 4px $line-categorias;
+    margin-top: 56px;
+}
+
+@import 'blog.scss';

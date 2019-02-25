@@ -23,20 +23,22 @@ require_once('Constantes.php');
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body id="page-top">
+<body id="page-top" class="container-fuild">
 
     <!-- Navigation -->
     <?php include_once(dirname(__FILE__).'/Menus/menutop.php'); ?>
     <div class="col-lg-12" style="text-align:center;">
-        <p>
-            <h1>CONTACTO</h1>
-        </p>
+
+        <center>
+            <h1 class="contacto-title">CONTACTO</h1>
+        </center>
+
     </div>
     <div class="col-lg-12">
         <!-- Google Maps-->
         <?php include_once(dirname(__FILE__).'/assets/mapa.php'); ?>
     </div>
-    
+
     <div class="col-lg-12">
         <div class="container" style="margin-top:20px;">
             <div class="row">
@@ -46,16 +48,14 @@ require_once('Constantes.php');
                             <h3>LLAMANOS</h3>
                             <br />
                             <div class="icon-imatge">
-                                <i class="fas fa-mobile-alt"></i>
+                                <img src="/assets/iconos/mobile.png" class="ico-phone" />
                             </div>
                             <div class="footer-telf">
                                 <span>
-                                    <i class="fas fa-phone"></i>&nbsp;
                                     <a href="tel:+34934327181">+34 93 4327181</a>
                                 </span>
                                 <br />
                                 <span>
-                                    <i class="fas fa-fax"></i>&nbsp;
                                     <a href="tel:+34934327181">+34 93 4327181</a>
                                 </span>
                             </div>
@@ -65,7 +65,7 @@ require_once('Constantes.php');
                             <h3>ESCRIBENOS</h3>
                             <br />
                             <div class="icon-imatge">
-                                <i class="far fa-edit"></i>
+                                <img src="/assets/iconos/escribenos.png" class="ico-write" />
                             </div>
                             <div class="footer-telf">
                                 <br />
@@ -81,7 +81,7 @@ require_once('Constantes.php');
                             <h3>HORARIO</h3>
                             <br />
                             <div class="icon-imatge">
-                                <i class="fas fa-calendar-alt"></i>
+                                <img src="/assets/iconos/calendario.png" class="ico-calendar" />
                             </div>
                             <div class="footer-telf">
                                 <span>
@@ -98,7 +98,7 @@ require_once('Constantes.php');
                             <h3>VISITANOS</h3>
                             <br />
                             <div class="icon-imatge">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <img src="/assets/iconos/localizacion.png" class="ico-location" />
                             </div>
                             <div class="footer-telf">
                                 <span>
@@ -113,15 +113,49 @@ require_once('Constantes.php');
                     </ul>
                 </div>
                 <div class="col-lg-6">
-                    Formulari
+                    <div class="content-form" style="margin:0px; margin-bottom:20px;">
+                        <div class="title-form">
+                            <h1>&#191;Necesitas ayuda?</h1>
+                        </div>
+                        <div class="row formulario-allpages">
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Empresa" class="form-control" />
+                                <input type="email" placeholder="Email" class="form-control" />
+                                <input type="text" placeholder="Provincia" class="form-control" />
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Tel&#233;fono" class="form-control" />
+                                <input type="email" placeholder="Nombre" class="form-control" />
+                                <input type="text" placeholder="Pa&#237;s" class="form-control" />
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea placeholder="Escribe tu mensaje..." class="form-control" rows="5"></textarea>
+                            </div>
+                            <div class="col-lg-12" style="padding-top:12px;">
+                                <div class="row">
+                                    <div class="col-lg-12 text-left">
+                                        <input type="checkbox" />
+                                        <span>He le&#237;do y acepto el aviso legal y la pol&#237;tica de privacidad.</span>
+                                    </div>
+                                    <div class="col-lg-12 text-left">
+                                        <input type="checkbox" />
+                                        <span>Autorizo el env&#237;o de informaci&#243;n.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <input type="button" class="btn" value="ENVIAR" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Footer -->
     <footer>
-        <?php include_once(dirname(__FILE__).'/Footer/footer_contact.php'); ?>
+        <?php include_once(dirname(__FILE__).'/Footer/footer_origin.php'); ?>
     </footer>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/components/jquery/jquery.min.js"></script>
