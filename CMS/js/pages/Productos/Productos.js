@@ -216,6 +216,10 @@ function CreateTableProductos(data) {
                 '</label>' +
                 '&nbsp;&nbsp;</div>';
         }
+        code += '<div class="col-lg-2">' +
+            '<input type="button" value="Editar" class="btn" />&nbsp;' +
+            '<input type="button" value="Eliminar" class="btn" />' +
+            '</div>';
         code += '</div>';
         var fila = $(body).append(code);
 
@@ -223,6 +227,8 @@ function CreateTableProductos(data) {
         var home = $($(fila).children()[a]).find('.col-lg-1')[1];
         var ocasion = $($(fila).children()[a]).find('.col-lg-1')[2];
         var habilitado = $($(fila).children()[a]).find('.col-lg-1')[3];
+        var editar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[0];
+        var eliminar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[1];
 
         $(relacionado).data('id', data.list[a].Id_Producto);
         $(relacionado).on('click', function (ev) {
@@ -304,6 +310,21 @@ function CreateTableProductos(data) {
                     }
                 }
             });
+        });
+
+        $(editar).data('item', data.list[a]);
+        $(editar).on('click', function (ev) {
+            var producto = $(this).data('item');
+            ev.preventDefault();
+            Editar(producto);
+        });
+
+        $(eliminar).data('item', data.list[a]);
+        $(eliminar).on('click', function (ev) {
+            var producto = $(this).data('item');
+            ev.preventDefault();
+            $('#ModalDeleteProducto').data('item', producto);
+            $('#ModalDeleteProducto').modal('show');
         });
     }
     paginacion(data);
@@ -703,6 +724,198 @@ function Buscar() {
             },
             success: function (data) {
                 CreateTableProductos(data);
+            }
+        });
+    });
+}
+
+function Eliminar() {
+    var p = $('#ModalDeleteProducto').data('item');
+    $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+        var request = requestitem;
+        request.token = token;
+        request.item = p;
+        $.ajax({
+            type: "POST",
+            url: "/api/interfaces/admin/IProductos.php?fun=DeleteProducto",
+            data: JSON.stringify(request),
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+
+            },
+            success: function (data) {
+                if (data.status) {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+}
+
+function Editar(producto) {
+    console.log(producto);
+    tabposition = 1;
+    createProducto = producto;
+    createProducto.categorias = [];
+    createProducto.filtres = [];
+    createProducto.serveis = [];
+    createProducto.imagenes = [];
+
+    $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+        var request = requestitem;
+        request.token = token;
+        request.item = producto;
+        //GetProducto
+        $.ajax({
+            type: "POST",
+            url: "/api/interfaces/admin/IProductos.php?fun=GetAllProducto",
+            data: JSON.stringify(request),
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+
+            },
+            success: function (data) {
+                if (data.status) {
+                    console.log(data);
+                    createProducto = data.item;
+                    //Cateogrias
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/interfaces/admin/IProductos.php?fun=LoadListCategorias",
+                        data: JSON.stringify(request),
+                        cache: false,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                        },
+                        success: function (data) {
+                            if (data.status) {
+                                var cat = $('#selectcat');
+                                $(cat).children().remove();
+                                var catActive = false;
+                                for (var a = 0; a < data.list.length; a++) {
+                                    for (var c = 0; c < createProducto.Categoria.length; c++) {
+                                        if (createProducto.Categoria[c] === data.list[a].Id_Categoria) {
+                                            catActive = true;
+                                            createProducto.categorias.push(data.list[a]);
+                                        } else {
+                                            catActive = false;
+                                        }
+                                    }
+
+                                    var html = '';
+                                    if (catActive) {
+                                        html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><br/><span>' + data.list[a].Categoria + '</span></li>';
+                                    } else {
+                                        html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><br/><span>' + data.list[a].Categoria + '</span></li>';
+                                    }
+                                    var cat_item = $(cat).append(html);
+                                    var cat_li = $($(cat_item).children()[a]);
+                                    $(cat_li).data('cat', data.list[a]);
+                                    $(cat_li).data('selection', catActive);
+                                    $(cat_li).on('click', function () {
+                                        if ($(this).data('selection')) {
+                                            $(this).removeClass('cat_Active');
+                                            createProducto.categorias = createProducto.categorias.filter(product => product.Categoria != $(this).data('cat').Categoria);
+                                            $(this).data('selection', false);
+                                        } else {
+                                            $(this).addClass('cat_Active');
+                                            createProducto.categorias.push($(this).data('cat'));
+                                            $(this).data('selection', true);
+                                        }
+                                    });
+                                }
+                                //Filtres
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/api/interfaces/admin/IProductos.php?fun=LoadListSubCategorias",
+                                    data: JSON.stringify(request),
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    beforeSend: function () {
+
+                                    },
+                                    success: function (data) {
+
+                                        if (data.status) {
+                                            var cat = $('#selectsubcat');
+                                            $(cat).children().remove();
+                                            for (var a = 0; a < data.list.length; a++) {
+                                                var html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
+                                                var filtre = $(cat).append(html);
+
+                                                var filtre_li = $($(filtre).children()[a]);
+                                                $(filtre_li).data('cat', data.list[a]);
+                                                $(filtre_li).data('selection', false);
+                                                $(filtre_li).on('click', function () {
+                                                    if ($(this).data('selection')) {
+                                                        $(this).removeClass('cat_Active');
+                                                        createProducto.filtres = createProducto.filtres.filter(product => product.Categoria != $(this).data('cat').Categoria);
+                                                        $(this).data('selection', false);
+                                                    } else {
+                                                        $(this).addClass('cat_Active');
+                                                        createProducto.filtres.push($(this).data('cat'));
+                                                        $(this).data('selection', true);
+                                                    }
+                                                });
+                                            }
+                                            $('#WizarProducto').modal({ backdrop: 'static', keyboard: false });
+                                            $('#WizarProducto').modal('show');
+                                            PositionTab();
+                                        }
+                                    }
+                                });
+                                //Serveis
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/api/interfaces/admin/IProductos.php?fun=LoadListServicios",
+                                    data: JSON.stringify(request),
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    beforeSend: function () {
+
+                                    },
+                                    success: function (data) {
+
+                                        if (data.status) {
+                                            var cat = $('#selectserveis');
+                                            $(cat).children().remove();
+                                            for (var a = 0; a < data.list.length; a++) {
+                                                var html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
+                                                var serveis = $(cat).append(html);
+
+                                                var serveis_li = $($(serveis).children()[a]);
+                                                $(serveis_li).data('cat', data.list[a]);
+                                                $(serveis_li).data('selection', false);
+                                                $(serveis_li).on('click', function () {
+                                                    if ($(this).data('selection')) {
+                                                        $(this).removeClass('cat_Active');
+                                                        createProducto.serveis = createProducto.serveis.filter(product => product.Nombre != $(this).data('cat').Nombre);
+                                                        $(this).data('selection', false);
+                                                    } else {
+                                                        $(this).addClass('cat_Active');
+                                                        createProducto.serveis.push($(this).data('cat'));
+                                                        $(this).data('selection', true);
+                                                    }
+                                                });
+                                            }
+                                            $('#WizarProducto').modal({ backdrop: 'static', keyboard: false });
+                                            $('#WizarProducto').modal('show');
+                                            PositionTab();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
             }
         });
     });

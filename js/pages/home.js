@@ -12,6 +12,7 @@
             var news = $('.old-blog');
             for (var a = 0; a < data.list.length; a++) {
                 var code = '';
+                var post = null;
                 var date = toDate(data.list[a].FechaC);
                 code += '<div class="item-blog">' +
                     '<img src="' + data.list[a].imagenes[0] + '" />'+
@@ -20,7 +21,14 @@
                     '<div class="fecha-blog">' + date +'</div>'+
                     '</div>';
 
-                $(news).append(code);
+                post = $(news).append(code);
+
+                $($(post).children()[(a+1)]).data('post', data.list[a]);
+                $($(post).children()[(a+1)]).on('click', function (ev) {
+                    ev.preventDefault();
+                    var producto = $(this).data('post');
+                    $.redirect('/Post.php', producto);
+                });
             }
         }
     });
@@ -46,7 +54,13 @@
                     '<div class="fecha-ocasion">' + date + '</div>' +
                     '</div>';
 
-                $(news).append(code);
+                var row = $(news).append(code);
+                $($(row).children()[a]).data('ocasion', data.list[a]);
+                $($(row).children()[a]).on('click', function (ev) {
+                    ev.preventDefault();
+                    var producto = $(this).data('ocasion');
+                    $.redirect('/Productos/Ficha.php', producto);
+                });
             }
         }
     });

@@ -9781,6 +9781,7 @@
     <Compile Include="Modals\ModalBlogMultimedia.php" />
     <Compile Include="Modals\ModalDeleteImage.php" />
     <Compile Include="Modals\ModalDeletePost.php" />
+    <Compile Include="Modals\ModalDeleteProducto.php" />
     <Compile Include="Modals\ModalError.php" />
     <Compile Include="Modals\ModalLoading.php" />
     <Compile Include="Modals\ModalOcasion.php" />

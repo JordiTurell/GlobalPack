@@ -68,17 +68,21 @@ function Ficha_Producto(id) {
                 }
             }
 
-            for (var a = 0; a < data.item.list_relacionados.length; a++) {
-                var code = '<div class="item-slider" style="margin-right:5px;"><div class="item-slider-info"><h3>' + data.item.list_relacionados[a].Titulo + '</h3><p>ver más</p></div><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';
-                $('.slider_relacionados').append(code);
+            if (data.item.list_relacionados.length > 0) {
+                for (var a = 0; a < data.item.list_relacionados.length; a++) {
+                    var code = '<div class="item-slider" style="margin-right:5px;"><div class="item-slider-info"><h3>' + data.item.list_relacionados[a].Titulo + '</h3><p>ver más</p></div><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';
+                    $('.slider_relacionados').append(code);
+                }
+                $('.slider_relacionados').slick({
+                    infinite: false,
+                    arrows: true,
+                    dots: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                });
+            } else {
+                $('#product_relacionados').css('display', 'none');
             }
-            $('.slider_relacionados').slick({
-                infinite: false,
-                arrows: true,
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3
-            });
         }
     });
 }

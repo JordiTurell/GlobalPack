@@ -95,6 +95,27 @@ namespace Api\Models
             array_push($this->imagen, $img);
         }
 
+        public function SetAllFiltros($filtro){
+            if($this->Id_SubCategoria == ''){
+                $this->Id_SubCategoria = array();
+            }
+            array_push($this->Id_SubCategoria, $filtro);
+        }
+
+        public function SetAllCategorias($cat){
+            if($this->Categoria == ''){
+                $this->Categoria = array();
+            }
+            array_push($this->Categoria, $cat);
+        }
+
+        public function SetAllServicio($servei){
+            if($this->servicios == ''){
+                $this->servicios = array();
+            }
+            array_push($this->servicios, $servei);
+        }
+
         public function SetDescripcionCorta($desc){
             $this->Descripcion_corta = $desc;
         }

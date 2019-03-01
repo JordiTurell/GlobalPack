@@ -3,7 +3,6 @@ use WEB\Constantes\Constantes;
 require_once('../Constantes.php');
 
 $producto = $_POST;
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -130,7 +129,7 @@ $producto = $_POST;
         </div>
     </div>
     <div class="row" style="background-color:#F7F7F7;">
-        <div class="container">
+        <div class="container" id="product_relacionados">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3>Productos relacionados</h3>

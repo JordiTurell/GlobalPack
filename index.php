@@ -97,6 +97,7 @@ ipsum dolor sit amet consectetur adipisicing elit
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/components/jquery/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+      <script type="text/javascript" src="/js/jquery.redirect.js"></script>
     <script type="text/javascript" src="/js/pages/home.js"></script>
   </body>
 

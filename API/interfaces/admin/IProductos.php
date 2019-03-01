@@ -91,6 +91,14 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->DeleteRelacionados());
         break;
+    case 'DeleteProducto':
+        $wcf = new Productos();
+        echo json_encode($wcf->DeleteProducto());
+        break;
+    case 'GetAllProducto':
+        $wcf = new Productos();
+        echo json_encode($wcf->GetAllProducto());
+        break;
 }
 
 ?>

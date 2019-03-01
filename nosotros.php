@@ -31,12 +31,13 @@ require_once('Constantes.php');
     <!-- Historia -->
     <div class="cabecera-nosotros row">
         <div>
-            <img src="/assets/img/LOGO@2x_GLOBALPACK.png" />
+            <img src="/assets/img/LOGO@2x_GLOBALPACK.png" style="z-index:9999;" />
         </div>
         <div id="texto-header"></div>
         <div class="arrow-down">
             <img src="/assets/img/Fletxa_slider.png" onclick="DownSection();" id="nosotros-arrow-down" style="margin-top:-40px;" />
         </div>
+        <div class="nosotros-header-alhpa"></div>
     </div>
 
     <!-- Benificios -->

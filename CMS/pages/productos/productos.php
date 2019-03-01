@@ -94,6 +94,9 @@ if(isset($_SESSION['SES'])){
                                     <div class="col-lg-1 text-center">
                                         <strong>Habilitado</strong>
                                     </div>
+                                    <div class="col-lg-1 text-center">
+                                        <strong>Opciones</strong>
+                                    </div>
                                 </div>
                             </div>
                             <div class="box-body"></div>
@@ -216,6 +219,7 @@ if(isset($_SESSION['SES'])){
         <?php include_once('../../Modals/ModalLoading.php'); ?>
         <?php include_once('../../Modals/ModalOcasion.php'); ?>
         <?php include_once('../../Modals/ModalProductosMultimedia.php'); ?>
+        <?php include_once('../../Modals/ModalDeleteProducto.php'); ?>
 
         <!-- /.content-wrapper --><?php require_once('../../footer.php'); ?>
     </div>

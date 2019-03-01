@@ -18,7 +18,7 @@ namespace Api\Config
         public $database;
         public $user_name;
         public $password;
-        public $local = false;
+        public $local = true;
 
         function __construct($db){
             if($this->local){

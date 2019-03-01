@@ -884,5 +884,120 @@ namespace Api\WCF
                 return $result;
             }
         }
+
+        public function DeleteProducto(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $result = new Result(false, "", null);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $delete_producto = "DELETE FROM productos WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $delete_producto);
+                    $delete_categorias = "DELETE FROM productos_categorias WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $delete_categorias);
+                    $delete_filtros = "DELETE FROM productos_filtros WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $delete_filtros);
+                    $delete_relacionados = "DELETE FROM productos_relacionados WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $delete_relacionados);
+                    $delete_servicios = "DELETE FROM productos_servicio WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $delete_servicios);
+                    $delete_img = "DELETE FROM p_multimedia_productos WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $delete_img);
+
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function GetAllProducto(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $result = new Result(false, "", null);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $producto = "SELECT * FROM productos WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    if($res = mysqli_query($conn, $producto)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $producto = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $producto->SetId($row["Indice"]);
+                            $producto->SetDescripcionCorta($row["Descripcio_min"]);
+                            $producto->SetDescripcion($row["Descripcion"]);
+                            $producto->SetFichaTecnica($row["Ficha_Tecnica"]);
+                            $producto->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
+                            $producto->SetComparativa($row["Comparativa"]);
+                            $producto->SetAnoGarantia($row["Anogarantia"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$producto->Id_Producto."' LIMIT 1";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $producto->SetImage($img["Url"]);
+                                }
+                            }
+                            $query_filtros = "SELECT * FROM productos_filtros WHERE Id_Producto = '".$producto->Id_Producto."'";
+                            if($res_filtros = mysqli_query($conn, $query_filtros)){
+                                while($row = mysqli_fetch_assoc($res_filtros)){
+                                    $producto->SetAllFiltros($row["Id_Filtro"]);
+                                }
+                            }
+
+                            $query_categorias = "SELECT * FROM productos_categorias WHERE Id_Producto = '".$producto->Id_Producto."'";
+                            if($res_categorias = mysqli_query($conn, $query_categorias)){
+                                while($row = mysqli_fetch_assoc($res_categorias)){
+                                    $producto->SetAllCategorias($row["Id_Categoria"]);
+                                }
+                            }
+
+                            $query_serveis = "SELECT * FROM productos_servicio WHERE Id_Producto = '".$producto->Id_Producto."'";
+                            if($res_serveis = mysqli_query($conn, $query_serveis)){
+                                while($row = mysqli_fetch_assoc($res_serveis)){
+                                    $producto->SetAllServicio($row["Id_Servicio"]);
+                                }
+                            }
+                            $result->item = $producto;
+                        }
+                    }
+                   
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
     }
 }
