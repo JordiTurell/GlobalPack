@@ -2,10 +2,10 @@
         <div class="row">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 right">
+                    <div class="col-lg-4 left">
                         <i class="fas fa-map-marker-alt"></i> P.I Molí d'en Xec N.15 08291 Ripollet
                     </div>
-                    <div class="col-lg-3 right">
+                    <div class="col-lg-3 text-center">
                         <i class="fas fa-phone"></i>&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
                     </div>
                     <div class="col-lg-3 right">
@@ -39,7 +39,7 @@
                 <a class="nav-link" href="/productos.php">PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/postventa.php">POSTVENTA</a>
+                <a class="nav-link" href="/postventa.php">SOLUCIÓN</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/Ocasion.php">OCASIÓN</a>

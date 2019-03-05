@@ -17,6 +17,7 @@ require_once('Constantes.php');
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" />
 
     <!-- Custom fonts for this template -->
     <link href="vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
@@ -39,7 +40,7 @@ require_once('Constantes.php');
         <?php include_once(dirname(__FILE__).'/assets/mapa.php'); ?>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-form-contacto">
         <div class="container" style="margin-top:20px;">
             <div class="row">
                 <div class="col-lg-6" style="padding:0; margin-left:-10px;">
@@ -112,7 +113,7 @@ require_once('Constantes.php');
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 form-contacto">
                     <div class="content-form" style="margin:0px; margin-bottom:20px;">
                         <div class="title-form">
                             <h1>&#191;Necesitas ayuda?</h1>

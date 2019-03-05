@@ -43,18 +43,21 @@ body {
 .navbar {
   background-color: #EF3340 !important; }
   .navbar .navbar-nav {
-    margin-top: 45px; }
+    margin-top: 45px;
+    margin-left: 30%; }
   .navbar .nav-item {
     font-size: 16px;
     line-height: 18px;
     text-align: center;
-    width: 120px; }
+    width: auto;
+    letter-spacing: 1px; }
 
 .nav-link {
   color: white !important; }
 
 .section-head {
-  padding: 10px;
+  padding: 30px;
+  height: 450px;
   text-align: center;
   background-image: url("/assets/img/fondomaquinas.png");
   background-size: cover;
@@ -69,7 +72,7 @@ body {
     padding-left: 29px;
     padding-right: 29px;
     padding-top: 19px;
-    width: 460px; }
+    width: 420px; }
     .section-head #title_home .h1 {
       color: #FFFFFF;
       font-family: 'Ubuntu', sans-serif;
@@ -105,19 +108,21 @@ body {
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: 35px; }
+    margin-top: 35px;
+    width: 202px; }
   .section-head .item-slider:nth-child(2) img {
     width: 40px;
     height: auto;
     float: left;
     margin-top: 10%; }
   .section-head .item-slider:nth-child(2) span {
-    font-size: 22px;
+    font-size: 26.4px;
     font-weight: bold;
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: 30px; }
+    margin-top: 35px;
+    width: 202px; }
   .section-head .item-slider:nth-child(3) img {
     width: 50px;
     height: auto;
@@ -129,7 +134,8 @@ body {
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: -40px; }
+    margin-top: 35px;
+    width: 202px; }
   .section-head .item-slider:nth-child(4) img {
     width: 55px;
     height: auto;
@@ -141,8 +147,9 @@ body {
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: -60px;
-    margin-left: 60px; }
+    margin-top: -68px;
+    margin-left: 60px;
+    width: 202px; }
   .section-head .item-slider:nth-child(5) img {
     width: 55px;
     height: auto;
@@ -154,7 +161,8 @@ body {
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: 35px; }
+    margin-top: 35px;
+    width: 202px; }
   .section-head .item-slider:nth-child(6) img {
     width: 55px;
     height: auto;
@@ -166,7 +174,8 @@ body {
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: 35px; }
+    margin-top: 35px;
+    width: 202px; }
   .section-head .contnet-items-slider {
     padding-top: 130px; }
 
@@ -218,14 +227,15 @@ body {
     font-weight: bold;
     line-height: 24px;
     text-align: center;
-    margin: 9px 14px 14px 14px; }
+    margin: 14px 14px 14px 14px; }
   .items-ocasion .text-ocasion {
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
     line-height: 20px;
     text-align: center; }
   .items-ocasion .pvp-ocasion {
-    text-align: center; }
+    text-align: center;
+    margin-top: 14px; }
     .items-ocasion .pvp-ocasion span:nth-child(1) {
       font-family: 'Ubuntu', sans-serif;
       font-size: 26px;
@@ -263,7 +273,7 @@ body {
   box-shadow: 0 0 10px 0 #D5D4D5;
   border-radius: 14px;
   position: relative;
-  margin-top: 87px;
+  margin-top: 60px;
   margin-bottom: 37px;
   margin-left: 10%;
   padding: 10px; }
@@ -280,7 +290,8 @@ body {
       font-weight: bold;
       letter-spacing: 1px;
       line-height: 29px;
-      margin-top: 24px; }
+      margin-top: 10px;
+      margin-left: -20px; }
   .content-form .formulario-home {
     padding-top: 102px;
     padding-left: 48px;
@@ -311,7 +322,7 @@ body {
   cursor: pointer; }
 
 .cabecera-nosotros {
-  height: 496px;
+  height: 450px;
   position: relative;
   text-align: center; }
   .cabecera-nosotros img {
@@ -347,8 +358,7 @@ body {
     width: 290px;
     font-family: 'Ubuntu', sans-serif; }
   .nosotros-info img {
-    width: 90%;
-    margin-top: 40px;
+    width: 100%;
     margin-right: 100px; }
   .nosotros-info #textonosotros {
     text-align: justify;
@@ -388,13 +398,13 @@ body {
   cursor: pointer; }
 
 .categoria-item {
-  width: 260.33px;
-  height: 280px;
+  width: 270.33px;
+  height: 300px;
   background-color: #FFFFFF;
   border-radius: 11px 11px 0 0;
   padding: 20px;
   text-align: center;
-  margin: 30px 30px 25px 60px;
+  margin: 30px 28px 25px 60px;
   box-shadow: 1px 1px 10px 1px #9B9B9B;
   border: solid 1px #EF3340;
   border-bottom: solid 3px #EF3340;
@@ -411,8 +421,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     line-height: 20px;
-    margin-top: 17px;
-    text-transform: uppercase; }
+    margin-top: 17px; }
   .categoria-item .cat-vermas {
     width: 100%;
     text-align: right;
@@ -437,22 +446,24 @@ body {
     .categoria-item .info-cat .title-cat {
       font-size: 20px;
       font-weight: bold;
-      line-height: 25px;
+      line-height: 20px;
       text-align: center;
-      font-family: 'Ubuntu', sans-serif; }
+      font-family: 'Ubuntu', sans-serif !important;
+      text-transform: uppercase; }
     .categoria-item .info-cat .desc-cat {
-      font-size: 12px;
+      font-size: 13px;
       line-height: 20px;
       text-align: justify;
-      font-family: 'Ubuntu', sans-serif; }
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 300; }
     .categoria-item .info-cat .cat-vermas {
       margin-top: 75%; }
 
 .postventa-list .categoria-item {
-  height: 316px; }
+  height: 300px; }
   .postventa-list .categoria-item .cat-vermas {
     position: absolute;
-    bottom: 0px;
+    bottom: 6px;
     right: 10px; }
 
 .postventa-list .info-cat {
@@ -505,14 +516,15 @@ body {
   border-radius: 8px 8px 0 0;
   padding: 20px;
   padding-bottom: 0px;
-  border-bottom: solid 4px #EF3340; }
+  border-bottom: solid 3px #EF3340; }
   .filtros h3 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1px;
     line-height: 10px;
-    color: #EF3340; }
+    color: #EF3340;
+    margin-bottom: 15px; }
   .filtros #list-filtros {
     list-style: none;
     padding: 0px; }
@@ -653,11 +665,13 @@ body {
     line-height: 24px;
     letter-spacing: 0.83px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     position: absolute;
     padding: 10px;
-    top: 5px;
-    left: -4px; }
+    top: 25px;
+    left: -4px;
+    width: 140px;
+    text-transform: uppercase; }
     .item-producto-ocasion h1:before {
       content: "";
       position: absolute;
@@ -668,6 +682,11 @@ body {
       line-height: 23px;
       z-index: -1;
       transform: rotate(45deg); }
+  .item-producto-ocasion p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center; }
   .item-producto-ocasion img {
     border-bottom: solid 4px #EF3340; }
   .item-producto-ocasion .pvp_ocasion {
@@ -709,6 +728,19 @@ body {
     font-weight: bold;
     line-height: 14px;
     margin-right: 8px; }
+  .item-producto-ocasion h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    margin: 14px 14px 14px 14px; }
+
+#titleproducto {
+  font-weight: 700;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 28px;
+  line-height: 32px; }
 
 .lis-option {
   list-style: none; }
@@ -846,7 +878,8 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     position: absolute;
-    bottom: 18px; }
+    bottom: 18px;
+    letter-spacing: 1px; }
   .popup-contacte span:nth-child(2) {
     font-size: 50px;
     color: white;
@@ -977,7 +1010,72 @@ body {
 
 .title-post-ficha {
   font-size: 36px;
-  line-height: 30px;
+  line-height: 40px;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
   margin-top: 10px; }
+
+@media only screen and (max-width: 600px) {
+  .info {
+    display: none; }
+  .title-form-home {
+    width: 100% !important;
+    margin-left: 0% !important; }
+  .content-form .formulario-home {
+    padding-left: 0px !important;
+    padding-right: 0px !important; }
+  .navbar {
+    width: 100%; }
+  .navbar-light .navbar-toggler {
+    color: white;
+    border: solid 1px white;
+    background-color: white; }
+  .nav-item {
+    width: 100% !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2); }
+  .navbar-collapse {
+    margin-left: 0px !important; }
+  .section-head #title_home {
+    width: 100%; }
+    .section-head #title_home .h1 {
+      font-size: 2em !important;
+      line-height: 34px !important; }
+    .section-head #title_home :nth-child(3) {
+      display: none; }
+  .cabecera-nosotros img {
+    margin-top: 5%;
+    display: block;
+    margin-left: 28%;
+    position: absolute;
+    width: 50%; }
+  .cabecera-nosotros #texto-header {
+    width: 100%;
+    margin-left: 0px;
+    text-align: center;
+    margin-top: 45%; }
+  #listbenificios {
+    margin-top: 45px; }
+    #listbenificios li {
+      width: 100%; }
+      #listbenificios li img {
+        height: 150px; }
+  .nosotros-info img {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%; }
+  .nosotros-info :nth-child(1) :nth-child(2) {
+    margin-top: 5px !important; }
+  .nosotros-info #textonosotros {
+    margin-top: 10px !important; }
+  .option-contact {
+    width: 100% !important; }
+  .col-form-contacto .container {
+    padding: 0px !important; }
+  .col-form-contacto .form-contacto {
+    padding: 0px !important; }
+  .footer-cuadrats {
+    display: none; }
+  .footer {
+    text-align: center; } }

@@ -18,7 +18,7 @@ require_once('Constantes.php');
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" />
 
     <!-- Custom fonts for this template -->
     <link href="vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
@@ -35,7 +35,7 @@ require_once('Constantes.php');
         <div class="filter"></div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div id="title_home">
                         <div class="h1">Expertos en envases y embalajes</div>
                         <div class="h3">
@@ -46,8 +46,8 @@ ipsum dolor sit amet consectetur adipisicing elit
                         <img src="/assets/img/Fletxa_slider.png" onclick="DownSection();" id="arrow-down"/>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="row">
+                <div class="col-lg-8">
+                    <div class="row flex-row-reverse" style="padding-top:18px;">
                         <div class="col-lg-5 item-slider">
                             <img src="/assets/iconos/Maquinas.png" />
                             <span>Maquinas</span>

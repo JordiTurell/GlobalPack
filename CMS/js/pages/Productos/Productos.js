@@ -757,11 +757,12 @@ function Eliminar() {
 function Editar(producto) {
     console.log(producto);
     tabposition = 1;
-    createProducto = producto;
+    createProducto = {};
     createProducto.categorias = [];
     createProducto.filtres = [];
     createProducto.serveis = [];
     createProducto.imagenes = [];
+    createProducto.item = producto;
 
     $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
         var request = requestitem;
@@ -781,7 +782,7 @@ function Editar(producto) {
             success: function (data) {
                 if (data.status) {
                     console.log(data);
-                    createProducto = data.item;
+                    createProducto.itemdb = data.item;
                     //Cateogrias
                     $.ajax({
                         type: "POST",
@@ -798,11 +799,12 @@ function Editar(producto) {
                                 var cat = $('#selectcat');
                                 $(cat).children().remove();
                                 var catActive = false;
+                                createProducto.categorias = data.list;
                                 for (var a = 0; a < data.list.length; a++) {
-                                    for (var c = 0; c < createProducto.Categoria.length; c++) {
-                                        if (createProducto.Categoria[c] === data.list[a].Id_Categoria) {
+                                    for (var c = 0; c < createProducto.itemdb.Categoria.length; c++) {
+                                        if (createProducto.itemdb.Categoria[c] === data.list[a].Id_Categoria) {
                                             catActive = true;
-                                            createProducto.categorias.push(data.list[a]);
+                                            break;
                                         } else {
                                             catActive = false;
                                         }
@@ -821,11 +823,11 @@ function Editar(producto) {
                                     $(cat_li).on('click', function () {
                                         if ($(this).data('selection')) {
                                             $(this).removeClass('cat_Active');
-                                            createProducto.categorias = createProducto.categorias.filter(product => product.Categoria != $(this).data('cat').Categoria);
+                                            createProducto.itemdb.Categoria = createProducto.itemdb.Categoria.filter(product => product != $(this).data('cat').Id_Categoria);
                                             $(this).data('selection', false);
                                         } else {
                                             $(this).addClass('cat_Active');
-                                            createProducto.categorias.push($(this).data('cat'));
+                                            createProducto.itemdb.Categoria.push($(this).data('cat').Id_Categoria);
                                             $(this).data('selection', true);
                                         }
                                     });
@@ -846,8 +848,23 @@ function Editar(producto) {
                                         if (data.status) {
                                             var cat = $('#selectsubcat');
                                             $(cat).children().remove();
+                                            var catActive = false;
                                             for (var a = 0; a < data.list.length; a++) {
-                                                var html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
+                                                for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
+                                                    if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
+                                                        catActive = true;
+                                                        break;
+                                                    } else {
+                                                        catActive = false;
+                                                    }
+                                                }
+                                                var html = '';
+                                                if (catActive) {
+                                                    html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
+                                                } else {
+                                                    html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
+                                                }
+                                                
                                                 var filtre = $(cat).append(html);
 
                                                 var filtre_li = $($(filtre).children()[a]);
@@ -856,11 +873,11 @@ function Editar(producto) {
                                                 $(filtre_li).on('click', function () {
                                                     if ($(this).data('selection')) {
                                                         $(this).removeClass('cat_Active');
-                                                        createProducto.filtres = createProducto.filtres.filter(product => product.Categoria != $(this).data('cat').Categoria);
+                                                        createProducto.itemdb.Id_SubCategoria = createProducto.itemdb.Id_SubCategoria.filter(product => product != $(this).data('cat').Id_Subcategoria);
                                                         $(this).data('selection', false);
                                                     } else {
                                                         $(this).addClass('cat_Active');
-                                                        createProducto.filtres.push($(this).data('cat'));
+                                                        createProducto.itemdb.Id_SubCategoria.push($(this).data('cat').Id_Subcategoria);
                                                         $(this).data('selection', true);
                                                     }
                                                 });
@@ -888,7 +905,20 @@ function Editar(producto) {
                                             var cat = $('#selectserveis');
                                             $(cat).children().remove();
                                             for (var a = 0; a < data.list.length; a++) {
-                                                var html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
+                                                for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
+                                                    if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
+                                                        catActive = true;
+                                                        break;
+                                                    } else {
+                                                        catActive = false;
+                                                    }
+                                                }
+                                                var html = '';
+                                                if (catActive) {
+                                                    html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
+                                                } else {
+                                                    html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
+                                                }
                                                 var serveis = $(cat).append(html);
 
                                                 var serveis_li = $($(serveis).children()[a]);

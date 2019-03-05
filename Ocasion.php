@@ -20,7 +20,7 @@ $id = $_GET["Cat"];
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" />
     <!-- Custom fonts for this template -->
     <link href="/vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.min.css" rel="stylesheet" type="text/css" />
@@ -36,7 +36,7 @@ $id = $_GET["Cat"];
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
                     <center>
-                        <h1 class="title">OCASI&Oacute;N</h1>
+                        <h1 class="title" style="width:170px;">OCASI&Oacute;N</h1>
                     </center>
                 </div>
             </div>

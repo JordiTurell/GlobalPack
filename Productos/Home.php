@@ -20,7 +20,7 @@ $id = $_GET["Cat"];
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" />
     <!-- Custom fonts for this template -->
     <link href="/vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.min.css" rel="stylesheet" type="text/css" />

@@ -1,6 +1,7 @@
 ﻿@import 'variables';
 @import 'animation.scss';
 
+
 body {
     font-family: 'Ubuntu', sans-serif;
 }
@@ -29,9 +30,9 @@ body {
     left:50%;
  }
 
-#logo_top{
-    width:130px;
-    height:80px;
+#logo_top {
+    width: 130px;
+    height: 80px;
 }
 
 #logo_footer {
@@ -45,13 +46,15 @@ body {
 
     .navbar-nav {
         margin-top: 45px;
+        margin-left:30%;
     }
 
     .nav-item {
         font-size: 16px;
         line-height: 18px;
         text-align: center;
-        width: 120px;
+        width: auto;
+        letter-spacing: 1px;
     }
 }
 
@@ -247,6 +250,7 @@ body {
         font-size: 20px;
         position: absolute;
         bottom: 18px;
+        letter-spacing:1px;
     }
 
     span:nth-child(2) {
@@ -325,3 +329,4 @@ body {
 }
 
 @import 'blog.scss';
+@import 'responsive.scss';

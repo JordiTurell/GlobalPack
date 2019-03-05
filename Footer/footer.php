@@ -1,4 +1,4 @@
-<div class="col-lg-12">
+<div class="col-lg-12 footer-cuadrats">
     <div class="container">
         <ul class="row lis-option">
             <li class="option">

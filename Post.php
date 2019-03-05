@@ -20,9 +20,10 @@ $post = $_POST;
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -37,7 +38,7 @@ $post = $_POST;
                     <div class="row">
                         <div class="onback col-lg-1"><</div>
                         <div class="col-lg-11">
-                            <h1 class="title" style="width:106px;">BLOG</h1>&nbsp;&nbsp;&nbsp;<h1 class="title2" style="width:87%;"><?php echo $post["Titulo"]?></h1>
+                            <h1 class="title" style="width:106px; font-weight:700;">BLOG</h1>&nbsp;&nbsp;&nbsp;<h1 class="title2" style="width:87%; font-weight:300;"><?php echo $post["Titulo"]?></h1>
                         </div>
                     </div>
                 </div>
@@ -46,11 +47,11 @@ $post = $_POST;
     </div>
     <div class="row" style="padding-bottom:20px;">
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
                 <div class="col-lg-6">
                     <?php 
                         for($a = 0; $a < count($post["imagenes"]); $a++){
-                            echo '<img src="'.$post["imagenes"][$a].'" style="width:100%; margin-top:20px;" />';
+                            echo '<img src="'.$post["imagenes"][$a].'" style="width:100%; margin-bottom:20px;" />';
                         }
                     ?>
                 </div>

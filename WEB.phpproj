@@ -123,6 +123,7 @@
     <Content Include="sass\home.scss" />
     <Content Include="sass\nosotros.scss" />
     <Content Include="sass\productos.scss" />
+    <Content Include="sass\responsive.scss" />
     <Content Include="sass\style.scss" />
     <Content Include="sass\variables.scss" />
   </ItemGroup>
