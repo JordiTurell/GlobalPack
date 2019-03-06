@@ -8,8 +8,9 @@
     img {
         margin-top: 5%;
         display: block;
-        margin-left: 44%;
+        margin-left: 30%;
         position: absolute;
+        width:40%;
     }
 
     #texto-header {
@@ -21,7 +22,7 @@
         color: white;
         display: block;
         position: absolute;
-        margin-top: 15%;
+        margin-top: 12%;
         text-align: center;
         z-index: 9999;
     }
@@ -74,7 +75,8 @@
 
 #listbenificios {
     list-style: none;
-    padding:0px;
+    //padding:0px;
+    margin-top:20px;
     li {
         display: inline-table;
         width: 222px;
@@ -97,4 +99,5 @@
 
 #nosotros-arrow-down{
     cursor:pointer;
+    width:70px;    
 }

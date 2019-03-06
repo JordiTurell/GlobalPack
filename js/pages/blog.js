@@ -80,3 +80,11 @@ function toDate(dateStr) {
 function LoadPost() {
 
 }
+
+function Imprimir() {
+    window.print();
+}
+
+function Compartir() {
+    $('#ModalCompartir').modal('show');
+}

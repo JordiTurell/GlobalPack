@@ -46,12 +46,13 @@
             for (var a = 0; a < data.list.length; a++) {
                 var code = '';
                 var date = toDate(data.list[a].FechaC);
-                code += '<div class="items-ocasion">' +
+                code += '<div class="items-ocasion item-producto-ocasion">' +
+                    '<h1 style="margin-top:70px;">Ocasion</h1>' +
                     '<img src="' + data.list[a].imagen + '" />' +
                     '<div class="title-ocasion">' + data.list[a].Titulo + '</div>' +
                     '<div class="text-ocasion">' + data.list[a].Descripcion_corta + '</div>' +
                     '<div class="pvp-ocasion"><span>' + data.list[a].PVP_Ocasion +' €  </span><span>'+ data.list[a].PVP +' €</span></div>'+
-                    '<div class="fecha-ocasion">' + date + '</div>' +
+                    '<div class="fecha-ocasion">' + date + '<div class="vermas"><span>VER MAS</span>></div></div>' +
                     '</div>';
 
                 var row = $(news).append(code);

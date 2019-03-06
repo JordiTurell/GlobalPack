@@ -37,9 +37,13 @@ $producto = $_POST;
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
                     <div class="row">
-                        <div class="onback col-lg-1"><</div>
-                        <div class="col-lg-11">
-                            <h1 class="title">PRODUCTOS</h1>&nbsp;&nbsp;&nbsp;<h1 class="title2"><?php echo $producto["cat"]["Categoria"]?></h1>
+                        <div class="col-lg-12">
+                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px;" />
+
+                            <h1 class="title">PRODUCTOS</h1>&nbsp;&nbsp;&nbsp;
+                            <h1 class="title2">
+                                <?php echo $producto["cat"]["Categoria"]?>
+                            </h1>
                         </div>
                     </div>
                 </div>

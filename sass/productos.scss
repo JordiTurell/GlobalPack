@@ -135,13 +135,14 @@
             float:left;
         }
 
-        div {
+        span {
             font-family: 'Ubuntu', sans-serif;
             font-size: 18px;
             line-height: 22px;
             margin-left: 18px;
             display: inline-block;
-            width:140px;
+            width:200px;
+            font-weight:normal;
             height:100%;
             
         }
@@ -183,6 +184,7 @@
 
 .cat-active span{
     color:$globalpack;
+    margin-left:10px;
 }
 .item-producto-list {
     cursor: pointer;

@@ -110,19 +110,19 @@ body {
     }
 
     .ico-phone {
-        width: 32px;
+        width: 60px;
     }
 
     .ico-write {
-        width:40px;
+        width:60px;
     }
 
     .ico-calendar {
-        width: 50px;
+        width: 60px;
     }
 
     .ico-location {
-        width: 40px;
+        width: 60px;
     }
 }
 
@@ -133,7 +133,7 @@ body {
     color: black;
     margin: 2px;
     width: 241px;
-    height:170px;
+    height: 170px;
     position: relative;
     cursor: pointer;
     -webkit-transition: all 0.4s;
@@ -154,6 +154,7 @@ body {
         font-size: 20px;
         letter-spacing: 2px;
         line-height: 26px;
+        margin-top: 15px;
     }
 
     span {
@@ -330,3 +331,14 @@ body {
 
 @import 'blog.scss';
 @import 'responsive.scss';
+
+.compartir-list{
+    list-style:none;
+    li{
+        display:inline-block;
+        pading:15px;
+        img{
+            width:25px;
+        }
+    }
+}

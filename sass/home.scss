@@ -2,7 +2,7 @@
 
 .section-head {
     padding: 30px;
-    height:450px;
+    height: 450px;
     text-align: center;
     background-image: url("/assets/img/fondomaquinas.png");
     background-size: cover;
@@ -40,7 +40,7 @@
         }
 
         img {
-            margin-bottom: 17px;
+            width:50px;
         }
     }
 
@@ -55,10 +55,10 @@
 
     .item-slider:nth-child(1) {
         img {
-            width: 55px;
+            width: 70px;
             height: auto;
             float: left;
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         span {
@@ -67,17 +67,17 @@
             letter-spacing: 1.1px;
             line-height: 31px;
             float: right;
-            margin-top: 35px;
+            margin-top: -53px;
             width: 202px;
         }
     }
 
     .item-slider:nth-child(2) {
         img {
-            width: 40px;
+            width: 70px;
             height: auto;
             float: left;
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         span {
@@ -86,17 +86,17 @@
             letter-spacing: 1.1px;
             line-height: 31px;
             float: right;
-            margin-top: 35px;
+            margin-top: -53px;
             width: 202px;
         }
     }
 
     .item-slider:nth-child(3) {
         img {
-            width: 50px;
+            width: 70px;
             height: auto;
             float: left;
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         span {
@@ -105,17 +105,17 @@
             letter-spacing: 1.1px;
             line-height: 31px;
             float: right;
-            margin-top: 35px;
+            margin-top: -53px;
             width: 202px;
         }
     }
 
     .item-slider:nth-child(4) {
         img {
-            width: 55px;
+            width: 70px;
             height: auto;
             float: left;
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         span {
@@ -124,18 +124,17 @@
             letter-spacing: 1.1px;
             line-height: 31px;
             float: right;
-            margin-top: -68px;
-            margin-left: 60px;
+            margin-top: -70px;
             width: 202px;
         }
     }
 
     .item-slider:nth-child(5) {
         img {
-            width: 55px;
+            width: 70px;
             height: auto;
             float: left;
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         span {
@@ -144,17 +143,17 @@
             letter-spacing: 1.1px;
             line-height: 31px;
             float: right;
-            margin-top: 35px;
+            margin-top: -53px;
             width: 202px;
         }
     }
 
     .item-slider:nth-child(6) {
         img {
-            width: 55px;
+            width: 70px;
             height: auto;
             float: left;
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         span {
@@ -163,7 +162,7 @@
             letter-spacing: 1.1px;
             line-height: 31px;
             float: right;
-            margin-top: 35px;
+            margin-top: -53px;
             width: 202px;
         }
     }
@@ -210,7 +209,7 @@
     h1 {
         font-family: 'Ubuntu', sans-serif;
         color: $gris-title;
-        width: 270px;
+        width: 285px;
         font-size: 30px;
         font-weight: bold;
         line-height: 35px;
@@ -284,6 +283,7 @@
         font-size: 14px;
         line-height: 20px;
         margin: 20px 20px 20px 20px;
+        padding-bottom:10px;
     }
 }
 

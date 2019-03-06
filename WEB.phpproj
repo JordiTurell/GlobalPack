@@ -35,6 +35,7 @@
     <Compile Include="Productos\Ficha.php" />
     <Compile Include="Productos\Home.php" />
     <Compile Include="postventa.php" />
+    <Compile Include="Productos\ModalCompartir.php" />
     <Compile Include="Productos\postventa.php" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +54,14 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <Content Include=".htaccess" />
+    <Content Include="assets\iconos\FLETXA_PRODUCTOS_CATEGORIAS_BLANCA.png" />
+    <Content Include="assets\iconos\FLETXA_PRODUCTOS_CATEGORIAS_NEGRO.png" />
+    <Content Include="assets\iconos\FLETXA_PRODUCTOS_FITXA.png" />
+    <Content Include="assets\iconos\head_localitzacio.png" />
+    <Content Include="assets\iconos\head_mail.png" />
+    <Content Include="assets\iconos\head_telf.png" />
+    <Content Include="assets\iconos\ICON_FLETXA_BANNER.png" />
+    <Content Include="assets\iconos\ICON_INFO.png" />
     <Content Include="assets\img\fondomaquinas.png" />
     <Content Include="assets\iconos\calendario.png" />
     <Content Include="assets\iconos\cart.png" />
@@ -74,6 +83,8 @@
     <Content Include="assets\img\instagram.svg" />
     <Content Include="assets\img\facebook.svg" />
     <Content Include="assets\img\LOGO%402x_GLOBALPACK.png" />
+    <Content Include="assets\img\LOGO_CONTACTO.png" />
+    <Content Include="assets\img\LOGO_GLOBALPACK_NOSOTROS.png" />
     <Content Include="assets\img\tweeter.svg" />
     <Content Include="compilerconfig.json.defaults">
       <SubType>Content</SubType>

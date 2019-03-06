@@ -3,13 +3,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 left">
-                        <i class="fas fa-map-marker-alt"></i> P.I Molí d'en Xec N.15 08291 Ripollet
+                        <img src="/assets/iconos/head_localitzacio.png" style="width:25px;" /> P.I Molí d'en Xec N.15 08291 Ripollet
                     </div>
                     <div class="col-lg-3 text-center">
-                        <i class="fas fa-phone"></i>&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
+                        <img src="/assets/iconos/head_telf.png" style="width:25px;" />&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
                     </div>
                     <div class="col-lg-3 right">
-                        <i class="far fa-envelope"></i>&nbsp; <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
+                        <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
                     </div>
                     <div class="col-lg-2 right">
                         <i class="fab fa-facebook-f"></i> &nbsp; <i class="fab fa-twitter"></i> &nbsp; <i class="fab fa-instagram"></i>

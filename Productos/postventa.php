@@ -41,7 +41,7 @@ $id = $_GET["Cat"];
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3" style="border-right: 1px solid rgba(155,155,155,0.15);">
+                <div class="col-lg-3" style="border-right: 1px solid rgba(155,155,155,0.15); padding-right: 0px;">
                     <div class="colum-left">
                         <h1 class="list-title-left">CATEGORIAS</h1>
                         <ul id="list-categorias"></ul>

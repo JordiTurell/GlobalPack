@@ -18,11 +18,11 @@ function LoadCategoriasProductos() {
                 var code = '<div class="categoria-item">' +
                     '<img src="' + data.list[a].Icono + '" /><br/>' +
                     '<div>' + data.list[a].Categoria + '</div>' +
-                    '<div class="cat-vermas">VER MAS > </div>' +
+                    '<div class="cat-vermas">VER MAS <img src="/assets/iconos/FLETXA_PRODUCTOS_CATEGORIAS_NEGRO.png" style="width:25px; height:25px;" /> </div>' +
                     '<div class="info-cat">' +
                     '<div class="title-cat">' + data.list[a].Categoria + '</div>' +
                     '<div class="desc-cat">' + data.list[a].Descripcion + '</div>' +
-                    '<div class="cat-vermas">VER MAS > </div>' +
+                    '<div class="cat-vermas">VER MAS <img src="/assets/iconos/FLETXA_PRODUCTOS_CATEGORIAS_BLANCA.png" style="width:25px; height:25px;" /> </div>' +
                     '</div>' +
                     '</div>';
                 var item = $(header).append(code);

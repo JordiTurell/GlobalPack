@@ -18,11 +18,11 @@ function LoadCategoriasOcasion() {
                 var code = '<div class="categoria-item">' +
                     '<img src="' + data.list[a].Icono + '" /><br/>' +
                     '<div>' + data.list[a].Categoria + '</div>' +
-                    '<div class="cat-vermas">VER MAS > </div>' +
+                    '<div class="cat-vermas">VER MAS <img src="/assets/iconos/FLETXA_PRODUCTOS_CATEGORIAS_NEGRO.png" style="width:25px; height:25px; margin-top:0px;" /> </div>' +
                     '<div class="info-cat">' +
                     '<div class="title-cat">' + data.list[a].Categoria + '</div>' +
                     '<div class="desc-cat">' + data.list[a].Descripcion + '</div>' +
-                    '<div class="cat-vermas">VER MAS > </div>' +
+                    '<div class="cat-vermas">VER MAS <img src="/assets/iconos/FLETXA_PRODUCTOS_CATEGORIAS_BLANCA.png" style="width:25px; height:25px; margin-top:0px;" /> </div>' +
                     '</div>' +
                     '</div>';
                 var item = $(header).append(code);
@@ -159,10 +159,10 @@ function LoadColumLeft(id) {
                 var item = null;
                 if (id == data.list[a].Id_Categoria) {
                     cat = data.list[a];
-                    code = '<li class="cat-active"><img src="' + data.list[a].Icono + '" /> <div>' + data.list[a].Categoria + '</div>';
+                    code = '<li class="cat-active" style="padding-right:0px;"><img src="' + data.list[a].Icono + '" /> <span>' + data.list[a].Categoria + '</span>';
                     item = $(header).append(code);
                 } else {
-                    code = '<li><img src="' + data.list[a].Icono + '" /> <div>' + data.list[a].Categoria + '</div>';
+                    code = '<li style="padding-right:0px;"><img src="' + data.list[a].Icono + '" /> <span>' + data.list[a].Categoria + '</span>';
                     item = $(header).append(code);
                     $($($(item).children()[a])[0]).data('cat', data.list[a]);
                     $($($(item).children()[a])[0]).on('click', function (ev) {

@@ -1,6 +1,6 @@
 <div class="popup-contacte" onclick="Showcontact();">
     <span>Asesoramiento</span>
-    <span>i</span>
+    <span><img src="/assets/iconos/ICON_INFO.png" style="width:50px; margin-top:-35px; margin-left:-10px;"/></span>
 </div>
 <div class="form-popup-contacto">
      <div class="row">
