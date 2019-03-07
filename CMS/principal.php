@@ -64,7 +64,7 @@ if(isset($_SESSION['SES'])){
 
             <!-- Main content -->
             <section class="content">
-             
+                <img src="/assets/img/LOGO_GLOBALPACK_NOSOTROS.png" style="margin-left:7%; margin-top:12%;"/>
             </section>
             <!-- /.content -->
         </div>

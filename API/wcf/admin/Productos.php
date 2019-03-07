@@ -954,10 +954,11 @@ namespace Api\WCF
                             $producto->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
                             $producto->SetComparativa($row["Comparativa"]);
                             $producto->SetAnoGarantia($row["Anogarantia"]);
-                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$producto->Id_Producto."' LIMIT 1";
+                            $producto->SetReferencia($row["Referencia"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$producto->Id_Producto."'";
                             if($r = mysqli_query($conn, $imagen)){
                                 while($img = mysqli_fetch_assoc($r)){
-                                    $producto->SetImage($img["Url"]);
+                                    $producto->SetImages($img["Url"]);
                                 }
                             }
                             $query_filtros = "SELECT * FROM productos_filtros WHERE Id_Producto = '".$producto->Id_Producto."'";
@@ -983,10 +984,78 @@ namespace Api\WCF
                             $result->item = $producto;
                         }
                     }
-                   
+
                     mysqli_close($conn);
                     $result->SetStatus(true);
                     $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        //Actualizar Producto
+        public function UpdateProduct(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $result = new Result(false, "", null);
+            if($input["item"] != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+                    $date = date("Y-m-d H:i:s");
+                    $guid = Data::GUID();
+                    $item = $input["item"];
+
+                    $query = "UPDATE productos SET Titulo = '".$item["Titulo"]."', Descripcion = '".$item["Descripcion"]."', Video = '".$item["Video"]."', Referencia = '".$item["Sage"]."', Comparativa = '".$item["Comparativa"]."', Ficha_Tecnica = '".$item["Ficha_Tecnica"]."',  FechaM = '".$date."', Descripcio_min = '".$item["DescMin"]."', Anogarantia = '".$item["Garantia"]."', Titulo_Video = '".$item["TituloVideo"]."', DEscripcion_Video = '".$item["DescVideo"]."' WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+
+                    if($res = mysqli_query($conn, $query)){
+                        $deleteimages = "DELETE FROM p_multimedia_productos WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                        mysqli_query($conn, $deleteimages);
+                        foreach($item["imagenes"] as $img){
+
+                            $imagen = "SELECT * FROM p_multimedia WHERE Url = '".$img."'";
+
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($row = mysqli_fetch_assoc($r)){
+                                    $query = "INSERT INTO p_multimedia_productos (Id_Multimedia, Id_Producto) VALUES ('".$row["Id_Multimedia"]."', '".$input["item"]["itemdb"]["Id_Producto"]."')";
+                                    mysqli_query($conn, $query);
+                                }
+                            }
+                        }
+                        $deletecategorias = "DELETE FROM productos_categorias WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                        mysqli_query($conn, $deletecategorias);
+                        for($a = 0; $a < count($input["item"]["itemdb"]["Categoria"]); $a++){
+                            $q = "INSERT INTO productos_categorias (Id_Producto, Id_Categoria) VALUES ('".$input["item"]["itemdb"]["Id_Producto"]."', '".$input["item"]["itemdb"]["Categoria"][$a]."')";
+                            mysqli_query($conn, $q);
+                        }
+                        $deleteFiltros = "DELETE FROM productos_filtros WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                        mysqli_query($conn, $deleteFiltros);
+                        for($a = 0; $a < count($input["item"]["itemdb"]["Id_SubCategoria"]); $a++){
+                            $q = "INSERT INTO productos_filtros (Id_Producto, Id_Filtro) VALUES ('".$input["item"]["itemdb"]["Id_Producto"]."', '".$input["item"]["itemdb"]["Id_SubCategoria"][$a]."')";
+                            mysqli_query($conn, $q);
+                        }
+                        $deleteServicios = "DELETE FROM productos_servicio WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                        mysqli_query($conn, $deleteServicios);
+                        for($a = 0; $a < count($input["item"]["itemdb"]["servicios"]); $a++){
+                            $q = "INSERT INTO productos_servicio (Id_Servicio, Id_Producto) VALUES ('".$input["item"]["itemdb"]["servicios"][$a]["Id_Servicios"]."', '".$input["item"]["itemdb"]["Id_Producto"]."')";
+                            mysqli_query($conn, $q);
+                        }
+                        $result->SetStatus(true);
+                    }
+                    mysqli_close($conn);
                     return $result;
                 }else{
                     $result->SetStatus(false);

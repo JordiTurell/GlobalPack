@@ -99,6 +99,10 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->GetAllProducto());
         break;
+    case 'UpdateProduct':
+        $wcf = new Productos();
+        echo json_encode($wcf->UpdateProduct());
+        break;
 }
 
 ?>

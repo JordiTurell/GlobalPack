@@ -3,6 +3,7 @@ var tabposition = 1;
 var imagenes = [];
 var createProducto = new Object();
 
+
 function LoadWizard() {
     tabposition = 1;
     createProducto = new Object();
@@ -10,7 +11,7 @@ function LoadWizard() {
     createProducto.filtres = [];
     createProducto.serveis = [];
     createProducto.imagenes = [];
-
+    $('#SaveProduct').data('edit', false);
     $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
         var request = requestitem;
         request.token = token;
@@ -688,22 +689,41 @@ function SaveProduct() {
         request.item.imagenes = imagenes;
         formData.append("item", request.item);
         formData.append("token", token);
-        $.ajax({
-            url: "/api/interfaces/admin/IProductos.php?fun=SaveProduct",
-            type: "POST",
-            data: JSON.stringify(request),
-            cache: false,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.status) {
-                    $('#WizarProducto').modal('hide');
-                    location.reload();
-                } else {
-                    alert(data.msg);
+        if ($('#SaveProduct').data('edit')) {
+            $.ajax({
+                url: "/api/interfaces/admin/IProductos.php?fun=UpdateProduct",
+                type: "POST",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.status) {
+                        $('#WizarProducto').modal('hide');
+                        location.reload();
+                    } else {
+                        alert(data.msg);
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            $.ajax({
+                url: "/api/interfaces/admin/IProductos.php?fun=SaveProduct",
+                type: "POST",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.status) {
+                        $('#WizarProducto').modal('hide');
+                        location.reload();
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        }
     });
 }
 
@@ -757,7 +777,7 @@ function Eliminar() {
 function Editar(producto) {
     console.log(producto);
     tabposition = 1;
-    createProducto = {};
+    createProducto = new Object();
     createProducto.categorias = [];
     createProducto.filtres = [];
     createProducto.serveis = [];
@@ -869,7 +889,7 @@ function Editar(producto) {
 
                                                 var filtre_li = $($(filtre).children()[a]);
                                                 $(filtre_li).data('cat', data.list[a]);
-                                                $(filtre_li).data('selection', false);
+                                                $(filtre_li).data('selection', catActive);
                                                 $(filtre_li).on('click', function () {
                                                     if ($(this).data('selection')) {
                                                         $(this).removeClass('cat_Active');
@@ -900,13 +920,13 @@ function Editar(producto) {
 
                                     },
                                     success: function (data) {
-
+                                        console.log(data.list);
                                         if (data.status) {
                                             var cat = $('#selectserveis');
                                             $(cat).children().remove();
                                             for (var a = 0; a < data.list.length; a++) {
-                                                for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
-                                                    if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
+                                                for (var c = 0; c < createProducto.itemdb.servicios.length; c++) {
+                                                    if (createProducto.itemdb.servicios[c] === data.list[a].Id_Servicios) {
                                                         catActive = true;
                                                         break;
                                                     } else {
@@ -923,15 +943,15 @@ function Editar(producto) {
 
                                                 var serveis_li = $($(serveis).children()[a]);
                                                 $(serveis_li).data('cat', data.list[a]);
-                                                $(serveis_li).data('selection', false);
+                                                $(serveis_li).data('selection', catActive);
                                                 $(serveis_li).on('click', function () {
                                                     if ($(this).data('selection')) {
                                                         $(this).removeClass('cat_Active');
-                                                        createProducto.serveis = createProducto.serveis.filter(product => product.Nombre != $(this).data('cat').Nombre);
+                                                        createProducto.itemdb.servicios = createProducto.itemdb.servicios.filter(product => product != $(this).data('cat').Id_Servicios);
                                                         $(this).data('selection', false);
                                                     } else {
                                                         $(this).addClass('cat_Active');
-                                                        createProducto.serveis.push($(this).data('cat'));
+                                                        createProducto.itemdb.servicios.push($(this).data('cat'));
                                                         $(this).data('selection', true);
                                                     }
                                                 });
@@ -942,6 +962,22 @@ function Editar(producto) {
                                         }
                                     }
                                 });
+                                //Imatges
+                                imagenes = createProducto.itemdb.imagen;
+                                AsignarImagenes();
+
+                                $('#Titulo').val(createProducto.itemdb.Titulo);
+                                CKEDITOR.instances.editor1.setData(createProducto.itemdb.Descripcion);
+                                $('#garantia').val(createProducto.itemdb.anogarantia);
+                                $('#desc_corta').val(createProducto.itemdb.Descripcion_corta);
+                                CKEDITOR.instances.editor2.setData(createProducto.itemdb.FichaTecnica);
+                                CKEDITOR.instances.editor3.setData(createProducto.itemdb.comparativa);
+                                $('#Video').val(createProducto.itemdb.videourl);
+                                $('#titlevideo').val(createProducto.itemdb.videotitle);
+                                $('#descvideo').val(createProducto.itemdb.videodesc);
+                                $('#Sage').val(createProducto.itemdb.referencia);
+
+                                $('#SaveProduct').data('edit', true);
                             }
                         }
                     });
