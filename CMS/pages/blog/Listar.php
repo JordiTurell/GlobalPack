@@ -68,12 +68,12 @@ if(isset($_SESSION['SES'])){
             <section class="content">
                 <div class="box">
                     <div class="box-header">
-                        cap
+                        
                     </div>
                     <div class="box-body">
                     </div>
                     <div class="box-footer">
-                        pie
+                        
                     </div>
                 </div>
             </section>
