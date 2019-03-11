@@ -199,7 +199,7 @@ if(isset($_SESSION['SES'])){
                             <div class="tab tab-9">
                                 <div class="form-group">
                                     <label>Pdf</label>
-                                    <input type="file" id="Pdf" placeholder="Pdf" class="form-control" />
+                                    <input type="file" id="Pdf" placeholder="Pdf" class="form-control" onchange="SavePDF(this);" />
                                 </div>
                                 <div class="form-group">
                                     <label>Referencia del Sage</label>

@@ -455,7 +455,7 @@ namespace Api\WCF
                     $guid = Data::GUID();
                     $item = $input["item"];
 
-                    $query = "INSERT INTO productos (Id_Producto, Titulo, Descripcion, Video, Referencia, Comparativa, pdf, Ficha_Tecnica, FechaC, FechaM, Descripcio_min, Anogarantia, Ocasion, Habilitado, Titulo_Video, DEscripcion_Video) VALUES ('".$guid."', '".$item["Titulo"]."', '".$item["Descripcion"]."', '".$item["Video"]."', '".$item["Sage"]."', '".$item["Comparativa"]."', ' ', '".$item["Ficha_Tecnica"]."', '".$date."', '".$date."', '".$item["DescMin"]."', '".$item["Garantia"]."', 0, 0, '".$item["TituloVideo"]."', '".$item["DescVideo"]."')";
+                    $query = "INSERT INTO productos (Id_Producto, Titulo, Descripcion, Video, Referencia, Comparativa, pdf, Ficha_Tecnica, FechaC, FechaM, Descripcio_min, Anogarantia, Ocasion, Habilitado, Titulo_Video, DEscripcion_Video) VALUES ('".$guid."', '".$item["Titulo"]."', '".$item["Descripcion"]."', '".$item["Video"]."', '".$item["Sage"]."', '".$item["Comparativa"]."', '".$item["Pdf"]."', '".$item["Ficha_Tecnica"]."', '".$date."', '".$date."', '".$item["DescMin"]."', '".$item["Garantia"]."', 0, 0, '".$item["TituloVideo"]."', '".$item["DescVideo"]."')";
 
                     if($res = mysqli_query($conn, $query)){
 
@@ -1019,7 +1019,12 @@ namespace Api\WCF
                     $guid = Data::GUID();
                     $item = $input["item"];
 
-                    $query = "UPDATE productos SET Titulo = '".$item["Titulo"]."', Descripcion = '".$item["Descripcion"]."', Video = '".$item["Video"]."', Referencia = '".$item["Sage"]."', Comparativa = '".$item["Comparativa"]."', Ficha_Tecnica = '".$item["Ficha_Tecnica"]."',  FechaM = '".$date."', Descripcio_min = '".$item["DescMin"]."', Anogarantia = '".$item["Garantia"]."', Titulo_Video = '".$item["TituloVideo"]."', DEscripcion_Video = '".$item["DescVideo"]."' WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                    $query = '';
+                    if($item["Pdf"] == ""){
+                        $query = "UPDATE productos SET Titulo = '".$item["Titulo"]."', Descripcion = '".$item["Descripcion"]."', Video = '".$item["Video"]."', Referencia = '".$item["Sage"]."', Comparativa = '".$item["Comparativa"]."', Ficha_Tecnica = '".$item["Ficha_Tecnica"]."',  FechaM = '".$date."', Descripcio_min = '".$item["DescMin"]."', Anogarantia = '".$item["Garantia"]."', Titulo_Video = '".$item["TituloVideo"]."', DEscripcion_Video = '".$item["DescVideo"]."' WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                    }else{
+                        $query = "UPDATE productos SET Titulo = '".$item["Titulo"]."', Descripcion = '".$item["Descripcion"]."', Video = '".$item["Video"]."', Referencia = '".$item["Sage"]."', Comparativa = '".$item["Comparativa"]."', pdf = '".$item["Pdf"]."', Ficha_Tecnica = '".$item["Ficha_Tecnica"]."',  FechaM = '".$date."', Descripcio_min = '".$item["DescMin"]."', Anogarantia = '".$item["Garantia"]."', Titulo_Video = '".$item["TituloVideo"]."', DEscripcion_Video = '".$item["DescVideo"]."' WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
+                    }
 
                     if($res = mysqli_query($conn, $query)){
                         $deleteimages = "DELETE FROM p_multimedia_productos WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";

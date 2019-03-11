@@ -95,9 +95,11 @@ $producto = $_POST;
             <div class="row">
                 <div class="col-lg-12">
                      <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#ficha">Ficha Tecnica</a></li>
-                        <li><a data-toggle="tab" href="#content-video">Videos</a></li>
-                        <li><a data-toggle="tab" href="#comparativa">Comparativa</a></li>
+                        <li id="tab_fichaTecnica" class="active"><a data-toggle="tab" href="#ficha">Ficha Tecnica</a></li>
+                        <li id="tab_video"><a data-toggle="tab" href="#content-video">Videos</a></li>
+                         <li id="tab_comparativa">
+                             <a data-toggle="tab" href="#comparativa">Comparativa</a>
+                         </li>
                     </ul>
                 </div>
             </div>

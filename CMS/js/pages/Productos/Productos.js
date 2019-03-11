@@ -2,6 +2,7 @@
 var tabposition = 1;
 var imagenes = [];
 var createProducto = new Object();
+var UrlPDF = '';
 
 
 function LoadWizard() {
@@ -679,6 +680,7 @@ function SaveProduct() {
         createProducto.DescVideo = $('#descvideo').val();
         createProducto.DescMin = $('#desc_corta').val();
         createProducto.Garantia = $('#garantia').val();
+        createProducto.Pdf = UrlPDF;
 
         request.item = createProducto;
                
@@ -725,6 +727,38 @@ function SaveProduct() {
             });
         }
     });
+}
+
+function SavePDF(input) {
+    var formData = new FormData();
+    UrlPDF = '';
+    if ($('#SaveProduct').data('edit')) {
+        $('#SaveProduct').prop('disabled', true);
+        formData.append("idProducto", createProducto.item.Id_Producto);
+    }
+    if ($(input).prop('files') != undefined) {
+        formData.append("file", $(input).prop('files')[0]);
+
+        $.ajax({
+            url: "/cms/img/UpdateFile.php?FOLDER=PDF",
+            type: "POST",
+            async: true,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                UrlPDF = data;
+                $(input).val('');
+                if ($('#SaveProduct').data('edit')) {
+                    $('#SaveProduct').prop('disabled', false);
+                }
+            }
+        });
+    } else {
+        $(input).val('');
+        alert('Error al subir el PDF');
+    }
 }
 
 function Buscar() {
@@ -775,7 +809,7 @@ function Eliminar() {
 }
 
 function Editar(producto) {
-    console.log(producto);
+
     tabposition = 1;
     createProducto = new Object();
     createProducto.categorias = [];
@@ -784,205 +818,207 @@ function Editar(producto) {
     createProducto.imagenes = [];
     createProducto.item = producto;
 
-    $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
-        var request = requestitem;
-        request.token = token;
-        request.item = producto;
-        //GetProducto
-        $.ajax({
-            type: "POST",
-            url: "/api/interfaces/admin/IProductos.php?fun=GetAllProducto",
-            data: JSON.stringify(request),
-            cache: false,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            beforeSend: function () {
+    var request = {
+        token: '',
+        item: null
+    };
+    request.token = this.token;
+    request.item = producto;
+    producto.Pdf = UrlPDF;
+    //GetProducto
+    $.ajax({
+        type: "POST",
+        url: "/api/interfaces/admin/IProductos.php?fun=GetAllProducto",
+        data: JSON.stringify(request),
+        cache: false,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
 
-            },
-            success: function (data) {
-                if (data.status) {
-                    console.log(data);
-                    createProducto.itemdb = data.item;
-                    //Cateogrias
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/interfaces/admin/IProductos.php?fun=LoadListCategorias",
-                        data: JSON.stringify(request),
-                        cache: false,
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        beforeSend: function () {
+        },
+        success: function (data) {
+            if (data.status) {
+                console.log(data);
+                createProducto.itemdb = data.item;
+                //Cateogrias
+                $.ajax({
+                    type: "POST",
+                    url: "/api/interfaces/admin/IProductos.php?fun=LoadListCategorias",
+                    data: JSON.stringify(request),
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
 
-                        },
-                        success: function (data) {
-                            if (data.status) {
-                                var cat = $('#selectcat');
-                                $(cat).children().remove();
-                                var catActive = false;
-                                createProducto.categorias = data.list;
-                                for (var a = 0; a < data.list.length; a++) {
-                                    for (var c = 0; c < createProducto.itemdb.Categoria.length; c++) {
-                                        if (createProducto.itemdb.Categoria[c] === data.list[a].Id_Categoria) {
-                                            catActive = true;
-                                            break;
-                                        } else {
-                                            catActive = false;
-                                        }
-                                    }
-
-                                    var html = '';
-                                    if (catActive) {
-                                        html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><br/><span>' + data.list[a].Categoria + '</span></li>';
+                    },
+                    success: function (data) {
+                        if (data.status) {
+                            var cat = $('#selectcat');
+                            $(cat).children().remove();
+                            var catActive = false;
+                            createProducto.categorias = data.list;
+                            for (var a = 0; a < data.list.length; a++) {
+                                for (var c = 0; c < createProducto.itemdb.Categoria.length; c++) {
+                                    if (createProducto.itemdb.Categoria[c] === data.list[a].Id_Categoria) {
+                                        catActive = true;
+                                        break;
                                     } else {
-                                        html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><br/><span>' + data.list[a].Categoria + '</span></li>';
+                                        catActive = false;
                                     }
-                                    var cat_item = $(cat).append(html);
-                                    var cat_li = $($(cat_item).children()[a]);
-                                    $(cat_li).data('cat', data.list[a]);
-                                    $(cat_li).data('selection', catActive);
-                                    $(cat_li).on('click', function () {
-                                        if ($(this).data('selection')) {
-                                            $(this).removeClass('cat_Active');
-                                            createProducto.itemdb.Categoria = createProducto.itemdb.Categoria.filter(product => product != $(this).data('cat').Id_Categoria);
-                                            $(this).data('selection', false);
-                                        } else {
-                                            $(this).addClass('cat_Active');
-                                            createProducto.itemdb.Categoria.push($(this).data('cat').Id_Categoria);
-                                            $(this).data('selection', true);
-                                        }
-                                    });
                                 }
-                                //Filtres
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/api/interfaces/admin/IProductos.php?fun=LoadListSubCategorias",
-                                    data: JSON.stringify(request),
-                                    cache: false,
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    beforeSend: function () {
 
-                                    },
-                                    success: function (data) {
-
-                                        if (data.status) {
-                                            var cat = $('#selectsubcat');
-                                            $(cat).children().remove();
-                                            var catActive = false;
-                                            for (var a = 0; a < data.list.length; a++) {
-                                                for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
-                                                    if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
-                                                        catActive = true;
-                                                        break;
-                                                    } else {
-                                                        catActive = false;
-                                                    }
-                                                }
-                                                var html = '';
-                                                if (catActive) {
-                                                    html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
-                                                } else {
-                                                    html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
-                                                }
-                                                
-                                                var filtre = $(cat).append(html);
-
-                                                var filtre_li = $($(filtre).children()[a]);
-                                                $(filtre_li).data('cat', data.list[a]);
-                                                $(filtre_li).data('selection', catActive);
-                                                $(filtre_li).on('click', function () {
-                                                    if ($(this).data('selection')) {
-                                                        $(this).removeClass('cat_Active');
-                                                        createProducto.itemdb.Id_SubCategoria = createProducto.itemdb.Id_SubCategoria.filter(product => product != $(this).data('cat').Id_Subcategoria);
-                                                        $(this).data('selection', false);
-                                                    } else {
-                                                        $(this).addClass('cat_Active');
-                                                        createProducto.itemdb.Id_SubCategoria.push($(this).data('cat').Id_Subcategoria);
-                                                        $(this).data('selection', true);
-                                                    }
-                                                });
-                                            }
-                                            $('#WizarProducto').modal({ backdrop: 'static', keyboard: false });
-                                            $('#WizarProducto').modal('show');
-                                            PositionTab();
-                                        }
+                                var html = '';
+                                if (catActive) {
+                                    html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><br/><span>' + data.list[a].Categoria + '</span></li>';
+                                } else {
+                                    html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><br/><span>' + data.list[a].Categoria + '</span></li>';
+                                }
+                                var cat_item = $(cat).append(html);
+                                var cat_li = $($(cat_item).children()[a]);
+                                $(cat_li).data('cat', data.list[a]);
+                                $(cat_li).data('selection', catActive);
+                                $(cat_li).on('click', function () {
+                                    if ($(this).data('selection')) {
+                                        $(this).removeClass('cat_Active');
+                                        createProducto.itemdb.Categoria = createProducto.itemdb.Categoria.filter(product => product != $(this).data('cat').Id_Categoria);
+                                        $(this).data('selection', false);
+                                    } else {
+                                        $(this).addClass('cat_Active');
+                                        createProducto.itemdb.Categoria.push($(this).data('cat').Id_Categoria);
+                                        $(this).data('selection', true);
                                     }
                                 });
-                                //Serveis
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/api/interfaces/admin/IProductos.php?fun=LoadListServicios",
-                                    data: JSON.stringify(request),
-                                    cache: false,
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    beforeSend: function () {
-
-                                    },
-                                    success: function (data) {
-                                        console.log(data.list);
-                                        if (data.status) {
-                                            var cat = $('#selectserveis');
-                                            $(cat).children().remove();
-                                            for (var a = 0; a < data.list.length; a++) {
-                                                for (var c = 0; c < createProducto.itemdb.servicios.length; c++) {
-                                                    if (createProducto.itemdb.servicios[c] === data.list[a].Id_Servicios) {
-                                                        catActive = true;
-                                                        break;
-                                                    } else {
-                                                        catActive = false;
-                                                    }
-                                                }
-                                                var html = '';
-                                                if (catActive) {
-                                                    html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
-                                                } else {
-                                                    html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
-                                                }
-                                                var serveis = $(cat).append(html);
-
-                                                var serveis_li = $($(serveis).children()[a]);
-                                                $(serveis_li).data('cat', data.list[a]);
-                                                $(serveis_li).data('selection', catActive);
-                                                $(serveis_li).on('click', function () {
-                                                    if ($(this).data('selection')) {
-                                                        $(this).removeClass('cat_Active');
-                                                        createProducto.itemdb.servicios = createProducto.itemdb.servicios.filter(product => product != $(this).data('cat').Id_Servicios);
-                                                        $(this).data('selection', false);
-                                                    } else {
-                                                        $(this).addClass('cat_Active');
-                                                        createProducto.itemdb.servicios.push($(this).data('cat'));
-                                                        $(this).data('selection', true);
-                                                    }
-                                                });
-                                            }
-                                            $('#WizarProducto').modal({ backdrop: 'static', keyboard: false });
-                                            $('#WizarProducto').modal('show');
-                                            PositionTab();
-                                        }
-                                    }
-                                });
-                                //Imatges
-                                imagenes = createProducto.itemdb.imagen;
-                                AsignarImagenes();
-
-                                $('#Titulo').val(createProducto.itemdb.Titulo);
-                                CKEDITOR.instances.editor1.setData(createProducto.itemdb.Descripcion);
-                                $('#garantia').val(createProducto.itemdb.anogarantia);
-                                $('#desc_corta').val(createProducto.itemdb.Descripcion_corta);
-                                CKEDITOR.instances.editor2.setData(createProducto.itemdb.FichaTecnica);
-                                CKEDITOR.instances.editor3.setData(createProducto.itemdb.comparativa);
-                                $('#Video').val(createProducto.itemdb.videourl);
-                                $('#titlevideo').val(createProducto.itemdb.videotitle);
-                                $('#descvideo').val(createProducto.itemdb.videodesc);
-                                $('#Sage').val(createProducto.itemdb.referencia);
-
-                                $('#SaveProduct').data('edit', true);
                             }
+                            //Filtres
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/interfaces/admin/IProductos.php?fun=LoadListSubCategorias",
+                                data: JSON.stringify(request),
+                                cache: false,
+                                dataType: "json",
+                                contentType: "application/json; charset=utf-8",
+                                beforeSend: function () {
+
+                                },
+                                success: function (data) {
+
+                                    if (data.status) {
+                                        var cat = $('#selectsubcat');
+                                        $(cat).children().remove();
+                                        var catActive = false;
+                                        for (var a = 0; a < data.list.length; a++) {
+                                            for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
+                                                if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
+                                                    catActive = true;
+                                                    break;
+                                                } else {
+                                                    catActive = false;
+                                                }
+                                            }
+                                            var html = '';
+                                            if (catActive) {
+                                                html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
+                                            } else {
+                                                html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Categoria + '</span></li>';
+                                            }
+
+                                            var filtre = $(cat).append(html);
+
+                                            var filtre_li = $($(filtre).children()[a]);
+                                            $(filtre_li).data('cat', data.list[a]);
+                                            $(filtre_li).data('selection', catActive);
+                                            $(filtre_li).on('click', function () {
+                                                if ($(this).data('selection')) {
+                                                    $(this).removeClass('cat_Active');
+                                                    createProducto.itemdb.Id_SubCategoria = createProducto.itemdb.Id_SubCategoria.filter(product => product != $(this).data('cat').Id_Subcategoria);
+                                                    $(this).data('selection', false);
+                                                } else {
+                                                    $(this).addClass('cat_Active');
+                                                    createProducto.itemdb.Id_SubCategoria.push($(this).data('cat').Id_Subcategoria);
+                                                    $(this).data('selection', true);
+                                                }
+                                            });
+                                        }
+                                        $('#WizarProducto').modal({ backdrop: 'static', keyboard: false });
+                                        $('#WizarProducto').modal('show');
+                                        PositionTab();
+                                    }
+                                }
+                            });
+                            //Serveis
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/interfaces/admin/IProductos.php?fun=LoadListServicios",
+                                data: JSON.stringify(request),
+                                cache: false,
+                                dataType: "json",
+                                contentType: "application/json; charset=utf-8",
+                                beforeSend: function () {
+
+                                },
+                                success: function (data) {
+                                    console.log(data.list);
+                                    if (data.status) {
+                                        var cat = $('#selectserveis');
+                                        $(cat).children().remove();
+                                        for (var a = 0; a < data.list.length; a++) {
+                                            for (var c = 0; c < createProducto.itemdb.servicios.length; c++) {
+                                                if (createProducto.itemdb.servicios[c] === data.list[a].Id_Servicios) {
+                                                    catActive = true;
+                                                    break;
+                                                } else {
+                                                    catActive = false;
+                                                }
+                                            }
+                                            var html = '';
+                                            if (catActive) {
+                                                html = '<li class="cat_Active"><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
+                                            } else {
+                                                html = '<li><img src="' + data.list[a].Icono + '" style="width:50px; height:auto;" /><span>' + data.list[a].Nombre + '</span></li>';
+                                            }
+                                            var serveis = $(cat).append(html);
+
+                                            var serveis_li = $($(serveis).children()[a]);
+                                            $(serveis_li).data('cat', data.list[a]);
+                                            $(serveis_li).data('selection', catActive);
+                                            $(serveis_li).on('click', function () {
+                                                if ($(this).data('selection')) {
+                                                    $(this).removeClass('cat_Active');
+                                                    createProducto.itemdb.servicios = createProducto.itemdb.servicios.filter(product => product != $(this).data('cat').Id_Servicios);
+                                                    $(this).data('selection', false);
+                                                } else {
+                                                    $(this).addClass('cat_Active');
+                                                    createProducto.itemdb.servicios.push($(this).data('cat'));
+                                                    $(this).data('selection', true);
+                                                }
+                                            });
+                                        }
+                                        $('#WizarProducto').modal({ backdrop: 'static', keyboard: false });
+                                        $('#WizarProducto').modal('show');
+                                        PositionTab();
+                                    }
+                                }
+                            });
+                            //Imatges
+                            imagenes = createProducto.itemdb.imagen;
+                            AsignarImagenes();
+
+                            $('#Titulo').val(createProducto.itemdb.Titulo);
+                            CKEDITOR.instances.editor1.setData(createProducto.itemdb.Descripcion);
+                            $('#garantia').val(createProducto.itemdb.anogarantia);
+                            $('#desc_corta').val(createProducto.itemdb.Descripcion_corta);
+                            CKEDITOR.instances.editor2.setData(createProducto.itemdb.FichaTecnica);
+                            CKEDITOR.instances.editor3.setData(createProducto.itemdb.comparativa);
+                            $('#Video').val(createProducto.itemdb.videourl);
+                            $('#titlevideo').val(createProducto.itemdb.videotitle);
+                            $('#descvideo').val(createProducto.itemdb.videodesc);
+                            $('#Sage').val(createProducto.itemdb.referencia);
+
+                            $('#SaveProduct').data('edit', true);
                         }
-                    });
-                }
+                    }
+                });
             }
-        });
+        }
     });
 }

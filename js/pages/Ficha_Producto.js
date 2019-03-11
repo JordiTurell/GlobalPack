@@ -68,6 +68,21 @@ function Ficha_Producto(id) {
                 }
             }
 
+            if (data.item.FichaTecnica == "") {
+                $('#tab_fichaTecnica').css('display', 'none');
+                $('#ficha').css('display', 'none');
+            }
+
+            if (data.item.videourl == "") {
+                $('#tab_video').css('display', 'none');
+                $('#content-video').css('display', 'none');
+            }
+
+            if (data.item.comparativa == "") {
+                $('#tab_comparativa').css('display', 'none');
+                $('#comparativa').css('display', 'none');
+            }
+
             if (data.item.list_relacionados.length > 0) {
                 for (var a = 0; a < data.item.list_relacionados.length; a++) {
                     var code = '<div class="item-slider" style="margin-right:5px;"><div class="item-slider-info"><h3>' + data.item.list_relacionados[a].Titulo + '</h3><p>ver más</p></div><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';

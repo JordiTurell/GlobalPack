@@ -217,6 +217,7 @@ namespace Api\WCFWeb
                     $cat->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
                     $cat->SetComparativa($row["Comparativa"]);
                     $cat->SetAnoGarantia($row["Anogarantia"]);
+                    $cat->SetPdf($row["pdf"]);
 
                     $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."'";
                     if($r = mysqli_query($conn, $imagen)){

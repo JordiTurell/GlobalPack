@@ -632,6 +632,7 @@
     <Folder Include="img\icon-categorias-productos\" />
     <Folder Include="img\icon-subcategoria-producte\" />
     <Folder Include="img\icon-servicios-productos\" />
+    <Folder Include="img\PDF\" />
     <Folder Include="img\Productos\" />
     <Folder Include="img\Nosotros_Header\" />
     <Folder Include="img\Nosotros_Beneficios\" />

@@ -36,6 +36,7 @@ namespace Api\Models
         public $servicios = array();
         public $Categoria;
         public $referencia;
+        public $pdf;
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -50,6 +51,10 @@ namespace Api\Models
 
         public function SetCategoria($cat){
             $this->Categoria = $cat;
+        }
+        
+        public function SetPdf($pdf){
+            $this->pdf = $pdf;
         }
 
         public function SetReferencia($r){
