@@ -26,6 +26,12 @@ function ShowcontactComprar() {
     }
 }
 
+function ChangeStyleTab(index) {
+    $('.nav-tabs').children().each(function () {
+        $(this).css('border-bottom', 'solid 4px #9b9b9b');
+    });
+    $($('.nav-tabs').children()[index]).css('border-bottom', 'solid 4px #ef3340');
+}
 function Ficha_Producto(id) {
     var request = { uuid: id };
     $.ajax({

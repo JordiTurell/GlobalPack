@@ -35,7 +35,7 @@ function CreateListProductos(list) {
             '<div><label class="pvp_ocasion">' + list[a].PVP_Ocasion + '€</label> &nbsp; <label class="pvp">' + list[a].PVP + '€</label></div>' +
             '<div style="width:100%; position:relative; display:block; height:35px;">'+
             '<div class="anogarantia">' + list[a].anogarantia + '</div>' +
-            '<div class="vermas"><span>VER MAS</span> ></div>' +
+            '<div class="vermas"><span>VER MAS</span><img src="/assets/iconos/flecharoja.png" style="border:none; width:8px; margin-left:5px;" /></div>' +
             '</div>' +
             '</div>' +
             '</div>';

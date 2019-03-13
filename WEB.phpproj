@@ -54,6 +54,7 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <Content Include=".htaccess" />
+    <Content Include="assets\iconos\flecharoja.png" />
     <Content Include="assets\iconos\FLETXA_PRODUCTOS_CATEGORIAS_BLANCA.png" />
     <Content Include="assets\iconos\FLETXA_PRODUCTOS_CATEGORIAS_NEGRO.png" />
     <Content Include="assets\iconos\FLETXA_PRODUCTOS_FITXA.png" />
@@ -80,6 +81,7 @@
     <Content Include="assets\iconos\Maquinas.png" />
     <Content Include="assets\iconos\localizacion.png" />
     <Content Include="assets\img\Fletxa_slider.png" />
+    <Content Include="assets\img\FONS_FICHA_PRODUCTOS.png" />
     <Content Include="assets\img\instagram.svg" />
     <Content Include="assets\img\facebook.svg" />
     <Content Include="assets\img\LOGO%402x_GLOBALPACK.png" />

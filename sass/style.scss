@@ -68,6 +68,7 @@ body {
 
 .lis-option {
     list-style: none;
+    padding:0px;
 
     .option-contact {
         width: 241px;
@@ -132,7 +133,8 @@ body {
     padding: 20px;
     color: black;
     margin: 2px;
-    width: 241px;
+    width: 25%;
+    flex: 0 0 24.64%;
     height: 170px;
     position: relative;
     cursor: pointer;

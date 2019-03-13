@@ -32,7 +32,7 @@ $producto = $_POST;
     <!-- Navigation -->
     <?php include_once('../Menus/menutop.php'); ?>
 
-    <div class="row" style="margin-bottom:130px; margin-top:86px;">
+    <div class="row" style="margin-top:86px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
@@ -64,8 +64,8 @@ $producto = $_POST;
                             <div id="descripcion"></div>
                             <div id="garantia"></div>
                             <div class="row" style="margin-top:20px;">
-                                <div class="col-md-6 btn btn-web" style="padding-top:15px;" onclick="ShowcontactComprar();">
-                                    <img src="/assets/iconos/cart.png" style="width:30px;"/>&nbsp;Comprar
+                                <div class="col-md-6 btn btn-web" style="padding-top:14px;" onclick="ShowcontactComprar();">
+                                    <img src="/assets/iconos/cart.png" style="width:30px; float:left; margin-top:-1px; margin-left:30px;" />&nbsp;<div style="float:right; margin-top:2px; margin-right:22px;">COMPRAR</div>
                                 </div>
                                 <div class="col-md-6 btn btn-web" onclick="ShowcontactComprar();">
                                     Pedir Informaci&#243;n personalizada
@@ -95,23 +95,26 @@ $producto = $_POST;
             <div class="row">
                 <div class="col-lg-12">
                      <ul class="nav nav-tabs">
-                        <li id="tab_fichaTecnica" class="active"><a data-toggle="tab" href="#ficha">Ficha Tecnica</a></li>
-                        <li id="tab_video"><a data-toggle="tab" href="#content-video">Videos</a></li>
+                        <li id="tab_fichaTecnica">
+                            <a data-toggle="tab" href="#ficha" onclick="ChangeStyleTab(0);">Ficha Tecnica</a></li>
+                        <li id="tab_video">
+                            <a data-toggle="tab" href="#content-video" onclick="ChangeStyleTab(1);">Videos</a>
+                        </li>
                          <li id="tab_comparativa">
-                             <a data-toggle="tab" href="#comparativa">Comparativa</a>
+                             <a data-toggle="tab" href="#comparativa" onclick="ChangeStyleTab(2);">Comparativa</a>
                          </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row" style="background-color:#F7F7F7; padding-top:40px;">
+    <div class="row" style="background-image:url('/assets/img/FONS_FICHA_PRODUCTOS.png'); background-size:100% 100%; background-repeat:no-repeat; padding-top:40px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="col-lg-12">
                             <div class="tab-content">
-                              <div id="ficha" class="tab-pane fade in active show">
+                              <div id="ficha" class="tab-pane fade">
                                 
                               </div>
                               <div id="content-video" class="tab-pane fade">
@@ -134,16 +137,14 @@ $producto = $_POST;
             </div>
         </div>
     </div>
-    <div class="row" style="background-color:#F7F7F7;">
+    <div class="row">
         <div class="container" id="product_relacionados">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3>Productos relacionados</h3>
                 </div>
                 <div class="col-lg-12">
-                    <div class="slider_relacionados">
-                       
-                      </div>
+                    <div class="slider_relacionados"></div>
                 </div>
             </div>
         </div>
@@ -152,7 +153,7 @@ $producto = $_POST;
     <?php include_once('../Formularis/PopupContacte.php'); ?>
 
     <!-- Footer -->
-    <footer class="row" style="background-color:#F7F7F7;">
+    <footer class="row">
         <?php include_once('../Footer/footer.php'); ?>
     </footer>
     <!-- Bootstrap core JavaScript -->
@@ -161,7 +162,12 @@ $producto = $_POST;
     <script src="/js/slick.min.js"></script>
    
     <script type="text/javascript" src="/js/pages/Ficha_Producto.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            $($($('.nav-tabs').children()[0]).children()[0]).click();
+            $($('.nav-tabs').children()[0]).css('border-bottom', 'solid 4px #ef3340');
+        });
+    </script>
 </body>
 
 </html>

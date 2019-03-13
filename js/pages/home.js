@@ -52,7 +52,7 @@
                     '<div class="title-ocasion">' + data.list[a].Titulo + '</div>' +
                     '<div class="text-ocasion">' + data.list[a].Descripcion_corta + '</div>' +
                     '<div class="pvp-ocasion"><span>' + data.list[a].PVP_Ocasion +' €  </span><span>'+ data.list[a].PVP +' €</span></div>'+
-                    '<div class="fecha-ocasion">' + date + '<div class="vermas"><span>VER MAS</span>></div></div>' +
+                    '<div class="fecha-ocasion">' + date + '<div class="vermas"><span>VER MAS</span><img src="/assets/iconos/flecharoja.png" style="border:none; width:8px; margin-left:5px;" /></div></div>' +
                     '</div>';
 
                 var row = $(news).append(code);

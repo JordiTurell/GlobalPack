@@ -265,9 +265,6 @@ body {
     margin: 20px 20px 20px 20px;
     padding-bottom: 10px; }
 
-.title-form-home {
-  width: 789px !important; }
-
 .content-form {
   background-color: white;
   box-shadow: 0 0 10px 0 #D5D4D5;
@@ -276,6 +273,7 @@ body {
   margin-top: 60px;
   margin-bottom: 37px;
   margin-left: 10%;
+  margin-right: 10%;
   padding: 10px; }
   .content-form .title-form {
     position: absolute;
@@ -583,14 +581,15 @@ body {
   font-family: 'Ubuntu', sans-serif; }
 
 .nav-tabs {
-  margin-top: 91px;
+  margin-top: 40px;
   border: none; }
   .nav-tabs li {
     text-align: center;
     border-radius: 8px 8px 0 0;
     box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.08);
     margin-right: 5px;
-    border-bottom: solid 4px #9B9B9B; }
+    border-bottom: solid 4px #9B9B9B;
+    padding: 8px 31px 12px 31px; }
     .nav-tabs li a {
       color: #4A4A4A;
       text-decoration: none;
@@ -653,9 +652,8 @@ body {
   font-family: 'Ubuntu', sans-serif; }
 
 .icono-servicios {
-  height: 40px;
-  width: auto;
-  margin: 20px; }
+  height: 60px;
+  width: auto; }
 
 .item-producto-ocasion {
   box-shadow: 0 0 30px -4px rgba(0, 0, 0, 0.13);
@@ -747,7 +745,8 @@ body {
   line-height: 32px; }
 
 .lis-option {
-  list-style: none; }
+  list-style: none;
+  padding: 0px; }
   .lis-option .option-contact {
     width: 241px;
     height: 170px;
@@ -790,7 +789,8 @@ body {
   padding: 20px;
   color: black;
   margin: 2px;
-  width: 241px;
+  width: 25%;
+  flex: 0 0 24.64%;
   height: 170px;
   position: relative;
   cursor: pointer;

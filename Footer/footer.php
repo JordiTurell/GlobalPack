@@ -1,4 +1,4 @@
-<div class="col-lg-12 footer-cuadrats">
+
     <div class="container">
         <ul class="row lis-option">
             <li class="option">
@@ -56,5 +56,5 @@
             
         </ul>
     </div>
-</div>
+
 <?php include_once('footer_origin.php'); ?>

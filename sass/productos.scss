@@ -237,7 +237,7 @@
 }
 
 .nav-tabs {
-    margin-top: 91px;
+    margin-top: 40px;
     border: none;
 
     li {
@@ -246,6 +246,7 @@
         box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.08);
         margin-right: 5px;
         border-bottom: solid 4px $line-title;
+        padding:8px 31px 12px 31px;
 
         a {
             color: $item-slider;
@@ -330,9 +331,8 @@
 }
 
 .icono-servicios{
-    height:40px;
+    height:60px;
     width:auto;
-    margin:20px;
 }
 
 .item-producto-ocasion {

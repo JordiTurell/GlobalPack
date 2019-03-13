@@ -287,10 +287,6 @@
     }
 }
 
-.title-form-home{
-    width:789px !important;
-}
-
 .content-form {
     background-color: white;
     box-shadow: 0 0 10px 0 #D5D4D5;
@@ -299,6 +295,7 @@
     margin-top: 60px;
     margin-bottom: 37px;
     margin-left: 10%;
+    margin-right: 10%;
     padding: 10px;
 
     .title-form {
@@ -315,8 +312,8 @@
             font-weight: bold;
             letter-spacing: 1px;
             line-height: 29px;
-            margin-top:10px;
-            margin-left:-20px;
+            margin-top: 10px;
+            margin-left: -20px;
         }
     }
 
