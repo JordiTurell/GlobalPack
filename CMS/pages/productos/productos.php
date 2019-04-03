@@ -58,7 +58,7 @@ if(isset($_SESSION['SES'])){
             <section class="content">
                 <div class="row">
                     <div class="col-lg-12">
-                        <input type="button" value="Crear Producto" class="btn" style="margin-bottom:10px;" onclick="LoadWizard();"/>
+                            <input type="button" value="Crear Producto" class="btn" style="margin-bottom:10px;" onclick="LoadWizard();" />                        
                     </div>
                     <div class="col-lg-12">
                         <div class="box">
@@ -66,14 +66,27 @@ if(isset($_SESSION['SES'])){
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="input-group mb-2">
-                                            <input type="text" class="form-control" id="searchproduct" placeholder="Buscador" />
+                                            <input type="text" class="form-control" id="searchproduct" placeholder="Buscador" onkeypress="EnterSearch(event);" />
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text" onclick="Buscar();">
+                                                <div class="input-group-text" onclick="Buscar(0);">
                                                     <i class="fas fa-search"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                    
+                                    </div>    
+                                    <div class="col-lg-2">
+                                        <select class="form-control" id="Filtrocategorias" onchange="SelectCategoria();">
+                                            <option value="0">Selecciona una categoría</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class="form-control" id="Filtrotipo" onchange="SelectFiltro();">
+                                            <option value="0">Selecciona un filtro</option>
+                                            <option value="1">Habilitado</option>
+                                            <option value="2">Deshabilitado</option>
+                                            <option value="3">Ocasion</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-1 text-center">
@@ -118,7 +131,7 @@ if(isset($_SESSION['SES'])){
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Creaci&#243;n de un Producto</h5>
+                            <h5 class="modal-title" id="TituloModalCreation">Creaci&#243;n de un Producto</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

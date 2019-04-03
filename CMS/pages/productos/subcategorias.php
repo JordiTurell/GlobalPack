@@ -74,8 +74,8 @@ if(isset($_SESSION['SES'])){
                                 </div>
                                 <br />
                                 <div class="from-group">
-                                    <label>DescripciÃ³n del Filtro</label>
-                                    <textarea class="form-control" rows="5" placeholder="DescripciÃ³n del Filtro" id="Descripcion"></textarea>
+                                    <label>Descripción del Filtro</label>
+                                    <textarea class="form-control" rows="5" placeholder="Descripción del Filtro" id="Descripcion"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Icono del Filtro</label>

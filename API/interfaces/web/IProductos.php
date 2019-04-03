@@ -31,6 +31,10 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->LoadOcasion());
         break;
+    case 'LoadFiltrosConsumibles':
+        $wcf = new Productos();
+        echo json_encode($wcf->LoadFiltrosConsumibles());
+        break;
 }
 
 ?>

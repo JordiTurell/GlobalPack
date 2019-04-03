@@ -121,6 +121,7 @@
     <Content Include="js\bootstrap.min.js.map" />
     <Content Include="js\jquery-3.2.1.min.js" />
     <Content Include="js\jquery.redirect.js" />
+    <Content Include="js\mobile.js" />
     <Content Include="js\pages\blog.js" />
     <Content Include="js\pages\Ficha_Producto.js" />
     <Content Include="js\pages\home.js" />

@@ -57,7 +57,7 @@ require_once('Constantes.php');
             </div>
         </div>
     </div>
-    <!-- Informació Corporativa de GlobalPack -->
+    <!-- InformaciÃÂ³ Corporativa de GlobalPack -->
     <div class="nosotros-info row" style="padding-bottom:40px;">
         <div class="container">
             <div class="row">
@@ -76,11 +76,11 @@ require_once('Constantes.php');
         </div>
     </div>
 
-    <!-- Contacte -->
-    <?php include_once(dirname(__FILE__).'/Formularis/PopupContacte.php'); ?>
+    
     <!-- Google Maps-->
     <?php include_once(dirname(__FILE__).'/assets/mapa.php'); ?>
-
+    <!-- Contacte -->
+    <?php include_once(dirname(__FILE__).'/Formularis/PopupContacte.php'); ?>
     <!-- Footer -->
     <footer class="row">
         <?php include_once(dirname(__FILE__).'/Footer/footer.php'); ?>
@@ -89,6 +89,7 @@ require_once('Constantes.php');
     <script src="vendor/components/jquery/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/pages/nosotros.js"></script>
+    <script type="text/javascript" src="/js/mobile.js"></script>
 </body>
 
 </html>

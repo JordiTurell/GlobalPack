@@ -3,10 +3,15 @@ var tabposition = 1;
 var imagenes = [];
 var createProducto = new Object();
 var UrlPDF = '';
+var pagina = 0;
+var buscador = false;
+var filtrado = false;
+var filtradoCategorias = false;
 
 
 function LoadWizard() {
     tabposition = 1;
+    $('#TituloModalCreation').text('Creación de un Producto');
     createProducto = new Object();
     createProducto.categorias = [];
     createProducto.filtres = [];
@@ -25,9 +30,6 @@ function LoadWizard() {
             cache: false,
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            beforeSend: function () {
-
-            },
             success: function (data) {
                 if (data.status) {
                     var cat = $('#selectcat');
@@ -144,6 +146,22 @@ function LoadList(t, p) {
         var request = requestlist;
         request.token = token;
         request.pagina = p;
+        pagina = p;
+        $.ajax({
+            type: "POST",
+            url: "/api/interfaces/admin/IProductos.php?fun=LoadListCategorias",
+            data: JSON.stringify(request),
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.status) {
+                    for (var a = 0; a < data.list.length; a++) {
+                        $('#Filtrocategorias').append('<option value="' + data.list[a].Id_Categoria +'">' + data.list[a].Categoria +'</option>');
+                    }
+                }
+            }
+        });
         $.ajax({
             type: "POST",
             url: "/api/interfaces/admin/IProductos.php?fun=LoadListProductos",
@@ -172,7 +190,7 @@ function CreateTableProductos(data) {
         code = '<div class="row" style="padding-top:5px;">' +
             '<div class="col-lg-1"><img src="' + data.list[a].imagen + '" style="width:100%; height:auto;" /></div>' +
             '<div class="col-lg-2">' + data.list[a].Titulo + '</div>' +
-            '<div class="col-lg-2"><span style="color:white; background-color:red; padding:5px; padding-left:10px; padding-right:10px; border-radius:5px; margin-top:5px; float:left;">' + data.list[a].relacionados + '</span>&nbsp; <input type="button" class="btn" value="Agregar Producto" style="float:right; margin-top:5px;" /></div>';
+            '<div class="col-lg-2"><span style="color:white; background-color:red; padding:5px; padding-left:10px; padding-right:10px; border-radius:5px; margin-top:5px; float:left;">' + data.list[a].relacionados + '</span>&nbsp; <i class="fas fa-plus-circle" onclick="$(\'#add' + a +'\').click();" style=" margin-top:5px; color:red; font-size:30px;" ></i> <input type="button" class="btn" id="add'+a+'" value="Agregar Producto" style="float:right; margin-top:5px; display:none;" /></div>';
         if (data.list[a].home == 1) {
             code += '<div class="col-lg-1">' +
                 '<label class="switch float-right" style="margin-top:10px;">' +
@@ -219,8 +237,9 @@ function CreateTableProductos(data) {
                 '&nbsp;&nbsp;</div>';
         }
         code += '<div class="col-lg-2">' +
-            '<input type="button" value="Editar" class="btn" />&nbsp;' +
-            '<input type="button" value="Eliminar" class="btn" />' +
+            '<i class="fas fa-edit" onclick="$(\'#edit' + a +'\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Editar" class="btn" id="edit' + a +'" style="display:none;"/>&nbsp;' +
+            '<i class="fas fa-trash" onclick="$(\'#trash' + a + '\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Eliminar" class="btn" id="trash' + a + '" style="display:none;" />' +
+            '<i class="fas fa-clone" onclick="$(\'#Duplicar'+ a +'\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Duplicar" class="btn" id="Duplicar' + a + '" style="display:none;" />'+
             '</div>';
         code += '</div>';
         var fila = $(body).append(code);
@@ -229,8 +248,9 @@ function CreateTableProductos(data) {
         var home = $($(fila).children()[a]).find('.col-lg-1')[1];
         var ocasion = $($(fila).children()[a]).find('.col-lg-1')[2];
         var habilitado = $($(fila).children()[a]).find('.col-lg-1')[3];
-        var editar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[0];
-        var eliminar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[1];
+        var editar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[1];
+        var eliminar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[3];
+        var duplicar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[5];
 
         $(relacionado).data('id', data.list[a].Id_Producto);
         $(relacionado).on('click', function (ev) {
@@ -317,6 +337,7 @@ function CreateTableProductos(data) {
         $(editar).data('item', data.list[a]);
         $(editar).on('click', function (ev) {
             var producto = $(this).data('item');
+            $('#TituloModalCreation').text('Edición de ' + producto.Titulo);
             ev.preventDefault();
             Editar(producto);
         });
@@ -328,8 +349,152 @@ function CreateTableProductos(data) {
             $('#ModalDeleteProducto').data('item', producto);
             $('#ModalDeleteProducto').modal('show');
         });
+        $(duplicar).data('item', data.list[a]);
+        $(duplicar).on('click', function (ev) {
+            var producto = $(this).data('item');
+            ev.preventDefault();
+            Duplicar(producto);
+        });
     }
     paginacion(data);
+}
+
+function Duplicar(producto) {
+    $.getScript("/cms/js/pages/models/requestlist.js", function (ev) {
+        var request = requestlist;
+        request.token = token;
+        request.item = producto;
+        $.ajax({
+            type: "POST",
+            url: "/api/interfaces/admin/IProductos.php?fun=Duplicar",
+            data: JSON.stringify(request),
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+
+            },
+            success: function (data) {
+                if (data.status) {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+}
+
+function SelectFiltro(pagina) {
+    filtrado = true;
+    if ($('#Filtrotipo :selected').val() == 0) {
+        if (buscador) {
+            filtrado = false;
+            Buscar(0);
+            return;
+        } else {
+            filtrado = false;
+            LoadList(token, 0);
+            return;
+        }
+    }
+    if ($('#searchproduct').val() != "") {
+        buscador = true;
+        $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+            var request = requestitem;
+            request.token = token;
+            request.pagina = pagina;
+            request.item = $('#searchproduct').val();
+            request.filtro = $('#Filtrotipo :selected').val();
+            request.categoria = $('#Filtrocategorias :selected').val();
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=Filtrado",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    CreateTableProductos(data);
+                }
+            });
+        });
+    } else {
+        buscador = false;
+        $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+            var request = requestitem;
+            request.token = token;
+            request.pagina = pagina;
+            request.filtro = $('#Filtrotipo :selected').val();
+            request.categoria = $('#Filtrocategorias :selected').val();
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=Filtrado",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    CreateTableProductos(data);
+                }
+            });
+        });
+    }
+}
+
+function SelectCategoria() {
+    filtradoCategorias = true;
+    if ($('#Filtrocategorias :selected').val() == 0) {
+        if (buscador) {
+            filtradoCategorias = false;
+            Buscar(0);
+            return;
+        } else {
+            filtradoCategorias = false;
+            LoadList(token, 0);
+            return;
+        }
+    }
+    if ($('#searchproduct').val() != "") {
+        buscador = true;
+        $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+            var request = requestitem;
+            request.token = token;
+            request.pagina = pagina;
+            request.item = $('#searchproduct').val();
+            request.filtro = $('#Filtrotipo :selected').val();
+            request.categoria = $('#Filtrocategorias :selected').val();
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=Filtrado",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    CreateTableProductos(data);
+                }
+            });
+        });
+    } else {
+        buscador = false;
+        $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+            var request = requestitem;
+            request.token = token;
+            request.pagina = pagina;
+            request.filtro = $('#Filtrotipo :selected').val();
+            request.categoria = $('#Filtrocategorias :selected').val();
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=Filtrado",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    CreateTableProductos(data);
+                }
+            });
+        });
+    }
 }
 
 function paginacion(list) {
@@ -339,7 +504,7 @@ function paginacion(list) {
     
     paginas = list.total / list.items;
     
-    console.log(paginas);
+    console.log('Paginas: '+paginas);
     for (var a = 0; a < paginas; a++) {
         var item = '';
         var row = null;
@@ -352,7 +517,11 @@ function paginacion(list) {
             $($($(row).children()[a])[0]).on('click', function (ev) {
 
                 ev.preventDefault();
-                LoadList(token, $(this).data('pagina'));
+                if (buscador) {
+                    Buscar($(this).data('pagina'));
+                } else {
+                    LoadList(token, $(this).data('pagina'));
+                }
             });
         } else {
             item = '<li class="paginate_button previous disabled" id="example2_previous">' +
@@ -360,12 +529,16 @@ function paginacion(list) {
                 '</li>';
             row = $(pages).append(item);
             
-            $($($(row).children()[a])[0]).data('pagina', list.pagina+2);
+            $($($(row).children()[a])[0]).data('pagina', a+1);
             
             $($($(row).children()[a])[0]).on('click', function (ev) {
 
                 ev.preventDefault();
-                LoadList(token, $(this).data('pagina'));
+                if (buscador) {
+                    Buscar($(this).data('pagina'));
+                } else {
+                    LoadList(token, $(this).data('pagina'));
+                }
             });
         }
     }
@@ -621,7 +794,7 @@ function ShowMultimedia() {
                     $('#listimagenes').children().remove();
                     for (var a = 0; a < data.list.length; a++) {
                         var code = "";
-                        code = '<li><img src="' + data.list[a].url + '" style="width:250px;" /></li>';
+                        code = '<li><img src="' + data.list[a].url + '" style="width:250px;" /><div style="width:100%; text-align:center;">' + data.list[a].nombre +'</div></li>';
                         var item = $('#listimagenes').append(code);
                         for (var b = 0; b < imagenes.length; b++) {
                             if (imagenes[b] == data.list[a].url) {
@@ -761,10 +934,13 @@ function SavePDF(input) {
     }
 }
 
-function Buscar() {
-    $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+function Buscar(page) {
+    if ($('#searchproduct').val() != "") {
+        buscador = true;
+        $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
         var request = requestitem;
-        request.token = token;
+            request.token = token;
+            request.pagina = page;
         request.item = $('#searchproduct').val();
         $.ajax({
             type: "POST",
@@ -781,6 +957,10 @@ function Buscar() {
             }
         });
     });
+    } else {
+        buscador = false;
+        LoadList(token, 0);
+    }    
 }
 
 function Eliminar() {
@@ -1021,4 +1201,10 @@ function Editar(producto) {
             }
         }
     });
+}
+
+function EnterSearch(e) {
+    if (e.keyCode == 13) {
+        Buscar();
+    }
 }

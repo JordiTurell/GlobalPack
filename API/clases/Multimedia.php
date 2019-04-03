@@ -15,10 +15,15 @@ namespace Api\Models
 	{
         public $id;
         public $url;
+        public $nombre;
 
         function __construct($id, $url){
             $this->id = $id;
             $this->url = $url;
+        }
+
+        public function SetNombre($nom){
+            $this->nombre = $nom;
         }
 	}
 }

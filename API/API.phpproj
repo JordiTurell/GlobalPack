@@ -49,7 +49,6 @@
     <Compile Include="clases\Servicios.php" />
     <Compile Include="clases\Subcategoria.php" />
     <Compile Include="clases\Usuario.php" />
-    <Compile Include="Config\Config.php" />
     <Compile Include="Config\DataContext.php" />
     <Compile Include="Config\Token.php" />
     <Compile Include="Config\UpdateFiles.php" />

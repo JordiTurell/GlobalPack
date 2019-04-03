@@ -1,10 +1,13 @@
 ﻿var token = '';
 var ischangeicon = false;
+var selectcat = null;
+
 $(document).ready(function () {
     $('#updateicon').on('change', function () {
         ischangeicon = true;
         readURL(this);
     });
+    $('#filtroscategoria').slideUp();
 });
 
 function readURL(input) {
@@ -15,6 +18,108 @@ function readURL(input) {
             $('#icon').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function SlideFiltros() {
+    if (selectcat != null) {
+        $('#filtroscategoria').slideDown();
+        if ($('#filtrosrow').hasClass('fa-sort-down')) {
+            $('#filtrosrow').removeClass('fa-sort-down');
+            $('#filtrosrow').addClass('fa-sort-up');
+        } else {
+            $('#filtrosrow').removeClass('fa-sort-up');
+            $('#filtrosrow').addClass('fa-sort-down');
+            $('#filtroscategoria').slideUp();
+        }
+
+        $.getScript("/cms/js/pages/models/requestitem.js", function (ev) {
+            var request = requestitem;
+            request.token = token;
+            request.categoria = selectcat;
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=GetListFiltrosenCategorias",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.status) {
+                        var list = $('#listfiltros');
+                        $(list).children().remove();
+                        for (var a = 0; a < data.list.length; a++) {
+                            var code = '<div class="form-check form-check-inline filtro-form" style="width:45%;"><input class="form-check-input" type="checkbox" /><label class="form-check-label" for="inlineCheckbox' + a + '">' + data.list[a].Categoria.toLowerCase() +'</label></div>';
+                            var row = $(list).append(code);
+                            if (data.list[a].asign) {
+                                $($($(row).children()[a]).find('input')[0]).prop('checked', true);
+                            }
+                            $($(row).children()[a]).data('id_filtro', data.list[a].Id_Subcategoria);
+                            $($(row).children()[a]).click('on', function (ev) {
+                                ev.preventDefault();
+                                var idfiltro = $(this).data('id_filtro');
+                                var check = $(this).find('input')[0];
+                                var request = {
+                                    token: token,
+                                    filtro: idfiltro,
+                                    categoria: selectcat
+                                };
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/api/interfaces/admin/IProductos.php?fun=AsignarFiltroCategoria",
+                                    data: JSON.stringify(request),
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (data) {
+                                        if (data.status) {
+                                            if ($(check).is('checked')) {
+                                                $(check).prop('checked', false);
+                                            } else {
+                                                $(check).prop('checked', true);
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                            $($($(row).children()[a]).find('input')[0]).on('click', function (ev) {
+                                ev.preventDefault();
+                                var idfiltro = $(this).data('id_filtro');
+                                var check = $(this);
+                                var request = {
+                                    token: token,
+                                    filtro: idfiltro,
+                                    categoria: selectcat
+                                };
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/api/interfaces/admin/IProductos.php?fun=AsignarFiltroCategoria",
+                                    data: JSON.stringify(request),
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (data) {
+                                        if (data.status) {
+                                            if ($(check).is('checked')) {
+                                                $(check).prop('checked', false);
+                                            } else {
+                                                $(check).prop('checked', true);
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+
+    } else {
+        alert('Se tiene que seleccionar una categoría para poderle asignar los filtros correspondientes.');
     }
 }
 
@@ -92,6 +197,8 @@ function LoadList(token) {
                         });
                         $($('#listcategorias').children()[a]).on('click', function () {
                             var item = $(this).data('item');
+                            selectcat = item;
+                            SlideFiltros();
                             $('#SaveCat').data('id', item.Id_Categoria);
                             $('#Nombre').val(item.Categoria);
                             $('#Descripcion').val(item.Descripcion);
@@ -113,6 +220,7 @@ function ReloadForm() {
     $('#Nombre').val('');
     $('#Descripcion').val('');
     $('#icon').attr('src', '/cms/img/default.png');
+    selectcat = null;
 }
 
 function SaveCategoria(token) {

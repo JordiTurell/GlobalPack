@@ -36,7 +36,7 @@ $id = $_GET["Cat"];
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
                     <center>
-                        <h1 class="title">PRODUCTOS</h1>
+                        <h1 class="title">SOLUCIÓN</h1>
                     </center>
                 </div>
             </div>
@@ -69,6 +69,7 @@ $id = $_GET["Cat"];
     <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/jquery.redirect.js"></script>
     <script type="text/javascript" src="/js/pages/postventa.js"></script>
+    <script type="text/javascript" src="/js/mobile.js"></script>
 </body>
 
 </html>

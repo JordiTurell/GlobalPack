@@ -50,6 +50,7 @@ footer {
 
     & #listimagenes > li{
         cursor:pointer;
+        width:128px;
     }
 }
 
@@ -63,4 +64,5 @@ footer {
 
 .imgActive > img{
     opacity:0.7;
+    border:solid 1px $Globalpack;
 }

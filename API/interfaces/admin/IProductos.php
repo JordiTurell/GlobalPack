@@ -103,6 +103,22 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->UpdateProduct());
         break;
+    case 'Duplicar':
+        $wcf = new Productos();
+        echo json_encode($wcf->Duplicar());
+        break;
+    case 'Filtrado':
+        $wcf = new Productos();
+        echo json_encode($wcf->Filtrado());
+        break;
+    case 'AsignarFiltroCategoria':
+        $wcf = new Productos();
+        echo json_encode($wcf->AsignarFiltroCategoria());
+        break;
+    case 'GetListFiltrosenCategorias':
+        $wcf = new Productos();
+        echo json_encode($wcf->GetListFiltrosenCategorias());
+        break;
 }
 
 ?>

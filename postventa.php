@@ -48,6 +48,7 @@ require_once('Constantes.php');
     <script src="vendor/components/jquery/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/pages/postventa.js"></script>
+    <script type="text/javascript" src="/js/mobile.js"></script>
 </body>
 
 </html>

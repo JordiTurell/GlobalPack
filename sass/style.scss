@@ -282,9 +282,11 @@ body {
     animation: ShowContact 1s forwards;
     z-index:9999;
 }
+
 .form-popup-contacto-desactive {
     animation: ShowContactdisabled 1s forwards;
 }
+   
 
 .title {
     font-size: 36px;
@@ -295,6 +297,7 @@ body {
     font-family: 'Ubuntu', sans-serif;
     display: inline-block;
 }
+
 .title2 {
     font-size: 36px;
     font-weight: bold;
@@ -317,7 +320,7 @@ body {
     line-height: 21px;
     display: block;
     margin-left: 40px;
-    white-space:normal;
+    white-space: normal;
 }
 
 .contacto-title {
@@ -332,15 +335,18 @@ body {
 }
 
 @import 'blog.scss';
-@import 'responsive.scss';
 
-.compartir-list{
-    list-style:none;
-    li{
-        display:inline-block;
-        pading:15px;
-        img{
-            width:25px;
+.compartir-list {
+    list-style: none;
+
+    li {
+        display: inline-block;
+        padding: 15px;
+
+        img {
+            width: 25px;
         }
     }
 }
+
+    @import 'responsive.scss';

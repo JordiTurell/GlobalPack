@@ -99,6 +99,7 @@ ipsum dolor sit amet consectetur adipisicing elit
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <script type="text/javascript" src="/js/jquery.redirect.js"></script>
     <script type="text/javascript" src="/js/pages/home.js"></script>
+      <script type="text/javascript" src="/js/mobile.js"></script>
   </body>
 
 </html>

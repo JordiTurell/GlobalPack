@@ -140,7 +140,32 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM p_subcategorias ORDER BY FechaM";
+            $query = "SELECT * FROM p_subcategorias WHERE Activada = 1 AND Consumible = 0 ORDER BY FechaM";
+            if($res = mysqli_query($conn, $query)){
+                while($row = mysqli_fetch_assoc($res)){
+                    $cat = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                    array_push($result->list, $cat);
+                }
+            }
+            mysqli_close($conn);
+            $result->SetStatus(true);
+            $result->SetMsg('SUCCESS');
+            return $result;
+        }
+
+        function LoadFiltrosConsumibles(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Subcategoria.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+
+            $config = new Data(DataContext::Admin);
+            $conn = $config->Conect();
+
+            $query = "SELECT * FROM p_subcategorias WHERE Consumible = 1 ORDER BY FechaM";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);

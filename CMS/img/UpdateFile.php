@@ -96,7 +96,7 @@ function UpdatePDF(){
         if($res = mysqli_query($conn, $query)){
             while($row = mysqli_fetch_assoc($res)){
                 $url = $row["pdf"];
-                if($url == " "){
+                if($url == ""){
                     $id = $_POST["idProducto"];
                     $filename =  $_FILES['file']['name'];
                     $location = $_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$filename;
@@ -125,6 +125,8 @@ function UpdatePDF(){
                             $conn = $conn->Conect();
                             $query = "INSERT INTO pdfs (Id_PDF, Ruta) VALUES ('".Api\Config\Setup::GUID()."', '//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename."')";
                             mysqli_query($conn, $query);
+                            $query_updateproducto = "UPDATE productos SET PDF = '//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename."' WHERE Id_Producto = '".$_POST["idProducto"]."'";
+                            mysqli_query($conn, $query_updateproducto);
                             mysqli_close($conn);
                             echo "//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename;
                         }else{
@@ -163,6 +165,8 @@ function UpdatePDF(){
                                     $conn = $conn->Conect();
                                     $query = "UPDATE pdfs SET Ruta = '//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename."' WHERE Id_PDF = '".$id."'";
                                     mysqli_query($conn, $query);
+                                    $query_updateproducto = "UPDATE productos SET PDF = '//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename."' WHERE Id_Producto = '".$_POST["idProducto"]."'";
+                                    mysqli_query($conn, $query_updateproducto);
                                     mysqli_close($conn);
                                     echo "//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename;
                                 }else{
@@ -239,8 +243,8 @@ function UpdateFileFix(){
     }
 }
 function UpdateFilesBlog($table){
-    $filename =  $_FILES['file']['name'];
-    $location = $_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$filename;
+    $fileName =  $_FILES['file']['name'];
+    $location = $_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$fileName;
 
     $uploadOk = 1;
     $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
@@ -265,7 +269,7 @@ function UpdateFilesBlog($table){
 
             $conn = new Api\Config\Setup(Api\Config\DataContext::Admin);
             $conn = $conn->Conect();
-            $query = "INSERT INTO ".$table." (Id_Multimedia, Url) VALUES ('".Api\Config\Setup::GUID()."', '//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename."')";
+            $query = "INSERT INTO ".$table." (Id_Multimedia, Url, Nombre_Fichero) VALUES ('".Api\Config\Setup::GUID()."', '//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename."', '".$fileName."')";
             mysqli_query($conn, $query);
             mysqli_close($conn);
             echo "//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename;

@@ -35,7 +35,7 @@ if(isset($_SESSION['SES'])){
             <section class="content-header">
                 <h1>
                     Productos
-                    <small>Categorí­as</small>
+                    <small>CategorÃ­Â­as</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li>
@@ -88,6 +88,15 @@ if(isset($_SESSION['SES'])){
                             </div>
                             <div class="box-footer"></div>
                         </div>
+                          <div class="box">
+                              <div class="box-header" onclick="SlideFiltros();" style="cursor:pointer;">
+                                  <label style="cursor:pointer;">Asignar Filtros a la categoria seleccionada </label>
+                                  <i class="fas fa-sort-down" id="filtrosrow" style="float:right; font-size:30px; cursor:pointer;"></i>
+                              </div>
+                            <div class="box-body" id="filtroscategoria">
+                                <ul id="listfiltros" style="padding:0px;"></ul>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </section>

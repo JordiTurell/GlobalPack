@@ -38,7 +38,8 @@ footer {
   border-radius: 0; }
 
 #ModalBlogMultimedia #listimagenes > li {
-  cursor: pointer; }
+  cursor: pointer;
+  width: 128px; }
 
 #post_images {
   list-style: none; }
@@ -47,4 +48,5 @@ footer {
     margin: 5px; }
 
 .imgActive > img {
-  opacity: 0.7; }
+  opacity: 0.7;
+  border: solid 1px #ef3340; }

@@ -110,7 +110,7 @@ function LoadFiles(t) {
                 if (data.status) {
                     $('#listimagenes').children().remove();
                     for (var a = 0; a < data.list.length; a++) {
-                        var code = '<li><img src="' + data.list[a].url + '" /><i class="fas fa-trash-alt"></i></li>';
+                        var code = '<li><img src="' + data.list[a].url + '" /><i class="fas fa-trash-alt"></i><div style="width:100%; text-align:center;">'+ data.list[a].nombre +'</div></li>';
                         var item = $('#listimagenes').append(code);
                         var delete_img = $($(item).children()[a]).children()[1];
                         $(delete_img).data('img', data.list[a]);

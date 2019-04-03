@@ -163,10 +163,10 @@ input:checked + .slider:before {
   #listimagenes li {
     display: inline-block;
     margin: 10px;
-    width: 300px;
+    width: 128px;
     position: relative; }
     #listimagenes li img {
-      width: 100%; }
+      width: 100% !important; }
     #listimagenes li i {
       position: absolute;
       margin: 10px;

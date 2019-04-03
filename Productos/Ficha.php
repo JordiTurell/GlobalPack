@@ -72,12 +72,12 @@ $producto = $_POST;
                                 </div>
                             </div>
                             <div class="row" style="margin-top:30px;">
-                                <div class="col-md-6">
-                                    <img src="/assets/iconos/impresora.png" style="width:30px; margin-right:10px;" onclick="Imprimir()"/>
-                                    <img src="/assets/iconos/pdf.png" style="width:30px; margin-right:10px;" id="pdf"/>
-                                    <img src="/assets/iconos/star.png" style="width:30px;"/>
+                                <div class="col-md-6 col-xs-6">
+                                    <img src="/assets/iconos/impresora.png" style="width:30px; margin-right:10px;" onclick="Imprimir()" />
+                                    <img src="/assets/iconos/pdf.png" style="width:30px; margin-right:10px;" id="pdf" />
+                                    <img src="/assets/iconos/star.png" style="width:30px;" />
                                 </div>
-                                <div class="col-md-6 text-right">
+                                <div class="col-md-6 col-xs-6 text-right">
                                     <!--<img src="/assets/iconos/mail.png" style="width:30px; margin-right:10px;" onclick="SharedMail();"/>-->
                                     <img src="/assets/iconos/facebook.png" style="width:10px; margin-right:10px;" onclick="SharedFacebook();"/>
                                     <img src="/assets/iconos/tweeter.png" style="width:20px; margin-right:10px;" onclick="SharedTweeter();"/>
@@ -168,6 +168,7 @@ $producto = $_POST;
             $($('.nav-tabs').children()[0]).css('border-bottom', 'solid 4px #ef3340');
         });
     </script>
+    <script type="text/javascript" src="/js/mobile.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
     }
 
     100% {
-        right:5%;
+        right: 5%;
     }
 }
 
@@ -15,5 +15,46 @@
 
     100% {
         right: -100vw;
+    }
+}
+
+
+@keyframes ShowContactMobile {
+    0% {
+        right: -120vw;
+    }
+
+    100% {
+        right: -17vw;
+    }
+}
+
+@keyframes ShowContactMobiledisabled {
+    0% {
+        right: -17vw;
+    }
+
+    100% {
+        right: -120vw;
+    }
+}
+
+@keyframes ShowContactMobile320 {
+    0% {
+        right: -135vw;
+    }
+
+    100% {
+        right: -28vw;
+    }
+}
+
+@keyframes ShowContactMobiledisabled320 {
+    0% {
+        right: -28vw;
+    }
+
+    100% {
+        right: -135vw;
     }
 }

@@ -53,7 +53,7 @@ function Showcontact() {
 
 function LoadHomeProductos(id) {
     LoadColumLeft(id);
-    Filtros();
+    Filtros(id);
     Productos(id);
     filtroschecked = [];
 }
@@ -168,10 +168,17 @@ function LoadColumLeft(id) {
     });
 }
 
-function Filtros() {
+function Filtros(id) {
+    var urlapi = '';
+    if (id == 'DF5A8271-56DF-430B-9C86-C162FEB60598') {
+        urlapi = "/api/interfaces/web/IProductos.php?fun=LoadFiltrosConsumibles";
+    } else {
+        urlapi = "/api/interfaces/web/IProductos.php?fun=LoadFiltrosProductos";
+    }
+    
     $.ajax({
         type: "POST",
-        url: "/api/interfaces/web/IProductos.php?fun=LoadFiltrosProductos",
+        url: urlapi,
         cache: false,
         dataType: "json",
         contentType: "application/json; charset=utf-8",

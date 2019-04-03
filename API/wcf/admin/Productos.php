@@ -364,11 +364,12 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT Id_Multimedia, Url FROM p_multimedia order by ID";
+                    $query = "SELECT Id_Multimedia, Url, Nombre_Fichero FROM p_multimedia order by ID";
 
                     if($res = mysqli_query($conn, $query)){
                         while($row = mysqli_fetch_assoc($res)){
                             $img = new Imagen($row["Id_Multimedia"], $row["Url"]);
+                            $img->SetNombre($row["Nombre_Fichero"]);
                             array_push($result->list, $img);
                         }
                         mysqli_close($conn);
@@ -505,7 +506,7 @@ namespace Api\WCF
             require_once("../../clases/Productos.php");
             require_once("../../clases/ServiceListResult.php");
 
-            $result = new Listado(false, "", 0, 0, 0);
+            $result = new Listado(false, "", 10, 0, 0);
             $input = json_decode(file_get_contents('php://input'), true);
             if($input != null){
                 if(Token::CheckTokenAdmin($input['token'])){
@@ -516,7 +517,10 @@ namespace Api\WCF
                     if($res_total = mysqli_query($conn, $total)){
                         $result->total = mysqli_num_rows($res_total);
                     }
-                    $query = "SELECT * FROM productos LIMIT ".$input["items"]." OFFSET ".$input["pagina"];
+                    if(($input["pagina"]-1) < 0){
+                        $input["pagina"] = 1;
+                    }
+                    $query = "SELECT * FROM productos LIMIT ".(($input["pagina"]-1)*$input["items"].",".$input["items"]);
                     if($res = mysqli_query($conn, $query)){
 
                         while($row = mysqli_fetch_assoc($res)){
@@ -632,21 +636,37 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT * FROM productos WHERE Titulo LIKE '%".$input["item"]."%' ORDER BY FechaC DESC";
+                    $total = "SELECT * FROM productos WHERE Titulo LIKE '%".$input["item"]."%'";
+                    if($res_total = mysqli_query($conn, $total)){
+                        $result->total = mysqli_num_rows($res_total);
+                    }
+                    if(($input["pagina"]-1) < 0){
+                        $input["pagina"] = 1;
+                    }
+
+                    $query = "SELECT * FROM productos WHERE Titulo LIKE '%".$input["item"]."%' ORDER BY FechaC DESC LIMIT ".(($input["pagina"]-1)*$result->items.",".$result->items);
                     if($res = mysqli_query($conn, $query)){
+
                         while($row = mysqli_fetch_assoc($res)){
                             $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $cat->SetHome($row["Home"]);
+                            $cat->SetId($row["Indice"]);
                             $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
                             if($r = mysqli_query($conn, $imagen)){
                                 while($img = mysqli_fetch_assoc($r)){
                                     $cat->SetImage($img["Url"]);
                                 }
                             }
+                            $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$cat->Id_Producto."'";
+                            if($res_relacionados = mysqli_query($conn, $relacionados)){
+                                $cat->SetCountRelacionados($res_relacionados->num_rows);
+                            }
                             array_push($result->list, $cat);
                         }
                     }
                     mysqli_close($conn);
                     $result->SetStatus(true);
+                    $result->pagina = 0;
                     $result->SetMsg('SUCCESS');
                     return $result;
                 }else{
@@ -1001,6 +1021,223 @@ namespace Api\WCF
             }
         }
 
+        public function Duplicar(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $result = new Result(false, "", null);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $producto = "SELECT * FROM productos WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    if($res = mysqli_query($conn, $producto)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $producto = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $producto->SetId($row["Indice"]);
+                            $producto->SetDescripcionCorta($row["Descripcio_min"]);
+                            $producto->SetDescripcion($row["Descripcion"]);
+                            $producto->SetFichaTecnica($row["Ficha_Tecnica"]);
+                            $producto->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
+                            $producto->SetComparativa($row["Comparativa"]);
+                            $producto->SetAnoGarantia($row["Anogarantia"]);
+                            $producto->SetReferencia($row["Referencia"]);
+
+                            $guid = $config::GUID();
+                            $date = date("Y-m-d H:i:s");
+                            $insert_producto = "INSERT INTO productos (Id_Producto, Titulo, Descripcion, Video, Referencia, Comparativa, pdf, Ficha_Tecnica, FechaC, FechaM, Descripcio_min, PVP, PVP_Ocasion, Anogarantia, Ocasion, Habilitado, Titulo_Video, Descripcion_Video, Home) VALUES ('".$guid."', '".$producto->Titulo."', '".$producto->Descripcion."', '".$producto->videourl."', '".$producto->referencia."', '".$producto->comparativa."', '".$producto->pdf."', '".$producto->FichaTecnica."', '".$date."', '".$date."', '".$producto->Descripcion_corta."', '".$producto->PVP."', '".$producto->PVP_Ocasion."', '".$producto->anogarantia."', '".$producto->Ocasion."', '".$producto->Habilitado."', '".$producto->videotitle."', '".$producto->videodesc."', 0)";
+                            mysqli_query($conn, $insert_producto);
+
+                            $query_filtros = "SELECT * FROM productos_filtros WHERE Id_Producto = '".$producto->Id_Producto."'";
+                            if($res_filtros = mysqli_query($conn, $query_filtros)){
+                                while($row = mysqli_fetch_assoc($res_filtros)){
+                                    $insert_filtro = "INSERT INTO productos_filtros (Id_Producto, Id_Filtro) VALUES ('".$guid."', '".$row["Id_Filtro"]."')";
+                                    mysqli_query($conn, $insert_filtro);
+                                    $producto->SetAllFiltros($row["Id_Filtro"]);
+                                }
+                            }
+
+                            $query_categorias = "SELECT * FROM productos_categorias WHERE Id_Producto = '".$producto->Id_Producto."'";
+                            if($res_categorias = mysqli_query($conn, $query_categorias)){
+                                while($row = mysqli_fetch_assoc($res_categorias)){
+                                    $insert_categoria = "INSERT INTO productos_categorias (Id_Producto, Id_Categoria) VALUES ('".$guid."', '".$row["Id_Categoria"]."')";
+                                    mysqli_query($conn, $insert_categoria);
+                                    $producto->SetAllCategorias($row["Id_Categoria"]);
+                                }
+                            }
+
+                            $query_serveis = "SELECT * FROM productos_servicio WHERE Id_Producto = '".$producto->Id_Producto."'";
+                            if($res_serveis = mysqli_query($conn, $query_serveis)){
+                                while($row = mysqli_fetch_assoc($res_serveis)){
+                                    $insert_servicios = "INSERT INTO productos_servicio (Id_Producto, Id_Servicio) VALUES ('".$guid."', '".$row["Id_Servicio"]."')";
+                                    mysqli_query($conn, $insert_servicios);
+                                    $producto->SetAllServicio($row["Id_Servicio"]);
+                                }
+                            }
+                            $imagen = "SELECT * FROM p_multimedia_productos WHERE Id_Producto ='".$producto->Id_Producto."'";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $insert_images = "INSERT INTO p_multimedia_productos (Id_Producto, Id_Multimedia) VALUES ('".$guid."', '".$img["Id_Multimedia"]."')";
+                                    mysqli_query($conn, $insert_images);
+                                }
+                            }
+
+                            $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto ='".$producto->Id_Producto."'";
+                            if($res_relacionados = mysqli_query($conn, $relacionados)){
+                                while($relacion = mysqli_fetch_assoc($res_relacionados)){
+                                    $insert_images = "INSERT INTO productos_relacionados (Id_Producto, Productos_Relacionados) VALUES ('".$guid."', '".$relacion["Productos_Relacionados"]."')";
+                                    mysqli_query($conn, $insert_images);
+                                }
+                            }
+                            $result->item = $producto;
+                        }
+                    }
+
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function Filtrado(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Productos.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 20, 0, 0);
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $total = "SELECT * FROM productos WHERE Titulo LIKE '%".$input["item"]."%'";
+                    if($res_total = mysqli_query($conn, $total)){
+                        $result->total = mysqli_num_rows($res_total);
+                    }
+                    if(($input["pagina"]-1) < 0){
+                        $input["pagina"] = 1;
+                    }
+                    if($input["item"] == null){
+                        $query = "SELECT * FROM productos %1s ORDER BY FechaC DESC LIMIT ".(($input["pagina"]-1)*$result->items.",".$result->items);
+                    }else{
+                        $query = "SELECT * FROM productos %1s  ORDER BY FechaC DESC LIMIT ".(($input["pagina"]-1)*$result->items.",".$result->items);
+                    }
+
+                    $buscar = "Titulo LIKE '%".$input["item"]."%'";
+                    if($input["categoria"] != 0){
+                        $innerjoin = 'INNER JOIN productos_categorias on productos_categorias.Id_Producto = productos.Id_Producto WHERE %1s';
+                        $query = sprintf($query, $innerjoin);
+                        if($input["item"] == null){
+                            $cat = "productos_categorias.Id_Categoria = '".$input["categoria"]."' %1s";
+                            $query = sprintf($query, $cat);
+                        }else{
+                            $cat = "productos_categorias.Id_Categoria = '".$input["categoria"]."' %1s";
+                            $query = sprintf($query, $cat);
+                        }
+                    }else{
+                        $query = str_replace('%1s', '', $query);
+                    }
+
+                    if($input["filtro"] != 0){
+                        switch($input["filtro"]){
+                            case 1:
+                                if($input["categoria"] != 0){
+                                    $filtro = "AND Habilitado = 1";
+                                    $query = sprintf($query, $filtro);
+                                }else{
+                                    $filtro = "Habilitado = 1";
+                                    $query = sprintf($query, $filtro);
+                                }
+                                break;
+                            case 2:
+                                if($input["categoria"] != 0){
+                                    $filtro = "AND Habilitado = 0";
+                                    $query = sprintf($query, $filtro);
+                                }else{
+                                    $filtro = "Habilitado = 0";
+                                    $query = sprintf($query, $filtro);
+                                }
+                                break;
+                            case 3:
+                                if($input["categoria"] != 0){
+                                    $filtro = "AND Ocasion = 0";
+                                    $query = sprintf($query, $filtro);
+                                }else{
+                                    $filtro = "Ocasion = 0";
+                                    $query = sprintf($query, $filtro);
+                                }
+                                break;
+                        }
+                    }else{
+                        $query = str_replace('%1s', '', $query);
+                    }
+
+                    if($input["item"] != null){
+                        if($input["categoria"] != 0){
+                            $query = str_replace('ORDER', 'AND productos.'.$buscar.' ORDER', $query);
+                        }else{
+                            if($input["filtro"] != 0){
+                                $query = str_replace('ORDER', 'AND productos.'.$buscar.' ORDER', $query);
+                            }else{
+                                $query = str_replace('ORDER', $buscar.' ORDER', $query);
+                            }
+                        }
+                    }
+                    if($res = mysqli_query($conn, $query)){
+
+                        while($row = mysqli_fetch_assoc($res)){
+                            $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $cat->SetHome($row["Home"]);
+                            $cat->SetId($row["Indice"]);
+                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
+                            if($r = mysqli_query($conn, $imagen)){
+                                while($img = mysqli_fetch_assoc($r)){
+                                    $cat->SetImage($img["Url"]);
+                                }
+                            }
+                            $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$cat->Id_Producto."'";
+                            if($res_relacionados = mysqli_query($conn, $relacionados)){
+                                $cat->SetCountRelacionados($res_relacionados->num_rows);
+                            }
+                            array_push($result->list, $cat);
+                        }
+                    }
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->pagina = 0;
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
         //Actualizar Producto
         public function UpdateProduct(){
             require_once("../../Config/Token.php");
@@ -1061,6 +1298,88 @@ namespace Api\WCF
                         $result->SetStatus(true);
                     }
                     mysqli_close($conn);
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function AsignarFiltroCategoria(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/ServiceItemResult.php");
+
+            $result = new Result(false, "", "");
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $query = "SELECT * FROM categorias_filtros WHERE Id_Categoria = '".$input["categoria"]["Id_Categoria"]."' AND Id_Filtro = '".$input["filtro"]."'";
+                    if($res = mysqli_query($conn, $query)){
+                        if(mysqli_num_rows($res) > 0){
+                            $delete = "DELETE FROM categorias_filtros WHERE Id_Categoria = '".$input["categoria"]["Id_Categoria"]."' AND Id_Filtro = '".$input["filtro"]."'";
+                            mysqli_query($conn, $delete);
+                        }else{
+                            $insert = "INSERT INTO categorias_filtros (Id_Categoria, Id_Filtro) VALUES ('".$input["categoria"]["Id_Categoria"]."', '".$input["filtro"]."')";
+                            mysqli_query($conn, $insert);
+                        }
+                    }
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function GetListFiltrosenCategorias(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Subcategoria.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $query = "SELECT * FROM p_subcategorias ORDER BY FechaM";
+                    if($res = mysqli_query($conn, $query)){
+                        while($row = mysqli_fetch_assoc($res)){
+                            $cat = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                            $asign =  "SELECT * FROM categorias_filtros WHERE Id_Categoria = '".$input["categoria"]["Id_Categoria"]."' AND Id_Filtro = '".$cat->Id_Subcategoria."'";
+                            if($resAsing = mysqli_query($conn, $asign)){
+                                if(mysqli_num_rows($resAsing) > 0){
+                                    $cat->SetAsign(true);
+                                }
+                            }
+                            array_push($result->list, $cat);
+                        }
+                    }
+                    mysqli_close($conn);
+                    $result->SetStatus(true);
+                    $result->SetMsg('SUCCESS');
                     return $result;
                 }else{
                     $result->SetStatus(false);

@@ -35,7 +35,7 @@ require_once('Constantes.php');
         </center>
 
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 mapacontacto">
         <!-- Google Maps-->
         <?php include_once(dirname(__FILE__).'/assets/mapa.php'); ?>
     </div>
@@ -43,7 +43,7 @@ require_once('Constantes.php');
     <div class="col-lg-12 col-form-contacto">
         <div class="container" style="margin-top:20px;">
             <div class="row">
-                <div class="col-lg-6" style="padding:0; margin-left:-10px;">
+                <div class="col-lg-6 footer-box" style="padding:0; margin-left:-10px;">
                     <div class="row">
                         <ul class="row lis-option">
                             <li class="option-contact">
@@ -104,7 +104,7 @@ require_once('Constantes.php');
                                 </div>
                                 <div class="footer-telf">
                                     <span>
-                                        P.I Molí d'en Xec N.15
+                                        P.I MolÃ­ d'en Xec N.15
                                     </span>
                                     <br />
                                     <span>
@@ -119,7 +119,7 @@ require_once('Constantes.php');
                             <img src="/assets/img/LOGO_CONTACTO.png" style="margin-left:25px; width:90%;" />
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            <?php echo utf8_encode("P.I Mol� d'en Xec N.15"); ?> <br />
+                            <?php echo utf8_encode("P.I Molí d'en Xec N.15"); ?> <br />
                             08291 Ripollet <br />
                             T (+34) 93 4327181 <br />
                             F (+34) 93 4327182 <br />
@@ -175,6 +175,7 @@ require_once('Constantes.php');
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/components/jquery/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/js/mobile.js"></script>
 </body>
 
 </html>
