@@ -170,15 +170,10 @@ function LoadColumLeft(id) {
 
 function Filtros(id) {
     var urlapi = '';
-    if (id == 'DF5A8271-56DF-430B-9C86-C162FEB60598') {
-        urlapi = "/api/interfaces/web/IProductos.php?fun=LoadFiltrosConsumibles";
-    } else {
-        urlapi = "/api/interfaces/web/IProductos.php?fun=LoadFiltrosProductos";
-    }
     
     $.ajax({
-        type: "POST",
-        url: urlapi,
+        type: "GET",
+        url: '/api/interfaces/web/IProductos.php?fun=LoadFiltrosConsumibles&cat='+id,
         cache: false,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -207,6 +202,24 @@ function Filtros(id) {
                         filtroschecked.push(cat);
                         $($(this).find('input')[0]).prop('checked', true);
                         CreateListProductos(list);
+                    }
+                });
+                $($($($(item).children()[a])[0]).find('input')[0]).data('cat', data.list[a]);
+                $($($($(item).children()[a])[0]).find('input')[0]).on('click', function (ev) {
+                    ev.preventDefault();
+                    var cat = $(this).data('cat');
+                    if (IscheckedFiltro(cat)) {
+                        filtroschecked = $.grep(filtroschecked, function (value) {
+                            return value != cat;
+                        });
+                        CreateListProductos(list);
+                        $(this).prop('checked', $(this).prop('checked'));
+                        return;
+                    } else {
+                        filtroschecked.push(cat);
+                        CreateListProductos(list);
+                        $(this).prop('checked', $(this).prop('checked'));
+                        return;
                     }
                 });
             }

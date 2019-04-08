@@ -76,11 +76,11 @@ if(isset($_SESSION['SES'])){
                                     </div>    
                                     <div class="col-lg-2">
                                         <select class="form-control" id="Filtrocategorias" onchange="SelectCategoria();">
-                                            <option value="0">Selecciona una categoría</option>
+                                            <option value="0">Selecciona una categorí­a</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-2">
-                                        <select class="form-control" id="Filtrotipo" onchange="SelectFiltro();">
+                                        <select class="form-control" id="Filtrotipo" onchange="SelectFiltro(0);">
                                             <option value="0">Selecciona un filtro</option>
                                             <option value="1">Habilitado</option>
                                             <option value="2">Deshabilitado</option>

@@ -22,6 +22,28 @@ require_once('Constantes.php');
     <!-- Custom fonts for this template -->
     <link href="vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#EF3340",
+      "text": "#ffdddd"
+    },
+    "button": {
+      "background": "#ff0000"
+    }
+  },
+  "content": {
+    "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
+    "dismiss": "Acepto",
+    "link": "Leer más",
+    "href": "/legal/Coockies.php"
+  }
+})});
+    </script>
 </head>
 
 <body id="page-top" class="container-fuild">
@@ -104,7 +126,7 @@ require_once('Constantes.php');
                                 </div>
                                 <div class="footer-telf">
                                     <span>
-                                        P.I MolÃ­ d'en Xec N.15
+                                        P.I MolÃÂ­ d'en Xec N.15
                                     </span>
                                     <br />
                                     <span>
@@ -119,7 +141,7 @@ require_once('Constantes.php');
                             <img src="/assets/img/LOGO_CONTACTO.png" style="margin-left:25px; width:90%;" />
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            <?php echo utf8_encode("P.I Molí d'en Xec N.15"); ?> <br />
+                            <?php echo utf8_encode("P.I MolÃ­ d'en Xec N.15"); ?> <br />
                             08291 Ripollet <br />
                             T (+34) 93 4327181 <br />
                             F (+34) 93 4327182 <br />

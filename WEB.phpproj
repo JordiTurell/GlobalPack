@@ -26,6 +26,10 @@
     <Compile Include="Formularis\ContacteAllPages.php" />
     <Compile Include="Formularis\PopupContacte.php" />
     <Compile Include="index.php" />
+    <Compile Include="legal\Coockies.php" />
+    <Compile Include="legal\informacionlegal.php" />
+    <Compile Include="legal\politicadeprivacidad.php" />
+    <Compile Include="legal\terminos.php" />
     <Compile Include="Menus\menutop.php" />
     <Compile Include="nosotros.php" />
     <Compile Include="Ocasion.php" />
@@ -48,6 +52,7 @@
     <Folder Include="Footer\" />
     <Folder Include="Formularis\" />
     <Folder Include="assets\" />
+    <Folder Include="legal\" />
     <Folder Include="Productos\" />
     <Folder Include="sass\" />
   </ItemGroup>
@@ -126,6 +131,7 @@
     <Content Include="js\pages\Ficha_Producto.js" />
     <Content Include="js\pages\home.js" />
     <Content Include="js\pages\index.html" />
+    <Content Include="js\pages\legales.js" />
     <Content Include="js\pages\nosotros.js" />
     <Content Include="js\pages\ocasion.js" />
     <Content Include="js\pages\postventa.js" />

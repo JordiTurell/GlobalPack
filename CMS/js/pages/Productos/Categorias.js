@@ -74,11 +74,7 @@ function SlideFiltros() {
                                     contentType: "application/json; charset=utf-8",
                                     success: function (data) {
                                         if (data.status) {
-                                            if ($(check).is('checked')) {
-                                                $(check).prop('checked', false);
-                                            } else {
-                                                $(check).prop('checked', true);
-                                            }
+                                            $(check).prop('checked', $(check).is('checked'));
                                         }
                                     }
                                 });

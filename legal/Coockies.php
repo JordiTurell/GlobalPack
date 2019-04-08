@@ -1,8 +1,8 @@
 <?php
 use WEB\Constantes\Constantes;
-require_once('Constantes.php');
+require_once('../Constantes.php');
 
-$id = $_GET["Cat"];
+$post = $_POST;
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,8 @@ $id = $_GET["Cat"];
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" />
     <!-- Custom fonts for this template -->
     <link href="/vendor/components/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>
@@ -48,35 +49,29 @@ window.cookieconsent.initialise({
     </script>
 </head>
 
-<body id="page-top" class="container-fuild" onload="LoadOcasion('<?php echo $id; ?>');">
-
+<body id="page-top" class="container-fuild" onload="LoadLegales(3);">
     <!-- Navigation -->
-    <?php include_once('Menus/menutop.php'); ?>
+    <?php include_once('../Menus/menutop.php'); ?>
 
-    <div class="row" style="margin-bottom:130px; margin-top:86px;">
+    <div class="row" style="padding-bottom:20px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12" style="padding-bottom:50px;">
-                    <center>
-                        <h1 class="title" style="width:170px;">OCASI&Oacute;N</h1>
-                    </center>
-                </div>
+            <div class="row" style="margin-top:20px;">
+                <div class="col-lg-12" id="textolegales"></div>
             </div>
-            <div class="row" id="list-ocasion"></div>
         </div>
     </div>
-    <!-- Contacte -->
-    <?php include_once('Formularis/PopupContacte.php'); ?>
-
     <!-- Footer -->
     <footer>
-        <?php include_once('Footer/footer.php'); ?>
+        <?php include_once('../Footer/footer.php'); ?>
     </footer>
+
+    <?php include_once('../Productos/ModalCompartir.php'); ?>
+
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/components/jquery/jquery.min.js"></script>
     <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.redirect.js"></script>
-    <script type="text/javascript" src="/js/pages/ocasion.js"></script>
+    <script type="text/javascript" src="/js/pages/blog.js"></script>
+    <script type="text/javascript" src="/js/pages/legales.js"></script>
     <script type="text/javascript" src="/js/mobile.js"></script>
 </body>
 

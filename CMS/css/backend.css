@@ -50,3 +50,9 @@ footer {
 .imgActive > img {
   opacity: 0.7;
   border: solid 1px #ef3340; }
+
+.item-slider {
+  border: solid 1px #ef3340;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ef3340; }

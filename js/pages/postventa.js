@@ -1,4 +1,4 @@
-﻿var filtroschecked = [];
+﻿var filtroschecked = new Array();
 var list = null;
 var cat = null;
 
@@ -53,7 +53,7 @@ function Showcontact() {
 
 function LoadHomePostVenta(id) {
     LoadColumLeft(id);
-    Filtros();
+    Filtros(id);
     Productos(id);
     filtroschecked = [];
 }
@@ -157,7 +157,7 @@ function LoadColumLeft(id) {
             for (var a = 0; a < data.list.length; a++) {
                 var code = '';
                 var item = null;
-                if (id == data.list[a].Id_Categoria) {
+                if (id == data.list[a].Id_Subcategoria) {
                     cat = data.list[a];
                     code = '<li class="cat-active" style="padding-right:0px;"><img src="' + data.list[a].Icono + '" /> <span>' + data.list[a].Categoria + '</span>';
                     item = $(header).append(code);
@@ -176,10 +176,10 @@ function LoadColumLeft(id) {
     });
 }
 
-function Filtros() {
+function Filtros(id) {
     $.ajax({
         type: "POST",
-        url: "/api/interfaces/web/IProductos.php?fun=LoadCategoriasProductos",
+        url: "/api/interfaces/web/IProductos.php?fun=LoadCategoriasRelacionadasFiltrosProductos&cat="+id,
         cache: false,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -202,12 +202,27 @@ function Filtros() {
                         filtroschecked = $.grep(filtroschecked, function (value) {
                             return value != cat;
                         });
-                        $($(this).find('input')[0]).prop('checked', false);
                         CreateListProductos(list);
+                        $($(this).find('input')[0]).prop('checked', false);
                     } else {
                         filtroschecked.push(cat);
-                        $($(this).find('input')[0]).prop('checked', true);
                         CreateListProductos(list);
+                        $($(this).find('input')[0]).prop('checked', true);
+                    }
+                });
+                $($($(item).children()[a]).find('input')[0]).on('click', function (ev) {
+                    ev.preventDefault();
+                    var cat = $(this).data('cat');
+                    if (IscheckedFiltro(cat)) {
+                        filtroschecked = $.grep(filtroschecked, function (value) {
+                            return value != cat;
+                        });
+                        CreateListProductos(list);
+                        $($(this).find('input')[0]).prop('checked', false);
+                    } else {
+                        filtroschecked.push(cat);
+                        CreateListProductos(list);
+                        $($(this).find('input')[0]).prop('checked', true);
                     }
                 });
             }
@@ -218,8 +233,10 @@ function Filtros() {
 
 function IscheckedFiltro(cat) {
     for (var a = 0; a < filtroschecked.length; a++) {
-        if (filtroschecked[a].Id_Categoria == cat.Id_Categoria) {
-            return true;
+        if (filstrochecked[a] != undefined) {
+            if (filtroschecked[a].Id_Categoria == cat.Id_Categoria) {
+                return true;
+            }
         }
     }
     return false;

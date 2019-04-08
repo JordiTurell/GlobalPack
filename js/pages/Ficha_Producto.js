@@ -13,6 +13,14 @@ function Showcontact() {
     }
 }
 
+function onBack() {
+    window.history.back();
+}
+
+function Compartir() {
+    $('#ModalCompartir').modal('show');
+}
+
 function ShowcontactComprar() {
     $('.title-form h1').text('Solicitar pedido');
     if (show) {
@@ -47,7 +55,7 @@ function Ficha_Producto(id) {
         success: function (data) {
             ficha = data.item;
             if (data.item.imagen.length > 1) {
-                alert('Crear Slider');
+                CreateSlider(data);
             } else {
                 $('.imgproducto').append('<img src="'+ data.item.imagen[0] +'" style = "width:100%;" />');
             }
@@ -92,7 +100,12 @@ function Ficha_Producto(id) {
             if (data.item.list_relacionados.length > 0) {
                 for (var a = 0; a < data.item.list_relacionados.length; a++) {
                     var code = '<div class="item-slider" style="margin-right:5px;"><div class="item-slider-info"><h3>' + data.item.list_relacionados[a].Titulo + '</h3><p>ver más</p></div><img src="' + data.item.list_relacionados[a].imagen + '" style="width:100%; height:auto;" /></div>';
-                    $('.slider_relacionados').append(code);
+                    var item = $('.slider_relacionados').append(code);
+                    $($(item).children()[a]).data('producte', data.item.list_relacionados[a]);
+                    $($(item).children()[a]).on('click', function () {
+                        var producto = $(this).data('producte');
+                        $.redirect('/Productos/Ficha.php', producto);
+                    });
                 }
                 $('.slider_relacionados').slick({
                     infinite: false,
@@ -106,6 +119,34 @@ function Ficha_Producto(id) {
             }
         }
     });
+}
+
+function CreateSlider(data) {
+    var code = '<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">' +
+        '<div class="carousel-inner" > ';
+    for (var a = 0; a < data.item.imagen.length; a++) {
+        if (a == 0) {
+            code += '<div class="carousel-item active">' +
+                '<img class="d-block w-100" src="' + data.item.imagen[a] + '" />' +
+                '</div>';
+        } else {
+            code += '<div class="carousel-item">' +
+                '<img class="d-block w-100" src="' + data.item.imagen[a] + '" />' +
+                '</div>';
+        }
+    }
+            
+        code += '</div>'+
+                '<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">'+
+                    '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'+
+                    '<span class="sr-only">Previous</span>'+
+                '</a>'+
+                '<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">'+
+                    '<span class="carousel-control-next-icon" aria-hidden="true"></span>'+
+                    '<span class="sr-only">Next</span>'+
+                    '</a>'+
+        '</div>';
+    $('.imgproducto').append(code);
 }
 
 function SharedMail() {

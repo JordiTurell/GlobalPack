@@ -11,6 +11,9 @@
       <div class="modal-body">
         <ul class="compartir-list">
             <li>
+            <!--<img src="/assets/iconos/mail.png" style="width:30px; margin-right:10px;" onclick="SharedMail();"/>-->
+            </li>
+            <li>
                 <img src="/assets/iconos/facebook.png"  onclick="SharedFacebook();"/>
             </li>
             <li>

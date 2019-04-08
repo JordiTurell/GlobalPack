@@ -153,7 +153,7 @@ namespace Api\WCFWeb
             return $result;
         }
 
-        function LoadFiltrosConsumibles(){
+        function LoadFiltrosConsumibles($id){
             require_once("../../Config/Token.php");
             require_once("../../Config/Config.php");
             require_once("../../Config/DataContext.php");
@@ -165,10 +165,35 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM p_subcategorias WHERE Consumible = 1 ORDER BY FechaM";
+            $query = "SELECT * FROM p_subcategorias INNER JOIN categorias_filtros ON categorias_filtros.Id_Filtro = p_subcategorias.Id_Subcategorias WHERE categorias_filtros.Id_Categoria = '".$id."' ORDER BY p_subcategorias.FechaM";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                    array_push($result->list, $cat);
+                }
+            }
+            mysqli_close($conn);
+            $result->SetStatus(true);
+            $result->SetMsg('SUCCESS');
+            return $result;
+        }
+
+        function LoadCategoriasRelacionadasFiltrosProductos($id){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/Subcategoria.php");
+            require_once("../../clases/ServiceListResult.php");
+
+            $result = new Listado(false, "", 0, 0, 0);
+
+            $config = new Data(DataContext::Admin);
+            $conn = $config->Conect();
+
+            $query = "SELECT * FROM p_categorias INNER JOIN categorias_filtros ON categorias_filtros.Id_Categoria = p_categorias.Id_Categoria WHERE categorias_filtros.Id_Filtro = '".$id."' ORDER BY p_categorias.FechaM";
+            if($res = mysqli_query($conn, $query)){
+                while($row = mysqli_fetch_assoc($res)){
+                    $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
                     array_push($result->list, $cat);
                 }
             }
@@ -256,6 +281,15 @@ namespace Api\WCFWeb
                     if($res = mysqli_query($conn, $relacionados)){
                         while($row = mysqli_fetch_assoc($res)){
                             $p = new Producto($row["Productos_Relacionados"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                            $p->SetId($row["Indice"]);
+                            $p->SetDescripcionCorta($row["Descripcio_min"]);
+                            $p->SetSubCategoria($row["Id_Filtro"]);
+                            $p->SetDescripcion($row["Descripcion"]);
+                            $p->SetFichaTecnica($row["Ficha_Tecnica"]);
+                            $p->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
+                            $p->SetComparativa($row["Comparativa"]);
+                            $p->SetAnoGarantia($row["Anogarantia"]);
+                            $p->SetPdf($row["pdf"]);
                             $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$p->Id_Producto."' LIMIT 1";
                             if($r = mysqli_query($conn, $imagen)){
                                 while($img = mysqli_fetch_assoc($r)){

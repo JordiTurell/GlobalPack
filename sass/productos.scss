@@ -164,6 +164,7 @@
         line-height: 10px;
         color: $globalpack;
         margin-bottom:15px;
+        width:100% !important;
     }
 
     #list-filtros {
@@ -270,7 +271,6 @@
 .item-slider {
     cursor: pointer;
     width: 350px !important;
-    height: 220px;
     overflow: hidden;
     position: relative;
 
@@ -281,7 +281,7 @@
     .item-slider-info {
         position: absolute;
         width: 350px;
-        height: 220px;
+        height: 100%;
         opacity: 0;
         text-align: center;
         cursor: pointer;
@@ -291,7 +291,7 @@
         -moz-transition: all 0.4s;
         -o-transition: all 0.4s;
         transition: all 0.4s;
-        padding-top:20%;
+        padding-top:40%;
         
 
         h3 {

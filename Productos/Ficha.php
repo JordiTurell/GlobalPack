@@ -25,6 +25,28 @@ $producto = $_POST;
     <link href="/css/slick.css" rel="stylesheet" type="text/css" />
     <link href="/css/slick-theme.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#EF3340",
+      "text": "#ffdddd"
+    },
+    "button": {
+      "background": "#ff0000"
+    }
+  },
+  "content": {
+    "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
+    "dismiss": "Acepto",
+    "link": "Leer más",
+    "href": "/legal/Coockies.php"
+  }
+})});
+    </script>
 </head>
 
 <body id="page-top" class="container-fuild" onload="Ficha_Producto('<?php echo $producto["Id_Producto"]; ?>');">
@@ -38,7 +60,7 @@ $producto = $_POST;
                 <div class="col-lg-12" style="padding-bottom:50px;">
                     <div class="row">
                         <div class="col-lg-12">
-                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px;" />
+                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px; cursor:pointer;" onclick="onBack();"/>
 
                             <h1 class="title">PRODUCTOS</h1>&nbsp;&nbsp;&nbsp;
                             <h1 class="title2">
@@ -78,10 +100,7 @@ $producto = $_POST;
                                     <img src="/assets/iconos/star.png" style="width:30px;" />
                                 </div>
                                 <div class="col-md-6 col-xs-6 text-right">
-                                    <!--<img src="/assets/iconos/mail.png" style="width:30px; margin-right:10px;" onclick="SharedMail();"/>-->
-                                    <img src="/assets/iconos/facebook.png" style="width:10px; margin-right:10px;" onclick="SharedFacebook();"/>
-                                    <img src="/assets/iconos/tweeter.png" style="width:20px; margin-right:10px;" onclick="SharedTweeter();"/>
-                                    <img src="/assets/iconos/linkedin.png" style="width:20px;" onclick="SharedLinkedin();"/>
+                                    <input type="button" class="btn btn-web" value="COMPARTIR" style="margin:0 auto;" onclick="Compartir();" />
                                 </div>
                             </div>
                         </div>
@@ -151,7 +170,7 @@ $producto = $_POST;
     </div>
     <!-- Contacte -->
     <?php include_once('../Formularis/PopupContacte.php'); ?>
-
+    <?php include_once('ModalCompartir.php'); ?>
     <!-- Footer -->
     <footer class="row">
         <?php include_once('../Footer/footer.php'); ?>
@@ -159,6 +178,7 @@ $producto = $_POST;
     <!-- Bootstrap core JavaScript -->
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.redirect.js"></script>
     <script src="/js/slick.min.js"></script>
    
     <script type="text/javascript" src="/js/pages/Ficha_Producto.js"></script>

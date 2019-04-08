@@ -1,6 +1,6 @@
 ﻿var token = '';
 var tabposition = 1;
-var imagenes = [];
+var imagenes = new Array();
 var createProducto = new Object();
 var UrlPDF = '';
 var pagina = 0;
@@ -156,6 +156,8 @@ function LoadList(t, p) {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.status) {
+                    $('#Filtrocategorias').children().remove();
+                    $('#Filtrocategorias').append('<option value="0">Selecciona una categorí­a</option>');
                     for (var a = 0; a < data.list.length; a++) {
                         $('#Filtrocategorias').append('<option value="' + data.list[a].Id_Categoria +'">' + data.list[a].Categoria +'</option>');
                     }
@@ -806,6 +808,9 @@ function ShowMultimedia() {
                         $($(item).children()[a]).data('obj', data.list[a].url);
                         $($(item).children()[a]).on('click', function () {
                             if (!$(this).data('select')) {
+                                if (imagenes == "") {
+                                    imagenes = new Array();
+                                }
                                 imagenes.push($(this).data('obj'));
                                 $(this).addClass('imgActive');
                                 $(this).data('select', true);

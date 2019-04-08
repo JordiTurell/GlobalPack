@@ -4,7 +4,7 @@
             <div class="col-lg-3">
                 <img src="/assets/img/LOGO@2x_GLOBALPACK.png" id="logo_footer" />
                 <p style="margin-top:24.45px">
-                    <?php echo utf8_encode("P.I MolÌ d'en Xec N.15"); ?> <br />
+                    <?php echo utf8_encode("P.I Mol√≠ d'en Xec N.15"); ?> <br />
                     08291 Ripollet<br />
                     <a href="tel:+34934327181">+34 93 4327181</a>
                     <br />
@@ -12,7 +12,7 @@
                 </p>
             </div>
             <div class="col-lg-2">
-                <h3><?php echo utf8_encode('CompaÒia'); ?></h3>
+                <h3><?php echo utf8_encode('Compa√±ia'); ?></h3>
                 <p style="margin-top:15.78px"><a href="/contacto.php" style="color:white; text-decoration:none;">Contacto</a></p>
                 <p><a href="/nosotros.php" style="color:white; text-decoration:none;">Sobre nosotros</a></p>
                 <p><a href="/blog.php" style="color:white; text-decoration:none;">Blog</a></p>
@@ -20,10 +20,10 @@
             </div>
             <div class="col-lg-3">
                 <h3>Legal</h3>
-                <p style="margin-top:15.78px">Terminos y condiciones</p>
-                <p><?php echo utf8_encode('PolÌtica de privacidad');?></p>
-                <p><?php echo utf8_encode('PolÌtica de Coockies'); ?></p>
-                <p><?php echo utf8_encode('InformaciÛn legal'); ?></p>
+                <p style="margin-top:15.78px"><a href="/legal/terminos.php" style="text-decoration:none; color:white;">Terminos y condiciones</a></p>
+                <p><a href="/legal/politicadeprivacidad.php" style="text-decoration:none; color:white;">Pol√≠tica de privacidad</a></p>
+                <p><a href="/legal/Coockies.php" style="text-decoration:none; color:white;">Pol√≠tica de Coockies</a></p>
+                <p><a href="/legal/informacionlegal.php" style="text-decoration:none; color:white;">Informaci√≥n legal</a></p>
             </div>
             <div class="col-lg-4">
                 <h3>Atencion al cliente</h3>
@@ -45,7 +45,7 @@
                 &nbsp;
             </div>
             <div class="col-lg-6 text-right">
-                <?php echo utf8_encode('Design & Programmation by © '); ?><a href="https://flutter.es" style="text-decoration:none; color:white;">Flutter</a>.
+                <?php echo utf8_encode('Design & Programmation by ¬© '); ?><a href="https://flutter.es" style="text-decoration:none; color:white;">Flutter</a>.
             </div>
         </div>
     </div>

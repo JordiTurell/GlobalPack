@@ -54,21 +54,25 @@
     <Compile Include="Config\UpdateFiles.php" />
     <Compile Include="interfaces\admin\IAdmin.php" />
     <Compile Include="interfaces\admin\IBlog.php" />
+    <Compile Include="interfaces\admin\ILegales.php" />
     <Compile Include="interfaces\admin\Ilogin.php" />
     <Compile Include="interfaces\admin\INosotros.php" />
     <Compile Include="interfaces\admin\IProductos.php" />
     <Compile Include="interfaces\web\IBlog.php" />
     <Compile Include="interfaces\web\IHome.php" />
+    <Compile Include="interfaces\web\ILegales.php" />
     <Compile Include="interfaces\web\INosotros.php" />
     <Compile Include="interfaces\web\IProductos.php" />
     <Compile Include="wcf\admin\Admin.php" />
     <Compile Include="wcf\admin\Blog.php" />
+    <Compile Include="wcf\admin\Legales.php" />
     <Compile Include="wcf\admin\Login.php" />
     <Compile Include="wcf\admin\Nosotros.php" />
     <Compile Include="wcf\admin\Productos.php" />
     <Compile Include="wcf\admin\WcfAdmin.php" />
     <Compile Include="wcf\web\Blog.php" />
     <Compile Include="wcf\web\Home.php" />
+    <Compile Include="wcf\web\Legales.php" />
     <Compile Include="wcf\web\Nosotros.php" />
     <Compile Include="wcf\web\Productos.php" />
   </ItemGroup>

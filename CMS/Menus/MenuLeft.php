@@ -38,7 +38,11 @@
                     </li>
                 </ul>
             </li>
-            
+            <li>
+                <a href="/cms/pages/HomeWeb.php">
+                    <i class="fa fa-th"></i> Home Web
+                </a>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fas fa-shopping-bag"></i>&nbsp;
@@ -127,9 +131,40 @@
                     </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fas fa-balance-scale"></i>&nbsp;
+                    <span> Textos Legales</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active">
+                        <a href="/cms/pages/legales/terminosicondiciones.php">
+                            <i class="fa fa-circle-o"></i> Terminos y condiciones
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cms/pages/legales/politicadeprivacidad.php">
+                            <i class="fa fa-circle-o"></i> Política de privacidad
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cms/pages/legales/politicadecoockies.php">
+                            <i class="fa fa-circle-o"></i> Política de Coockies
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cms/pages/legales/Infomracionlegal.php">
+                            <i class="fa fa-circle-o"></i> Infomración legal
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="/">
-                    <i class="fa fa-th"></i> Ver Web
+                    <i class="fab fa-chrome"></i> Ver Web
                 </a>
             </li>
         </ul>

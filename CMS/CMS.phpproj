@@ -779,6 +779,7 @@
     <Folder Include="js\pages\" />
     <Folder Include="js\pages\models\" />
     <Folder Include="js\pages\Blog\" />
+    <Folder Include="js\pages\legales\" />
     <Folder Include="js\pages\Productos\" />
     <Folder Include="js\raphael\" />
     <Folder Include="js\raphael\dev\" />
@@ -790,6 +791,7 @@
     <Folder Include="pages\" />
     <Folder Include="pages\administradores\" />
     <Folder Include="pages\blog\" />
+    <Folder Include="pages\legales\" />
     <Folder Include="pages\productos\" />
     <Folder Include="pages\nosotros\" />
     <Folder Include="plugins\" />
@@ -9585,6 +9587,8 @@
     <Content Include="js\pages\CreateAdmin.js" />
     <Content Include="js\pages\CreateComercio.js" />
     <Content Include="js\pages\CreatePost.js" />
+    <Content Include="js\pages\HomeWeb.js" />
+    <Content Include="js\pages\legales\terminoscondiciones.js" />
     <Content Include="js\pages\ListarAdmin.js" />
     <Content Include="js\pages\models\requestitem.js" />
     <Content Include="js\pages\models\requestlist.js" />
@@ -9792,6 +9796,11 @@
     <Compile Include="pages\blog\create_post.php" />
     <Compile Include="pages\blog\Listar.php" />
     <Compile Include="pages\blog\multimedia.php" />
+    <Compile Include="pages\HomeWeb.php" />
+    <Compile Include="pages\legales\Infomracionlegal.php" />
+    <Compile Include="pages\legales\politicadecoockies.php" />
+    <Compile Include="pages\legales\politicadeprivacidad.php" />
+    <Compile Include="pages\legales\terminosicondiciones.php" />
     <Compile Include="pages\nosotros\beneficios.php" />
     <Compile Include="pages\nosotros\cabecera.php" />
     <Compile Include="pages\nosotros\informacion.php" />

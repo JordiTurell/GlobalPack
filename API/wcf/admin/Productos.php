@@ -1154,14 +1154,14 @@ namespace Api\WCF
                             $query = sprintf($query, $cat);
                         }
                     }else{
-                        $query = str_replace('%1s', '', $query);
+                        $query = str_replace('%1s', 'WHERE %1s', $query);
                     }
 
                     if($input["filtro"] != 0){
                         switch($input["filtro"]){
                             case 1:
                                 if($input["categoria"] != 0){
-                                    $filtro = "AND Habilitado = 1";
+                                    $filtro = "AND productos.Habilitado = 1";
                                     $query = sprintf($query, $filtro);
                                 }else{
                                     $filtro = "Habilitado = 1";
@@ -1170,7 +1170,7 @@ namespace Api\WCF
                                 break;
                             case 2:
                                 if($input["categoria"] != 0){
-                                    $filtro = "AND Habilitado = 0";
+                                    $filtro = "AND productos.Habilitado = 0";
                                     $query = sprintf($query, $filtro);
                                 }else{
                                     $filtro = "Habilitado = 0";
@@ -1179,10 +1179,10 @@ namespace Api\WCF
                                 break;
                             case 3:
                                 if($input["categoria"] != 0){
-                                    $filtro = "AND Ocasion = 0";
+                                    $filtro = "AND productos.Ocasion = 1";
                                     $query = sprintf($query, $filtro);
                                 }else{
-                                    $filtro = "Ocasion = 0";
+                                    $filtro = "Ocasion = 1";
                                     $query = sprintf($query, $filtro);
                                 }
                                 break;
