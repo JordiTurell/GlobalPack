@@ -4,6 +4,7 @@
         "twbs/bootstrap": "^4.1",
         "components/jqueryui": "^1.12",
         "smarty/smarty": "^3.1",
-        "suncat/mobile-detect-bundle": "^1.1"
+        "suncat/mobile-detect-bundle": "^1.1",
+        "phpmailer/phpmailer": "^6.0"
     }
 }

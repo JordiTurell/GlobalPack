@@ -881,7 +881,7 @@ body {
   margin-left: 40px; }
 
 .redsocial_footer {
-  margin-right: 16.16px; }
+  margin-right: 0px; }
 
 #map {
   height: 500px; }
@@ -948,7 +948,7 @@ body {
   font-size: 36px;
   font-weight: bold;
   line-height: 42px;
-  width: 230px;
+  width: 70%;
   font-family: 'Ubuntu', sans-serif;
   display: inline-block;
   color: rgba(155, 155, 155, 0.59); }

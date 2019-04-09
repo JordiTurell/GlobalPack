@@ -537,6 +537,7 @@ namespace Api\WCF
                             if($res_relacionados = mysqli_query($conn, $relacionados)){
                                 $cat->SetCountRelacionados($res_relacionados->num_rows);
                             }
+                            $cat->SetAllProduct($this->GetAllProductoApi($cat->Id_Producto));
                             array_push($result->list, $cat);
                         }
                     }
@@ -953,6 +954,7 @@ namespace Api\WCF
             require_once("../../Config/Config.php");
             require_once("../../Config/DataContext.php");
             require_once("../../clases/Productos.php");
+            require_once("../../clases/Servicios.php");
             require_once("../../clases/ServiceItemResult.php");
 
             $input = json_decode(file_get_contents('php://input'), true);
@@ -975,6 +977,7 @@ namespace Api\WCF
                             $producto->SetComparativa($row["Comparativa"]);
                             $producto->SetAnoGarantia($row["Anogarantia"]);
                             $producto->SetReferencia($row["Referencia"]);
+                            $producto->SetPdf($row["pdf"]);
                             $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$producto->Id_Producto."'";
                             if($r = mysqli_query($conn, $imagen)){
                                 while($img = mysqli_fetch_assoc($r)){
@@ -997,8 +1000,9 @@ namespace Api\WCF
 
                             $query_serveis = "SELECT * FROM productos_servicio WHERE Id_Producto = '".$producto->Id_Producto."'";
                             if($res_serveis = mysqli_query($conn, $query_serveis)){
-                                while($row = mysqli_fetch_assoc($res_serveis)){
-                                    $producto->SetAllServicio($row["Id_Servicio"]);
+                                while($row_servicios = mysqli_fetch_assoc($res_serveis)){
+                                    $servicio = new Servicios($row_servicios["Id_Servicio"], '', '', '');
+                                    $producto->SetAllServicio($servicio);
                                 }
                             }
                             $result->item = $producto;
@@ -1115,6 +1119,64 @@ namespace Api\WCF
             }
         }
 
+        public function GetAllProductoApi($id){
+            require_once("../../clases/Servicios.php");
+            $config = new Data(DataContext::Admin);
+            $conn = $config->Conect();
+
+            $producto = "SELECT * FROM productos WHERE Id_Producto = '".$id."'";
+            if($res = mysqli_query($conn, $producto)){
+                while($row = mysqli_fetch_assoc($res)){
+                    $producto = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
+                    $producto->SetId($row["Indice"]);
+                    $producto->SetDescripcionCorta($row["Descripcio_min"]);
+                    $producto->SetDescripcion($row["Descripcion"]);
+                    $producto->SetFichaTecnica($row["Ficha_Tecnica"]);
+                    $producto->Setvideo($row["Video"], $row["Titulo_Video"], $row["Descripcion_Video"]);
+                    $producto->SetComparativa($row["Comparativa"]);
+                    $producto->SetAnoGarantia($row["Anogarantia"]);
+                    $producto->SetReferencia($row["Referencia"]);
+                    $producto->SetPdf($row["pdf"]);
+
+                    $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$cat->Id_Producto."'";
+                    if($res_relacionados = mysqli_query($conn, $relacionados)){
+                        $producto->SetCountRelacionados($res_relacionados->num_rows);
+                    }
+
+                    $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$producto->Id_Producto."'";
+                    if($r = mysqli_query($conn, $imagen)){
+                        while($img = mysqli_fetch_assoc($r)){
+                            $producto->SetImages($img["Url"]);
+                        }
+                    }
+                    $query_filtros = "SELECT * FROM productos_filtros WHERE Id_Producto = '".$producto->Id_Producto."'";
+                    if($res_filtros = mysqli_query($conn, $query_filtros)){
+                        while($row = mysqli_fetch_assoc($res_filtros)){
+                            $producto->SetAllFiltros($row["Id_Filtro"]);
+                        }
+                    }
+
+                    $query_categorias = "SELECT * FROM productos_categorias WHERE Id_Producto = '".$producto->Id_Producto."'";
+                    if($res_categorias = mysqli_query($conn, $query_categorias)){
+                        while($row = mysqli_fetch_assoc($res_categorias)){
+                            $producto->SetAllCategorias($row["Id_Categoria"]);
+                        }
+                    }
+
+                    $query_serveis = "SELECT * FROM productos_servicio WHERE Id_Producto = '".$producto->Id_Producto."'";
+                    if($res_serveis = mysqli_query($conn, $query_serveis)){
+                        while($row_servicios = mysqli_fetch_assoc($res_serveis)){
+                            $servicio = new Servicios($row_servicios["Id_Servicio"], '', '', '');
+                            $producto->SetAllServicio($servicio);
+                        }
+                    }
+                    return $producto;
+                }
+            }else{
+                return null;
+            }
+        }
+
         public function Filtrado(){
             require_once("../../Config/Token.php");
             require_once("../../Config/Config.php");
@@ -1122,17 +1184,13 @@ namespace Api\WCF
             require_once("../../clases/Productos.php");
             require_once("../../clases/ServiceListResult.php");
 
-            $result = new Listado(false, "", 20, 0, 0);
+            $result = new Listado(false, "", 10, 0, 0);
             $input = json_decode(file_get_contents('php://input'), true);
             if($input != null){
                 if(Token::CheckTokenAdmin($input['token'])){
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $total = "SELECT * FROM productos WHERE Titulo LIKE '%".$input["item"]."%'";
-                    if($res_total = mysqli_query($conn, $total)){
-                        $result->total = mysqli_num_rows($res_total);
-                    }
                     if(($input["pagina"]-1) < 0){
                         $input["pagina"] = 1;
                     }
@@ -1143,7 +1201,7 @@ namespace Api\WCF
                     }
 
                     $buscar = "Titulo LIKE '%".$input["item"]."%'";
-                    if($input["categoria"] != 0){
+                    if($input["categoria"] != "0"){
                         $innerjoin = 'INNER JOIN productos_categorias on productos_categorias.Id_Producto = productos.Id_Producto WHERE %1s';
                         $query = sprintf($query, $innerjoin);
                         if($input["item"] == null){
@@ -1202,22 +1260,14 @@ namespace Api\WCF
                             }
                         }
                     }
+                    $total = explode("ORDER", $query)[0];
+                    if($res_total = mysqli_query($conn, $total)){
+                        $result->total = mysqli_num_rows($res_total);
+                    }
                     if($res = mysqli_query($conn, $query)){
 
                         while($row = mysqli_fetch_assoc($res)){
-                            $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
-                            $cat->SetHome($row["Home"]);
-                            $cat->SetId($row["Indice"]);
-                            $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
-                            if($r = mysqli_query($conn, $imagen)){
-                                while($img = mysqli_fetch_assoc($r)){
-                                    $cat->SetImage($img["Url"]);
-                                }
-                            }
-                            $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$cat->Id_Producto."'";
-                            if($res_relacionados = mysqli_query($conn, $relacionados)){
-                                $cat->SetCountRelacionados($res_relacionados->num_rows);
-                            }
+                            $cat = $this->GetAllProducto($row["Id_Producto"]);
                             array_push($result->list, $cat);
                         }
                     }
@@ -1246,7 +1296,7 @@ namespace Api\WCF
             require_once("../../clases/ServiceItemResult.php");
 
             $input = json_decode(file_get_contents('php://input'), true);
-            $result = new Result(false, "", null);
+            $result = new Result(false, "", '');
             if($input["item"] != null){
                 if(Token::CheckTokenAdmin($input['token'])){
 
@@ -1292,8 +1342,10 @@ namespace Api\WCF
                         $deleteServicios = "DELETE FROM productos_servicio WHERE Id_Producto = '".$input["item"]["itemdb"]["Id_Producto"]."'";
                         mysqli_query($conn, $deleteServicios);
                         for($a = 0; $a < count($input["item"]["itemdb"]["servicios"]); $a++){
-                            $q = "INSERT INTO productos_servicio (Id_Servicio, Id_Producto) VALUES ('".$input["item"]["itemdb"]["servicios"][$a]["Id_Servicios"]."', '".$input["item"]["itemdb"]["Id_Producto"]."')";
-                            mysqli_query($conn, $q);
+                            if($config::isValidUuid($input["item"]["itemdb"]["servicios"][$a]["Id_Servicios"])){
+                                $q = "INSERT INTO productos_servicio (Id_Servicio, Id_Producto) VALUES ('".$input["item"]["itemdb"]["servicios"][$a]["Id_Servicios"]."', '".$input["item"]["itemdb"]["Id_Producto"]."')";
+                                mysqli_query($conn, $q);
+                            }
                         }
                         $result->SetStatus(true);
                     }

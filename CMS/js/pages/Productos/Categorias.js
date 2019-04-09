@@ -50,16 +50,18 @@ function SlideFiltros() {
                         var list = $('#listfiltros');
                         $(list).children().remove();
                         for (var a = 0; a < data.list.length; a++) {
-                            var code = '<div class="form-check form-check-inline filtro-form" style="width:45%;"><input class="form-check-input" type="checkbox" /><label class="form-check-label" for="inlineCheckbox' + a + '">' + data.list[a].Categoria.toLowerCase() +'</label></div>';
+                            var code = '<div class="form-check form-check-inline filtro-form" style="width:45%;"><img src="/cms/img/checked.png" style="width:18px; margin-right:5px;" /><input class="form-check-input" type="checkbox" style="display:none;"/><label class="form-check-label" for="inlineCheckbox' + a + '">' + data.list[a].Categoria.toLowerCase() +'</label></div>';
                             var row = $(list).append(code);
                             if (data.list[a].asign) {
                                 $($($(row).children()[a]).find('input')[0]).prop('checked', true);
+                                $($($(row).children()[a]).find('img')[0]).attr('src', '/cms/img/uncheck.png');
                             }
                             $($(row).children()[a]).data('id_filtro', data.list[a].Id_Subcategoria);
                             $($(row).children()[a]).click('on', function (ev) {
                                 ev.preventDefault();
                                 var idfiltro = $(this).data('id_filtro');
                                 var check = $(this).find('input')[0];
+                                var img = $(this).find('img')[0];
                                 var request = {
                                     token: token,
                                     filtro: idfiltro,
@@ -75,32 +77,10 @@ function SlideFiltros() {
                                     success: function (data) {
                                         if (data.status) {
                                             $(check).prop('checked', $(check).is('checked'));
-                                        }
-                                    }
-                                });
-                            });
-                            $($($(row).children()[a]).find('input')[0]).on('click', function (ev) {
-                                ev.preventDefault();
-                                var idfiltro = $(this).data('id_filtro');
-                                var check = $(this);
-                                var request = {
-                                    token: token,
-                                    filtro: idfiltro,
-                                    categoria: selectcat
-                                };
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/api/interfaces/admin/IProductos.php?fun=AsignarFiltroCategoria",
-                                    data: JSON.stringify(request),
-                                    cache: false,
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
-                                    success: function (data) {
-                                        if (data.status) {
-                                            if ($(check).is('checked')) {
-                                                $(check).prop('checked', false);
+                                            if ($(img).attr('src') == '/cms/img/uncheck.png') {
+                                                $(img).attr('src', '/cms/img/checked.png');
                                             } else {
-                                                $(check).prop('checked', true);
+                                                $(img).attr('src', '/cms/img/uncheck.png');
                                             }
                                         }
                                     }

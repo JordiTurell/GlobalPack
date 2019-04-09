@@ -11,7 +11,6 @@
 
         },
         success: function (data) {
-            console.log(data);
             CreateListProductos(data.list);
         }
     });
@@ -77,8 +76,8 @@ function toDate(dateStr) {
     }
 }
 
-function LoadPost() {
-
+function LoadPost(video) {
+    $('#video').append(video);
 }
 
 function Imprimir() {
@@ -87,4 +86,8 @@ function Imprimir() {
 
 function Compartir() {
     $('#ModalCompartir').modal('show');
+}
+
+function onBack() {
+    window.history.back();
 }

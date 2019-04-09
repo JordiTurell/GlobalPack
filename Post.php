@@ -42,7 +42,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer más",
+    "link": "Leer mÃ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -59,7 +59,7 @@ window.cookieconsent.initialise({
                 <div class="col-lg-12" style="padding-bottom:20px; padding-top:50px;">
                     <div class="row">
                         <div class="col-lg-12">
-                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px;" />
+                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px; cursor:pointer;" onclick="onBack();" />
                             <h1 class="title" style="width:106px; font-weight:700;">BLOG</h1>&nbsp;&nbsp;&nbsp;<h1 class="title2" style="width:84%; font-weight:300;"><?php echo $post["Titulo"]?></h1>
                         </div>
                     </div>
@@ -71,13 +71,14 @@ window.cookieconsent.initialise({
         <div class="container">
             <div class="row" style="margin-top:20px;">
                 <div class="col-lg-6">
-                    <?php 
+                    <div id="video" style="width:100%;"></div>
+                    <?php
                         for($a = 0; $a < count($post["imagenes"]); $a++){
                             echo '<img src="'.$post["imagenes"][$a].'" style="width:100%; margin-bottom:20px;" />';
                         }
                     ?>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="contentDesc">
                     <h3 class="title-post-ficha"> <?php echo $post["Titulo"]; ?></h3>
                     <label class="fecha-desc">
                         <?php 
@@ -115,6 +116,15 @@ window.cookieconsent.initialise({
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/pages/blog.js"></script>
     <script type="text/javascript" src="/js/mobile.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var video = '<?php echo $post["video"]; ?>';
+            if(video != ''){
+               $('#video').append(video);
+               $($('#video').find('iframe')[0]).attr('width', '100%');
+            }
+            });
+        </script>
 </body>
 
 </html>

@@ -88,35 +88,53 @@ if(isset($_SESSION['SES'])){
                                 </div>
                             </div>
                             <div class="col-lg-9" style="position:relative;">
-                                <div class="row">
+                                <div class="row" id="cajas">
                                     <div class="col-lg-5 item-slider">
-                                        <img src="/assets/iconos/Rueda.png" />
-                                        <input type="text" plcaholder="Nombre" />
+                                        <select class="form-control" onchange="LoadBox(this);">
+                                            <option value="0">Selecciona una categoría o filtro</option>
+                                        </select>
+                                        <img src="/assets/iconos/Rueda.png" style="width:125px;" />
+                                        <input type="text" placeholder="Nombre" class="form-control" />
                                         <input type="text" placeholder="Url" class="form-control" />
                                     </div>
                                     <div class="col-lg-5 item-slider">
-                                        <img src="/assets/iconos/Rueda.png" />
-                                        <input type="text" plcaholder="Nombre" />
+                                        <select class="form-control" onchange="LoadBox(this);">
+                                            <option value="0">Selecciona una categoría o filtro</option>
+                                        </select>
+                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
+                                        <input type="text" placeholder="Nombre" />
                                         <input type="text" placeholder="Url" class="form-control" />
                                     </div>
                                     <div class="col-lg-5 item-slider">
-                                        <img src="/assets/iconos/Rueda.png" />
-                                        <input type="text" plcaholder="Nombre" />
+                                        <select class="form-control" onchange="LoadBox(this);">
+                                            <option value="0">Selecciona una categoría o filtro</option>
+                                        </select>
+                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
+                                        <input type="text" placeholder="Nombre" />
                                         <input type="text" placeholder="Url" class="form-control" />
                                     </div>
                                     <div class="col-lg-5 item-slider">
-                                        <img src="/assets/iconos/Rueda.png" />
-                                        <input type="text" plcaholder="Nombre" />
+                                        <select class="form-control" onchange="LoadBox(this);">
+                                            <option value="0">Selecciona una categoría o filtro</option>
+                                        </select>
+                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
+                                        <input type="text" placeholder="Nombre" />
                                         <input type="text" placeholder="Url" class="form-control" />
                                     </div>
                                     <div class="col-lg-5 item-slider">
-                                        <img src="/assets/iconos/Rueda.png" />
-                                        <input type="text" plcaholder="Nombre" />
+                                        <select class="form-control" onchange="LoadBox(this);">
+                                            <option value="0">Selecciona una categoría o filtro</option>
+                                        </select>
+                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
+                                        <input type="text" placeholder="Nombre" />
                                         <input type="text" placeholder="Url" class="form-control" />
                                     </div>
                                     <div class="col-lg-5 item-slider">
-                                        <img src="/assets/iconos/Rueda.png" />
-                                        <input type="text" plcaholder="Nombre" />
+                                        <select class="form-control" onchange="LoadBox(this);">
+                                            <option value="0">Selecciona una categoría o filtro</option>
+                                        </select>
+                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
+                                        <input type="text" placeholder="Nombre" />
                                         <input type="text" placeholder="Url" class="form-control" />
                                     </div>
                                 </div>

@@ -1,4 +1,5 @@
 ﻿var filtroschecked = [];
+var servicioschecked = [];
 var list = null;
 var cat = null;
 
@@ -55,6 +56,7 @@ function LoadHomeProductos(id) {
     LoadColumLeft(id);
     Filtros(id);
     Productos(id);
+    LoadServicios(id);
     filtroschecked = [];
 }
 
@@ -87,39 +89,93 @@ function CreateListProductos(list) {
         for (var b = 0; b < filtroschecked.length; b++) {
             for (a = 0; a < list.length; a++) {
                 if (filtroschecked[b].Id_Subcategoria == list[a].Id_SubCategoria) {
-                    if (list[a].Ocasion == 0) {
-                        code = '<div class="col-lg-4 text-center item-producto-list">' +
-                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                            '<h3>' + list[a].Titulo + '</h3>' +
-                            '<p>' + list[a].Descripcion_corta + '</p>' +
-                            '</div>';
+                    if (servicioschecked.length > 0) {
+                        for (var c = 0; c < servicioschecked.length; c++) {
+                            for (var d = 0; d < list.servicios.length; d++) {
+                                if (list.servicios[d] == servicioschecked[c].Id_Servicios) {
+                                    if (list[a].Ocasion == 0) {
+                                        code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                            '<h3>' + list[a].Titulo + '</h3>' +
+                                            '<p>' + list[a].Descripcion_corta + '</p>' +
+                                            '</div>';
+                                    } else {
+                                        code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                            '<h1>Ocasion</h1>' +
+                                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                            '<h3>' + list[a].Titulo + '</h3>' +
+                                            '<p>' + list[a].Descripcion_corta + '</p>' +
+                                            '</div>';
+                                    }
+                                }
+                            }
+                        }
                     } else {
-                        code = '<div class="col-lg-4 text-center item-producto-list">' +
-                            '<h1>Ocasion</h1>' +
-                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                            '<h3>' + list[a].Titulo + '</h3>' +
-                            '<p>' + list[a].Descripcion_corta + '</p>' +
-                            '</div>';
+                        if (list[a].Ocasion == 0) {
+                            code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                '<h3>' + list[a].Titulo + '</h3>' +
+                                '<p>' + list[a].Descripcion_corta + '</p>' +
+                                '</div>';
+                        } else {
+                            code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                '<h1>Ocasion</h1>' +
+                                '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                '<h3>' + list[a].Titulo + '</h3>' +
+                                '<p>' + list[a].Descripcion_corta + '</p>' +
+                                '</div>';
+                        }
                     }
                     $(content).append(code);
+                    var item = $(content).append(code);
+                    list[a].cat = cat;
+                    $($(item).children()[a]).data('item', list[a]);
+                    $($(item).children()[a]).on('click', function (ev) {
+                        ev.preventDefault();
+                        var producto = $(this).data('item');
+                        $.redirect('/Productos/Ficha.php', producto);
+                    });
                 }
             }
         }
     } else {
         for (a = 0; a < list.length; a++) {
-            if (list[a].Ocasion == 0) {
-                code = '<div class="col-lg-4 text-center item-producto-list">' +
-                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                    '<h3>' + list[a].Titulo + '</h3>' +
-                    '<p>' + list[a].Descripcion_corta + '</p>' +
-                    '</div>';
+            if (servicioschecked.length > 0) {
+                for (var c = 0; c < servicioschecked.length; c++) {
+                    for (var d = 0; d < list[a].servicios.length; d++) {
+                        if (list[a].servicios[d] == servicioschecked[c].Id_Servicios) {
+                            if (list[a].Ocasion == 0) {
+                                code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                    '<h3>' + list[a].Titulo + '</h3>' +
+                                    '<p>' + list[a].Descripcion_corta + '</p>' +
+                                    '</div>';
+                            } else {
+                                code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                    '<h1>Ocasion</h1>' +
+                                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                    '<h3>' + list[a].Titulo + '</h3>' +
+                                    '<p>' + list[a].Descripcion_corta + '</p>' +
+                                    '</div>';
+                            }
+                        }
+                    }
+                }
             } else {
-                code = '<div class="col-lg-4 text-center item-producto-list">' +
-                    '<h1>Ocasion</h1>' +
-                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                    '<h3>' + list[a].Titulo + '</h3>' +
-                    '<p>' + list[a].Descripcion_corta + '</p>' +
-                    '</div>';
+                if (list[a].Ocasion == 0) {
+                    code = '<div class="col-lg-4 text-center item-producto-list">' +
+                        '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                        '<h3>' + list[a].Titulo + '</h3>' +
+                        '<p>' + list[a].Descripcion_corta + '</p>' +
+                        '</div>';
+                } else {
+                    code = '<div class="col-lg-4 text-center item-producto-list">' +
+                        '<h1>Ocasion</h1>' +
+                        '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                        '<h3>' + list[a].Titulo + '</h3>' +
+                        '<p>' + list[a].Descripcion_corta + '</p>' +
+                        '</div>';
+                }
             }
 
             var item = $(content).append(code);
@@ -183,8 +239,9 @@ function Filtros(id) {
         success: function (data) {
             var ul = $('#list-filtros');
             for (var a = 0; a < data.list.length; a++) {
-                var code = '<div class="form-check form-check-inline filtro-form">'+
-                    '<input class="form-check-input" type="checkbox" id="inlineCheckbox'+ a +'" value= "' + data.list[a].Id_Subcategoria +'" >'+
+                var code = '<div class="form-check form-check-inline filtro-form">' +
+                    '<img src="/assets/iconos/checked.png" style="width:18px; margin-right:5px;" />'+
+                    '<input class="form-check-input" type="checkbox" id="inlineCheckbox'+ a +'" value= "' + data.list[a].Id_Subcategoria +'" style="display:none;">'+
                     '<label class="form-check-label" for="inlineCheckbox'+ a +'">' + data.list[a].Categoria +'</label>'+
 '</div >';
                 var item = $(ul).append(code);
@@ -196,36 +253,56 @@ function Filtros(id) {
                         filtroschecked = $.grep(filtroschecked, function (value) {
                             return value != cat;
                         });
-                        $($(this).find('input')[0]).prop('checked', false);
+                        $($(this).find('img')[0]).attr('src', '/assets/iconos/checked.png');
                         CreateListProductos(list);
                     } else {
                         filtroschecked.push(cat);
-                        $($(this).find('input')[0]).prop('checked', true);
+                        $($(this).find('img')[0]).attr('src', '/assets/iconos/uncheck.png');
                         CreateListProductos(list);
-                    }
-                });
-                $($($($(item).children()[a])[0]).find('input')[0]).data('cat', data.list[a]);
-                $($($($(item).children()[a])[0]).find('input')[0]).on('click', function (ev) {
-                    ev.preventDefault();
-                    var cat = $(this).data('cat');
-                    if (IscheckedFiltro(cat)) {
-                        filtroschecked = $.grep(filtroschecked, function (value) {
-                            return value != cat;
-                        });
-                        CreateListProductos(list);
-                        $(this).prop('checked', $(this).prop('checked'));
-                        return;
-                    } else {
-                        filtroschecked.push(cat);
-                        CreateListProductos(list);
-                        $(this).prop('checked', $(this).prop('checked'));
-                        return;
                     }
                 });
             }
         }
     });
 
+}
+
+function LoadServicios(id) {
+    $.ajax({
+        type: "GET",
+        url: '/api/interfaces/web/IProductos.php?fun=LoadAllServicios',
+        cache: false,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+
+        },
+        success: function (data) {
+            var ul = $('#list-servicios');
+            for (var a = 0; a < data.list.length; a++) {
+                var code = '<li style="cursor:pointer; display:inline-block;">' +
+                    '<img src="' + data.list[a].Icono +'" style="width:50px;" />'+
+                    '</li>';
+                var item = $(ul).append(code);
+                $($($(item).children()[a])[0]).data('cat', data.list[a]);
+                $($($(item).children()[a])[0]).on('click', function (ev) {
+                    ev.preventDefault();
+                    var cat = $(this).data('cat');
+                    if (IscheckedServicio(cat)) {
+                        servicioschecked = $.grep(servicioschecked, function (value) {
+                            return value != cat;
+                        });
+                        $(this).css('border-bottom', 'none');
+                        CreateListProductos(list);
+                    } else {
+                        servicioschecked.push(cat);
+                        $(this).css('border-bottom', 'solid 2px #ef3340');
+                        CreateListProductos(list);
+                    }
+                });
+            }
+        }
+    });
 }
 
 function IscheckedFiltro(cat) {
@@ -235,4 +312,47 @@ function IscheckedFiltro(cat) {
         }
     }
     return false;
+}
+
+function IscheckedServicio(cat) {
+    for (var a = 0; a < servicioschecked.length; a++) {
+        if (servicioschecked[a].Id_Servicios == cat.Id_Servicios) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function SendMail() {
+    var request = {
+        Empresa: $('#empresa').val(),
+        Email: $('#email').val(),
+        Provincia: $('#provincia').val(),
+        Telefono: $('#telefono').val(),
+        Nombre: $('#nombre').val(),
+        Pais: $('#pais').val(),
+        Mensaje: $('#mensaje').val()
+    };
+    if ($("#terminos").is(':checked')) {
+        if ($('#nombre').val() != "" || $('#email').val() != "" || $('#mensaje').val() != "") {
+            $.ajax({
+                url: '/sendmail.php',
+                type: "POST",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                }
+            });
+            $('#error').text('Gracias por contactar con nosotros. Brevemente le informaremos.');
+        } else {
+            $('#error').fadeIn();
+            $('#error').text('Hay que rellenar todos los campos');
+        }
+    } else {
+        $('#error').fadeIn();
+        $('#error').text('Hay que aceptar los terminos legales.');
+    }
 }

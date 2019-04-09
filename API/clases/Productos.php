@@ -37,6 +37,7 @@ namespace Api\Models
         public $Categoria;
         public $referencia;
         public $pdf;
+        public $allProduct;
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -47,6 +48,10 @@ namespace Api\Models
             $this->Ocasion = $Ocasion;
             $this->Habilitado = $Habilitado;
             $this->imagen = '';
+        }
+
+        public function SetAllProduct($p){
+            $this->allProduct = $p;
         }
 
         public function SetCategoria($cat){

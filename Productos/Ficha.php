@@ -42,7 +42,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer más",
+    "link": "Leer mÃ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -86,10 +86,10 @@ window.cookieconsent.initialise({
                             <div id="descripcion"></div>
                             <div id="garantia"></div>
                             <div class="row" style="margin-top:20px;">
-                                <div class="col-md-6 btn btn-web" style="padding-top:14px;" onclick="ShowcontactComprar();">
+                                <div class="col-md-6 btn btn-web" style="padding-top:14px; display:none;" onclick="ShowcontactComprar();">
                                     <img src="/assets/iconos/cart.png" style="width:30px; float:left; margin-top:-1px; margin-left:30px;" />&nbsp;<div style="float:right; margin-top:2px; margin-right:22px;">COMPRAR</div>
                                 </div>
-                                <div class="col-md-6 btn btn-web" onclick="ShowcontactComprar();">
+                                <div class="col-md-6 btn btn-web" onclick="ShowcontactComprar();" style="margin-left:0px;">
                                     Pedir Informaci&#243;n personalizada
                                 </div>
                             </div>

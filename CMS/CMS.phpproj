@@ -7918,6 +7918,7 @@
     <Content Include="documentation\index.html" />
     <Content Include="documentation\style.css" />
     <Content Include="Gruntfile.js" />
+    <Content Include="img\checked.png" />
     <Content Include="img\default.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\Nosotros\87138F83-040F-493B-BB95-EB9A427C1823.jpg" />
@@ -7925,6 +7926,7 @@
     <Content Include="img\Nosotros_Beneficios\26BF01F1-CA98-49E1-BACE-9C976306F98B.jpg" />
     <Content Include="img\Nosotros_Beneficios\3B67FCAF-D82E-4A6C-AFBA-443043398BDE.jpg" />
     <Content Include="img\Nosotros_Beneficios\801A7588-7590-457F-9F18-EF309C5DDD70.jpg" />
+    <Content Include="img\uncheck.png" />
     <Content Include="img\users.png" />
     <Content Include="js\base.min.js" />
     <Content Include="js\bootstrap-datepicker\.bower.json" />

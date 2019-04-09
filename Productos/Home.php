@@ -41,7 +41,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer más",
+    "link": "Leer mÃ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -75,6 +75,9 @@ window.cookieconsent.initialise({
                         <ul id="list-filtros">
 
                         </ul>
+                    </div>
+                    <div class="row">
+                        <ul id="list-servicios" style="list-style:none; padding:0;"></ul>
                     </div>
                     <div class="row productes" style="padding-top:38px;">
                        

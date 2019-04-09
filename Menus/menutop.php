@@ -9,10 +9,10 @@
                         <img src="/assets/iconos/head_telf.png" style="width:25px;" />&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
                     </div>
                     <div class="col-lg-3 right">
-                        <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
+                        <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:globalpack@globalpack.es">Globalpack@globalpack.es</a>
                     </div>
                     <div class="col-lg-2 right">
-                        <i class="fab fa-facebook-f"></i> &nbsp; <i class="fab fa-twitter"></i> &nbsp; <i class="fab fa-instagram"></i>
+                         <a href="https://www.facebook.com/globalpacke/"><img src="/assets/img/facebook.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;" /></a> &nbsp; <a href="https://twitter.com/Globalpacke"><img src="/assets/img/tweeter.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a> &nbsp; <a href="https://www.youtube.com/channel/UCg22zdAPBHWhn-NrjS-JyCQ?view_as=subscriber"><img src="/assets/img/instagram.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a>&nbsp; <a href="https://www.linkedin.com/company/11781745"><img src="/assets/iconos/in.png" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a>
                     </div>
                 </div>
             </div>

@@ -41,6 +41,8 @@
     <Compile Include="postventa.php" />
     <Compile Include="Productos\ModalCompartir.php" />
     <Compile Include="Productos\postventa.php" />
+    <Compile Include="sendmail.php" />
+    <Compile Include="vendor\autoload.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\img\" />
@@ -55,10 +57,12 @@
     <Folder Include="legal\" />
     <Folder Include="Productos\" />
     <Folder Include="sass\" />
+    <Folder Include="vendor\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <Content Include=".htaccess" />
+    <Content Include="assets\iconos\checked.png" />
     <Content Include="assets\iconos\flecharoja.png" />
     <Content Include="assets\iconos\FLETXA_PRODUCTOS_CATEGORIAS_BLANCA.png" />
     <Content Include="assets\iconos\FLETXA_PRODUCTOS_CATEGORIAS_NEGRO.png" />
@@ -68,6 +72,8 @@
     <Content Include="assets\iconos\head_telf.png" />
     <Content Include="assets\iconos\ICON_FLETXA_BANNER.png" />
     <Content Include="assets\iconos\ICON_INFO.png" />
+    <Content Include="assets\iconos\in.png" />
+    <Content Include="assets\iconos\uncheck.png" />
     <Content Include="assets\img\fondomaquinas.png" />
     <Content Include="assets\iconos\calendario.png" />
     <Content Include="assets\iconos\cart.png" />

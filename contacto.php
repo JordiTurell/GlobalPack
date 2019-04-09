@@ -39,7 +39,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer más",
+    "link": "Leer mÃÂ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -126,7 +126,7 @@ window.cookieconsent.initialise({
                                 </div>
                                 <div class="footer-telf">
                                     <span>
-                                        P.I MolÃÂ­ d'en Xec N.15
+                                        P.I MolÃÂÃÂÃÂÃÂ­ d'en Xec N.15
                                     </span>
                                     <br />
                                     <span>
@@ -141,7 +141,7 @@ window.cookieconsent.initialise({
                             <img src="/assets/img/LOGO_CONTACTO.png" style="margin-left:25px; width:90%;" />
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            <?php echo utf8_encode("P.I MolÃ­ d'en Xec N.15"); ?> <br />
+                            <?php echo utf8_encode("P.I MolÃÂÃÂ­ d'en Xec N.15"); ?> <br />
                             08291 Ripollet <br />
                             T (+34) 93 4327181 <br />
                             F (+34) 93 4327182 <br />
@@ -156,22 +156,22 @@ window.cookieconsent.initialise({
                         </div>
                         <div class="row formulario-allpages">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Empresa" class="form-control" />
-                                <input type="email" placeholder="Email" class="form-control" />
-                                <input type="text" placeholder="Provincia" class="form-control" />
+                                <input type="text" placeholder="Empresa" class="form-control" id="empresa" />
+                                <input type="email" placeholder="Email" class="form-control" id="email" />
+                                <input type="text" placeholder="Provincia" class="form-control" id="provincia" />
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Tel&#233;fono" class="form-control" />
-                                <input type="email" placeholder="Nombre" class="form-control" />
-                                <input type="text" placeholder="Pa&#237;s" class="form-control" />
+                                <input type="text" placeholder="Tel&#233;fono" class="form-control" id="telefono" />
+                                <input type="text" placeholder="Nombre" class="form-control" id="nombre" />
+                                <input type="text" placeholder="Pa&#237;s" class="form-control" id="pais" />
                             </div>
                             <div class="col-lg-12">
-                                <textarea placeholder="Escribe tu mensaje..." class="form-control" rows="5"></textarea>
+                                <textarea placeholder="Escribe tu mensaje..." class="form-control" rows="5" id="mensaje"></textarea>
                             </div>
                             <div class="col-lg-12" style="padding-top:12px;">
                                 <div class="row">
                                     <div class="col-lg-12 text-left">
-                                        <input type="checkbox" />
+                                        <input type="checkbox" id="terminos" />
                                         <span>He le&#237;do y acepto el aviso legal y la pol&#237;tica de privacidad.</span>
                                     </div>
                                     <div class="col-lg-12 text-left">
@@ -180,8 +180,9 @@ window.cookieconsent.initialise({
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12" id="error"></div>
                             <div class="col-lg-12 text-center">
-                                <input type="button" class="btn" value="ENVIAR" />
+                                <input type="button" class="btn" value="ENVIAR" onclick="SendMail();" />
                             </div>
                         </div>
                     </div>
@@ -198,6 +199,41 @@ window.cookieconsent.initialise({
     <script src="vendor/components/jquery/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/js/mobile.js"></script>
+    <script type="text/javascript">
+    function SendMail() {
+        var request = {
+            Empresa: $('#empresa').val(),
+            Email: $('#email').val(),
+            Provincia: $('#provincia').val(),
+            Telefono: $('#telefono').val(),
+            Nombre: $('#nombre').val(),
+            Pais: $('#pais').val(),
+            Mensaje: $('#mensaje').val()
+        };
+        if ($("#terminos").is(':checked')) {
+            if ($('#nombre').val() != "" || $('#email').val() != "" || $('#mensaje').val() != "") {
+                $.ajax({
+                    url: '/sendmail.php',
+                    type: "POST",
+                    data: JSON.stringify(request),
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                    }
+                });
+                $('#error').text('Gracias por contactar con nosotros. Brevemente le informaremos.');
+            } else {
+                $('#error').fadeIn();
+                $('#error').text('Hay que rellenar todos los campos');
+            }
+        } else {
+            $('#error').fadeIn();
+            $('#error').text('Hay que aceptar los terminos legales.');
+        }
+    }
+    </script>
 </body>
 
 </html>

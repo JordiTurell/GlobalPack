@@ -104,3 +104,37 @@ function DownSection() {
         scrollTop: $("#home-section").offset().top
     }, 2000);
 }
+
+function SendMail() {
+    var request = {
+        Empresa: $('#empresa').val(),
+        Email: $('#email').val(),
+        Provincia: $('#provincia').val(),
+        Telefono: $('#telefono').val(),
+        Nombre: $('#nombre').val(),
+        Pais: $('#pais').val(),
+        Mensaje: $('#mensaje').val()
+    };
+    if ($("#terminos").is(':checked')) {
+        if ($('#nombre').val() != "" || $('#email').val() != "" || $('#mensaje').val() != "") {
+            $.ajax({
+                url: '/sendmail.php',
+                type: "POST",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                }
+            });
+            $('#error').text('Gracias por contactar con nosotros. Brevemente le informaremos.');
+        } else {
+            $('#error').fadeIn();
+            $('#error').text('Hay que rellenar todos los campos');
+        }
+    } else {
+        $('#error').fadeIn();
+        $('#error').text('Hay que aceptar los terminos legales.');
+    }
+}

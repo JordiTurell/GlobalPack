@@ -241,7 +241,8 @@ function CreateTableProductos(data) {
         code += '<div class="col-lg-2">' +
             '<i class="fas fa-edit" onclick="$(\'#edit' + a +'\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Editar" class="btn" id="edit' + a +'" style="display:none;"/>&nbsp;' +
             '<i class="fas fa-trash" onclick="$(\'#trash' + a + '\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Eliminar" class="btn" id="trash' + a + '" style="display:none;" />' +
-            '<i class="fas fa-clone" onclick="$(\'#Duplicar'+ a +'\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Duplicar" class="btn" id="Duplicar' + a + '" style="display:none;" />'+
+            '<i class="fas fa-clone" onclick="$(\'#Duplicar' + a + '\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Duplicar" class="btn" id="Duplicar' + a + '" style="display:none;" />' +
+            '<i class="fas fa-question-circle" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i>'+
             '</div>';
         code += '</div>';
         var fila = $(body).append(code);
@@ -253,6 +254,68 @@ function CreateTableProductos(data) {
         var editar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[1];
         var eliminar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[3];
         var duplicar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[5];
+        var popover = $($(fila).children()[a]).find('i')[4];
+
+        $(popover).data('product', data.list[a].allProduct);
+        $(popover).on('click', function () {
+            
+            var p = $(this).data('product');
+            var code = '';
+            if (p.Categoria.length == 0) {
+                code += '<li>Agregar categoría</li>';
+            }
+            if (p.Descripcion == '') {
+                code += '<li>Insertar Descripción</li>';
+            }
+            if (p.Descripcion_corta == '') {
+                code += '<li>Insertar Descripción corta</li>';
+            }
+            if (p.FichaTecnica == '') {
+                code += '<li>Insertar texto de la ficha tecnica.</li>';
+            }
+            if (p.Id_SubCategoria.length == 0) {
+                code += '<li>Agregar Filtros</li>';
+            }
+            if (p.Titulo == '') {
+                code += '<li>Agregar Titulo</li>';
+            }
+            if (p.anogarantia == '') {
+                code += '<li>Agregar año de garantia</li>';
+            }
+            if (p.comparativa == '') {
+                code += '<li>Agregar texto de comparativa.</li>';
+            }
+            if (p.imagen.length == 0) {
+                code += '<li>Agregar imagen </li>';
+            }
+            if (p.list_relacionados.length == 0) {
+                code += '<li> Agregar productos relacionado </li>';
+            }
+            if (p.pdf == '') {
+                code += '<li>Agregar PDF </li>';
+            }
+            if (p.referencia == '') {
+                code += '<li>Agregar Referencia SAGE</li>';
+            }
+            if (p.servicios.length == 0) {
+                code += '<li>Agregar Servicios de la maquina </li>';
+            }
+            if (p.videodesc = '') {
+                code += '<li>Agregar descripción breve del video.</li>';
+            }
+            if (p.videotitle == '') {
+                code += '<li>Agregar tiutlo del video</li>';
+            }
+            if (p.videourl == '') {
+                code += '<li>Agregar iframe del video de youtube </li>';
+            }
+            $('.quefalta ul').children().remove();
+            $('.quefalta ul').append(code);
+            $('#productoTitulo').text(p.Titulo);
+            if (!$('.quefalta').hasClass('active')) {
+                $('.quefalta').addClass('active');
+            }
+        });
 
         $(relacionado).data('id', data.list[a].Id_Producto);
         $(relacionado).on('click', function (ev) {
@@ -361,6 +424,12 @@ function CreateTableProductos(data) {
     paginacion(data);
 }
 
+function OutInfo() {
+    if ($('.quefalta').hasClass('active')) {
+        $('.quefalta').removeClass('active');
+    }
+}
+
 function Duplicar(producto) {
     $.getScript("/cms/js/pages/models/requestlist.js", function (ev) {
         var request = requestlist;
@@ -442,7 +511,7 @@ function SelectFiltro(pagina) {
     }
 }
 
-function SelectCategoria() {
+function SelectCategoria(pagina) {
     filtradoCategorias = true;
     if ($('#Filtrocategorias :selected').val() == 0) {
         if (buscador) {
@@ -522,7 +591,13 @@ function paginacion(list) {
                 if (buscador) {
                     Buscar($(this).data('pagina'));
                 } else {
-                    LoadList(token, $(this).data('pagina'));
+                    if (filtradoCategorias) {
+                        SelectCategoria($(this).data('pagina'));
+                    } else if (filtrado) {
+                        SelectFiltro($(this).data('pagina'));
+                    } else {
+                        LoadList(token, $(this).data('pagina'));
+                    }
                 }
             });
         } else {
@@ -539,7 +614,13 @@ function paginacion(list) {
                 if (buscador) {
                     Buscar($(this).data('pagina'));
                 } else {
-                    LoadList(token, $(this).data('pagina'));
+                    if (filtradoCategorias) {
+                        SelectCategoria($(this).data('pagina'));
+                    } else if (filtrado) {
+                        SelectFiltro($(this).data('pagina'));
+                    } else {
+                        LoadList(token, $(this).data('pagina'));
+                    }
                 }
             });
         }
@@ -1142,13 +1223,12 @@ function Editar(producto) {
 
                                 },
                                 success: function (data) {
-                                    console.log(data.list);
                                     if (data.status) {
                                         var cat = $('#selectserveis');
                                         $(cat).children().remove();
                                         for (var a = 0; a < data.list.length; a++) {
                                             for (var c = 0; c < createProducto.itemdb.servicios.length; c++) {
-                                                if (createProducto.itemdb.servicios[c] === data.list[a].Id_Servicios) {
+                                                if (createProducto.itemdb.servicios[c].Id_Servicios === data.list[a].Id_Servicios) {
                                                     catActive = true;
                                                     break;
                                                 } else {
@@ -1198,6 +1278,18 @@ function Editar(producto) {
                             $('#titlevideo').val(createProducto.itemdb.videotitle);
                             $('#descvideo').val(createProducto.itemdb.videodesc);
                             $('#Sage').val(createProducto.itemdb.referencia);
+
+                            if (createProducto.itemdb.pdf != '') {
+                                $('#viewpdf').css('display', 'block');
+                                $('#viewpdf').data('pdf', createProducto.itemdb.pdf);
+                                $('#viewpdf').on('click', function () {
+                                    var win = window.open($(this).data('pdf'), '_blank');
+                                    if (win) {
+                                        //Browser has allowed it to be opened
+                                        win.focus();
+                                    } 
+                                });
+                            }
 
                             $('#SaveProduct').data('edit', true);
                         }

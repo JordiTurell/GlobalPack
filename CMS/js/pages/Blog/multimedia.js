@@ -107,6 +107,7 @@ function LoadFiles(t) {
                 alert(msg);
             },
             success: function (data) {
+                console.log(data);
                 if (data.status) {
                     $('#listimagenes').children().remove();
                     for (var a = 0; a < data.list.length; a++) {

@@ -39,6 +39,10 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->LoadCategoriasRelacionadasFiltrosProductos($_GET["cat"]));
         break;
+    case 'LoadAllServicios':
+        $wcf = new Productos();
+        echo json_encode($wcf->LoadAllServicios());
+        break;
 }
 
 ?>

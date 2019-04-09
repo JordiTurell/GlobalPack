@@ -49,8 +49,7 @@ window.cookieconsent.initialise({
 
   <body id="page-top" class="container-fuild" onload="Loadhome();">
 
-    <!-- Navigation -->
-      
+    <!-- Navigation -->      
           <?php include_once(dirname(__FILE__).'/Menus/menutop.php'); ?>
      
     <div class="row section-head">

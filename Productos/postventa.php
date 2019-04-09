@@ -41,7 +41,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer más",
+    "link": "Leer mÃ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -58,7 +58,7 @@ window.cookieconsent.initialise({
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
                     <center>
-                        <h1 class="title">SOLUCIÃN</h1>
+                        <h1 class="title">SOLUCIÓN</h1>
                     </center>
                 </div>
             </div>
