@@ -46,7 +46,7 @@ function LoadBeneficios(items, token) {
         $(this).data('item', items[index]);
         $(this).data('token', token);
         $(this).css('cursor', 'all-scroll');
-    })
+    });
 
     //$('#listado').selectable();
     $('#listado').sortable({

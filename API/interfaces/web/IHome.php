@@ -11,6 +11,14 @@ switch($_GET['fun']){
         $wcf = new Home();
         echo json_encode($wcf->LoadOcasion());
         break;
+    case 'LoadBox':
+        $wcf = new Home();
+        echo json_encode($wcf->LoadBox());
+        break;
+    case 'LoadText':
+        $wcf = new Home();
+        echo json_encode($wcf->LoadText());
+        break;
 }
 
 ?>

@@ -35,7 +35,7 @@ if(isset($_SESSION['SES'])){
             <section class="content-header">
                 <h1>
                     Productos
-                    <small>CategorÃ­Â­as</small>
+                    <small>Categotías</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li>
@@ -49,7 +49,7 @@ if(isset($_SESSION['SES'])){
 
             <!-- Main content -->
             <section class="content">
-                <input type="button" class="btn" value="Crear Categorí­a" style="margin-bottom:10px;" onclick="ReloadForm();" />
+                <input type="button" class="btn" value="Crear Categoría" style="margin-bottom:10px;" onclick="ReloadForm();" />
                 <div class="row">
                     <div class="col-md-6">
                           <div class="box">
@@ -66,15 +66,15 @@ if(isset($_SESSION['SES'])){
                     </div>
                     <div class="col-md-6">
                           <div class="box">
-                            <div class="box-header">Crear/Editar Categorí­a</div>
+                            <div class="box-header">Crear/Editar Categoría</div>
                             <div class="box-body">
                                 <div class="from-group">
-                                    <label>Nombre de la categorí­a</label>
-                                    <input type="text" id="Nombre" placeholder="Nombre de la categorí­a" class="form-control" />
+                                    <label>Nombre de la categoría</label>
+                                    <input type="text" id="Nombre" placeholder="Nombre de la Categoría" class="form-control" />
                                 </div>
                                 <br />
                                 <div class="from-group">
-                                    <label>Descripción de la categorí­a</label>
+                                    <label>Descripción de la categoría</label>
                                     <textarea class="form-control" rows="5" placeholder="Descripción de la categorí­a" id="Descripcion"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -107,7 +107,9 @@ if(isset($_SESSION['SES'])){
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
     <script src="/cms/js/jquery-3.3.1.min.js"></script>
-
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/cms/js/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <!-- Bootstrap 3.3.7 -->
     <script src="/cms/js/bootstrap.min.js"></script>
     <script src="/cms/bower_components/fastclick/lib/fastclick.js"></script>

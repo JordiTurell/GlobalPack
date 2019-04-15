@@ -70,81 +70,129 @@ if(isset($_SESSION['SES'])){
                     <div class="box-header">
                         Edición del apartado de la cabecera de la Home.
                     </div>
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="tituloHome">Título</label>
-                                    <input type="text" class="form-control" id="tituloHome" placeholder="Título" onkeypress="TituloKey(this);" required />
-                                    <label>Max Caracters: <span id="titulomax">31</span></label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tituloHome">Descripción</label>
-                                    <input type="text" class="form-control" id="descripcionHome" placeholder="Descripción" onkeypress="DescripcioKey(this);" required />
-                                    <label>
-                                        Max Caracters:
-                                        <span id="descmax">112</span>
-                                    </label>
-                                </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-3">
+                    <div class="box">
+                        <div class="box-header">
+                            Edición del texto del slide de la home.
+                        </div>
+                        <div class="box-body">
+                             <div class="form-group">
+                                <label for="tituloHome">Título</label>
+                                <input type="text" class="form-control" id="tituloHome" placeholder="Título" onkeypress="TituloKey(this);" required />
+                                <label>Max Caracters: <span id="titulomax">31</span></label>
                             </div>
-                            <div class="col-lg-9" style="position:relative;">
-                                <div class="row" id="cajas">
-                                    <div class="col-lg-5 item-slider">
-                                        <select class="form-control" onchange="LoadBox(this);">
-                                            <option value="0">Selecciona una categoría o filtro</option>
-                                        </select>
-                                        <img src="/assets/iconos/Rueda.png" style="width:125px;" />
-                                        <input type="text" placeholder="Nombre" class="form-control" />
-                                        <input type="text" placeholder="Url" class="form-control" />
-                                    </div>
-                                    <div class="col-lg-5 item-slider">
-                                        <select class="form-control" onchange="LoadBox(this);">
-                                            <option value="0">Selecciona una categoría o filtro</option>
-                                        </select>
-                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
-                                        <input type="text" placeholder="Nombre" />
-                                        <input type="text" placeholder="Url" class="form-control" />
-                                    </div>
-                                    <div class="col-lg-5 item-slider">
-                                        <select class="form-control" onchange="LoadBox(this);">
-                                            <option value="0">Selecciona una categoría o filtro</option>
-                                        </select>
-                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
-                                        <input type="text" placeholder="Nombre" />
-                                        <input type="text" placeholder="Url" class="form-control" />
-                                    </div>
-                                    <div class="col-lg-5 item-slider">
-                                        <select class="form-control" onchange="LoadBox(this);">
-                                            <option value="0">Selecciona una categoría o filtro</option>
-                                        </select>
-                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
-                                        <input type="text" placeholder="Nombre" />
-                                        <input type="text" placeholder="Url" class="form-control" />
-                                    </div>
-                                    <div class="col-lg-5 item-slider">
-                                        <select class="form-control" onchange="LoadBox(this);">
-                                            <option value="0">Selecciona una categoría o filtro</option>
-                                        </select>
-                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
-                                        <input type="text" placeholder="Nombre" />
-                                        <input type="text" placeholder="Url" class="form-control" />
-                                    </div>
-                                    <div class="col-lg-5 item-slider">
-                                        <select class="form-control" onchange="LoadBox(this);">
-                                            <option value="0">Selecciona una categoría o filtro</option>
-                                        </select>
-                                        <img src="/assets/iconos/Rueda.png" style="width:125px;"/>
-                                        <input type="text" placeholder="Nombre" />
-                                        <input type="text" placeholder="Url" class="form-control" />
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="tituloHome">Descripción</label>
+                                <input type="text" class="form-control" id="descripcionHome" placeholder="Descripción" onkeypress="DescripcioKey(this);" required />
+                                <label>
+                                    Max Caracters:
+                                    <span id="descmax">112</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="button" class="btn" onclick="SaveTextHome('<?php echo $ses->token; ?>');">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                <div class="box">
+                    <div class="box-header">
+                        Cajas de links de la home.
+                    </div>
+                    <div class="box-body">
+                        <div class="row" id="cajas">
+                            <div class="col-lg-5 item-slider">
+                                <select class="form-control" onchange="LoadBox(this);">
+                                    <option value="0">Selecciona una categoría o filtro</option>
+                                </select>
+                                <br />
+                                <img src="/cms/img/default.png" style="width:125px; background-color: #9a9a9a;" onclick="$('#UpdateImage1').click();" id="icon1" />
+                                <input type="file" onchange="UpdateFile(this);" style="display:none;" id="UpdateImage1" data-box="1"/>
+                                <br />
+                                <input type="text" placeholder="Nombre" class="form-control" />
+                                <br />
+                                <input type="text" placeholder="Url" class="form-control" />
+                                <br />
+                                <button type="button" class="btn" onclick="SaveBox('<?php echo $ses->token; ?>', 1, this);">Guardar</button>
+                            </div>
+                            <div class="col-lg-5 item-slider">
+                                <select class="form-control" onchange="LoadBox(this);">
+                                    <option value="0">Selecciona una categoría o filtro</option>
+                                </select>
+                                <br />
+                                <img src="/cms/img/default.png" style="width:125px; background-color: #9a9a9a;" onclick="$('#UpdateImage2').click();" id="icon2" />
+                                <input type="file" onchange="UpdateFile(this);" style="display:none;" id="UpdateImage2" data-box="2"/>
+                                <br />
+                                <input type="text" placeholder="Nombre" class="form-control" />
+                                <br />
+                                <input type="text" placeholder="Url" class="form-control" />
+                                <br />
+                                <button type="button" class="btn" onclick="SaveBox('<?php echo $ses->token; ?>', 2, this);">Guardar</button>
+                            </div>
+                            <div class="col-lg-5 item-slider">
+                                <select class="form-control" onchange="LoadBox(this);">
+                                    <option value="0">Selecciona una categoría o filtro</option>
+                                </select>
+                                <br />
+                                <img src="/cms/img/default.png" style="width:125px; background-color: #9a9a9a;" onclick="$('#UpdateImage3').click();" id="icon3" />
+                                <input type="file" onchange="UpdateFile(this);" style="display:none;" id="UpdateImage3" data-box="3"/>
+                                <br />
+                                <input type="text" placeholder="Nombre" class="form-control" />
+                                <br />
+                                <input type="text" placeholder="Url" class="form-control" />
+                                <br />
+                                <button type="button" class="btn" onclick="SaveBox('<?php echo $ses->token; ?>', 3, this);">Guardar</button>
+                            </div>
+                            <div class="col-lg-5 item-slider">
+                                <select class="form-control" onchange="LoadBox(this);">
+                                    <option value="0">Selecciona una categoría o filtro</option>
+                                </select>
+                                <br />
+                                <img src="/cms/img/default.png" style="width:125px; background-color: #9a9a9a;" onclick="$('#UpdateImage4').click();" id="icon4" />
+                                <input type="file" onchange="UpdateFile(this);" style="display:none;" id="UpdateImage4" data-box="4"/>
+                                <br />
+                                <input type="text" placeholder="Nombre" class="form-control" />
+                                <br />
+                                <input type="text" placeholder="Url" class="form-control" />
+                                <br />
+                                <button type="button" class="btn" onclick="SaveBox('<?php echo $ses->token; ?>', 4, this);">Guardar</button>
+                            </div>
+                            <div class="col-lg-5 item-slider">
+                                <select class="form-control" onchange="LoadBox(this);">
+                                    <option value="0">Selecciona una categoría o filtro</option>
+                                </select>
+                                <br />
+                                <img src="/cms/img/default.png" style="width:125px; background-color: #9a9a9a;" onclick="$('#UpdateImage5').click();" id="icon5" />
+                                <input type="file" onchange="UpdateFile(this);" style="display:none;" id="UpdateImage5" data-box="5"/>
+                                <br />
+                                <input type="text" placeholder="Nombre" class="form-control" />
+                                <br />
+                                <input type="text" placeholder="Url" class="form-control" />
+                                <br />
+                                <button type="button" class="btn" onclick="SaveBox('<?php echo $ses->token; ?>', 5, this);">Guardar</button>
+                            </div>
+                            <div class="col-lg-5 item-slider">
+                                <select class="form-control" onchange="LoadBox(this);">
+                                    <option value="0">Selecciona una categoría o filtro</option>
+                                </select>
+                                <br />
+                                <img src="/cms/img/default.png" style="width:125px; background-color: #9a9a9a;" onclick="$('#UpdateImage6').click();" id="icon6" />
+                                <input type="file" onchange="UpdateFile(this);" style="display:none;" id="UpdateImage6" data-box="6"/>
+                                <br />
+                                <input type="text" placeholder="Nombre" class="form-control" />
+                                <br />
+                                <input type="text" placeholder="Url" class="form-control" />
+                                <br />
+                                <button type="button" class="btn" onclick="SaveBox('<?php echo $ses->token; ?>', 6, this);">Guardar</button>
                             </div>
                         </div>
                     </div>
-                    <div class="box-footer">
-                        <button type="button" class="btn" onclick="SaveHome('<?php echo $ses->token; ?>');">Guardar</button>
-                    </div>
                 </div>
+                    </div>
+                    </div>
             </section>
             <!-- /.content -->
         </div>

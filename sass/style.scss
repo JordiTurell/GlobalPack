@@ -20,8 +20,15 @@ body {
     }
 }
 
-.right{
-    text-align:right;
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: $globalpack;
+    border-radius: 50px;
+    padding: 16px;
+    background-size: 59% 60%;
+}
+
+.right {
+    text-align: right;
 }
 
 .arrow-down {

@@ -47,6 +47,12 @@ body {
   .info a:hover {
     text-decoration: none; }
 
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  background-color: #EF3340;
+  border-radius: 50px;
+  padding: 16px;
+  background-size: 59% 60%; }
+
 .right {
   text-align: right; }
 
@@ -171,7 +177,7 @@ body {
     letter-spacing: 1.1px;
     line-height: 31px;
     float: right;
-    margin-top: -70px;
+    margin-top: -53px;
     width: 202px; }
   .section-head .item-slider:nth-child(5) img {
     width: 70px;
@@ -535,6 +541,17 @@ body {
       width: 200px;
       font-weight: normal;
       height: 100%; }
+
+.autosemi h3 {
+  margin-top: 15px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 10px;
+  color: #EF3340;
+  margin-bottom: 15px;
+  width: 100% !important; }
 
 .filtros {
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.08);

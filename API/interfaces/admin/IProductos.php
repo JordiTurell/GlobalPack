@@ -119,6 +119,14 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->GetListFiltrosenCategorias());
         break;
+    case 'SortableCategoria':
+        $wcf = new Productos();
+        echo json_encode($wcf->SortableCategoria());
+        break;
+    case 'SortableSubCategoria':
+        $wcf = new Productos();
+        echo json_encode($wcf->SortableFiltres());
+        break;
 }
 
 ?>

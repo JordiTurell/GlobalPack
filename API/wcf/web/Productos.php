@@ -34,7 +34,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM p_categorias ORDER BY FechaM";
+            $query = "SELECT * FROM p_categorias WHERE Activada = 1 ORDER BY Orden";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
@@ -76,6 +76,12 @@ namespace Api\WCFWeb
                     if($r = mysqli_query($conn, $imagen)){
                         while($img = mysqli_fetch_assoc($r)){
                             $cat->SetImages($img["Url"]);
+                        }
+                    }
+                    $query_servicios = "SELECT * FROM productos_servicio WHERE Id_Producto ='".$cat->Id_Producto."'";
+                    if($res_servicios = mysqli_query($conn, $query_servicios)){
+                        while($row_servicios = mysqli_fetch_assoc($res_servicios)){
+                            $cat->SetAllServicio($row_servicios["Id_Servicio"]);
                         }
                     }
                     array_push($result->list, $cat);
@@ -140,7 +146,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM p_subcategorias WHERE Activada = 1 AND Consumible = 0 ORDER BY FechaM";
+            $query = "SELECT * FROM p_subcategorias WHERE Activada = 1 AND Consumible = 0 ORDER BY Orden";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);

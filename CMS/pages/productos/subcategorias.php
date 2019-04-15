@@ -74,8 +74,8 @@ if(isset($_SESSION['SES'])){
                                 </div>
                                 <br />
                                 <div class="from-group">
-                                    <label>Descripción del Filtro</label>
-                                    <textarea class="form-control" rows="5" placeholder="Descripción del Filtro" id="Descripcion"></textarea>
+                                    <label>DescripciÃ³n del Filtro</label>
+                                    <textarea class="form-control" rows="5" placeholder="DescripciÃ³n del Filtro" id="Descripcion"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Icono del Filtro</label>
@@ -98,7 +98,8 @@ if(isset($_SESSION['SES'])){
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
     <script src="/cms/js/jquery-3.3.1.min.js"></script>
-
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/cms/js/jquery-ui/jquery-ui.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="/cms/js/bootstrap.min.js"></script>
     <script src="/cms/bower_components/fastclick/lib/fastclick.js"></script>

@@ -17,13 +17,19 @@ namespace Api\Models
         public $Descripcion;
         public $Icono;
         public $Activada;
+        public $Orden;
 
-        function __construct($Id_Categoria, $Categoria, $Descripcion, $Icono, $Activada){
+        function __construct($Id_Categoria, $Categoria, $Descripcion, $Icono, $Activada, $orden){
             $this->Id_Categoria = $Id_Categoria;
             $this->Categoria = $Categoria;
             $this->Descripcion = $Descripcion;
             $this->Icono = $Icono;
             $this->Activada = $Activada;
+            $this->Orden = $orden;
+        }
+
+        public function SetOrden($orden){
+            $this->Orden = $orden;
         }
 	}
 }

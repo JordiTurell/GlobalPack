@@ -38,6 +38,8 @@
     <Compile Include="clases\Administrador.php" />
     <Compile Include="clases\Beneficios.php" />
     <Compile Include="clases\Categoria.php" />
+    <Compile Include="clases\HomeBox.php" />
+    <Compile Include="clases\HomeText.php" />
     <Compile Include="clases\InfoAdmin.php" />
     <Compile Include="clases\Multimedia.php" />
     <Compile Include="clases\Nosotros.php" />
@@ -54,6 +56,7 @@
     <Compile Include="Config\UpdateFiles.php" />
     <Compile Include="interfaces\admin\IAdmin.php" />
     <Compile Include="interfaces\admin\IBlog.php" />
+    <Compile Include="interfaces\admin\IHomeWeb.php" />
     <Compile Include="interfaces\admin\ILegales.php" />
     <Compile Include="interfaces\admin\Ilogin.php" />
     <Compile Include="interfaces\admin\INosotros.php" />
@@ -65,6 +68,7 @@
     <Compile Include="interfaces\web\IProductos.php" />
     <Compile Include="wcf\admin\Admin.php" />
     <Compile Include="wcf\admin\Blog.php" />
+    <Compile Include="wcf\admin\HomeWeb.php" />
     <Compile Include="wcf\admin\Legales.php" />
     <Compile Include="wcf\admin\Login.php" />
     <Compile Include="wcf\admin\Nosotros.php" />

@@ -42,7 +42,6 @@
     <Compile Include="Productos\ModalCompartir.php" />
     <Compile Include="Productos\postventa.php" />
     <Compile Include="sendmail.php" />
-    <Compile Include="vendor\autoload.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\img\" />
@@ -57,7 +56,6 @@
     <Folder Include="legal\" />
     <Folder Include="Productos\" />
     <Folder Include="sass\" />
-    <Folder Include="vendor\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="compilerconfig.json" />
@@ -74,6 +72,7 @@
     <Content Include="assets\iconos\ICON_INFO.png" />
     <Content Include="assets\iconos\in.png" />
     <Content Include="assets\iconos\uncheck.png" />
+    <Content Include="assets\iconos\youtube.png" />
     <Content Include="assets\img\fondomaquinas.png" />
     <Content Include="assets\iconos\calendario.png" />
     <Content Include="assets\iconos\cart.png" />

@@ -1,4 +1,5 @@
 ﻿var filtroschecked = new Array();
+var servicioschecked = new Array();
 var list = null;
 var cat = null;
 
@@ -55,6 +56,7 @@ function LoadHomePostVenta(id) {
     LoadColumLeft(id);
     Filtros(id);
     Productos(id);
+    LoadServicios(id);
     filtroschecked = [];
 }
 
@@ -82,30 +84,53 @@ function CreateListProductos(list) {
     $(content).children().remove();
     var a = 0;
     var code = '';
-    var item = null;
+
     if (filtroschecked.length > 0) {
         for (var b = 0; b < filtroschecked.length; b++) {
             for (a = 0; a < list.length; a++) {
-                if (filtroschecked[b].Id_Categoria == list[a].Categoria) {
-                    code = '';
-                    if (list[a].Ocasion == 0) {
-                        code = '<div class="col-lg-4 text-center item-producto-list">' +
-                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                            '<h3>' + list[a].Titulo + '</h3>' +
-                            '<p>' + list[a].Descripcion_corta + '</p>' +
-                            '</div>';
+                if (filtroschecked[b].Id_Subcategoria == list[a].Id_SubCategoria) {
+                    if (servicioschecked.length > 0) {
+                        for (var c = 0; c < servicioschecked.length; c++) {
+                            for (var d = 0; d < list[a].servicios.length; d++) {
+                                if (list[a].servicios[d] == servicioschecked[c].Id_Servicios) {
+                                    if (list[a].Ocasion == 0) {
+                                        code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                            '<h3>' + list[a].Titulo + '</h3>' +
+                                            '<p>' + list[a].Descripcion_corta + '</p>' +
+                                            '</div>';
+                                    } else {
+                                        code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                            '<h1>Ocasion</h1>' +
+                                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                            '<h3>' + list[a].Titulo + '</h3>' +
+                                            '<p>' + list[a].Descripcion_corta + '</p>' +
+                                            '</div>';
+                                    }
+                                }
+                            }
+                        }
                     } else {
-                        code = '<div class="col-lg-4 text-center item-producto-list">' +
-                            '<h1>Ocasion</h1>' +
-                            '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                            '<h3>' + list[a].Titulo + '</h3>' +
-                            '<p>' + list[a].Descripcion_corta + '</p>' +
-                            '</div>';
+                        if (list[a].Ocasion == 0) {
+                            code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                '<h3>' + list[a].Titulo + '</h3>' +
+                                '<p>' + list[a].Descripcion_corta + '</p>' +
+                                '</div>';
+                        } else {
+                            code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                '<h1>Ocasion</h1>' +
+                                '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                '<h3>' + list[a].Titulo + '</h3>' +
+                                '<p>' + list[a].Descripcion_corta + '</p>' +
+                                '</div>';
+                        }
                     }
-                   item = $(content).append(code);
+                    $(content).append(code);
+                    var item = $(content).append(code);
                     list[a].cat = cat;
-                    $($(item).children()[a-1]).data('item', list[a]);
-                    $($(item).children()[a-1]).on('click', function (ev) {
+                    $($(item).children()[a]).data('item', list[a]);
+                    $($(item).children()[a]).on('click', function (ev) {
                         ev.preventDefault();
                         var producto = $(this).data('item');
                         $.redirect('/Productos/Ficha.php', producto);
@@ -114,30 +139,68 @@ function CreateListProductos(list) {
             }
         }
     } else {
+        var countitem = 0;
         for (a = 0; a < list.length; a++) {
-            if (list[a].Ocasion == 0) {
-                code = '<div class="col-lg-4 text-center item-producto-list">' +
-                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                    '<h3>' + list[a].Titulo + '</h3>' +
-                    '<p>' + list[a].Descripcion_corta + '</p>' +
-                    '</div>';
+            code = '';
+            if (servicioschecked.length > 0) {
+                for (var c = 0; c < servicioschecked.length; c++) {
+                    for (var d = 0; d < list[a].servicios.length; d++) {
+                        if (list[a].servicios[d] == servicioschecked[c].Id_Servicios) {
+                            if (list[a].Ocasion == 0) {
+                                code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                    '<h3>' + list[a].Titulo + '</h3>' +
+                                    '<p>' + list[a].Descripcion_corta + '</p>' +
+                                    '</div>';
+                            } else {
+                                code = '<div class="col-lg-4 text-center item-producto-list">' +
+                                    '<h1>Ocasion</h1>' +
+                                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                                    '<h3>' + list[a].Titulo + '</h3>' +
+                                    '<p>' + list[a].Descripcion_corta + '</p>' +
+                                    '</div>';
+                            }
+                            var item2 = new Object();
+                            if (code != '') {
+                                item2 = $(content).append(code);
+                                list[a].cat = cat;
+                                $($(item2).children()[countitem]).data('item', list[a]);
+                                $($(item2).children()[countitem]).on('click', function (ev) {
+                                    ev.preventDefault();
+                                    var producto = $(this).data('item');
+                                    $.redirect('/Productos/Ficha.php', producto);
+                                });
+                                countitem = countitem + 1;
+                            }
+                        }
+                    }
+                }
             } else {
-                code = '<div class="col-lg-4 text-center item-producto-list">' +
-                    '<h1>Ocasion</h1>' +
-                    '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
-                    '<h3>' + list[a].Titulo + '</h3>' +
-                    '<p>' + list[a].Descripcion_corta + '</p>' +
-                    '</div>';
+                if (list[a].Ocasion == 0) {
+                    code = '<div class="col-lg-4 text-center item-producto-list">' +
+                        '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                        '<h3>' + list[a].Titulo + '</h3>' +
+                        '<p>' + list[a].Descripcion_corta + '</p>' +
+                        '</div>';
+                } else {
+                    code = '<div class="col-lg-4 text-center item-producto-list">' +
+                        '<h1>Ocasion</h1>' +
+                        '<img src="' + list[a].imagen[0] + '" style="width:100%"; />' +
+                        '<h3>' + list[a].Titulo + '</h3>' +
+                        '<p>' + list[a].Descripcion_corta + '</p>' +
+                        '</div>';
+                }
+                if (code != '') {
+                    var item = $(content).append(code);
+                    list[a].cat = cat;
+                    $($(item).children()[a]).data('item', list[a]);
+                    $($(item).children()[a]).on('click', function (ev) {
+                        ev.preventDefault();
+                        var producto = $(this).data('item');
+                        $.redirect('/Productos/Ficha.php', producto);
+                    });
+                }
             }
-
-            item = $(content).append(code);
-            list[a].cat = cat;
-            $($(item).children()[a]).data('item', list[a]);
-            $($(item).children()[a]).on('click', function (ev) {
-                ev.preventDefault();
-                var producto = $(this).data('item');
-                $.redirect('/Productos/Ficha.php', producto);
-            });
         }
     }
 }
@@ -231,9 +294,47 @@ function Filtros(id) {
 
 }
 
+function LoadServicios(id) {
+    $.ajax({
+        type: "GET",
+        url: '/api/interfaces/web/IProductos.php?fun=LoadAllServicios',
+        cache: false,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+
+        },
+        success: function (data) {
+            var ul = $('#list-servicios');
+            for (var a = 0; a < data.list.length; a++) {
+                var code = '<li style="cursor:pointer; display:inline-block;">' +
+                    '<img src="' + data.list[a].Icono + '" style="width:50px;" />' +
+                    '</li>';
+                var item = $(ul).append(code);
+                $($($(item).children()[a])[0]).data('cat', data.list[a]);
+                $($($(item).children()[a])[0]).on('click', function (ev) {
+                    ev.preventDefault();
+                    var cat = $(this).data('cat');
+                    if (IscheckedServicio(cat)) {
+                        servicioschecked = $.grep(servicioschecked, function (value) {
+                            return value != cat;
+                        });
+                        $(this).css('border-bottom', 'none');
+                        CreateListProductos(list);
+                    } else {
+                        servicioschecked.push(cat);
+                        $(this).css('border-bottom', 'solid 2px #ef3340');
+                        CreateListProductos(list);
+                    }
+                });
+            }
+        }
+    });
+}
+
 function IscheckedFiltro(cat) {
     for (var a = 0; a < filtroschecked.length; a++) {
-        if (filstrochecked[a] != undefined) {
+        if (filtroschecked[a] != undefined) {
             if (filtroschecked[a].Id_Categoria == cat.Id_Categoria) {
                 return true;
             }
@@ -274,4 +375,13 @@ function SendMail() {
         $('#error').fadeIn();
         $('#error').text('Hay que aceptar los terminos legales.');
     }
+}
+
+function IscheckedServicio(cat) {
+    for (var a = 0; a < servicioschecked.length; a++) {
+        if (servicioschecked[a].Id_Servicios == cat.Id_Servicios) {
+            return true;
+        }
+    }
+    return false;
 }

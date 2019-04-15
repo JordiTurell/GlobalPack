@@ -1,6 +1,36 @@
 ﻿function Loadhome() {
     $.ajax({
         type: "POST",
+        url: "/api/interfaces/web/IHome.php?fun=LoadText",
+        cache: false,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $('#title_home .h1').text(data.item.titulo);
+            $('#title_home .h3').text(data.item.desc);
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: "/api/interfaces/web/IHome.php?fun=LoadBox",
+        cache: false,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            for (var a = 0; a < data.list.length; a++) {
+                //var click = window.location= data.list[a].url;
+                code = '<img src="' + data.list[a].imagen + '" />' +
+                    '<span>' + data.list[a].nombre + '</span>';
+                var box = $('.box' + a).append(code);
+                $(box).data('url', data.list[a].url);
+                $(box).on('click', function () {
+                    window.location = $(this).data('url');
+                });
+            }
+        }
+    });
+    $.ajax({
+        type: "POST",
         url: "/api/interfaces/web/IHome.php?fun=Loadblog",
         cache: false,
         dataType: "json",

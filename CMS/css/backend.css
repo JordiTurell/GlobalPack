@@ -55,7 +55,7 @@ footer {
   border: solid 1px #ef3340;
   margin: 10px;
   padding: 10px;
-  background-color: #ef3340; }
+  background-color: rgba(255, 255, 255, 0.8); }
 
 .quefalta {
   position: fixed;

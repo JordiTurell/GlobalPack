@@ -149,6 +149,19 @@
     }
 }
 
+.autosemi {
+    h3 {
+        margin-top:15px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 10px;
+        color: $globalpack;
+        margin-bottom: 15px;
+        width: 100% !important;
+    }
+}
 .filtros {
     box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.08);
     border-radius: 8px 8px 0 0;
@@ -163,8 +176,8 @@
         letter-spacing: 1px;
         line-height: 10px;
         color: $globalpack;
-        margin-bottom:15px;
-        width:100% !important;
+        margin-bottom: 15px;
+        width: 100% !important;
     }
 
     #list-filtros {
@@ -178,7 +191,7 @@
         label {
             font-size: 12px;
             font-family: 'Ubuntu', sans-serif;
-            font-weight:bold;
+            font-weight: bold;
         }
     }
 }

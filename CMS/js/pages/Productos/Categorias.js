@@ -180,6 +180,54 @@ function LoadList(token) {
                             $('#Descripcion').val(item.Descripcion);
                             $('#icon').attr('src', item.Icono);
                         });
+
+                        $('#listcategorias').disableSelection();
+                        $('#listcategorias').children().each(function (index) {
+                            $(this).data('item', data.list[index]);
+                            $(this).data('token', token);
+                            $(this).css('cursor', 'all-scroll');
+                        });
+                        $('#listcategorias').sortable({
+                            axis: 'y',
+                            placeholder: "ui-state-highlight",
+                            start: function (e, ui) {
+                                // creates a temporary attribute on the element with the old index
+                                $(this).attr('data-previndex', ui.item.index());
+                            },
+                            update: function (event, ui) {
+                                var newIndex = ui.item.index();
+                                var oldIndex = $(this).attr('data-previndex');
+                                $(this).removeAttr('data-previndex');
+                                var item = $($(ui.item)[0]).data('item');
+
+                                var request = {
+                                    token: $(ui.item).data('token'),
+                                    newindex: newIndex,
+                                    item: $(ui.item).data('item')
+                                };
+
+                                $.ajax({
+                                    url: "/api/interfaces/admin/IProductos.php?fun=SortableCategoria",
+                                    type: "POST",
+                                    data: JSON.stringify(request),
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    error: function (msg) {
+                                        alert(msg);
+                                    },
+                                    success: function (data) {
+                                        if (data.status) {
+                                            window.location.reload();
+                                        } else {
+                                            $('#listado').children().remove();
+                                            $('#listado').append('<div class="col-lg-12" style="text-align:center;"><h3>' + data.msg + '</h3></div>');
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                        $('#listcategorias').disableSelection();
                     }
                 } else {
                     alert(data.msg);

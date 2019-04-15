@@ -12,7 +12,7 @@
                         <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:globalpack@globalpack.es">Globalpack@globalpack.es</a>
                     </div>
                     <div class="col-lg-2 right">
-                         <a href="https://www.facebook.com/globalpacke/"><img src="/assets/img/facebook.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;" /></a> &nbsp; <a href="https://twitter.com/Globalpacke"><img src="/assets/img/tweeter.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a> &nbsp; <a href="https://www.youtube.com/channel/UCg22zdAPBHWhn-NrjS-JyCQ?view_as=subscriber"><img src="/assets/img/instagram.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a>&nbsp; <a href="https://www.linkedin.com/company/11781745"><img src="/assets/iconos/in.png" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a>
+                         <a href="https://www.facebook.com/globalpacke/"><img src="/assets/img/facebook.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;" /></a> &nbsp; <a href="https://twitter.com/Globalpacke"><img src="/assets/img/tweeter.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a> &nbsp; <a href="https://www.youtube.com/channel/UCg22zdAPBHWhn-NrjS-JyCQ?view_as=subscriber"><img src="/assets/iconos/youtube.png" class="redsocial_footer" style="margin-right:0px; margin-left:0px; width:22px;"/></a>&nbsp; <a href="https://www.linkedin.com/company/11781745"><img src="/assets/iconos/in.png" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a>
                     </div>
                 </div>
             </div>

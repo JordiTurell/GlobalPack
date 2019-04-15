@@ -39,7 +39,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer mÃÂ¡s",
+    "link": "Leer mÃÂÃÂ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -80,12 +80,12 @@ window.cookieconsent.initialise({
                                     </span>
                                     <br />
                                     <span>
-                                        <a href="tel:+34934327181">+34 93 4327181</a>
+                                        <a href="tel:+34934327182">+34 93 4327182</a>
                                     </span>
                                 </div>
                             </li>
 
-                            <li class="option-contact">
+                            <li class="option-contact" style="cursor:pointer;" onclick="window.location='mailto:globalpack@globalpack.es';">
                                 <h3>ESCRIBENOS</h3>
                                 <br />
                                 <div class="icon-imatge">
@@ -94,13 +94,12 @@ window.cookieconsent.initialise({
                                 <div class="footer-telf">
                                     <br />
                                     <span>
-                                        <i class="far fa-envelope"></i>&nbsp;
-                                        <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
+                                        <i class="far fa-envelope"></i>
+                                        <span style="font-size:15px;">Globalpack@globalpack.es </span>
                                     </span>
                                     <br />
                                 </div>
                             </li>
-
                             <li class="option-contact">
                                 <h3>HORARIO</h3>
                                 <br />
@@ -118,30 +117,30 @@ window.cookieconsent.initialise({
                                 </div>
                             </li>
 
-                            <li class="option-contact">
-                                <h3>VISITANOS</h3>
-                                <br />
-                                <div class="icon-imatge">
-                                    <img src="/assets/iconos/localizacion.png" class="ico-location" />
-                                </div>
-                                <div class="footer-telf">
-                                    <span>
-                                        P.I MolÃÂÃÂÃÂÃÂ­ d'en Xec N.15
-                                    </span>
+                                <li class="option-contact">
+                                    <h3>VISITANOS</h3>
                                     <br />
-                                    <span>
-                                        08291 Ripollet
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
+                                    <div class="icon-imatge">
+                                        <img src="/assets/iconos/localizacion.png" class="ico-location" />
+                                    </div>
+                                    <div class="footer-telf">
+                                        <span>
+                                            P.I Molí d'en Xec N.15
+                                        </span>
+                                        <br />
+                                        <span>
+                                            08291 Ripollet
+                                        </span>
+                                    </div>
+                                </li>
+</ul>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <img src="/assets/img/LOGO_CONTACTO.png" style="margin-left:25px; width:90%;" />
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            <?php echo utf8_encode("P.I MolÃÂÃÂ­ d'en Xec N.15"); ?> <br />
+                            P.I Molí d'en Xec N.15 <br />
                             08291 Ripollet <br />
                             T (+34) 93 4327181 <br />
                             F (+34) 93 4327182 <br />

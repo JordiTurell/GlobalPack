@@ -32,6 +32,9 @@ if(isset($_SESSION['SES'])){
                 case 'PDF':
                     UpdatePDF();
                     break;
+                case 'icon-slider-home':
+                    UpdateFileHomeSlider();
+                    break;
                 default:
                     UpdateFile();
                     break;
@@ -210,6 +213,37 @@ function UpdateFile(){
         }
     }
 }
+
+function UpdateFileHomeSlider(){
+    $filename = $_FILES['file']['name'];
+    $location = $_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$filename;
+
+    $uploadOk = 1;
+    $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+
+    // Check image format
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+        $uploadOk = 0;
+    }
+
+    if($uploadOk == 0){
+        echo 0;
+    }else{
+        /* Upload file */
+        
+        $filename = $_POST["box"].'.'.$imageFileType;
+        $location = $_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$filename;
+
+        array_map('unlink', glob($_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$filename));
+
+        if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
+            echo "//".$_SERVER['HTTP_HOST']."/cms/img/".$_GET['FOLDER']."/".$filename;
+        }else{
+            echo "Error";
+        }
+    }
+}
+
 function UpdateFileFix(){
     $filename =  $_FILES['file']['name'];
     $location = $_SERVER["DOCUMENT_ROOT"]."/cms/img/".$_GET['FOLDER']."/".$filename;

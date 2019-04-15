@@ -69,30 +69,12 @@ ipsum dolor sit amet consectetur adipisicing elit
                 </div>
                 <div class="col-lg-8">
                     <div class="row flex-row-reverse" style="padding-top:18px;">
-                        <div class="col-lg-5 item-slider">
-                            <img src="/assets/iconos/Maquinas.png" />
-                            <span>Maquinas</span>
-                        </div>
-                        <div class="col-lg-5 item-slider">
-                            <img src="/assets/iconos/Rueda.png" />
-                            <span>Consumibles</span>
-                        </div>
-                        <div class="col-lg-5 item-slider">
-                            <img src="/assets/iconos/Caixa.png" />
-                            <span>Accesorios</span>
-                        </div>
-                        <div class="col-lg-5 item-slider">
-                            <img src="/assets/iconos/Servicio.png" />
-                            <span>Servicio técnico</span>
-                        </div>
-                        <div class="col-lg-5 item-slider">
-                            <img src="/assets/iconos/Maquinas.png" />
-                            <span>Maquinas</span>
-                        </div>
-                        <div class="col-lg-5 item-slider">
-                            <img src="/assets/iconos/Maquinas.png" />
-                            <span>Maquinas</span>
-                        </div>
+                        <div class="col-lg-5 item-slider box1"></div>
+                        <div class="col-lg-5 item-slider box0"></div>
+                        <div class="col-lg-5 item-slider box3"></div>
+                        <div class="col-lg-5 item-slider box2"></div>
+                        <div class="col-lg-5 item-slider box5"></div>
+                        <div class="col-lg-5 item-slider box4"></div>
                     </div>
                 </div>
             </div>
@@ -105,7 +87,6 @@ ipsum dolor sit amet consectetur adipisicing elit
                     <h1>¿Qué hay de nuevo?</h1>
                 </div>
                 <div class="col-lg-4 item-ocasion">
-                    
                 </div>
             </div>
         </div>

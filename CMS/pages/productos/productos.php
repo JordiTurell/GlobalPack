@@ -76,7 +76,7 @@ if(isset($_SESSION['SES'])){
                                     </div>    
                                     <div class="col-lg-2">
                                         <select class="form-control" id="Filtrocategorias" onchange="SelectCategoria(0);">
-                                            <option value="0">Selecciona una categorÃÂÃÂ­ÃÂÃÂ­a</option>
+                                            <option value="0">Selecciona una categorÃÂÃÂÃÂÃÂ­ÃÂÃÂÃÂÃÂ­a</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-2">
@@ -125,15 +125,14 @@ if(isset($_SESSION['SES'])){
                 </div>
             </section>
             <!-- /.content -->
-
-            <!-- Popup que falta -->
+             <!-- Popup que falta -->
             <div class="quefalta">
                 <label id="productoTitulo"></label>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="OutInfo();">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <ul></ul>
-            </div>
+            </div>           
             <!-- Modal -->
             <div class="modal fade" id="WizarProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -247,8 +246,10 @@ if(isset($_SESSION['SES'])){
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+    <script src="/cms/js/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap 3.3.7 -->
+    <script src="/cms/js/bootstrap.min.js"></script>
 
     <script src="/cms/bower_components/fastclick/lib/fastclick.js"></script>
     <!-- Base App -->

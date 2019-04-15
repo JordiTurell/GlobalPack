@@ -254,7 +254,7 @@ function CreateTableProductos(data) {
         var editar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[1];
         var eliminar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[3];
         var duplicar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[5];
-        var popover = $($(fila).children()[a]).find('i')[4];
+        var popover = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[6];
 
         $(popover).data('product', data.list[a].allProduct);
         $(popover).on('click', function () {
@@ -1173,12 +1173,14 @@ function Editar(producto) {
                                         $(cat).children().remove();
                                         var catActive = false;
                                         for (var a = 0; a < data.list.length; a++) {
-                                            for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
-                                                if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
-                                                    catActive = true;
-                                                    break;
-                                                } else {
-                                                    catActive = false;
+                                            if (createProducto.itemdb.Id_SubCategoria != null) {
+                                                for (var c = 0; c < createProducto.itemdb.Id_SubCategoria.length; c++) {
+                                                    if (createProducto.itemdb.Id_SubCategoria[c] === data.list[a].Id_Subcategoria) {
+                                                        catActive = true;
+                                                        break;
+                                                    } else {
+                                                        catActive = false;
+                                                    }
                                                 }
                                             }
                                             var html = '';

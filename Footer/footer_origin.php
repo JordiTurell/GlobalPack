@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-3">
                 <h3>Legal</h3>
-                <p style="margin-top:15.78px"><a href="/legal/terminos.php" style="text-decoration:none; color:white;">Terminos y condiciones</a></p>
+                <!--<p style="margin-top:15.78px"><a href="/legal/terminos.php" style="text-decoration:none; color:white;">Terminos y condiciones</a></p>-->
                 <p><a href="/legal/politicadeprivacidad.php" style="text-decoration:none; color:white;">Política de privacidad</a></p>
                 <p><a href="/legal/Coockies.php" style="text-decoration:none; color:white;">Política de Coockies</a></p>
                 <p><a href="/legal/informacionlegal.php" style="text-decoration:none; color:white;">Información legal</a></p>
@@ -39,7 +39,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <a href="https://www.facebook.com/globalpacke/"><img src="/assets/img/facebook.svg" class="redsocial_footer" /></a> &nbsp; <a href="https://twitter.com/Globalpacke"><img src="/assets/img/tweeter.svg" class="redsocial_footer"/></a> &nbsp; <a href="https://www.youtube.com/channel/UCg22zdAPBHWhn-NrjS-JyCQ?view_as=subscriber"><img src="/assets/img/instagram.svg" class="redsocial_footer"/></a>&nbsp; <a href="https://www.linkedin.com/company/11781745"><img src="/assets/iconos/in.png" class="redsocial_footer"/></a>
+                <a href="https://www.facebook.com/globalpacke/"><img src="/assets/img/facebook.svg" class="redsocial_footer" /></a> &nbsp; <a href="https://twitter.com/Globalpacke"><img src="/assets/img/tweeter.svg" class="redsocial_footer"/></a> &nbsp; <a href="https://www.youtube.com/channel/UCg22zdAPBHWhn-NrjS-JyCQ?view_as=subscriber"><img src="/assets/iconos/youtube.png" class="redsocial_footer" style="width:22px;"/></a>&nbsp; <a href="https://www.linkedin.com/company/11781745"><img src="/assets/iconos/in.png" class="redsocial_footer"/></a>
             </div>
             <div class="col-lg-3">
                 &nbsp;

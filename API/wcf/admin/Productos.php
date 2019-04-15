@@ -76,11 +76,11 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT * FROM p_categorias ORDER BY FechaM";
+                    $query = "SELECT * FROM p_categorias ORDER BY Orden";
 
                     if($res = mysqli_query($conn, $query)){
                         while($row = mysqli_fetch_assoc($res)){
-                            $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                            $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"], $row["Orden"]);
                             array_push($result->list, $cat);
                         }
                     }
@@ -147,10 +147,11 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT * FROM p_subcategorias ORDER BY FechaM";
+                    $query = "SELECT * FROM p_subcategorias ORDER BY Orden";
                     if($res = mysqli_query($conn, $query)){
                         while($row = mysqli_fetch_assoc($res)){
                             $cat = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                            $cat->SetOrden($row["Orden"]);
                             array_push($result->list, $cat);
                         }
                     }
@@ -1218,7 +1219,7 @@ namespace Api\WCF
                     if($input["filtro"] != 0){
                         switch($input["filtro"]){
                             case 1:
-                                if($input["categoria"] != 0){
+                                if($input["categoria"] != "0"){
                                     $filtro = "AND productos.Habilitado = 1";
                                     $query = sprintf($query, $filtro);
                                 }else{
@@ -1227,7 +1228,7 @@ namespace Api\WCF
                                 }
                                 break;
                             case 2:
-                                if($input["categoria"] != 0){
+                                if($input["categoria"] != "0"){
                                     $filtro = "AND productos.Habilitado = 0";
                                     $query = sprintf($query, $filtro);
                                 }else{
@@ -1267,7 +1268,7 @@ namespace Api\WCF
                     if($res = mysqli_query($conn, $query)){
 
                         while($row = mysqli_fetch_assoc($res)){
-                            $cat = $this->GetAllProducto($row["Id_Producto"]);
+                            $cat = $this->GetAllProductoApi($row["Id_Producto"]);
                             array_push($result->list, $cat);
                         }
                     }
@@ -1432,6 +1433,191 @@ namespace Api\WCF
                     mysqli_close($conn);
                     $result->SetStatus(true);
                     $result->SetMsg('SUCCESS');
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function SortableCategoria(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/ServiceListResult.php");
+            require_once("../../clases/Categoria.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $result = new Listado(false, '', null, 0, 0);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $query = "SELECT * FROM p_categorias order by Orden Asc";
+                    $normal_list = array();
+                    if($res = mysqli_query($conn, $query)){
+                        $item = null;
+                        if(mysqli_num_rows($res) > 0){
+                            while($row = mysqli_fetch_assoc($res)){
+                                $item = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"], $row["Orden"]);
+                                array_push($normal_list, $item);
+                            }
+                            $query_orden = "SELECT Orden FROM p_categorias order by Orden Desc Limit 1";
+                            $orden = 0;
+                            if($res = mysqli_query($conn, $query_orden)){
+                                while($row = mysqli_fetch_assoc($res)){
+                                    $orden = $row["Orden"];
+                                }
+                            }
+
+                            if($input["newindex"] > $input["item"]["Orden"]){
+                                $ascendent = true;
+                            }else{
+                                $ascendent = false;
+                            }
+
+                            for($a = 0; $a < count($normal_list); $a++){
+                                if(!$ascendent){
+                                    if($normal_list[$a]->Id_Categoria != $input["item"]["Id_Categoria"]){
+                                        if($input["newindex"] > $normal_list[$a]->Orden){
+
+                                        }else{
+                                            if(!$normal_list[$a]->Orden <= $input["item"]["Orden"]){
+                                                $query = "UPDATE p_categorias SET Orden = ".($normal_list[$a]->Orden + 1)." WHERE Id_Categoria = '".$normal_list[$a]->Id_Categoria."'";
+                                                mysqli_query($conn, $query);
+                                            }
+                                        }
+                                    }else{
+                                        $query = "UPDATE p_categorias SET Orden = ".($input["newindex"])." WHERE Id_Categoria = '".$input["item"]["Id_Categoria"]."'";
+                                        mysqli_query($conn, $query);
+                                        break;
+                                    }
+                                }else{
+                                    if($normal_list[$a]->Id_Categoria != $input["item"]["Id_Categoria"]){
+                                        if($normal_list[$a]->Orden > $input["newindex"]){
+                                            break;
+                                        }else{
+                                            if($input["item"]["Orden"] == 0){
+                                                $query = "UPDATE p_categorias SET Orden = ".($normal_list[$a]->Orden - 1)." WHERE Id_Categoria = '".$normal_list[$a]->Id_Categoria."'";
+                                                mysqli_query($conn, $query);
+                                            }else{
+                                                if(!$normal_list[$a]->Orden <= $input["item"]["orden"]){
+                                                    $query = "UPDATE p_categorias SET Orden = ".($normal_list[$a]->Orden - 1)." WHERE Id_Categoria = '".$normal_list[$a]->Id_Categoria."'";
+                                                    mysqli_query($conn, $query);
+                                                }
+                                            }
+                                        }
+                                    }else{
+                                        $query = "UPDATE p_categorias SET Orden = ".($input["newindex"])." WHERE Id_Categoria = '".$input["item"]["Id_Categoria"]."'";
+                                        mysqli_query($conn, $query);
+                                    }
+                                }
+                            }
+                        }
+                        mysqli_close($conn);
+                    }
+                    $result->SetStatus(true);
+                    return $result;
+                }else{
+                    $result->SetStatus(false);
+                    $result->SetMsg('Error de identificación');
+                    return $result;
+                }
+            }else{
+                $result->SetStatus(false);
+                $result->SetMsg('Error de identificación');
+                return $result;
+            }
+        }
+
+        public function SortableFiltres(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+            require_once("../../clases/ServiceListResult.php");
+            require_once("../../clases/Subcategoria.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $result = new Listado(false, '', null, 0, 0);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $query = "SELECT * FROM p_subcategorias order by Orden Asc";
+                    $normal_list = array();
+                    if($res = mysqli_query($conn, $query)){
+                        $item = null;
+                        if(mysqli_num_rows($res) > 0){
+                            while($row = mysqli_fetch_assoc($res)){
+                                $item = new Subcategoria($row["Id_Subcategorias"], '', $row["Subcategoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                                $item->SetOrden($row["Orden"]);
+                                array_push($normal_list, $item);
+                            }
+                            $query_orden = "SELECT Orden FROM p_subcategorias order by Orden Desc Limit 1";
+                            $orden = 0;
+                            if($res = mysqli_query($conn, $query_orden)){
+                                while($row = mysqli_fetch_assoc($res)){
+                                    $orden = $row["Orden"];
+                                }
+                            }
+
+                            if($input["newindex"] > $input["item"]["Orden"]){
+                                $ascendent = true;
+                            }else{
+                                $ascendent = false;
+                            }
+
+                            for($a = 0; $a < count($normal_list); $a++){
+                                if(!$ascendent){
+                                    if($normal_list[$a]->Id_Subcategoria != $input["item"]["Id_Subcategoria"]){
+                                        if($input["newindex"] > $normal_list[$a]->Orden){
+
+                                        }else{
+                                            if(!$normal_list[$a]->Orden <= $input["item"]["Orden"]){
+                                                $query = "UPDATE p_subcategorias SET Orden = ".($normal_list[$a]->Orden + 1)." WHERE Id_Subcategorias = '".$normal_list[$a]->Id_Subcategoria."'";
+                                                mysqli_query($conn, $query);
+                                            }
+                                        }
+                                    }else{
+                                        $query = "UPDATE p_subcategorias SET Orden = ".($input["newindex"])." WHERE Id_Subcategorias = '".$input["item"]["Id_Subcategoria"]."'";
+                                        mysqli_query($conn, $query);
+                                        break;
+                                    }
+                                }else{
+                                    if($normal_list[$a]->Id_Subcategoria != $input["item"]["Id_Subcategoria"]){
+                                        if($normal_list[$a]->Orden > $input["newindex"]){
+                                            break;
+                                        }else{
+                                            if($input["item"]["Orden"] == 0){
+                                                $query = "UPDATE p_subcategorias SET Orden = ".($normal_list[$a]->Orden - 1)." WHERE Id_Subcategorias = '".$normal_list[$a]->Id_Subcategoria."'";
+                                                mysqli_query($conn, $query);
+                                            }else{
+                                                if(!$normal_list[$a]->Orden <= $input["item"]["Orden"]){
+                                                    $query = "UPDATE p_subcategorias SET Orden = ".($normal_list[$a]->Orden - 1)." WHERE Id_Subcategorias = '".$normal_list[$a]->Id_Subcategoria."'";
+                                                    mysqli_query($conn, $query);
+                                                }
+                                            }
+                                        }
+                                    }else{
+                                        $query = "UPDATE p_subcategorias SET Orden = ".($input["newindex"])." WHERE Id_Subcategorias = '".$input["item"]["Id_Subcategoria"]."'";
+                                        mysqli_query($conn, $query);
+                                    }
+                                }
+                            }
+                        }
+                        mysqli_close($conn);
+                    }
+                    $result->SetStatus(true);
                     return $result;
                 }else{
                     $result->SetStatus(false);

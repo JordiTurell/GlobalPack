@@ -41,7 +41,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer mÃ¡s",
+    "link": "Leer mÃÂ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -71,12 +71,14 @@ window.cookieconsent.initialise({
                 </div>
                 <div class="col-lg-9">
                     <div class="row filtros">
-                        <h3>FILTRO</h3>
+                        <h3>FILTRO POR SOLUCIÓN</h3>
                         <ul id="list-filtros">
 
                         </ul>
                     </div>
-                    <div class="row">
+                    <div class="row autosemi">
+                        <br />
+                        <h3>FILTRO POR ASISTENCIA</h3>
                         <ul id="list-servicios" style="list-style:none; padding:0;"></ul>
                     </div>
                     <div class="row productes" style="padding-top:38px;">
