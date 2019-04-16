@@ -42,7 +42,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer mÃ¡s",
+    "link": "Leer mÃÂ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -92,7 +92,7 @@ window.cookieconsent.initialise({
                     <div class="col-lg-12" style="padding-top:10px;">
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="button" class="btn btn-web" value="COMPARTIR" style="margin-left:0px;" onclick="Compartir();" />
+                                <input type="button" class="btn btn-web btn-ficha" value="COMPARTIR" style="margin-left:0px;" onclick="Compartir();" />
                             </div>
                             <div class="col-lg-6 text-right">
                                 <img src="/assets/iconos/impresora.png" style="width:30px; margin-right:10px;" onclick="Imprimir()" />

@@ -8,7 +8,7 @@
                     <span class="title">Dirección</span><br />
                     P.I Molí d'en Xec N.15 <br />
                     08291 Ripollet<br />
-                    <a href="tel:+34934327181">+34 93 4327181</a>
+                    <a href="tel:+34934327181">+34 93 432 71 81</a>
                     <br />
                     <a href="mailto:info@globalpack-e.com">info@globalpack-e.com</a>
                 </p>

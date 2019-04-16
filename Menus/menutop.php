@@ -6,7 +6,7 @@
                         <img src="/assets/iconos/head_localitzacio.png" style="width:25px;" /> P.I Molí d'en Xec N.15 08291 Ripollet
                     </div>
                     <div class="col-lg-3 text-center">
-                        <img src="/assets/iconos/head_telf.png" style="width:25px;" />&nbsp; <a href="tel:+34934327181">+34 93 4327181</a>
+                        <img src="/assets/iconos/head_telf.png" style="width:25px;" />&nbsp; <a href="tel:+34934327181">+34 93 432 71 81</a>
                     </div>
                     <div class="col-lg-3 right">
                         <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:globalpack@globalpack.es">Globalpack@globalpack.es</a>
@@ -40,6 +40,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/postventa.php">SOLUCIÓN</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/plans.php">POSTVENTA</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/Ocasion.php">OCASIÓN</a>

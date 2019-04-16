@@ -31,6 +31,7 @@
     <Compile Include="legal\politicadeprivacidad.php" />
     <Compile Include="legal\terminos.php" />
     <Compile Include="Menus\menutop.php" />
+    <Compile Include="plans.php" />
     <Compile Include="nosotros.php" />
     <Compile Include="Ocasion.php" />
     <Compile Include="page_blank.php" />

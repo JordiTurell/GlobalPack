@@ -37,7 +37,7 @@ namespace Api\WCFWeb
             $query = "SELECT * FROM p_categorias WHERE Activada = 1 ORDER BY Orden";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
-                    $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                    $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"], $row["Orden"]);
                     array_push($result->list, $cat);
                 }
             }
@@ -342,7 +342,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM servicios WHERE Activada = 1";
+            $query = "SELECT * FROM servicios WHERE Activada = 1 ORDER BY Orden";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Servicios($row["Id_Servicios"], $row["Nombre"], $row["Icono"], $row["Activada"]);

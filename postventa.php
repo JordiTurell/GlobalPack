@@ -38,7 +38,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer más",
+    "link": "Leer mÃ¡s",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -53,7 +53,7 @@ window.cookieconsent.initialise({
     <div class="row" style="margin-bottom:130px">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="padding-left:0; padding-right:0;">
                     <div id="listbenificios" class="row postventa-list"></div>
                 </div>
             </div>

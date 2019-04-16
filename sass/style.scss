@@ -34,7 +34,8 @@ body {
 .arrow-down {
     position:absolute;
     bottom:0;
-    left:50%;
+    left:47%;
+    right:47%;
  }
 
 #logo_top {
@@ -53,7 +54,7 @@ body {
 
     .navbar-nav {
         margin-top: 45px;
-        margin-left:30%;
+        margin-left:10%;
     }
 
     .nav-item {
@@ -345,15 +346,177 @@ body {
 
 .compartir-list {
     list-style: none;
+    width: auto;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 0;
 
     li {
         display: inline-block;
         padding: 15px;
 
         img {
-            width: 25px;
+            height: 18px;
         }
     }
 }
 
-    @import 'responsive.scss';
+.plans-info {
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 35px;
+        color: $gris-title;
+        border-bottom: solid 4px $line-blog;
+        width: 290px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-top:50px;
+    }
+}
+.plans{
+    ul{
+        list-style:none;
+        li{
+            padding:7px;
+            i{
+                color:$globalpack;
+                font-size:7px;
+                margin-right:10px;
+            }
+        }
+    }
+}
+
+.tipoplanoro {
+    border-radius: 11px 11px 0 0;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px 1px #dedede;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom: solid 4px $planoro;
+
+    .titulo {
+        background-color: $planoro;
+        color: white;
+        text-align: center;
+        border-radius: 11px 11px 0 0;
+        padding: 5px;
+        font-size: 38px;
+        font-weight: bold;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .textplan {
+        padding: 25px;
+        font-size: 15px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0px;
+
+        li {
+            font-size: 15px;
+            font-family: 'Ubuntu', sans-serif;
+            padding: 1px 25px 20px 25px;
+
+            i {
+                font-size: 10px;
+                color: $planoro;
+            }
+        }
+    }
+}
+
+.tipoplanplata {
+    border-radius: 11px 11px 0 0;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px 1px #dedede;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom: solid 4px $planplata;
+
+    .titulo {
+        background-color: $planplata;
+        color: white;
+        text-align: center;
+        border-radius: 11px 11px 0 0;
+        padding: 5px;
+        font-size: 38px;
+        font-weight: bold;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .textplan {
+        padding: 25px;
+        font-size: 15px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0px;
+
+        li {
+            font-size: 15px;
+            font-family: 'Ubuntu', sans-serif;
+            padding: 1px 25px 20px 25px;
+
+            i {
+                font-size: 10px;
+                color: $planplata;
+            }
+        }
+    }
+}
+
+.tipoplanpersonalizado {
+    border-radius: 11px 11px 0 0;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px 1px #dedede;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom:solid 4px $globalpack;
+
+    .titulo {
+        background-color: $globalpack;
+        color: white;
+        text-align: center;
+        border-radius: 11px 11px 0 0;
+        padding: 5px;
+        font-size: 38px;
+        font-weight: bold;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .textplan {
+        padding: 25px;
+        font-size: 15px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0px;
+
+        li {
+            font-size: 15px;
+            font-family: 'Ubuntu', sans-serif;
+            padding: 1px 25px 20px 25px;
+
+            i {
+                font-size: 10px;
+                color: $globalpack;
+            }
+        }
+    }
+}
+
+.btn-ficha{
+    background-color:white;
+    border:solid 2px $globalpack;
+    color:$globalpack;
+    font-weight:300;
+}
+@import 'responsive.scss';

@@ -7,7 +7,7 @@
     border-radius: 11px 11px 0 0;
     padding: 20px;
     text-align: center;
-    margin: 30px 0px 25px 14px;
+    margin: 30px 0px 25px 18px;
     box-shadow: 1px 1px 10px 1px $line-title;
     border: solid 1px $line-categorias;
     border-bottom: solid 3px $line-categorias;
@@ -196,9 +196,16 @@
     }
 }
 
-.cat-active span{
-    color:$globalpack;
-    margin-left:10px;
+#list-servicios{
+    li{
+        margin-left:10px;
+    }
+}
+
+.cat-active span {
+    color: $globalpack;
+    margin-left: 10px;
+    border-bottom: solid 1px $globalpack;
 }
 .item-producto-list {
     cursor: pointer;
@@ -288,7 +295,7 @@
     position: relative;
 
     img {
-        margin-top: -40px;
+        //margin-top: -40px;
     }
 
     .item-slider-info {

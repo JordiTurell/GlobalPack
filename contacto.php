@@ -39,7 +39,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer mÃÂÃÂ¡s",
+    "link": "Leer más",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -69,24 +69,24 @@ window.cookieconsent.initialise({
                     <div class="row">
                         <ul class="row lis-option">
                             <li class="option-contact">
-                                <h3>LLAMANOS</h3>
+                                <h3>LLÁMANOS</h3>
                                 <br />
                                 <div class="icon-imatge">
                                     <img src="/assets/iconos/mobile.png" class="ico-phone" />
                                 </div>
                                 <div class="footer-telf">
                                     <span>
-                                        <a href="tel:+34934327181">+34 93 4327181</a>
+                                        <a href="tel:+34934327181">+34 93 432 71 81</a>
                                     </span>
                                     <br />
                                     <span>
-                                        <a href="tel:+34934327182">+34 93 4327182</a>
+                                        <a href="tel:+34934327182">+34 93 432 71 82</a>
                                     </span>
                                 </div>
                             </li>
 
                             <li class="option-contact" style="cursor:pointer;" onclick="window.location='mailto:globalpack@globalpack.es';">
-                                <h3>ESCRIBENOS</h3>
+                                <h3>ESCRÍBENOS</h3>
                                 <br />
                                 <div class="icon-imatge">
                                     <img src="/assets/iconos/escribenos.png" class="ico-write" />
@@ -95,7 +95,7 @@ window.cookieconsent.initialise({
                                     <br />
                                     <span>
                                         <i class="far fa-envelope"></i>
-                                        <span style="font-size:15px;">Globalpack@globalpack.es </span>
+                                        <span style="font-size:15px;">globalpack@globalpack.es </span>
                                     </span>
                                     <br />
                                 </div>
@@ -112,13 +112,14 @@ window.cookieconsent.initialise({
                                     </span>
                                     <br />
                                     <span>
-                                        de 9:00 a 18:30
+                                        de 8:00 a 13:30<br />
+                                        de 15:00 a 18:00
                                     </span>
                                 </div>
                             </li>
 
                                 <li class="option-contact">
-                                    <h3>VISITANOS</h3>
+                                    <h3>VISÍTANOS</h3>
                                     <br />
                                     <div class="icon-imatge">
                                         <img src="/assets/iconos/localizacion.png" class="ico-location" />
@@ -142,8 +143,8 @@ window.cookieconsent.initialise({
                         <div class="col-lg-6" style="padding-left:20px;">
                             P.I Molí d'en Xec N.15 <br />
                             08291 Ripollet <br />
-                            T (+34) 93 4327181 <br />
-                            F (+34) 93 4327182 <br />
+                            T (+34) 93 432 71 81 <br />
+                            F (+34) 93 432 71 82 <br />
                             www.globalpack-e.com
                         </div>
                     </div>

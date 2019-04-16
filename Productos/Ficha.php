@@ -42,7 +42,7 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
     "dismiss": "Acepto",
-    "link": "Leer mÃ¡s",
+    "link": "Leer más",
     "href": "/legal/Coockies.php"
   }
 })});
@@ -89,18 +89,18 @@ window.cookieconsent.initialise({
                                 <div class="col-md-6 btn btn-web" style="padding-top:14px; display:none;" onclick="ShowcontactComprar();">
                                     <img src="/assets/iconos/cart.png" style="width:30px; float:left; margin-top:-1px; margin-left:30px;" />&nbsp;<div style="float:right; margin-top:2px; margin-right:22px;">COMPRAR</div>
                                 </div>
-                                <div class="col-md-6 btn btn-web" onclick="ShowcontactComprar();" style="margin-left:0px;">
+                                <div class="col-md-6 btn btn-web btn-ficha" onclick="ShowcontactComprar();" style="margin-left:0px; margin-top:10px;">
                                     Pedir Informaci&#243;n personalizada
                                 </div>
                             </div>
-                            <div class="row" style="margin-top:30px;">
+                            <div class="row" style="margin-top:30px; border-top:solid 2px rgba(206, 206, 206, 0.50); padding-top:20px;">
                                 <div class="col-md-6 col-xs-6">
                                     <img src="/assets/iconos/impresora.png" style="width:30px; margin-right:10px;" onclick="Imprimir()" />
                                     <img src="/assets/iconos/pdf.png" style="width:30px; margin-right:10px;" id="pdf" />
                                     <img src="/assets/iconos/star.png" style="width:30px;" />
                                 </div>
                                 <div class="col-md-6 col-xs-6 text-right">
-                                    <input type="button" class="btn btn-web" value="COMPARTIR" style="margin:0 auto;" onclick="Compartir();" />
+                                    <input type="button" class="btn btn-web btn-ficha" value="COMPARTIR" style="margin:0 auto;" onclick="Compartir();" />
                                 </div>
                             </div>
                         </div>
@@ -163,7 +163,7 @@ window.cookieconsent.initialise({
                     <h3>Productos relacionados</h3>
                 </div>
                 <div class="col-lg-12">
-                    <div class="slider_relacionados"></div>
+                    <div class="slider_relacionados" style="margin-left:10px;"></div>
                 </div>
             </div>
         </div>

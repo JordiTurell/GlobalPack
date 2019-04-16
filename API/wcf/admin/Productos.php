@@ -256,7 +256,7 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT * FROM servicios";
+                    $query = "SELECT * FROM servicios ORDER BY Orden";
                     if($res = mysqli_query($conn, $query)){
                         while($row = mysqli_fetch_assoc($res)){
                             $cat = new Servicios($row["Id_Servicios"], $row["Nombre"], $row["Icono"], $row["Activada"]);
