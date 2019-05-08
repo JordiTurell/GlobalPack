@@ -87,6 +87,9 @@ if(isset($_SESSION['SES'])){
                                             <option value="3">Ocasion</option>
                                         </select>
                                     </div>
+                                    <div class="col-lg-1">
+                                        <input type="button" value="Exportar DB" class="btn" onclick="ExportDB();" />
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-1 text-center">

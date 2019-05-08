@@ -24,8 +24,8 @@ if(!empty($input)){
 
         //Recipients
         $mail->setFrom('webglobalpack@gmail.com', 'Web Globalpack');
-        //$mail->addAddress('operaciones@globalpack-e.com', 'Operaciones');
-        $mail->addAddress('info@jorditurell.com', 'Jordi Turell Nebot');
+        $mail->addAddress('operaciones@globalpack-e.com', 'Operaciones');
+        //$mail->addAddress('info@jorditurell.com', 'Jordi Turell Nebot');
 
         //Content
         $mail->isHTML(true);                                  // Set email format to HTML

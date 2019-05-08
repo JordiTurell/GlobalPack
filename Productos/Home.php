@@ -48,12 +48,12 @@ window.cookieconsent.initialise({
     </script>
 </head>
 
-<body id="page-top" class="container-fuild" onload="LoadHomeProductos('<?php echo $id; ?>');">
+<body id="page-top HomeProductos" class="container-fuild" onload="LoadHomeProductos('<?php echo $id; ?>');">
 
     <!-- Navigation -->
     <?php include_once('../Menus/menutop.php'); ?>
 
-    <div class="row" style="margin-bottom:130px; margin-top:86px;">
+    <div class="row titlesection" style="margin-bottom:130px; margin-top:86px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
@@ -92,7 +92,7 @@ window.cookieconsent.initialise({
     <?php include_once('../Formularis/PopupContacte.php'); ?>
 
     <!-- Footer -->
-    <footer>
+    <footer id="footermobile">
         <?php include_once('../Footer/footer.php'); ?>
     </footer>
     <!-- Bootstrap core JavaScript -->

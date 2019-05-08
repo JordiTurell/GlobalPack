@@ -129,8 +129,8 @@ function CreateListProductos(list) {
                     
                     var item = $(content).append(code);
                     list[a].cat = cat;
-                    $($(item).children()[a]).data('item', list[a]);
-                    $($(item).children()[a]).on('click', function (ev) {
+                    $($(item).children()[b]).data('item', list[a]);
+                    $($(item).children()[b]).on('click', function (ev) {
                         ev.preventDefault();
                         var producto = $(this).data('item');
                         $.redirect('/Productos/Ficha.php', producto);
@@ -265,13 +265,19 @@ function Filtros(id) {
                     ev.preventDefault();
                     var cat = $(this).data('cat');
                     if (IscheckedFiltro(cat)) {
-                        filtroschecked = $.grep(filtroschecked, function (value) {
-                            return value != cat;
+                        filtroschecked = [];
+                        
+                        $(this).parent().find('img').each(function () {
+                            $(this).attr('src', '/assets/iconos/checked.png');
                         });
                         $($(this).find('img')[0]).attr('src', '/assets/iconos/checked.png');
                         CreateListProductos(list);
                     } else {
+                        filtroschecked = [];
                         filtroschecked.push(cat);
+                        $(this).parent().find('img').each(function () {
+                            $(this).attr('src', '/assets/iconos/checked.png');
+                        });
                         $($(this).find('img')[0]).attr('src', '/assets/iconos/uncheck.png');
                         CreateListProductos(list);
                     }
@@ -295,7 +301,7 @@ function LoadServicios(id) {
         success: function (data) {
             var ul = $('#list-servicios');
             for (var a = 0; a < data.list.length; a++) {
-                var code = '<li style="cursor:pointer; display:inline-block;">' +
+                var code = '<li style="cursor:pointer; display:inline-block;" data-select="false">' +
                     '<img src="' + data.list[a].Icono +'" style="height:50px;" />'+
                     '</li>';
                 var item = $(ul).append(code);
@@ -309,8 +315,15 @@ function LoadServicios(id) {
                     $('#list-servicios').find('li').each(function () {
                         $(this).css('border-bottom', 'none');
                     });
-                    $(this).css('border-bottom', 'solid 2px #ef3340');
-                    CreateListProductos(list);
+                    if (!$(this).data('select')) {
+                        $(this).data('select', true);
+                        $(this).css('border-bottom', 'solid 2px #ef3340');
+                        CreateListProductos(list);
+                    } else {
+                        servicioschecked = [];
+                        $(this).data('select', false);
+                        CreateListProductos(list);
+                    }
                     
                 });
             }

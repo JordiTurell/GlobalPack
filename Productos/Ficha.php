@@ -54,13 +54,13 @@ window.cookieconsent.initialise({
     <!-- Navigation -->
     <?php include_once('../Menus/menutop.php'); ?>
 
-    <div class="row" style="margin-top:86px;">
+    <div class="row titlesection" style="margin-top:86px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" style="padding-bottom:50px;">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px; cursor:pointer;" onclick="onBack();"/>
+                        <div class="col-lg-12 titlefitxamobile">
+                            <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px; cursor:pointer;" onclick="onBack();" />
 
                             <h1 class="title">PRODUCTOS</h1>&nbsp;&nbsp;&nbsp;
                             <h1 class="title2">
@@ -71,36 +71,33 @@ window.cookieconsent.initialise({
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-5 imgproducto">
-                    
-                </div>
-                <div class="col-lg-7">
+                <div class="col-lg-5 imgproducto"></div>
+                <div class="col-lg-7 infofitxacol">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 titlefitxacol">
                             <h1 id="titleproducto"></h1>
                         </div>
-                        <div class="col-lg-12" id="list-serveis">
-                            
-                        </div>
+                        <div class="col-lg-12" id="list-serveis"></div>
                         <div class="col-lg-12">
                             <div id="descripcion"></div>
                             <div id="garantia"></div>
-                            <div class="row" style="margin-top:20px;">
+                            <div class="row actionsficha" style="margin-top:20px;">
                                 <div class="col-md-6 btn btn-web" style="padding-top:14px; display:none;" onclick="ShowcontactComprar();">
-                                    <img src="/assets/iconos/cart.png" style="width:30px; float:left; margin-top:-1px; margin-left:30px;" />&nbsp;<div style="float:right; margin-top:2px; margin-right:22px;">COMPRAR</div>
+                                    <img src="/assets/iconos/cart.png" style="width:30px; float:left; margin-top:-1px; margin-left:30px;" />&nbsp;
+                                    <div style="float:right; margin-top:2px; margin-right:22px;">COMPRAR</div>
                                 </div>
                                 <div class="col-md-6 btn btn-web btn-ficha" onclick="ShowcontactComprar();" style="margin-left:0px; margin-top:10px;">
                                     Pedir Informaci&#243;n personalizada
                                 </div>
                             </div>
-                            <div class="row" style="margin-top:30px; border-top:solid 2px rgba(206, 206, 206, 0.50); padding-top:20px;">
+                            <div class="row actionsficha" style="margin-top:30px; border-top:solid 2px rgba(206, 206, 206, 0.50); padding-top:20px;">
                                 <div class="col-md-6 col-xs-6">
                                     <img src="/assets/iconos/impresora.png" style="width:30px; margin-right:10px;" onclick="Imprimir()" />
                                     <img src="/assets/iconos/pdf.png" style="width:30px; margin-right:10px;" id="pdf" />
                                     <img src="/assets/iconos/star.png" style="width:30px;" />
                                 </div>
                                 <div class="col-md-6 col-xs-6 text-right">
-                                    <input type="button" class="btn btn-web btn-ficha" value="COMPARTIR" style="margin:0 auto;" onclick="Compartir();" />
+                                    <input type="button" class="btn btn-web btn-ficha compartir" value="COMPARTIR" style="margin:0 auto;" onclick="Compartir();" />
                                 </div>
                             </div>
                         </div>

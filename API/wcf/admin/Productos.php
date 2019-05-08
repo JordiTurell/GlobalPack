@@ -527,6 +527,7 @@ namespace Api\WCF
                         while($row = mysqli_fetch_assoc($res)){
                             $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
                             $cat->SetHome($row["Home"]);
+                            $cat->SetOrden($row["Orden"]);
                             $cat->SetId($row["Indice"]);
                             $imagen = "SELECT Url FROM globalpack.p_multimedia inner join p_multimedia_productos on p_multimedia.Id_Multimedia = p_multimedia_productos.Id_Multimedia WHERE Id_Producto ='".$cat->Id_Producto."' LIMIT 1";
                             if($r = mysqli_query($conn, $imagen)){
@@ -1138,6 +1139,7 @@ namespace Api\WCF
                     $producto->SetAnoGarantia($row["Anogarantia"]);
                     $producto->SetReferencia($row["Referencia"]);
                     $producto->SetPdf($row["pdf"]);
+                    $producto->SetOrden($row["Orden"]);
 
                     $relacionados = "SELECT * FROM productos_relacionados WHERE Id_Producto = '".$cat->Id_Producto."'";
                     if($res_relacionados = mysqli_query($conn, $relacionados)){
@@ -1628,6 +1630,29 @@ namespace Api\WCF
                 $result->SetStatus(false);
                 $result->SetMsg('Error de identificación');
                 return $result;
+            }
+        }
+
+        public function SetOrden(){
+            require_once("../../Config/Token.php");
+            require_once("../../Config/Config.php");
+            require_once("../../Config/DataContext.php");
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            if($input != null){
+                if(Token::CheckTokenAdmin($input['token'])){
+                    $config = new Data(DataContext::Admin);
+                    $conn = $config->Conect();
+
+                    $update = "UPDATE productos SET Orden ='".$input["item"]["orden"]."' WHERE Id_Producto = '".$input["item"]["Id_Producto"]."'";
+                    mysqli_query($conn, $update);
+                    mysqli_close($conn);
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
             }
         }
     }

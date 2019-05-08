@@ -18,7 +18,7 @@ namespace Api\Config
         public $database;
         public $user_name;
         public $password;
-        public $local = true;
+        public $local = false;
 
         function __construct($db){
             if($this->local){
@@ -27,7 +27,7 @@ namespace Api\Config
                 $this->user_name = 'root';
                 $this->password = 'sawamura1984';
             }else{
-                $this->host_name = 'localhost';
+                $this->host_name = 'globalpack.flutter.es';
                 $this->database = $db;
                 $this->user_name = 'globalpack';
                 $this->password = 'Kjhldfs74532hf@';

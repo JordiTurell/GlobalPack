@@ -1,7 +1,26 @@
-﻿@media only screen and (max-width: 600px) {
-    
-    .info{
-        display:none;
+﻿@import 'variables.scss';
+
+@media only screen and (max-width: 600px) {
+    #logo_top{
+        width:75%;
+    }
+    .navbar-light .navbar-toggler {
+        background-color: $globalpack !important;
+        border: none !important;
+        color: white;
+    }
+    .navbar-brand{
+        width:77% !important;
+    }
+    .navbar-toggler{
+        margin-left: 85% !important;
+        margin-top: -44px !important;
+    }
+    .navbar-light .navbar-toggler-icon {
+        background-image: url("/assets/iconos/menuiconmobile.svg") !important;
+    }
+    .info {
+        display: none;
     }
     .title-form-home{
         width:100% !important;
@@ -31,6 +50,53 @@
     .navbar .navbar-nav{
         margin-left:0px;
     }
+    .section-head{
+        padding:0px;
+        padding-top:30px;
+        height:290px;
+    }
+    .blockscategoriasHome{
+        display:block !important
+    }
+    .item-slider {
+        background-color: $globalpack;
+        margin: 10px;
+        height: 100px;
+        color: white;
+        cursor: pointer;
+        position: relative;
+
+        img {
+            float: left;
+            width: 90px;
+            margin-top: 6px;
+        }
+
+        span {
+            font-size: 24.4px;
+            font-weight: bold;
+            letter-spacing: 1.1px;
+            line-height: 31px;
+            float: right;
+            margin-top: -66px;
+            width: 100%;
+            margin-right: 0px;
+            text-align: right;
+            padding-right: 32px;
+        }
+    }
+    .slick-track {
+        width:100% !important;
+        .item-slider {
+            height: auto !important;
+            width: 100% !important;
+            background-color: transparent !important;
+
+            .item-slider-info {
+                width:100% !important;
+            }
+        }
+    }
     .section-head #title_home {
         width: 100%;
 
@@ -56,13 +122,19 @@
         width:309px;
         text-align:center;
     }
+
     .cabecera-nosotros {
+        .nosotros-header-alhpa {
+            height: 100%;
+        }
+
         img {
             margin-top: 8%;
             display: block;
             margin-left: 6%;
             position: absolute;
             width: 90%;
+            margin-top: 11%;
         }
 
         #texto-header {
@@ -72,42 +144,205 @@
             margin-top: 32%;
             padding-left: 10px;
             padding-right: 10px;
+            font-size: 20px;
+            margin-top: 30%;
         }
 
-        .arrow-down{
-            left:44%;
+        .arrow-down {
+            left: 44%;
+            margin-bottom: 75px !important;
+        }
+    }
+    .beneficios{
+        margin-top:30px;
+        .container{
+            margin-top:-65px;
         }
     }
     #listbenificios{
         margin-top:45px;
+        padding:0px;
         li{
             width:100%;
             margin-right:0px !important;
             img{
-                height:150px;
+                height:100px;
             }
         }
+    }
+    .titleplans{
+        width:65% !important;
+    }
+    .compartir-list {
+        margin-left: 16% !important;
+        margin-right: 16% !important;
+    }
+    .title{
+        font-size:30px !important;
+    }
+    .title2{
+        font-size:28px !important;
+        width:100%;
+    }
+    .btn-ficha{
+        margin-top:15px !important;
+    }
+
+    .tipoplanoro, .tipoplanplata {
+        margin-bottom: 25px !important;
+    }
+    .slider_relacionados {
+        margin-left: -8px !important;
     }
     .nosotros-info {
         img {
             margin-top: 0px;
             margin-left: -28px;
-            width: 120%;
-            margin-right:0px;
+            width: 118%;
+            margin-right: 0px;
         }
 
-        :nth-child(1){
+        :nth-child(1) {
             :nth-child(2) {
-            margin-top: 5px !important;
+                margin-top: 5px !important;
             }
         }
 
-        #textonosotros{
-            margin-top:10px !important;
+        #textonosotros {
+            margin-top: 10px !important;
         }
     }
 
+    .titlesection{
+        margin-top:30px !important;
+        .col-lg-12{
+            padding-bottom:30px !important;
+        }
+    }
+    .item-producto-list{
+        h3{
+            margin-top:15px;
+        }
+        p{
+            font-size:15px;
+            padding-bottom:20px;
+            line-height:18px;
+        }
+    }
+    .titleblogmobile{
+        padding-top:0px !important;
+    }
+    .itemstitleblog{
+        img{
+            margin-left:-15px;
+        }
+         .title {
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+
+        .title2 {
+            border-bottom: solid 4px $globalpack;
+            margin-top: -20px;
+            margin-top:1px;
+            width:100% !important;
+            font-size:26px !important;
+            line-height:35px;
+        }
+    }
+    .iconosprint{
+        margin-top:20px;
+    }
+    .actionsficha {
+        .btn-ficha {
+            margin-left: 10% !important;
+            margin-right: 10%;
+        }
+
+        img:nth-child(1) {
+            margin-left: 30%;
+        }
+
+        .compartir{
+            margin-left:22% !important;
+            margin-right:22% !important;
+        }
+    }
+
+    .infoblogpost {
+        margin-top: -40px;
+    }
+    #tab_fichaTecnica, #tab_video, #tab_comparativa {
+        width: 100%;
+        padding: 6px 31px 6px 31px;
+        a {
+            font-size: 20px;
+        }
+    }
+    .titlefitxamobile {
+        img {
+            margin-left: -40px;
+        }
+
+        .title {
+            border-bottom: none;
+            margin-left: -13px;
+            margin-bottom: 0px;
+        }
+
+        .title2 {
+            border-bottom: solid 4px $globalpack;
+            margin-top: -20px;
+        }
+    }
+    #ficha, #content-video, #comparativa{
+        p{
+            font-size:15px;
+            text-align:justify;
+        }
+    }
+    .imgproducto {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: -35px;
+    }
+    .infofitxacol {
+        padding-left: 0px;
+        padding-right: 0px;
+        #descripcion{
+            font-size:15px;
+            text-align:justify;
+        }
+    }
+    .col-lg-12.titlefitxacol {
+        padding-bottom: 0px !important;
+    }
+    #titleproducto {
+        margin-top: 20px;
+    }
+    #footermobile {
+        margin-top: -120px;
+    }
+    .atencionclientemobile h3{
+        margin-top:10px;
+    }
+
+    .plans{
+        ul{
+            padding:0px;
+        }
+        p{
+            font-size:15px;
+            text-align:justify;
+        }
+    }
     #listbenificios {
+        li {
+            p {
+                font-size: 15px;
+            }
+        }
+
         .categoria-item {
             margin: 30px 0 25px 38px;
         }
@@ -120,7 +355,27 @@
         padding-right: 0px;
     }
     .popup-contacte {
-        right: 1%;
+        right: -2% !important;
+        width: 40px !important;
+        height: 10px;
+        margin-top:-165px;
+
+        span:nth-child(1) {
+            display: none !important;
+        }
+
+        span:nth-child(2) {
+            margin-top: -25px !important;
+            margin-right: -1px !important;
+            padding: 0px !important;
+            width: 26px !important;
+
+            img {
+                width:35px !important;
+                margin-top: -47px !important;
+                margin-left: 0 !important;
+            }
+        }
     }
     .option-contact {
         width: 100% !important;
@@ -155,6 +410,7 @@
     }
     .footer{
         text-align:center;
+        margin-top:20px;
         .col-lg-2{
             margin-top:-50px;
             cursor:pointer;
@@ -175,7 +431,7 @@
     }
 
     .form-popup-contacto {
-        right: -120vw !important;
+        right: -150vw !important;
         top: -12%;
         overflow: scroll;
         height: 100vh;
@@ -187,6 +443,10 @@
 
     .form-popup-contacto-desactive {
         animation: ShowContactMobiledisabled 1s forwards;
+    }
+
+    .autosemi h3 {
+        line-height: 17px !important;
     }
 }
 

@@ -6,7 +6,7 @@ require_once('Constantes.php');
 <html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -69,7 +69,7 @@ window.cookieconsent.initialise({
                     <div class="row">
                         <ul class="row lis-option">
                             <li class="option-contact">
-                                <h3>LLÁMANOS</h3>
+                                <h3>LL&#193;MANOS</h3>
                                 <br />
                                 <div class="icon-imatge">
                                     <img src="/assets/iconos/mobile.png" class="ico-phone" />
@@ -86,7 +86,7 @@ window.cookieconsent.initialise({
                             </li>
 
                             <li class="option-contact" style="cursor:pointer;" onclick="window.location='mailto:globalpack@globalpack.es';">
-                                <h3>ESCRÍBENOS</h3>
+                                <h3>ESCR&#205;BENOS</h3>
                                 <br />
                                 <div class="icon-imatge">
                                     <img src="/assets/iconos/escribenos.png" class="ico-write" />
@@ -119,14 +119,14 @@ window.cookieconsent.initialise({
                             </li>
 
                                 <li class="option-contact">
-                                    <h3>VISÍTANOS</h3>
+                                    <h3>VIS&#205;TANOS</h3>
                                     <br />
                                     <div class="icon-imatge">
                                         <img src="/assets/iconos/localizacion.png" class="ico-location" />
                                     </div>
                                     <div class="footer-telf">
                                         <span>
-                                            P.I Molí d'en Xec N.15
+                                            P.I Mol&#237; d'en Xec N.15
                                         </span>
                                         <br />
                                         <span>
@@ -141,10 +141,11 @@ window.cookieconsent.initialise({
                             <img src="/assets/img/LOGO_CONTACTO.png" style="margin-left:25px; width:90%;" />
                         </div>
                         <div class="col-lg-6" style="padding-left:20px;">
-                            P.I Molí d'en Xec N.15 <br />
+                            P.I Mol&#237; d'en Xec N.15 <br />
                             08291 Ripollet <br />
                             T (+34) 93 432 71 81 <br />
                             F (+34) 93 432 71 82 <br />
+                            www.globalpack.es
                             www.globalpack-e.com
                         </div>
                     </div>

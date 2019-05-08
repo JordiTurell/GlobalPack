@@ -67,7 +67,7 @@ ipsum dolor sit amet consectetur adipisicing elit
                         <img src="/assets/iconos/ICON_FLETXA_BANNER.png" onclick="DownSection();" id="arrow-down" />
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 d-none d-lg-block">
                     <div class="row flex-row-reverse" style="padding-top:18px;">
                         <div class="col-lg-5 item-slider box1"></div>
                         <div class="col-lg-5 item-slider box0"></div>
@@ -80,6 +80,18 @@ ipsum dolor sit amet consectetur adipisicing elit
             </div>
         </div>
     </div>
+      <div class="row">
+          <div class="col-lg-8 d-none blockscategoriasHome">
+              <div class="row flex-row-reverse" style="padding-top:18px;">
+                  <div class="col-lg-5 item-slider box1"></div>
+                  <div class="col-lg-5 item-slider box0"></div>
+                  <div class="col-lg-5 item-slider box3"></div>
+                  <div class="col-lg-5 item-slider box2"></div>
+                  <div class="col-lg-5 item-slider box5"></div>
+                  <div class="col-lg-5 item-slider box4"></div>
+              </div>
+          </div>
+      </div>
     <div class="row" id="home-section">
         <div class="container">
             <div class="row">

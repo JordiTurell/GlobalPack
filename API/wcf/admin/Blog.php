@@ -333,7 +333,7 @@ namespace Api\WCF
                     $date = date("Y-m-d H:i:s");
                     $guid = $config::GUID();
 
-                    $query = "UPDATE blog SET Titulo = '".$input["item"]["titulo"]."', Descripcion = '".$input["item"]["llarga"]."', Descripcion_corta = '".$input["item"]["curta"]."', FechaC = '".$date."', Video = '".$input["item"]["url"]."' WHERE idBlog = '".$input["item"]["idBlog"]."'";
+                    $query = "UPDATE blog SET Titulo = '".$input["item"]["titulo"]."', Descripcion = '".$input["item"]["llarga"]."', Descripcion_corta = '".$input["item"]["curta"]."', Video = '".$input["item"]["url"]."' WHERE idBlog = '".$input["item"]["idBlog"]."'";
                     if($res = mysqli_query($conn, $query)){
 
                         $Deleteimagen = "DELETE FROM post_imagenes WHERE Id_Post = '".$input["item"]["idBlog"]."'";

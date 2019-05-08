@@ -9598,6 +9598,7 @@
     <Content Include="js\pages\Nosotros_Beneficios.js" />
     <Content Include="js\pages\Nosotros_Header.js" />
     <Content Include="js\pages\Nosotros_Informacion.js" />
+    <Content Include="js\pages\postventa.js" />
     <Content Include="js\pages\Productos\Categorias.js" />
     <Content Include="js\pages\Productos\multimedia.js" />
     <Content Include="js\pages\Productos\Productos.js" />
@@ -9781,12 +9782,14 @@
     <Compile Include="bower_components\ckeditor\samples\old\assets\posteddata.php" />
     <Compile Include="bower_components\ckeditor\samples\old\sample_posteddata.php" />
     <Compile Include="Constantes.php" />
+    <Compile Include="exportDB.php" />
     <Compile Include="footer.php" />
     <Compile Include="img\UpdateFile.php" />
     <Compile Include="index.php" />
     <None Include="Menus\MenuLeft.php" />
     <Compile Include="Menus\TopBar.php" />
     <Compile Include="Modals\ModalBlogMultimedia.php" />
+    <Compile Include="Modals\ModalCrearPlan.php" />
     <Compile Include="Modals\ModalDeleteImage.php" />
     <Compile Include="Modals\ModalDeletePost.php" />
     <Compile Include="Modals\ModalDeleteProducto.php" />
@@ -9807,6 +9810,7 @@
     <Compile Include="pages\nosotros\beneficios.php" />
     <Compile Include="pages\nosotros\cabecera.php" />
     <Compile Include="pages\nosotros\informacion.php" />
+    <Compile Include="pages\postventa.php" />
     <Compile Include="pages\productos\categorias.php" />
     <Compile Include="pages\productos\multimedia.php" />
     <Compile Include="pages\productos\productos.php" />

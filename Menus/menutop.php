@@ -9,7 +9,7 @@
                         <img src="/assets/iconos/head_telf.png" style="width:25px;" />&nbsp; <a href="tel:+34934327181">+34 93 432 71 81</a>
                     </div>
                     <div class="col-lg-3 right">
-                        <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:globalpack@globalpack.es">Globalpack@globalpack.es</a>
+                        <img src="/assets/iconos/head_mail.png" style="width:25px;" />&nbsp; <a href="mailto:globalpack@globalpack.es">globalpack@globalpack.es</a>
                     </div>
                     <div class="col-lg-2 right">
                          <a href="https://www.facebook.com/globalpacke/"><img src="/assets/img/facebook.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;" /></a> &nbsp; <a href="https://twitter.com/Globalpacke"><img src="/assets/img/tweeter.svg" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a> &nbsp; <a href="https://www.youtube.com/channel/UCg22zdAPBHWhn-NrjS-JyCQ?view_as=subscriber"><img src="/assets/iconos/youtube.png" class="redsocial_footer" style="margin-right:0px; margin-left:0px; width:22px;"/></a>&nbsp; <a href="https://www.linkedin.com/company/11781745"><img src="/assets/iconos/in.png" class="redsocial_footer" style="margin-right:0px; margin-left:0px;"/></a>
@@ -39,10 +39,10 @@
                 <a class="nav-link" href="/productos.php">PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/postventa.php">SOLUCIÓN</a>
+                <a class="nav-link" href="/plans.php">POSTVENTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/plans.php">POSTVENTA</a>
+                <a class="nav-link" href="/postventa.php">SOLUCIÓN</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/Ocasion.php">OCASIÓN</a>

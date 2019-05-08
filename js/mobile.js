@@ -120,7 +120,9 @@
                 'margin-top': '-56px',
                 'margin-left': '17px'
             });
-            $('.title-form').append('<i class="far fa-times-circle" style="float:right; margin-top:-35px; margin-right:18px; font-size:30px;" onclick="Showcontact()"></i>');
+            if (window.location.pathname != '/contacto.php' && window.location.pathname != '/') {
+                $('.title-form').append('<i class="far fa-times-circle" style="float:right; margin-top:-35px; margin-right:18px; font-size:30px;" onclick="Showcontact()"></i>');
+            }
         }
     }
 });

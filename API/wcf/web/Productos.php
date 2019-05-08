@@ -59,7 +59,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM productos INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto WHERE productos_filtros.Id_Filtro = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice";
+            $query = "SELECT * FROM productos INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto WHERE productos_filtros.Id_Filtro = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice ORDER BY productos.Orden DESC";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
@@ -105,7 +105,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM productos WHERE Ocasion =  1 AND productos.Habilitado = 1";
+            $query = "SELECT * FROM productos WHERE Ocasion =  1 AND productos.Habilitado = 1 ORDER BY productos.Orden DESC";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
@@ -221,7 +221,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM productos INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto WHERE productos_categorias.Id_Categoria = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice ORDER BY productos.Titulo";
+            $query = "SELECT * FROM productos INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto WHERE productos_categorias.Id_Categoria = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice ORDER BY productos.Orden DESC";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);

@@ -244,6 +244,14 @@ function CreateTableProductos(data) {
             '<i class="fas fa-clone" onclick="$(\'#Duplicar' + a + '\').click();" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i><input type="button" value="Duplicar" class="btn" id="Duplicar' + a + '" style="display:none;" />' +
             '<i class="fas fa-question-circle" style="color:red; font-size:30px; margin-top:10px; margin-right:5px;"></i>'+
             '</div>';
+        code += '<div class="col-lg-1">' +
+            '<div class="input-group date">'+
+            '<input type="text" class="form-control pull-right" placeholder="Orden" />' +
+            '<div class="input-group-addon">' +
+            '<i class="fa fa-plus" style="color:red;"></i>' +
+            '</div>' +
+                '</div>'+
+            '</div>';
         code += '</div>';
         var fila = $(body).append(code);
 
@@ -255,7 +263,9 @@ function CreateTableProductos(data) {
         var eliminar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[3];
         var duplicar = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[5];
         var popover = $($($(fila).children()[a]).find('.col-lg-2')[2]).children()[6];
+        var orden = $($($(fila).children()[a]).find('.col-lg-1')[4]).find('i')[0];
 
+        $($(orden).parent().parent().find('input')[0]).val(data.list[a].Orden);
         $(popover).data('product', data.list[a].allProduct);
         $(popover).on('click', function () {
             
@@ -317,6 +327,30 @@ function CreateTableProductos(data) {
             }
         });
 
+        $(orden).data('item', data.list[a]);
+        $(orden).on('click', function (ev) {
+            ev.preventDefault();
+            var cat = $(this).data('item');
+            cat.orden = $($(this).parent().parent().find('input')[0]).val();
+            console.log(cat.orden);
+            var request = { token: '', item: null };
+            request.token = token;
+            request.item = cat;
+
+            $.ajax({
+                type: "POST",
+                url: "/api/interfaces/admin/IProductos.php?fun=SetOrden",
+                data: JSON.stringify(request),
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.status) {
+                        location.reload();
+                    }
+                }
+            });
+        });
         $(relacionado).data('id', data.list[a].Id_Producto);
         $(relacionado).on('click', function (ev) {
             ev.preventDefault();
@@ -1306,4 +1340,8 @@ function EnterSearch(e) {
     if (e.keyCode == 13) {
         Buscar();
     }
+}
+
+function ExportDB() {
+    window.open('/cms/exportDB.php?token=' + token, '_blank');
 }

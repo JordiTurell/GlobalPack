@@ -12,7 +12,7 @@
 
 @keyframes ShowContactMobile {
   0% {
-    right: -120vw; }
+    right: -150vw; }
   100% {
     right: -17vw; } }
 
@@ -20,7 +20,7 @@
   0% {
     right: -17vw; }
   100% {
-    right: -120vw; } }
+    right: -150vw; } }
 
 @keyframes ShowContactMobile320 {
   0% {
@@ -63,19 +63,17 @@ body {
   right: 47%; }
 
 #logo_top {
-  width: 130px;
-  height: 80px; }
+  width: 120%; }
 
 #logo_footer {
-  width: 130px;
-  height: 80px;
+  width: 90%;
   margin-top: 33px; }
 
 .navbar {
   background-color: #EF3340 !important; }
   .navbar .navbar-nav {
     margin-top: 45px;
-    margin-left: 10%; }
+    margin-left: 1%; }
   .navbar .nav-item {
     font-size: 16px;
     line-height: 18px;
@@ -1197,6 +1195,19 @@ body {
   font-weight: 300; }
 
 @media only screen and (max-width: 600px) {
+  #logo_top {
+    width: 75%; }
+  .navbar-light .navbar-toggler {
+    background-color: #EF3340 !important;
+    border: none !important;
+    color: white; }
+  .navbar-brand {
+    width: 77% !important; }
+  .navbar-toggler {
+    margin-left: 85% !important;
+    margin-top: -44px !important; }
+  .navbar-light .navbar-toggler-icon {
+    background-image: url("/assets/iconos/menuiconmobile.svg") !important; }
   .info {
     display: none; }
   .title-form-home {
@@ -1220,6 +1231,42 @@ body {
     margin-left: 0px !important; }
   .navbar .navbar-nav {
     margin-left: 0px; }
+  .section-head {
+    padding: 0px;
+    padding-top: 30px;
+    height: 290px; }
+  .blockscategoriasHome {
+    display: block !important; }
+  .item-slider {
+    background-color: #EF3340;
+    margin: 10px;
+    height: 100px;
+    color: white;
+    cursor: pointer;
+    position: relative; }
+    .item-slider img {
+      float: left;
+      width: 90px;
+      margin-top: 6px; }
+    .item-slider span {
+      font-size: 24.4px;
+      font-weight: bold;
+      letter-spacing: 1.1px;
+      line-height: 31px;
+      float: right;
+      margin-top: -66px;
+      width: 100%;
+      margin-right: 0px;
+      text-align: right;
+      padding-right: 32px; }
+  .slick-track {
+    width: 100% !important; }
+    .slick-track .item-slider {
+      height: auto !important;
+      width: 100% !important;
+      background-color: transparent !important; }
+      .slick-track .item-slider .item-slider-info {
+        width: 100% !important; }
   .section-head #title_home {
     width: 100%; }
     .section-head #title_home .h1 {
@@ -1235,37 +1282,142 @@ body {
   .old-blog h1 {
     width: 309px;
     text-align: center; }
+  .cabecera-nosotros .nosotros-header-alhpa {
+    height: 100%; }
   .cabecera-nosotros img {
     margin-top: 8%;
     display: block;
     margin-left: 6%;
     position: absolute;
-    width: 90%; }
+    width: 90%;
+    margin-top: 11%; }
   .cabecera-nosotros #texto-header {
     width: 100%;
     margin-left: 0px;
     text-align: center;
     margin-top: 32%;
     padding-left: 10px;
-    padding-right: 10px; }
+    padding-right: 10px;
+    font-size: 20px;
+    margin-top: 30%; }
   .cabecera-nosotros .arrow-down {
-    left: 44%; }
+    left: 44%;
+    margin-bottom: 75px !important; }
+  .beneficios {
+    margin-top: 30px; }
+    .beneficios .container {
+      margin-top: -65px; }
   #listbenificios {
-    margin-top: 45px; }
+    margin-top: 45px;
+    padding: 0px; }
     #listbenificios li {
       width: 100%;
       margin-right: 0px !important; }
       #listbenificios li img {
-        height: 150px; }
+        height: 100px; }
+  .titleplans {
+    width: 65% !important; }
+  .compartir-list {
+    margin-left: 16% !important;
+    margin-right: 16% !important; }
+  .title {
+    font-size: 30px !important; }
+  .title2 {
+    font-size: 28px !important;
+    width: 100%; }
+  .btn-ficha {
+    margin-top: 15px !important; }
+  .tipoplanoro, .tipoplanplata {
+    margin-bottom: 25px !important; }
+  .slider_relacionados {
+    margin-left: -8px !important; }
   .nosotros-info img {
     margin-top: 0px;
     margin-left: -28px;
-    width: 120%;
+    width: 118%;
     margin-right: 0px; }
   .nosotros-info :nth-child(1) :nth-child(2) {
     margin-top: 5px !important; }
   .nosotros-info #textonosotros {
     margin-top: 10px !important; }
+  .titlesection {
+    margin-top: 30px !important; }
+    .titlesection .col-lg-12 {
+      padding-bottom: 30px !important; }
+  .item-producto-list h3 {
+    margin-top: 15px; }
+  .item-producto-list p {
+    font-size: 15px;
+    padding-bottom: 20px;
+    line-height: 18px; }
+  .titleblogmobile {
+    padding-top: 0px !important; }
+  .itemstitleblog img {
+    margin-left: -15px; }
+  .itemstitleblog .title {
+    border-bottom: none;
+    margin-bottom: 10px; }
+  .itemstitleblog .title2 {
+    border-bottom: solid 4px #EF3340;
+    margin-top: -20px;
+    margin-top: 1px;
+    width: 100% !important;
+    font-size: 26px !important;
+    line-height: 35px; }
+  .iconosprint {
+    margin-top: 20px; }
+  .actionsficha .btn-ficha {
+    margin-left: 10% !important;
+    margin-right: 10%; }
+  .actionsficha img:nth-child(1) {
+    margin-left: 30%; }
+  .actionsficha .compartir {
+    margin-left: 22% !important;
+    margin-right: 22% !important; }
+  .infoblogpost {
+    margin-top: -40px; }
+  #tab_fichaTecnica, #tab_video, #tab_comparativa {
+    width: 100%;
+    padding: 6px 31px 6px 31px; }
+    #tab_fichaTecnica a, #tab_video a, #tab_comparativa a {
+      font-size: 20px; }
+  .titlefitxamobile img {
+    margin-left: -40px; }
+  .titlefitxamobile .title {
+    border-bottom: none;
+    margin-left: -13px;
+    margin-bottom: 0px; }
+  .titlefitxamobile .title2 {
+    border-bottom: solid 4px #EF3340;
+    margin-top: -20px; }
+  #ficha p, #content-video p, #comparativa p {
+    font-size: 15px;
+    text-align: justify; }
+  .imgproducto {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: -35px; }
+  .infofitxacol {
+    padding-left: 0px;
+    padding-right: 0px; }
+    .infofitxacol #descripcion {
+      font-size: 15px;
+      text-align: justify; }
+  .col-lg-12.titlefitxacol {
+    padding-bottom: 0px !important; }
+  #titleproducto {
+    margin-top: 20px; }
+  #footermobile {
+    margin-top: -120px; }
+  .atencionclientemobile h3 {
+    margin-top: 10px; }
+  .plans ul {
+    padding: 0px; }
+  .plans p {
+    font-size: 15px;
+    text-align: justify; }
+  #listbenificios li p {
+    font-size: 15px; }
   #listbenificios .categoria-item {
     margin: 30px 0 25px 38px; }
   .footer-box {
@@ -1274,7 +1426,21 @@ body {
     padding-left: 0px;
     padding-right: 0px; }
   .popup-contacte {
-    right: 1%; }
+    right: -2% !important;
+    width: 40px !important;
+    height: 10px;
+    margin-top: -165px; }
+    .popup-contacte span:nth-child(1) {
+      display: none !important; }
+    .popup-contacte span:nth-child(2) {
+      margin-top: -25px !important;
+      margin-right: -1px !important;
+      padding: 0px !important;
+      width: 26px !important; }
+      .popup-contacte span:nth-child(2) img {
+        width: 35px !important;
+        margin-top: -47px !important;
+        margin-left: 0 !important; }
   .option-contact {
     width: 100% !important; }
   .lis-option .option-contact {
@@ -1294,7 +1460,8 @@ body {
   .footer-cuadrats {
     display: none; }
   .footer {
-    text-align: center; }
+    text-align: center;
+    margin-top: 20px; }
     .footer .col-lg-2 {
       margin-top: -50px;
       cursor: pointer; }
@@ -1305,7 +1472,7 @@ body {
   .footer2 .col-lg-2 {
     text-align: center; }
   .form-popup-contacto {
-    right: -120vw !important;
+    right: -150vw !important;
     top: -12%;
     overflow: scroll;
     height: 100vh; }
@@ -1313,7 +1480,9 @@ body {
     animation: ShowContactMobile 1s forwards;
     z-index: 9999; }
   .form-popup-contacto-desactive {
-    animation: ShowContactMobiledisabled 1s forwards; } }
+    animation: ShowContactMobiledisabled 1s forwards; }
+  .autosemi h3 {
+    line-height: 17px !important; } }
 
 @media only screen and (max-width: 320px) {
   .popup-contacte {

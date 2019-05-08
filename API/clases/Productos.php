@@ -38,6 +38,7 @@ namespace Api\Models
         public $referencia;
         public $pdf;
         public $allProduct;
+        public $Orden;
 
         function __construct($Id_Producto, $Titulo, $FechaC, $PVP, $PVP_Ocasion, $Ocasion, $Habilitado){
             $this->Id_Producto = $Id_Producto;
@@ -48,6 +49,10 @@ namespace Api\Models
             $this->Ocasion = $Ocasion;
             $this->Habilitado = $Habilitado;
             $this->imagen = '';
+        }
+
+        public function SetOrden($o){
+            $this->Orden = $o;
         }
 
         public function SetAllProduct($p){

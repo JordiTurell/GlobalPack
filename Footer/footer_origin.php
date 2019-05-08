@@ -8,7 +8,7 @@
                     08291 Ripollet<br />
                     <a href="tel:+34934327181">+34 93 432 71 81</a>
                     <br />
-                    <a href="mailto:globalpack@globalpack.es">Globalpack@globalpack.es</a>
+                    <a href="mailto:globalpack@globalpack.es">globalpack@globalpack.es</a>
                 </p>
             </div>
             <div class="col-lg-2">
@@ -22,10 +22,10 @@
                 <h3>Legal</h3>
                 <!--<p style="margin-top:15.78px"><a href="/legal/terminos.php" style="text-decoration:none; color:white;">Terminos y condiciones</a></p>-->
                 <p><a href="/legal/politicadeprivacidad.php" style="text-decoration:none; color:white;">Política de privacidad</a></p>
-                <p><a href="/legal/Coockies.php" style="text-decoration:none; color:white;">Política de Coockies</a></p>
+                <p><a href="/legal/Coockies.php" style="text-decoration:none; color:white;">Política de cookies</a></p>
                 <p><a href="/legal/informacionlegal.php" style="text-decoration:none; color:white;">Información legal</a></p>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 atencionclientemobile">
                 <h3>Atencion al cliente</h3>
                 <p style="margin-top:15.78px">VENTAS: <a href="mailto:ventas@globalpack.es" style="color:white; text-decoration:none;">ventas@globalpack.es</a></p>
                 <p>POSTVENTAS: <a href="mailto:postventa@globalpack.es" style="color:white; text-decoration:none;">postventa@globalpack.es</a></p>

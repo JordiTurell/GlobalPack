@@ -38,12 +38,14 @@
     <Compile Include="clases\Administrador.php" />
     <Compile Include="clases\Beneficios.php" />
     <Compile Include="clases\Categoria.php" />
+    <Compile Include="clases\DescPostVenta.php" />
     <Compile Include="clases\HomeBox.php" />
     <Compile Include="clases\HomeText.php" />
     <Compile Include="clases\InfoAdmin.php" />
     <Compile Include="clases\Multimedia.php" />
     <Compile Include="clases\Nosotros.php" />
     <Compile Include="clases\Nosotros_Cabecera.php" />
+    <Compile Include="clases\Planes.php" />
     <Compile Include="clases\Post.php" />
     <Compile Include="clases\Productos.php" />
     <Compile Include="clases\ServiceItemResult.php" />
@@ -60,6 +62,8 @@
     <Compile Include="interfaces\admin\ILegales.php" />
     <Compile Include="interfaces\admin\Ilogin.php" />
     <Compile Include="interfaces\admin\INosotros.php" />
+    <Compile Include="interfaces\web\IPostVenta.php" />
+    <Compile Include="interfaces\admin\IPostVenta.php" />
     <Compile Include="interfaces\admin\IProductos.php" />
     <Compile Include="interfaces\web\IBlog.php" />
     <Compile Include="interfaces\web\IHome.php" />
@@ -72,12 +76,14 @@
     <Compile Include="wcf\admin\Legales.php" />
     <Compile Include="wcf\admin\Login.php" />
     <Compile Include="wcf\admin\Nosotros.php" />
+    <Compile Include="wcf\admin\PostVenta.php" />
     <Compile Include="wcf\admin\Productos.php" />
     <Compile Include="wcf\admin\WcfAdmin.php" />
     <Compile Include="wcf\web\Blog.php" />
     <Compile Include="wcf\web\Home.php" />
     <Compile Include="wcf\web\Legales.php" />
     <Compile Include="wcf\web\Nosotros.php" />
+    <Compile Include="wcf\web\PostVenta.php" />
     <Compile Include="wcf\web\Productos.php" />
   </ItemGroup>
 </Project>

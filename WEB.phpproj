@@ -72,6 +72,7 @@
     <Content Include="assets\iconos\ICON_FLETXA_BANNER.png" />
     <Content Include="assets\iconos\ICON_INFO.png" />
     <Content Include="assets\iconos\in.png" />
+    <Content Include="assets\iconos\menuiconmobile.svg" />
     <Content Include="assets\iconos\uncheck.png" />
     <Content Include="assets\iconos\youtube.png" />
     <Content Include="assets\img\fondomaquinas.png" />
@@ -140,6 +141,7 @@
     <Content Include="js\pages\legales.js" />
     <Content Include="js\pages\nosotros.js" />
     <Content Include="js\pages\ocasion.js" />
+    <Content Include="js\pages\plans.js" />
     <Content Include="js\pages\postventa.js" />
     <Content Include="js\pages\productos.js" />
     <Content Include="css\slick.css" />

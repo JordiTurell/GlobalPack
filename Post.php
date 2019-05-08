@@ -53,21 +53,24 @@ window.cookieconsent.initialise({
     <!-- Navigation -->
     <?php include_once(dirname(__FILE__).'/Menus/menutop.php'); ?>
 
-    <div class="row" style="margin-top:20px;">
+    <div class="row titlesection" style="margin-top:20px;">
         <div class="container" style="padding:0px;">
             <div class="row">
-                <div class="col-lg-12" style="padding-bottom:20px; padding-top:50px;">
+                <div class="col-lg-12 titleblogmobile" style="padding-bottom:20px; padding-top:50px;">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 itemstitleblog">
                             <img src="/assets/iconos/FLETXA_PRODUCTOS_FITXA.png" style="width:50px; cursor:pointer;" onclick="onBack();" />
-                            <h1 class="title" style="width:106px; font-weight:700;">BLOG</h1>&nbsp;&nbsp;&nbsp;<h1 class="title2" style="width:84%; font-weight:300;"><?php echo $post["Titulo"]?></h1>
+                            <h1 class="title" style="width:106px; font-weight:700;">BLOG</h1>&nbsp;&nbsp;&nbsp;
+                            <h1 class="title2" style="width:84%; font-weight:300;">
+                                <?php echo $post["Titulo"]?>
+                            </h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row" style="padding-bottom:20px;">
+    <div class="row infoblogpost" style="padding-bottom:20px;">
         <div class="container">
             <div class="row" style="margin-top:20px;">
                 <div class="col-lg-6">
@@ -91,10 +94,10 @@ window.cookieconsent.initialise({
                     </div>
                     <div class="col-lg-12" style="padding-top:10px;">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <input type="button" class="btn btn-web btn-ficha" value="COMPARTIR" style="margin-left:0px;" onclick="Compartir();" />
                             </div>
-                            <div class="col-lg-6 text-right">
+                            <div class="col-6 text-right iconosprint">
                                 <img src="/assets/iconos/impresora.png" style="width:30px; margin-right:10px;" onclick="Imprimir()" />
                                 <img src="/assets/iconos/star.png" style="width:30px;" />
                             </div>

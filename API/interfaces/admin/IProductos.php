@@ -127,6 +127,10 @@ switch($_GET['fun']){
         $wcf = new Productos();
         echo json_encode($wcf->SortableFiltres());
         break;
+    case 'SetOrden':
+        $wcf = new Productos();
+        echo json_encode($wcf->SetOrden());
+        break;
 }
 
 ?>
