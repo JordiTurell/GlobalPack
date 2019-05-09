@@ -153,8 +153,6 @@ if(isset($_SESSION['SES'])){
     <script src="/cms/js/pages/postventa.js"></script>
 
     <script>
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
         $(document).ready(function () {
             CKEDITOR.replace('descpostventa');
             CKEDITOR.replace('descripcionplan');

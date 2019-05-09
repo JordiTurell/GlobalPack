@@ -1,7 +1,12 @@
 ﻿var token;
 
+var ckeditordescpostventa = null;
+var descripcionpage = '';
 function LoadDescripcion(t) {
+    
     token = t;
+    ckeditordescpostventa = CKEDITOR.instances.descpostventa;
+    
     var request = {
         token: t
     };
@@ -13,11 +18,17 @@ function LoadDescripcion(t) {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            CKEDITOR.instances.descpostventa.setData(data.item.descripcion);
-            ShowBoxDesc();
+            descripcionpage = data.item.descripcion;
+            ShowBoxDesc(data);
         }
     });
     LoadPlans();
+
+    setTimeout(insertdescripcion, 1000);
+}
+
+function insertdescripcion() {
+    ckeditordescpostventa.setData(descripcionpage);
 }
 
 function SaveDEscripcion() {
