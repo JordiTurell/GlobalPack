@@ -19,10 +19,13 @@
     <Content Include="clases\index.html" />
     <Content Include="composer.json" />
     <Content Include="Config\index.html" />
+    <Content Include="index.html" />
     <Content Include="interfaces\admin\index.html" />
     <Content Include="interfaces\index.html" />
     <Content Include="interfaces\web\index.html" />
+    <Content Include="wcf\admin\index.html" />
     <Content Include="wcf\index.html" />
+    <Content Include="wcf\web\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="clases\" />
@@ -53,6 +56,7 @@
     <Compile Include="clases\Servicios.php" />
     <Compile Include="clases\Subcategoria.php" />
     <Compile Include="clases\Usuario.php" />
+    <Compile Include="Config\Config.php" />
     <Compile Include="Config\DataContext.php" />
     <Compile Include="Config\Token.php" />
     <Compile Include="Config\UpdateFiles.php" />

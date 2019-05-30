@@ -4,7 +4,7 @@
             <div class="col-lg-3">
                 <img src="/assets/img/LOGO@2x_GLOBALPACK.png" id="logo_footer" />
                 <p style="margin-top:24.45px">
-                    P.I Molí d'en Xec N.15 <br />
+                    Molí d'en Xec N.15 <br />
                     08291 Ripollet<br />
                     <a href="tel:+34934327181">+34 93 432 71 81</a>
                     <br />
@@ -12,7 +12,7 @@
                 </p>
             </div>
             <div class="col-lg-2">
-                <h3>Compañia</h3>
+                <h3>Compañía</h3>
                 <p style="margin-top:15.78px"><a href="/contacto.php" style="color:white; text-decoration:none;">Contacto</a></p>
                 <p><a href="/nosotros.php" style="color:white; text-decoration:none;">Sobre nosotros</a></p>
                 <p><a href="/blog.php" style="color:white; text-decoration:none;">Blog</a></p>
@@ -26,11 +26,11 @@
                 <p><a href="/legal/informacionlegal.php" style="text-decoration:none; color:white;">Información legal</a></p>
             </div>
             <div class="col-lg-4 atencionclientemobile">
-                <h3>Atencion al cliente</h3>
+                <h3>Atención al cliente</h3>
                 <p style="margin-top:15.78px">VENTAS: <a href="mailto:ventas@globalpack.es" style="color:white; text-decoration:none;">ventas@globalpack.es</a></p>
                 <p>POSTVENTAS: <a href="mailto:postventa@globalpack.es" style="color:white; text-decoration:none;">postventa@globalpack.es</a></p>
                 <p>OPERACIONES: <a href="mailto:operaciones@globalpack.es" style="color:white; text-decoration:none;">operaciones@globalpack.es</a></p>
-                <p>ADMINISTRACION: <a href="mailto:administración@globalpack.es" style="color:white; text-decoration:none;">administración@globalpack.es</a></p>
+                <p>ADMINISTRACION: <a href="mailto:administración@globalpack.es" style="color:white; text-decoration:none;">administracion@globalpack.es</a></p>
             </div>
         </div>
     </div>

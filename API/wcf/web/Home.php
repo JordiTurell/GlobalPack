@@ -102,14 +102,13 @@ namespace Api\WCFWeb
         }
 
         public function LoadBox(){
-            require_once("../../Config/Token.php");
             require_once("../../Config/Config.php");
             require_once("../../Config/DataContext.php");
             require_once("../../clases/ServiceListResult.php");
             require_once("../../clases/HomeBox.php");
 
             $result = new Listado(false, '', null, 0, 0);
-            
+
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
             $date = date("Y-m-d H:i:s");

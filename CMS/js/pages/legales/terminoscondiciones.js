@@ -37,7 +37,8 @@ function LoadTerminosCondiciones(token, tipo) {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $('#editor1').val(data.item);
+                CKEDITOR.instances.editor1.setData(data.item);
+                
             }
         });
     });

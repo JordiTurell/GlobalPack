@@ -24,7 +24,7 @@ if(!empty($input)){
 
         //Recipients
         $mail->setFrom('webglobalpack@gmail.com', 'Web Globalpack');
-        $mail->addAddress('operaciones@globalpack-e.com', 'Operaciones');
+        $mail->addAddress('globalpack@globalpack.es', 'Globalpack');
         //$mail->addAddress('info@jorditurell.com', 'Jordi Turell Nebot');
 
         //Content

@@ -32,7 +32,7 @@ namespace Api\WCF
                     $config = new Data(DataContext::Admin);
                     $conn = $config->Conect();
 
-                    $query = "SELECT Text FROM Legales Where Tipo = ".$input["tipo"];
+                    $query = "SELECT Text FROM legales Where Tipo = ".$input["tipo"];
 
                     if($res = mysqli_query($conn, $query)){
 

@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿var texto = null;
+$(document).ready(function () {
     CKEDITOR.replace('editor1');
 });
 function Updatefile(fileinput) {
@@ -70,9 +71,14 @@ function LoadNosotros(token) {
             },
             success: function (data) {
 
-                $('#imagen_nosotros').attr('src', "//"+data.item.img);
-                $('#editor1').val(data.item.text);
+                $('#imagen_nosotros').attr('src', "//" + data.item.img);
+                texto = data.item.text;
+                setTimeout(loadCKEDITOR, 500);
             }
         });
     });
+}
+
+function loadCKEDITOR() {
+    CKEDITOR.instances.editor1.setData(texto);
 }

@@ -4,9 +4,9 @@ use Api\Config\Setup as Data;
 use Api\Config\Token;
 use Api\Config\DataContext;
 
-require_once("../API/Config/Token.php");
-require_once("../API/Config/Config.php");
-require_once("../API/Config/DataContext.php");
+require_once("../api/Config/Token.php");
+require_once("../api/Config/Config.php");
+require_once("../api/Config/DataContext.php");
 
 
 if(!empty($_GET["token"])){

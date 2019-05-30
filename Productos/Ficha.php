@@ -8,7 +8,7 @@ $producto = $_POST;
 <html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>
@@ -116,7 +116,7 @@ window.cookieconsent.initialise({
                             <a data-toggle="tab" href="#content-video" onclick="ChangeStyleTab(1);">Videos</a>
                         </li>
                          <li id="tab_comparativa">
-                             <a data-toggle="tab" href="#comparativa" onclick="ChangeStyleTab(2);">Comparativa</a>
+                             <a data-toggle="tab" href="#comparativa" onclick="ChangeStyleTab(2);">Otras Opciones</a>
                          </li>
                     </ul>
                 </div>

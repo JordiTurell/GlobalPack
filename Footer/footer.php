@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="row lis-option">
             <li class="option">
-                <h3>LLAMANOS</h3><br />
+                <h3>LLÁMANOS</h3><br />
                 <div class="icon-imatge"><img src="/assets/iconos/mobile.png" class="ico-phone" /></div>
                 <div class="footer-telf">
                     <span>
@@ -10,13 +10,13 @@
                     </span>
                     <br />
                     <span>
-                        <a href="tel:+34934327182">F(+34) 93 432 71 82</a>
+                        <a href="tel:+34934225257">F(+34) 93 422 52 57</a>
                     </span>
                 </div>
             </li>
 
             <li class="option">
-                <h3>ESCRIBENOS</h3><br />
+                <h3>ESCRÍBENOS</h3><br />
                 <div class="icon-imatge"><img src="/assets/iconos/escribenos.png" class="ico-write" /></div>
                 <div class="footer-telf">
                     <span>
@@ -41,11 +41,11 @@
             </li>
 
             <li class="option">
-                <h3>VISITANOS</h3><br />
+                <h3>VISÍTANOS</h3><br />
                 <div class="icon-imatge"><img src="/assets/iconos/localizacion.png" class="ico-location" /></div>
                 <div class="footer-telf">
                     <span>
-                        P.I Molí d'en Xec N.15 
+                        Molí d'en Xec N.15 
                     </span>
                     <br />
                     <span>

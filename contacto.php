@@ -79,7 +79,7 @@ window.cookieconsent.initialise({
                                     </span>
                                     <br />
                                     <span>
-                                        <a href="tel:+34934327182">+34 93 432 71 82</a>
+                                        <a href="tel:+34934225257">+34 93 422 52 57</a>
                                     </span>
                                 </div>
                             </li>
@@ -125,7 +125,7 @@ window.cookieconsent.initialise({
                                     </div>
                                     <div class="footer-telf">
                                         <span>
-                                            P.I Mol&#237; d'en Xec N.15
+                                            Mol&#237; d'en Xec N.15
                                         </span>
                                         <br />
                                         <span>

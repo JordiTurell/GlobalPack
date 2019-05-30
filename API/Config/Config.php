@@ -18,7 +18,7 @@ namespace Api\Config
         public $database;
         public $user_name;
         public $password;
-        public $local = false;
+        public $local = true;
 
         function __construct($db){
             if($this->local){
@@ -27,7 +27,7 @@ namespace Api\Config
                 $this->user_name = 'root';
                 $this->password = 'sawamura1984';
             }else{
-                $this->host_name = 'globalpack.flutter.es';
+                $this->host_name = 'localhost';
                 $this->database = $db;
                 $this->user_name = 'globalpack';
                 $this->password = 'Kjhldfs74532hf@';
@@ -37,9 +37,11 @@ namespace Api\Config
         function Conect(){
             if($this->local){
                 $connect = new mysqli($this->host_name, $this->user_name, $this->password, $this->database);
+                mysqli_query($connect, "SET NAMES 'utf8'");
                 return $connect;
             }else{
                 $connect = mysqli_connect($this->host_name, $this->user_name, $this->password, $this->database);
+                mysqli_query($connect, "SET NAMES 'utf8'");
                 return $connect;
             }
         }

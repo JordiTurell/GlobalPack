@@ -86,6 +86,7 @@ function CreateListProductos(list) {
     var code = '';
 
     if (filtroschecked.length > 0) {
+        var countappend = -1;
         for (var b = 0; b < filtroschecked.length; b++) {
             for (a = 0; a < list.length; a++) {
                 if (filtroschecked[b].Id_Subcategoria == list[a].Id_SubCategoria) {
@@ -126,11 +127,11 @@ function CreateListProductos(list) {
                                 '</div>';
                         }
                     }
-                    
+                    countappend = countappend + 1;
                     var item = $(content).append(code);
                     list[a].cat = cat;
-                    $($(item).children()[b]).data('item', list[a]);
-                    $($(item).children()[b]).on('click', function (ev) {
+                    $($(item).children()[countappend]).data('item', list[a]);
+                    $($(item).children()[countappend]).on('click', function (ev) {
                         ev.preventDefault();
                         var producto = $(this).data('item');
                         $.redirect('/Productos/Ficha.php', producto);

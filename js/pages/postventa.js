@@ -251,40 +251,36 @@ function Filtros(id) {
         success: function (data) {
             var ul = $('#list-filtros');
             for (var a = 0; a < data.list.length; a++) {
-                var code = '<div class="form-check form-check-inline filtro-form">' +
-                    '<input class="form-check-input" type="checkbox" id="inlineCheckbox' + a + '" value= "' + data.list[a].Id_Categoria + '" >' +
+                var code = '<div class="form-check form-check-inline filtro-form" > ' +
+                '<img src="/assets/iconos/checked.png" style="width:18px; margin-right:5px;" />' +
+                    '<input class="form-check-input" type="checkbox" id="inlineCheckbox' + a + '" value= "' + data.list[a].Id_Categoria + '" style="display:none;">' +
                     '<label class="form-check-label" for="inlineCheckbox' + a + '">' + data.list[a].Categoria + '</label>' +
                     '</div >';
+//'                <div class="form-check form-check-inline filtro-form">' +
+//                    '<input class="form-check-input" type="checkbox" id="inlineCheckbox' + a + '" value= "' + data.list[a].Id_Categoria + '" >' +
+//                    '<label class="form-check-label" for="inlineCheckbox' + a + '">' + data.list[a].Categoria + '</label>' +
+//                    '</div >';
                 var item = $(ul).append(code);
                 $($($(item).children()[a])[0]).data('cat', data.list[a]);
                 $($($(item).children()[a])[0]).on('click', function (ev) {
                     ev.preventDefault();
                     var cat = $(this).data('cat');
                     if (IscheckedFiltro(cat)) {
-                        filtroschecked = $.grep(filtroschecked, function (value) {
-                            return value != cat;
+                        filtroschecked = [];
+
+                        $(this).parent().find('img').each(function () {
+                            $(this).attr('src', '/assets/iconos/checked.png');
                         });
+                        $($(this).find('img')[0]).attr('src', '/assets/iconos/checked.png');
                         CreateListProductos(list);
-                        $($(this).find('input')[0]).prop('checked', false);
                     } else {
+                        filtroschecked = [];
                         filtroschecked.push(cat);
-                        CreateListProductos(list);
-                        $($(this).find('input')[0]).prop('checked', true);
-                    }
-                });
-                $($($(item).children()[a]).find('input')[0]).on('click', function (ev) {
-                    ev.preventDefault();
-                    var cat = $(this).data('cat');
-                    if (IscheckedFiltro(cat)) {
-                        filtroschecked = $.grep(filtroschecked, function (value) {
-                            return value != cat;
+                        $(this).parent().find('img').each(function () {
+                            $(this).attr('src', '/assets/iconos/checked.png');
                         });
+                        $($(this).find('img')[0]).attr('src', '/assets/iconos/uncheck.png');
                         CreateListProductos(list);
-                        $($(this).find('input')[0]).prop('checked', false);
-                    } else {
-                        filtroschecked.push(cat);
-                        CreateListProductos(list);
-                        $($(this).find('input')[0]).prop('checked', true);
                     }
                 });
             }
@@ -320,8 +316,15 @@ function LoadServicios(id) {
                     $('#list-servicios').find('li').each(function () {
                         $(this).css('border-bottom', 'none');
                     });
-                    $(this).css('border-bottom', 'solid 2px #ef3340');
-                    CreateListProductos(list);
+                    if (!$(this).data('select')) {
+                        $(this).data('select', true);
+                        $(this).css('border-bottom', 'solid 2px #ef3340');
+                        CreateListProductos(list);
+                    } else {
+                        servicioschecked = [];
+                        $(this).data('select', false);
+                        CreateListProductos(list);
+                    }
                 });
             }
         }
@@ -334,6 +337,15 @@ function IscheckedFiltro(cat) {
             if (filtroschecked[a].Id_Categoria == cat.Id_Categoria) {
                 return true;
             }
+        }
+    }
+    return false;
+}
+
+function IscheckedServicio(cat) {
+    for (var a = 0; a < servicioschecked.length; a++) {
+        if (servicioschecked[a].Id_Servicios == cat.Id_Servicios) {
+            return true;
         }
     }
     return false;

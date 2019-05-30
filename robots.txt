@@ -1,0 +1,10 @@
+# Regla 1
+User-agent: Googlebot
+User-agent: AdsBot-Google
+Disallow: /cms/
+
+# Regla 2
+User-agent: *
+Allow: /
+
+Sitemap: https://globalpack-e.com/sitemap.xml

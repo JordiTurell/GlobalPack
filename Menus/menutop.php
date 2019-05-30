@@ -39,7 +39,7 @@
                 <a class="nav-link" href="/productos.php">PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/plans.php">POSTVENTA</a>
+                <a class="nav-link" href="/plans.php" style="display:none;">POSTVENTA</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/postventa.php">SOLUCIÓN</a>

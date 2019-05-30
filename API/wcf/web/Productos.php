@@ -185,10 +185,10 @@ namespace Api\WCFWeb
         }
 
         function LoadCategoriasRelacionadasFiltrosProductos($id){
-            require_once("../../Config/Token.php");
+
             require_once("../../Config/Config.php");
             require_once("../../Config/DataContext.php");
-            require_once("../../clases/Subcategoria.php");
+            require_once("../../clases/Categoria.php");
             require_once("../../clases/ServiceListResult.php");
 
             $result = new Listado(false, "", 0, 0, 0);
@@ -199,7 +199,7 @@ namespace Api\WCFWeb
             $query = "SELECT * FROM p_categorias INNER JOIN categorias_filtros ON categorias_filtros.Id_Categoria = p_categorias.Id_Categoria WHERE categorias_filtros.Id_Filtro = '".$id."' ORDER BY p_categorias.FechaM";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
-                    $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"]);
+                    $cat = new Categoria($row["Id_Categoria"], $row["Categoria"], $row["Descripcion"], $row["Icono"], $row["Activada"], $row["Orden"]);
                     array_push($result->list, $cat);
                 }
             }
@@ -221,7 +221,7 @@ namespace Api\WCFWeb
             $config = new Data(DataContext::Admin);
             $conn = $config->Conect();
 
-            $query = "SELECT * FROM productos INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto WHERE productos_categorias.Id_Categoria = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice ORDER BY productos.Orden DESC";
+            $query = "SELECT * FROM productos INNER JOIN productos_categorias ON productos.Id_Producto = productos_categorias.Id_Producto INNER JOIN productos_filtros ON productos.Id_Producto = productos_filtros.Id_Producto WHERE productos_categorias.Id_Categoria = '".$input["uuid"]."' AND productos.Habilitado = 1 GROUP BY productos.Indice ORDER BY productos.Orden ASC";
             if($res = mysqli_query($conn, $query)){
                 while($row = mysqli_fetch_assoc($res)){
                     $cat = new Producto($row["Id_Producto"], $row["Titulo"], $row["FechaC"], $row["PVP"], $row["PVP_Ocasion"], $row["Ocasion"], $row["Habilitado"]);
