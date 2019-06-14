@@ -18,14 +18,14 @@ if(!empty($input)){
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = 'webglobalpack@gmail.com';                 // SMTP username
-        $mail->Password = 'globalpack2019';                           // SMTP password
+        $mail->Password = 'glob@lp@ck2019';                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
         //Recipients
         $mail->setFrom('webglobalpack@gmail.com', 'Web Globalpack');
         $mail->addAddress('globalpack@globalpack.es', 'Globalpack');
-        //$mail->addAddress('info@jorditurell.com', 'Jordi Turell Nebot');
+        $mail->addAddress('info@jorditurell.com', 'Jordi Turell Nebot');
 
         //Content
         $mail->isHTML(true);                                  // Set email format to HTML

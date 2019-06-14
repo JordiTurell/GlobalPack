@@ -134,7 +134,7 @@ function CreateListProductos(list) {
                     $($(item).children()[countappend]).on('click', function (ev) {
                         ev.preventDefault();
                         var producto = $(this).data('item');
-                        $.redirect('/Productos/Ficha.php', producto);
+                        $.redirect('/Productos/Ficha.php?id='+producto.Id_Producto, producto);
                     });
                 }
             }
@@ -169,7 +169,7 @@ function CreateListProductos(list) {
                                 $($(item2).children()[countitem]).on('click', function (ev) {
                                     ev.preventDefault();
                                     var producto = $(this).data('item');
-                                    $.redirect('/Productos/Ficha.php', producto);
+                                    $.redirect('/Productos/Ficha.php?id=' + producto.Id_Producto, producto);
                                 });
                                 countitem = countitem + 1;
                             }
@@ -198,7 +198,7 @@ function CreateListProductos(list) {
                     $($(item).children()[a]).on('click', function (ev) {
                         ev.preventDefault();
                         var producto = $(this).data('item');
-                        $.redirect('/Productos/Ficha.php', producto);
+                        $.redirect('/Productos/Ficha.php?id=' + producto.Id_Producto, producto);
                     });
                 }
             }

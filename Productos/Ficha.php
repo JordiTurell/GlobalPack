@@ -48,7 +48,7 @@ window.cookieconsent.initialise({
     </script>
 </head>
 
-<body id="page-top" class="container-fuild" onload="Ficha_Producto('<?php echo $producto["Id_Producto"]; ?>');">
+<body id="page-top" class="container-fuild" onload="Ficha_Producto('<?php echo $_GET["id"]; ?>');">
     
     <!-- Navigation -->
     <?php include_once('../Menus/menutop.php'); ?>
